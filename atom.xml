@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://162cm.com</id>
-    <title>Gridea</title>
-    <updated>2021-02-27T13:13:30.255Z</updated>
+    <title>黄滚的Blog</title>
+    <updated>2021-02-27T13:25:17.397Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://162cm.com"/>
     <link rel="self" href="http://162cm.com/atom.xml"/>
     <subtitle>相逢的人会再相逢</subtitle>
     <logo>http://162cm.com/images/avatar.png</logo>
     <icon>http://162cm.com/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, 黄滚的Blog</rights>
     <entry>
         <title type="html"><![CDATA[再回乡]]></title>
         <id>http://162cm.com/post/1430/</id>
@@ -405,6 +405,194 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
 </ol>
 <h2 id="存储插件的内部">存储插件的内部</h2>
 <p>下图描述了位于Drill和数据源中间的存储插件层： <img src="https://drill.apache.org/docs/img/storageplugin.png" alt="存储插件层" loading="lazy"> 除了前面进到的这些功能，存储插件层还提供了扫描，写数据的功能，并能够将来自navive层的一些能力，比如动作推断，jon,SQL 等等知会到执行引擎。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:概要]]></title>
+        <id>http://162cm.com/post/1395/</id>
+        <link href="http://162cm.com/post/1395/">
+        </link>
+        <updated>2017-04-04T08:00:15.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="性能">性能</h1>
+<p>Drill是从地基开始就奔向高性能和大数据集去设计的，下面列出来的是Drill能够做到高性能的核心要点。</p>
+<h2 id="分布式的引擎">分布式的引擎</h2>
+<p>Drill提供了一个强大的分布式引擎来处理查询。用户可以从集群的任何一个节点是提交查询。你可以添加新的节点到集群中，以为了支持更多用户的更多数据，或是获得更好的性能。</p>
+<h2 id="列式执行">列式执行</h2>
+<p>通过使用一种纯内存的分层的，列式的数据模型，Drill同时为列式存储，列式执行都做了优化。当数据是存储在列式存储的文件上时（比如像Parquet)Drill会避免去访问那些查询中根本不涉及到的列。Drill的执行层同样可以直接对列式数据进行SQL查询，而不需要做一个分行化的操作。列式存储和直接列式执行，这两个优化的组件显示地降低了内存消耗，并为BI和分析类型的作业提供了更快的执行效率。</p>
+<h2 id="向量化">向量化</h2>
+<p>相比一次只处理一个表记录中的一个值 ，Drill中的向量化允许CPU在向量上操作，也就是一批记录上操作。一个记录批次包含来自不同的记录上的一组数值 。向量处理能够做到非常高效的技术基础，在于现在的芯片技术，这些芯片都携带了深度流水线化的CPU设计。让所有管理都达到接近峰值的高效是不可能的，因为代码复杂度太高了。</p>
+<h2 id="运行时编译">运行时编译</h2>
+<p>运行时编译相比解释执行提供了更快的执行。Drill为每一条查询指令都生成了非常高效的指令。下图展示了Drill的编译和指令生成过程。 <img src="https://drill.apache.org/docs/img/58.png" alt="https://drill.apache.org/docs/img/58.png" loading="lazy"></p>
+<h2 id="乐观并且流水线的查询执行">乐观并且流水线的查询执行</h2>
+<p>Drill 使用乐观的执行模型来处理查询，假定在小片的查询中失败是不太常见的。Drill不会浪费时间在创建边界或是检查点上，这样就可以最小化恢复时间。在单条查询失败的时候，这条查询就直接返回了。Drill执行使用一种所有任务一次性安排的流水线模型。查询尽可能地在内存中执行以便能在流水线中完成作业，只有内存不足时才会持久化到磁盘。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:查询的执行]]></title>
+        <id>http://162cm.com/post/1393/</id>
+        <link href="http://162cm.com/post/1393/">
+        </link>
+        <updated>2017-04-04T07:59:34.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="drill-查询的执行">drill 查询的执行</h1>
+<p>当您提交Drill查询的时候，客户端或应用程序会把查询以SQL语句的形式发送到Drill集群的一个Drillbit。Drillbit是在每个在线的Drill节点上运行的进程，它负责协调，规划和执行查询，并按照最大限度地实现数据本地化的原则在集群中分发查询。 下图描述了客户端，应用和drillbit之前的通信： <img src="https://drill.apache.org/docs/img/query-flow-client.png" alt="https://drill.apache.org/docs/img/query-flow-client.png" loading="lazy"> 从客户端或应用端接收查询的那个drillbit会成为这个查询是的“接待员”，会负责驱动整个查询。这个”接待员“drillbit进程中有一个解析器，这个解析器解析这个SQL语句，应用一系列定制的规则，并把特定的SQL操作符翻译成相应的Drill能理解的逻辑操作符。这一系列逻辑操作符形成了一个逻辑计划。这个逻辑计划描述了为了得到查询结果需要做的工作，以及需要的数据源以及要进行的处理。 这个“接待员”drillbit 会将这个逻辑计划发送到一个基于开销核算的优化器，这个优化器会调整SQL操作符的顺序。优化器会应用各种各样的规则来做操作符和函数的对齐操作，并形成一个物理计划。最终就是，优化器将逻辑计划转换成了一个描述这个查询如何工作的物理计划。 <img src="https://drill.apache.org/docs/img/client-phys-plan.png" alt="https://drill.apache.org/docs/img/client-phys-plan.png" loading="lazy"> 一个“parallelizer&quot;会将一条物理计划转换成若干条短语，这些短语我们称之为”一级碎片“和”次级碎片“。 <img src="https://drill.apache.org/docs/img/execution-tree.PNG" alt="https://drill.apache.org/docs/img/execution-tree.PNG" loading="lazy"></p>
+<h1 id="major-fragments">Major Fragments</h1>
+<p>一个”Major Fragments“是这样一个概念，可以说是代表了Dril查询的一个阶段。一个”阶段(phase)“是Drill执行查询时必须执行的一个或多个操作单元。Drill会给每个Major Fragments 分配一个MajorFragmentID. 例如，为了计算两个文件的Hash，Drill可能就会创建两个主要阶段（两个Major fragments）,第一阶段用来扫描文件 ，第二阶段则用来聚合数据。 <img src="https://drill.apache.org/docs/img/ex-operator.png" alt="Major fragments" loading="lazy"> Drill使用”Exchange Operator &quot;来连接不同的Major fragments。一个&quot;exchange&quot;是指的数据的位置移动，或是将物理计划并行化的操作。一个“exchange&quot;包含一个sender一个receiver,这使得数据可以在不同的节点间移动。 你可以在一个物理计划中用这种方式来参与Major fragments：你可以把物理计划导出到一个JSON文件中，手动修改它，并使用SUBMIT PLAN命令将这个json提交回Drill。你也可以在查询分析器中查看这些Major fragments,查询分析器可以通过Drill的WEB终端登入。请查询EXPLAIN和Query Profiles章节来获得更多信息。</p>
+<h2 id="minor-fragments">Minor Fragments</h2>
+<p>每个Major Fragments 都可以并行化到一系列Minor Fragments;一个Minor Fragments是一个线程中运行的一个工作的逻辑单元。Drill中的一个逻辑工作单元，也被为一个”切片“。Drill 创建的执行计划，是由若干Minor Fragments组成的。Drill给每个Minor Fragments分配了一个MinorFragmentID; <img src="https://drill.apache.org/docs/img/min-frag.png" alt="" loading="lazy"> 在”接待员“drillbit中的”并行器“是负责从一个Major Fragment中创建出若干个Minor Fragments，做法就是将一个Major Fragment 打散成尽可能多的能在集群中同时运行的minor fragments. Drill在单独的线程内运行Minor Fragments,并且尽可能地快（这要看它依赖的上游数据）。Drill会把Minor Fragments归划到拥有数据本地化的那些节点上运行。如果做不到，Drill会在当前可用的Drillbit中使用那个流行的Round-Robbin算法进行分配。 Minor Fragments 包含一个或多个关系运算符。每个运算符执行一个操作，比如scan,filter,join,或是group by。每个运行符都有一个操作类型和一个操作ID（operationID).每个操作ID定义了它和它所从属的Minor Fragment和关系。请查阅”物理操作符“章节。 <img src="https://drill.apache.org/docs/img/operators.png" alt="" loading="lazy"> 例如，当执行两个文件的Hash聚合操作时，Drill将第一个阶段（扫行扫描文件的阶段）打散成两个Minor frametns,每个minor fragments 包含一个扫描文件的扫描运算符。Drill把那个专司于进行数据聚合的阶段打散成4个minor fragments,四个中的每一个都包含 一个专门对数据做hash聚合的Hash 运算符。 你不能修改执行计划中的minor fragments的数量。不过，你可以在Drill web console中查看Query profiler并修改能够改变minor fragments行为的一些配置，比如修改最大切片数。请查阅”选项配置“章节。</p>
+<h2 id="minor-fragments的执行">Minor Fragments的执行</h2>
+<p>Minor Fragments可以作为叶子fragment，根fragment和中间fragment来运行。一棵执行树只能有一个根fragment.整棵执行树上的协调是通过从根fragment开始的数字来进行的，根节点的数字是0.数据流从叶子fragment到根fragment一个个地往下流。 根fragment运行在“接待员”Drillbit上，他接受查询，从数据表中读取元数据，重写查询，并将查询路由到执行树中的下一层。其他的fragments会成为叶子fragments或是中间fragments。 中间fragment会在数据可用，或是其他fragment将数据喂过来的时候开始执行。它们在数据上执行操作，并把它们往下传。它们也会把聚合过的数据传给根fragment,根fragment又会做进一步的聚合操作或者是把查询结果提供给客户端或是应用程序。 叶子fragment并行地扫表，或者是和存储层打交道，或是是读本地磁盘数据。叶子fragments把中间结果回传给中间fragments,中间fragments会接着在这些中间结果上各种并行操作。 <img src="https://drill.apache.org/docs/img/leaf-frag.png" alt="" loading="lazy"> Drill只会规划那些可以并发执行的fragments的查询，例如，如果一个集群只有20个切片，Drill会在那个Major fragment中规划最多20个minor fragments。Dril会乐观地假定它能并发地执行任务。一个Major fragments中的minor framents由于共同的上游数据依赖，会于同一时间开始执行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:核心模块]]></title>
+        <id>http://162cm.com/post/1391/</id>
+        <link href="http://162cm.com/post/1391/">
+        </link>
+        <updated>2017-04-04T07:58:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="核心模块">核心模块</h1>
+<p>下图描述了一个drillbit里的各个组件 <img src="https://drill.apache.org/docs/img/DrillbitModules.png" alt="https://drill.apache.org/docs/img/DrillbitModules.png" loading="lazy"> 下面列出drillbit里的关键组件：</p>
+<h2 id="rpc-endpoint">RPC endpoint</h2>
+<p>Drill开发了一种基于Probobuf的损耗非常低的RPC通信协议来跟客户端打交道。另外，客户端程序也可以使用C++或是JAVA api层来跟Drill交互。客户端可以直接指定跟哪些Drillbit节点打交道，也可以在提交查询前通过zookeeper服务来获取一定数量的drillbit节点信息。 我们推荐客户端总是通过zookeeper，以隔离集群管理的复杂性，不用关心像添加或是删除节点等等。</p>
+<h2 id="sql解析器">SQL解析器</h2>
+<p>Drill 使用<a href="https://calcite.incubator.apache.org/">calcite</a> 这个开源的SQL解析框架来解析接收到的SQL查询。这个解析组件的输出是一个人类语言无法描述，但是机器易于理解的逻辑计划,这个逻辑计划能够刚好描述这个sql查询。 ##　Storage plugin interface: Drill为好几种不同的数据源充当上面的查询层的角色。Drill里的存储层插件就描述了Drill怎样和这些数据源交互的抽象。存储插件给Drill提供以下信息:</p>
+<ol>
+<li>在数据源里能得到的元数据；</li>
+<li>Drill读写数据源的接口;</li>
+<li>数据的位置 ，以及一系列优化规则，这些优化规则能够让在特定的数据源上的drill规则执行的更高效；</li>
+</ol>
+<p>在Hadoop的场景下，Drill是在提供了存储插件来处理分布式的文件和HBase.Drill也通过提供存储插件来集成了Hive的支持。 当用户通过Drill来查询文件或是HBase,他们可以直接执行，如果Hive有定义元数据的话，也可以通过Hive来执行。Drill集成Hive仅仅是为了元数据，Drill处理任何请求的时候都不执行Hive的查询执行引擎。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:架构总览]]></title>
+        <id>http://162cm.com/post/1389/</id>
+        <link href="http://162cm.com/post/1389/">
+        </link>
+        <updated>2017-04-04T07:58:36.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="architecture-introduction">Architecture Introduction</h1>
+<h2 id="架构总览">架构总览</h2>
+<p>Apache drill是在大规模数据集场景下,可以低延迟地进行结构和半结构化/嵌套数据结构查询的一个分布式查询引擎。受到谷歌公司的Dremel的启发，Drill被设计出来以支持几千个节点和PB级别的数据规模下,支持交互响应级别的商务智能分析和查询。 Drill也适用到在大规模数据集场景下进行简单而迅速的查询.Drill能够查询像是JSON或是Parquet这种嵌套的数据,也能动态地发现schema.Drill并不需要一个中央的元数据库.</p>
+<pre><code>Apache Drill is a low latency distributed query engine for large-scale datasets, including structured and semi-structured/nested data. Inspired by Google’s Dremel, Drill is designed to scale to several thousands of nodes and query petabytes of data at interactive speeds that BI/Analytics environments require.
+
+Drill is also useful for short, interactive ad-hoc queries on large-scale data sets. Drill is capable of querying nested data in formats like JSON and Parquet and performing dynamic schema discovery. Drill does not require a centralized metadata repository.
+</code></pre>
+<h2 id="顶层架构high-level-architecture">顶层架构(High-Level Architecture)</h2>
+<p>Drill包含一个专门为了处理大规模数据的分布式执行环境。Apache Drill的核心是一个叫做“钻头”(drillbit)的服务，它负责从客户端接受请求，处理该查询，并将结果返回给客户端。一个drillbit服务可以在Hadoop集群中所有有需要的节点上安装和运行，形成一个分布式的集群环境。当drillbit运行在集群中的数据节点上时，drillbit可以查询执行过程中最大限度地使数据本地调用,而无需在网络上或是节点之间移动数据。Drill使用ZooKeeper来记录集群成员和健康检查信息。虽然钻工作在Hadoop集群环境中，Drill并不紧紧地与hadoop绑死,而是可以运行于任何分布式集群。Drill唯一的依赖是zookeeper. 请查阅<a href="Drill-Query-Execution">Drill Query Execution</a></p>
+<h3 id="drill-客户端">Drill 客户端</h3>
+<p>你可以通过下面的客户端来访问drill:</p>
+<ol>
+<li>
+<p>Drill shell</p>
+</li>
+<li>
+<p>Drill Web Console</p>
+</li>
+<li>
+<p>ODBC/JDBC</p>
+</li>
+<li>
+<p>C++ API</p>
+<p>Drill includes a distributed execution environment, purpose built for large- scale data processing. At the core of Apache Drill is the &quot;Drillbit&quot; service, which is responsible for accepting requests from the client, processing the queries, and returning results to the client.</p>
+<p>A Drillbit service can be installed and run on all of the required nodes in a Hadoop cluster to form a distributed cluster environment. When a Drillbit runs on each data node in the cluster, Drill can maximize data locality during query execution without moving data over the network or between nodes. Drill uses ZooKeeper to maintain cluster membership and health-check information.</p>
+<p>Though Drill works in a Hadoop cluster environment, Drill is not tied to Hadoop and can run in any distributed cluster environment. The only pre-requisite for Drill is Zookeeper.</p>
+</li>
+</ol>
+<h2 id="动态schema发现">动态Schema发现</h2>
+<p>Drill并不需要一份数据schema或是类型定义就可以开始执行查询。Drill是分批次地开妈数据处理的。自描述的数据格式，像Parquet,JSON,AVRO,还有一些Nosql 数据库，格式描述是数据的一部分，Drill在处理的过程中会根据需求加以利用。</p>
+<pre><code>Drill does not require schema or type specification for data in order to start the query execution process. Drill starts data processing in record-batches and discovers the schema during processing. Self-describing data formats such as Parquet, JSON, AVRO, and NoSQL databases have schema specified as part of the data itself, which Drill leverages dynamically at query time. Because the schema can change over the course of a Drill query, many Drill operators are designed to reconfigure themselves when schemas change.
+</code></pre>
+<h2 id="灵活的数据模型">灵活的数据模型</h2>
+<p>Drill允许访问嵌套的数据属性，就好像它们是SQL列一样，并提供了直观的扩展以轻松地操作它们。从架构的角度来看，Drill提供了一个复杂的级联式的列式数据模型，用来描述复杂的，高度动态且不断变化的数据模型。在Drill里，关系数据被视为复合/多结构数据的一个简化处理。</p>
+<pre><code>Drill allows access to nested data attributes, as if they were SQL columns, and provides intuitive extensions to easily operate on them. From an architectural point of view, Drill provides a flexible hierarchical columnar data model that can represent complex, highly dynamic and evolving data models. Relational data in Drill is treated as a special or simplified case of complex/multi-structured data.
+</code></pre>
+<h2 id="去中央元数据设计">去中央元数据设计</h2>
+<p>Drill不要求一个集中的元数据。你并不需要创建一个元数据库来存储表和视图，或依赖于一个有这种功能的元数据管理组件。Drill的元数据来源于那些跟源数据打交道的存储插件。存储插件能提供全部元数据中的一系列子区间(例如Hive)，或是元数据的一部分（如HBase)，或者就没有元数据（针对文件类）。去中央元数据意味着Drill不依赖于一个单一的Hive库，您可以一次查询多个Hive库，然后把结果与HBase的表或分布式文件系统中的文件信息组装起来。您也可以在Drill中使用SQL DDL语句来创建元数据，这些元数据就像传统的关系数据库中管理的一样。Drill的元数据也可以通过ANSI标准的INFORMATION_SCHEMA数据库来访问。</p>
+<pre><code>Drill does not have a centralized metadata requirement. You do not need to create and manage tables and views in a metadata repository, or rely on a database administrator group for such a function. Drill metadata is derived through the storage plugins that correspond to data sources. Storage plugins provide a spectrum of metadata ranging from full metadata (Hive), partial metadata (HBase), or no central metadata (files). De-centralized metadata means that Drill is NOT tied to a single Hive repository. You can query multiple Hive repositories at once and then combine the data with information from HBase tables or with a file in a distributed file system. You can also use SQL DDL statements to create metadata within Drill, which gets organized just like a traditional database. Drill metadata is accessible through the ANSI standard INFORMATION_SCHEMA database.
+</code></pre>
+<h2 id="可扩展的设计">可扩展的设计</h2>
+<p>Drill在所有层都提供了一个可扩展的架构，包括存储插件，查询，查询优化/执行器以及客户端API层。您可以定制任意层来满足您的机构的特定需求，也可以把这一层延伸到更广泛的用途。Drill使用类路径扫描来查找和加载插件，并用最少的配置来添加额外的存储插件，功能和操作支持。</p>
+<pre><code>Drill provides an extensible architecture at all layers, including the storage plugin, query, query optimization/execution, and client API layers. You can customize any layer for the specific needs of an organization or you can extend the layer to a broader array of use cases. Drill uses classpath scanning to find and load plugins, and to add additional storage plugins, functions, and operators with minimal configuration.</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2017，做自己]]></title>
+        <id>http://162cm.com/post/1380/</id>
+        <link href="http://162cm.com/post/1380/">
+        </link>
+        <updated>2017-01-05T07:38:43.000Z</updated>
+        <content type="html"><![CDATA[<p>工作总结写完了，也来一篇无关工作的总结。</p>
+<ol>
+<li>新年的第一天，非常充实，在kindle上看完了朝花夕拾，带小家伙去观看了杀年猪和捕鱼。16年购入kindle开始看书，前前后后看了几十本书。以后的人生，继续保持阅读的习惯，继续强化这种能够静下心来的能力。人能够静下心来，是一个重要的能力，不慌乱，不盲从。</li>
+<li>继续跟陪伴了四年多的咳嗽做斗争，2016年意外发现其实其实相比空气，充足的休息，良好的心态更重要。新的一年，继续保持好。跟咳嗽斗争已经初步摸清门道，新的一年，很有信心。跟咳嗽做斗争是2016年唯一的一个目标，没达成，17年继续斗争。</li>
+<li>每个人都容易被欲望所左右，每个人的心里都住着魔鬼。新的一年，努力荡除内心的一切。对酒，色，财，名的贪欲，相对容易戒除。唯独控制自己的气性最难。控制自己，不要沉浸在自己的愤怒里。</li>
+<li>更随性一点，做自己。朋友不需要太多，道不同不相为谋，该拉黑的就拉黑吧。2016年开始拉黑了一些人，用盗版软件还出来嚷嚷的，做破坏版权工具的，等等若干。以后微信要拉黑更多人，三观不合，就没必要保持联系。朋友贵在精而不在多。另外该有脾气就有脾气，没必要特别在意别人在意你的看法。</li>
+<li>积累财富，养成正确的财富观。每个人，是生物意义上的人，是社会意义上的人，更是经济意义上的人。金钱是一种强大的力量，强大到几乎可以左右世界万物的运转。要想成事，必须借助金钱的力量，承认这个，不可耻，并且是必须的。</li>
+<li>了解和洞悉人性。人性可怕，人言可畏，人心叵测。程序员的思维简单的如同一张白纸，而这世界上大多数的人，肚子里满载刀剑，脑袋里小算盘运转飞快。理解，承认这件事，并心存敬畏。</li>
+<li>如何去定义成功，其实答案可以有很多种。有的人觉得是金钱巨万，有的人觉得是权柄在握，有的人则觉得最成功莫过于声名鹊起。没必要那么执着。即便怎么看都不成功，也没关系，人生的路很长，30多岁还年轻。淡定。生意是个慢生意，急不来。</li>
+<li>看东西，喜欢，就打赏；写东西，不为了讨打赏而讨好谁。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我们这个小公司的技术【二】]]></title>
+        <id>http://162cm.com/post/1382/</id>
+        <link href="http://162cm.com/post/1382/">
+        </link>
+        <updated>2016-10-19T07:42:16.000Z</updated>
+        <content type="html"><![CDATA[<p>上次写了文章，介绍了<a href="http://mp.weixin.qq.com/s?__biz=MzAxNjUwNjQ4MQ==&amp;mid=2649518644&amp;idx=1&amp;sn=8939e5a3ea66f3f1355fb64a738dc7bc&amp;scene=21#wechat_redirect">我们这个公司的的小小的技术团队</a>。后来觉得，还是没写透，做为一个技术主管，得想办法看得更长远，看五年，十年以后，所以，做为一个整理思路的机会，所以我还是想再写写我们的畅想，给大家讲清楚我们想做什么。 做为一个互联网家装平台，我们存在的价值，就是找到有装修需求的客户，帮他们解决好装修问题。装修的坑很多，人们的满意度很低，我们对外的宣称是，我们要改变家装行业的现状。这句话是个病句，改变什么现状？是不是有点感觉没说完？肯定是的。那是因为，在内部，我们说的是，我们要改变家装行业的黑暗现状。 我们未来10年要做的事情很明确：<em>我们要找到家装客户，并帮他们解决装修难题。</em> 那为什么是我们来做？为什么我们可以做得比其他公司更好？因为，在所有的行业，所有的生意里面，能做到最好的，无非就是一个点，那就是，效率最高。怎么衡量效率最高？很简单，谁的成本低，谁的效率就最高。而我们这个团队，可以利用互联网工具和平台，将成本降到最低。 因此，我们持续要做的事情，就很明确，不停地降低成本。家装企业的成本有三块，采购成本，管理成本，获客成本。在这三个点上，互联网技术都是能有帮助并且是最有效的。根据这个思路，我把技术上的工作，整理成了这三个方向：信息化，移动化，数据化。 为什这么说？这几块成本里面，管理成本主要依赖的是我们使用互联网工具来降低，只有实现了装修的标准化，信息化，才可以相比其他家装企业管理成本更低。获客成本，更是大面积依赖互联网渠道来降低，互联网的媒体渠道将成本最有受众的媒体，互联网的app将吸引最多的眼球，也只有互联网手段的营销，才能最大程度地降低获取客户的成本。采购成本，也是非常依赖我们和上游供货商的一体化系统。这个系统顺畅起来，采购的运营成本就会不断地降低。 那问题来了，技术上，我们具体做哪些事情？ 我还是分成信息化，移动化， 数据化三个方向来说。 <strong>信息化方面，我们技术上做这些工作：</strong></p>
+<ol>
+<li>内部的整装，建材团购，客户跟踪，财务系统，工作流转等进入ERP系统；</li>
+<li>商家的备货通知，上门测量，沟通反馈等进入ERP系统；外购商品进入ERP的库存管理系统模块，工长或工人调度，进度跟踪，相应的质检结果，都能进入ERP系统。</li>
+<li>推进公司内的互联网化， 推进邮箱，企业号等的使用，提高IT化，提高响应速度 ，利用IT系统来完成新人培训视频化，文档化等工作。 信息化的工作，以公司部分部门实行信息化为起点，以行业内上下游供应链纳入IT系统为及格标准。</li>
+</ol>
+<p><strong>移动化方面，我们做的是这些：</strong></p>
+<ol>
+<li>内部工作的移动化： 现有的ERP系统提供微信接入；内部员工的通知，商家的通知，工长的通知可以通过微信实现；内部工作如下订单，请假，财务操作等常见操作可以在微信企业号内实现；业主可以通过微信实现装修进度的查询，信息反馈，投诉跟踪等；</li>
+<li>网络营销的移动化:包括为目前的论坛社区开发完备的手机端页面；加强开发微信服务号，在微信服务号可以学习装修知识，查看装修美图等。</li>
+</ol>
+<p><strong>在数据化方向，我们的具体目标是：</strong></p>
+<ol>
+<li>建立常态化的商业站点开发、广告投放机制；在类似页面开发，广告创意的制作和投放中大规模应用AB测试的思想；持续优化广告投放，不断降低广告获客成本。开拓多种投放渠道，去除对现有部分大渠道的依赖，降低战略层面的系统风险。</li>
+<li>实现精细化，数据化的运营；对工长，供货商的投诉量等等指标实现全方位的数据报表，根据数量优胜劣汰,根据数据来决定订单分派，让优秀的工长和供应商脱颖而出；从日常运营的访问量，UV,点击数，注册数，报名数；业主投诉量，解决量，平均解决时间，责任部门实现数据化， 对数据持续跟踪，稳步优化。</li>
+<li>持续跟进口碑方面的数据；对于公司在所有客户内的口碑，有整体上的感知，也有局部强有力的控制 ，有持续根据口碑数据反推公司内部进行流程改进的能力。</li>
+</ol>
+<p>前方任重而道远，我们稳步前行。目标定了，按说接下来一步一个脚印，走下去就是了。但是想清楚之后其实我无比痛苦，因为想做的事情，实在太多了，光想了一小部分，清单上面已经列了好几屏。前行的路上，我们特别期待与您同行。如果您是PHP开发工程师，产品经理，前端开发工程师，请发简历到我的邮箱:55547082@qq.com ,我们公司在北京十里河地铁口旁边，薪水不能说特别高，但足以维持生活的体面。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[不将就,做自己]]></title>
+        <id>http://162cm.com/post/1378/</id>
+        <link href="http://162cm.com/post/1378/">
+        </link>
+        <updated>2016-10-16T07:38:06.000Z</updated>
+        <content type="html"><![CDATA[<p>二哥开始谈人生了，于是，我也想写点儿。 二哥说，不努力一下，你都不知道，什么叫绝望。 我其实不绝望。我只是恐惧。 豆瓣上有个群，群里的主旨是“父母皆祸害”。他们说，父母对自己这么严厉，只是因为他们自己错过了很多东西，于是把这些期望强加在自己身上。他们上山下乡，错过了大学，于是要求子女一定要上大学。他们工作中不如意，于是期望子女找一个他们期望中的工作。他们对另一半不满意，于是老早就开始担心子女的恋爱问题。 我的恐惧，是，我是不是也会变成那样的父母？因为我觉得，我也有很多的遗憾，我不知道我会不会把这些遗憾强加给elsa小公举。 我的恐惧，更是源于，我们是活成了大家所认为你应该活成的那样，还是活出了你自己？ 所以，我非常在意，让她尽情表达自己。 elsa非常反感弹钢琴，每天练琴总是竭尽其能，找各种借口。我渴了，我先喝个水。我先上个厕所。唉呀我想起来忘记给小狗喂食了。。。。让人抓狂，有时我也在想，强迫她练琴是不是只是因为自己小时候条件太差了，现在有条件在家练琴了就一定要强迫她？后来我决定，别的班都不报了，但是钢琴是她自己选的，自己哭着闹着要报的，那就坚持下去吧。但是别的什么培训班，就不给她报了，正常上课就好。 elsa很爱幻想。很小的时候去动物园玩，在路上就给我编长长的大象从坏鳄鱼嘴里拯救小水牛的故事。在她的世界观里，她的爸爸是一个伟大的国王，同时也是一个聪明的电脑科学家。而她，则是这个王国理所当然的王位继承人。她说等她12岁的时候，她就会有魔法。她路过园林，看到工人拿一把长长的剪刀卡擦卡擦把小黄杨剪的齐齐整整，跟我说，爸爸你是国王，能不能让他们爱惜植物，能不能不要把植物的头都剪掉？她走过马路边搬动垃圾桶的老人，跟我说，爸爸你能不能告诉他们的老板，不要让老人做这么费力的工作，他们是老人不能做这么费力的工作？ 小学老师在微信里批评，说，你们家小迷糊爱幻想，过于沉浸在自己的世界里，希望家长能做正确的引导。 我想，怎么引导？告诉她她的老爸不过是个苦逼套页面的码农买不起市区的学区房上不了好的学校只好读个农村学校？告诉她她以后得经过残酷又无趣的竟争才能上个大学混一份不死不活的工作？ 没法告诉。我能做的是让她有个欢快的童年。她喜欢自己编长长的故事，故事逻辑也不对，那她编故事讲给我听我不说哪里是错的好了。她画了不老师要求的画，线条不对颜色不对，但是就一次画七八张每一张都还带需要我帮她标几个字来提示情节，我就当看连环画好了。 小孩子，还不能尽情做自己吗？ 我都想尽情做自己。喜欢的事，就去做。在乎别人的看法干什么? 有的小孩子不能做自己，是因为没条件。可是我们是成年人啊。我们可以选择做自己。不喜欢的事情，不用将就。 有个朋友，每天在单位都呆着难受。各种排挤打压，我说，既然难受，那就闪人呗。你看我，收入比你高多了，不爽了，不想再套网页了，就闪了。她说，我父母不让，她们觉得这里稳定。我无语。您都30了。。。。还需要再做小学生听爸爸妈妈的话吗？ 我们是成年人，最大的好处不是可以主张自己吗？</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于月饼]]></title>
+        <id>http://162cm.com/post/1376/</id>
+        <link href="http://162cm.com/post/1376/">
+        </link>
+        <updated>2016-09-14T07:37:42.000Z</updated>
+        <content type="html"><![CDATA[<p>1。用代码刷月饼这事，不对。阿里在入职时候是会专门做类似的培训的，每年还会做一次廉政考试，没考过的，主管和人事会不停催促。不可能说还有员工不知道用代码刷月饼这是高压线。除开不当得利，还有诚信原则，安全和保密原则等等，都是不能碰的。只要沾上了，处理结果大家都知道，不开也得脱层皮。 安全部门在这方面责任更大，因为很多类似事件中，安全部门充当了执法部门的角色。知法犯法，执法犯法，都应当罪加一等。 2。有必要处理这么严吗？我不能说能非常确定，但是我可以肯定的是，其一，阿里的很多小二，掌握着可怕的权力，几乎轻轻松松松决定一个店铺的存亡。橱窗展示给你拿下来，或者某个业务不跟你合作了，一些公司就会就此没落。其二，即便是严厉处理，依然挡不住各种利用职权谋谋私利的事情发生。每隔一阵，内网就会爆出谁谁因为不当得利或是泄密等事情被辞退的，辞退后没收全部期权的也有。 3。阴谋论没意思。有意见说，这是源于政治斗争啊，因为得罪了hr什么的。这种论点非常傻逼。第一，阿里招一个人非常难，经常有人头指标招一年也没候选人的情况，hr就算是有权开除员工，也不会大到一次开除一批，更不可能是闪电走人这种。再说一次出现多个员工因为廉政原因被辞退，基本宣告从好几个级别的领导严重管理失职，即便有人说要存心把谁弄走，也不会想要搭上自己的职业生命。 4。管理上能做这种决定的，很难得。因为几个月饼，闪电辞退，怎么都是会惹上争议的。但是这种事儿在阿里不稀奇。培训中千百次讲过是高压线的事情，处理起来不难。如果因为畏惧外界言论，不敢做正确的决定，和稀泥，搞中庸，是没有办法带好公司的。 5。可惜不可惜？可惜。招一个人也很难。设身处地想，谁都有家有室。你愿意让员工中秋节前两天回家对家人说，自己因为几个月饼就丢了工作？可惜也没有办法。当事人自己也知道这是错了，也承认错了。所有阿里员工都知道这种事基本等于在阿里的职业生涯到头了，没啥好热议的。 6.有人说处罚过重，会导致这几名员工的职业遭到打击。然而你们看网上的招聘广告，显然不会。不同公司不同的做法。某个知名外企的员工来阿里特不习惯，因为在I公司吃吃饭洗洗脚再拿去公司报销，太正常不过了。阿里在乎的廉政，一般公司不在乎。 7 很多人觉得阿里HR很二逼。我不能用二逼这个词，但我认同HR在某些事情上专业度不够，从我对些HR的判断上说，我认为是敬业程度不够。有的人觉得阿里和蚂蚁金服公司层面在某些事情上做得不对，我也认同。比如春节期间支付宝集五福，今年的改版，等等。但是一码事是一码事，别的事情上HR不对 或是公司不对，不影响月饼事件的性质。评论里说到开除可能导致员工生活困难，这事也不影响。员工困难有救助渠道，以前有离职员工大病的，也有救助过。 8. 利益相关：前阿里员工。 ======== 无耻的广告分隔线====== 我们招人中，PHP开发及测试岗，另外php开发实习生也招（其他语言java,golang等也可谈，其他语言过来要求后期能带起一个部门）。层级不限，待遇不输BAT，欢迎咨询~ 邮箱: 55547082@qq.com</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[滚哥互联网家装乱弹之一]]></title>
+        <id>http://162cm.com/post/1374/</id>
+        <link href="http://162cm.com/post/1374/">
+        </link>
+        <updated>2016-09-12T07:35:47.000Z</updated>
+        <content type="html"><![CDATA[<p>说起互联网公司的时候,我们会想起什么? 最近这一阵随着ERP系统的上线,我的工作重心开始从ERP的开发和流程梳理,转向到ERP的执行上来.然而执行起来却不是那么如愿,于是晚上躺床上开始琢磨着一些相关对策,最后忽然惊觉已然是凌晨三点,于是干脆起床,把思路整理整理,正好下周去做个分享,拿这个整理文稿做为提纲也挺好. 今年算是第一次从互联网公司,彻底转换了行业,来到一个相对之前的行当来说是low爆了的行业,是的,我转行做装修了.进入这个行业之前,我对自己说的也很明确,要把公司改造成一家互联网的装修公司,虽然公司之前的业务来源也主要是网上,但是,我认为也就是会发邮件,有个网站,能在百度放放广告而已,远远不能称之为互联网装修公司. 我翻来覆去地想,我之前呆的公司,做为很长一段时间内中国互联网市值最高的公司,总结起来,究竟有哪些过人之处,和我现在的公司相比,抛开行业的因素,主要的差别在哪里? 我想了想,这几天的第一个感受,就是,互联网公司的响应速度,相比传统公司非常快.在前东家做事的时候,向某个哪怕是不认识的同事提一个协助请求,经常是马上就响应了,对方放下电话就把事儿给办了.而现在呢?难得一见这种场景.这个我也理解,因为协作的人员,大都有繁重的业务任务,财务的同学有一大堆的报表要做,设计的同学有一大堆的图要画…都是心急火燎的任务,赶时间得很,这时候接到一个同事(很可能还不认识)的请求,又没有上头老板的招乎,谁会在乎呢?9年前在某个国企性质的公司时,更糟糕呢,你要是直接联系一个不认识的同事做点啥,很可能人家会这样回复你,这个事啊,你不应该直接联系我,我是汇报给那个谁谁谁的,你要有活儿给我的话需要通过谁谁谁来安排,然后你去联系他说的那个谁谁谁时,他要是脾气好会说你让你领导找一下我,脾气不好的话很可能就说了,你谁啊,什么级别啊,就来找我?说得你一肚子气还没处撒. 好了,扯远了,总得来说,传统行业相比互联网公司,响应速度是慢多了.这类常见的解决办法,也很容易想到,要么,你去请示足够大的老板,专门批示一下要对方协助你来办这个事,要么,你去拿一个title,比如,老板现在任命你是内审组长,声明所有跟某某事相关的事情,相关人等必须无条件配合. 但是这样一来,这事儿就low了不是.这次我也可以这么做,但是这样治标不治本了不是.我开始思考,表面上看起来,互联网公司只是”速度更快”,而实际背后的根源,有两个. 第一个根源,是,两种公司都有一种树状结构一和种网状结构.但是新生代的互联网公司,网状结构的属性远比传统公司的网状结构的要强一些.这里树状结构指的,在内部协作时,传统公司的两个员工A和B之间,协作往往是从A传递到A的上司,再到上司的上司,再到B的上司,再到B之间这样一种结构.如果A和B不幸在两个完全不同的事业部,那可能这个层级传递会非常深,从A到A的上司,再到上司的上司,再到上司的上司的上司.....最后到总公司总裁,再到B的事业部总经理,B的总监,B的部门经理,B的小组长...这么一层层传过去.而网状结构,则是指员工之间直接的协作,不经过这种上溯到老板的传递.经常出现的的是A发现需要B的协作,找到B,B发现同时还需要C的协作,C发现还需要D,然后ABCD坐在一起开个会,协商一下,就把事情做掉了.越是依赖树状结构的公司,竟争力越差,行动速度也越慢. 这种差异,再探讨一下,是一种文化的差异,这种文化差异,既包括了互联网时代平等意识的加强,也包括了沟通意识和沟通巧能的强化.层级意识,长官意识相对不再那么重要,只要是为公司做事,得到对方的配合,是理所当然的事情,若非必要,一般不需要走上层路线去解决.沟通的意识更强烈,沟通技巧更好,使员工相对而言更愿意通过自身之间的沟通去推动问题的解决,而非搬出老板来当救兵让老板来解决问题. 第二个根源,是不同的公司价值观驱动的程度不一样.其实传统公司也是有价值观的,但是价值观是不是虚幻,是不是歪掉了,是不是很好地执行了,就不好说了.很多传统公司,尤其是国有企业,张贴的标识一看就让人想吐,你就会知道这个公司的效率高不了,比如”为中国的xxx事业奉献青春”,”少想公司为你做了什么,多想你为公司做了什么”,”今天不努力工作,明天努力找工作”….还有一些国企公司老板开会就谈价值观,但是你真问他,价值观是什么,能不能简短地用一句话描述时,他还真答上不来,反正平时也没有人敢这么考他,这种,压敢也就没价值观,只要在要开人的时候,才在原因上写上”不符合公司的价值观”,究竟是哪条不符合都不带写的.而在互联网公司呢,往往把价值观做为重要事务来对待,公司有专门的战略部门来制定企业文化和价值观,新人培训有专门的课程来讲述,业绩考评和晋升面试也会有相应的考评环节,价值观明确而又能得以执行.在之前某个外企,HR在入职面试的时候总是拿一个案例来讲,有个销售部的小伙,非常地二愣子,拿单子并不差,然而经常犯愣,好几次把副总裁拦在路上要求在客户的合同上签字了好寄给客户,就算副总要去赶飞机也没放过.然而副总不开心是不开心,事儿还得办,没办法不签,因为价值观写了,”客户第一”.客户要的东西,当然要第一时间办了.副总的面子,那是其次.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我们这个小公司的技术]]></title>
+        <id>http://162cm.com/post/1372/</id>
+        <link href="http://162cm.com/post/1372/">
+        </link>
+        <updated>2016-09-12T07:35:17.000Z</updated>
+        <content type="html"><![CDATA[<p>1. 公司简介 我们是一家互联网装修公司,成立于2012年,目前主要有建材团购,装修设计,整体装修,透明施工四块业务,发展良好,到目前有60人,分为装修顾问,设计师,项目经理,财务,商家服务,技术等部门.整体上还是一家刚刚起步的公司,目前在用的整个ERP系统正在进行重构开发,主要的开发语言是PHP; 目前我们的开发同学刚刚才3个人,都是85前的老家伙,全部是全栈开发,服务端移动端都写. 2. PHP 端 先声明一下,我们服务端直接从PHP7起步了...丢掉历史包袱了.... 老的订单系统,基于一个叫Cubox的框架,这个框架是原来的开发工程师自行研发的.这次重构时,我选 择了Laravel来做为基础框架.旧有的框架,倒不是说有哪些地方架构设计不好,功能不够用,但是有三个最显著的地方明显制约了后续的发展:第一个,是原作者的文档明显比Laravel的文档差远了,很多地方无从查阅,完全要完整地看代码再去揣摩用法是不合适的;第二个,是Laravel的粉丝显然更多了,新招进来的人很可能已经能熟练地基于Laravel来开发了;第三个,则是这次我们直接可以以php7做为运行环境,原有的框架也没有很好的利用php5.4以上的新版本的各种特性. 既然选择了Laravel,也就离不开composer了;composer是PHP世界里的包管理工具.我强烈要求用composer,是想有意识地训练大家优先从packgist.com上寻找现成的代码包,而不是所有的底层包都自己吭哧吭哧写.在我看来,这是php开发者的臭毛病之一,什么都觉得自己实现一个也挺好的. 用了composer,我们内部的一些公共代码,也就琢磨着放到composer仓库里去,当然不能放到公开的packgist上去,于是我们使用satis 搭建了一套私有的仓库. 3. 前端 在前端,我很激进地选用了react.选用react有两个方面的考虑,一是装修业务相当复杂,内部相当多的流程,表单,很多输入输出是可以抽象复用的;使用React组件,大大地提高了js代码的可复用性,有效避免了js代码满天飞的情况.React 的数据是单向流动的,因此我写了个极其简单的EventEmitter来做事件的订阅管理;在路由方面,也没有选用主流的react-route之类的,而是自行实现了一个简单的. 在进行Js代码的package时,用的是browserify;而构建则用到了gulp;css方面,使用了less. 另外,在后端的布局上,我是直接从wrapbootstrap.com上买了一套模板来投放使用,也就不需要设计了.对的,我们没有全职的设计师,后端页面全部是bootstrap走起,前台网站则是有个朋友的设计公司帮做. 4. 其他 搜索上,我们是采用了elasticsearch,直接同步mysql的binlog里的消息,目前进索引的有一个内部用的员工信息,还有业务相关的商家,商品,订单,客户信息,房屋信息,小区信息等,目前性能上毫无压力,毕竟我们是low爆了的装修工,客单价是15万了,哪天要是有性能压力了 那市值也就很可观了不是. 我们的全部业务运行在阿里云的ECS上,业务数据存储在阿里云的RDS上,cdn用了七牛. 版本管理采用git,并使用gogs搭建了一套git系统. 使用了apidocjs来扫描PHP代码的注释,生成HTTP API的文档.(生成的文档还是蛮清晰的...要鼓励肯写文档的年轻小伙儿比如像我这样的是不是?) 5. 广告插播时间 最后的最后,我们还在招人,PHP方向.没啥别的吸引力,嗯,要说也有点,就是钱不算多,</p>
 ]]></content>
     </entry>
 </feed>
