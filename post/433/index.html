@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>PHP 装上APC之后的问题: | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="APC由于能够缓存文件上传进度,因此算是解决了一直以来困挠PHP开发人员的一个老大难,所以我也特别喜欢他了。如果对php实现文件上传进度条有困 难，可以看这里。 不过今天发现,APC宣称的加速功能,其实也是一种缓存,而不是对编译方式,编译过..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">PHP 装上APC之后的问题:</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-07-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p>APC由于能够缓存文件上传进度,因此算是解决了一直以来困挠PHP开发人员的一个老大难,所以我也特别喜欢他了。如果对php实现文件上传进度条有困 难，可以看<a href="http://www.162cm.com/archives/406.html">这里</a>。 不过今天发现,APC宣称的加速功能,其实也是一种缓存,而不是对编译方式,编译过程什么的进行了优化. 原因是,我把两个程序目录名称对调,结果发现,程序报错了.但是让人郁闷的是,错误提示是在一个已经不存在的文件的109行。后来不管怎么刷新,都是这个结果.后来只好重启web服务器了事. 看来,APC是把编译好的php文件存放在共享内存中,以后是每过一段特定时间才重新编译一次.对于已经运行的应用,这个将大大节省你的CPU占用(虽然PHP的编译已经非常非常地快了,开启APC缓存后,仍能大副度地加速你的PHP,因为php源文件不需要在每次调用时都要编译了).从原理上说,PHP已经被改造成了Jsp式的静态脚本.只是PHP+APC的组合比Jsp的还要快,因为JSP在运行时会不断检测JSP源文件是否已经被更新,不断检测XML配置文件是否被更新. 但是,调试期间可能需要重启Apache. 目前没有在Lighttpd下检测以FastCGI方式运行时加入APC对PHP性能的影响。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/432/">
+              <h3 class="post-title">
+                下一篇：Hust牛人之&#34;郭启睿&#34;(awflasher)
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">PHP 装上APC之后的问题:</h2>
-            <div class="post-date">2007-07-26</div>
-            
-            <div class="post-content" v-pre>
-              <p>APC由于能够缓存文件上传进度,因此算是解决了一直以来困挠PHP开发人员的一个老大难,所以我也特别喜欢他了。如果对php实现文件上传进度条有困 难，可以看<a href="http://www.162cm.com/archives/406.html">这里</a>。 不过今天发现,APC宣称的加速功能,其实也是一种缓存,而不是对编译方式,编译过程什么的进行了优化. 原因是,我把两个程序目录名称对调,结果发现,程序报错了.但是让人郁闷的是,错误提示是在一个已经不存在的文件的109行。后来不管怎么刷新,都是这个结果.后来只好重启web服务器了事. 看来,APC是把编译好的php文件存放在共享内存中,以后是每过一段特定时间才重新编译一次.对于已经运行的应用,这个将大大节省你的CPU占用(虽然PHP的编译已经非常非常地快了,开启APC缓存后,仍能大副度地加速你的PHP,因为php源文件不需要在每次调用时都要编译了).从原理上说,PHP已经被改造成了Jsp式的静态脚本.只是PHP+APC的组合比Jsp的还要快,因为JSP在运行时会不断检测JSP源文件是否已经被更新,不断检测XML配置文件是否被更新. 但是,调试期间可能需要重启Apache. 目前没有在Lighttpd下检测以FastCGI方式运行时加入APC对PHP性能的影响。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/432/">
-                  <h3 class="post-title">
-                    Hust牛人之&#34;郭启睿&#34;(awflasher)
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

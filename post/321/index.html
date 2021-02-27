@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>sohu的文品测试试用手记 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="突然发现原来sogou这么有google潜质。 印象中，张朝阳不知是否个人有啥生理问题，他的sohu一直致力于阴茎增大广告。很久没上过sogou. 今天在新聚上看到一篇文章，就去看了下，发现原来sogou实验室比google做的可能更人性化..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">sohu的文品测试试用手记</h2>
-            <div class="post-date">2006-11-16</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">sohu的文品测试试用手记</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-11-16</span>
             
-            <div class="post-content" v-pre>
-              <p>突然发现原来sogou这么有google潜质。 印象中，张朝阳不知是否个人有啥生理问题，他的sohu一直致力于阴茎增大广告。很久没上过sogou. 今天在新聚上看到一篇文章，就去看了下，发现原来sogou实验室比google做的可能更人性化，更细腻。 首先，sogou实验室很大方地公布了一些可能是通过自己的积累和分析得到的一些数据，这是比较难得的。也许，一个月前聚会上passman说得没错，sogou是很用心地在做搜索。技术可能已经是相当牛了。passman的原话是，可能sogou的技术比百度的好。百度的分词技术也是用海量的。(我个人觉得，要做中文搜索老大， 一定要把中文分词这个核心技术弄到手，而且自己一定要养一帮人来研究这个） 现在sougou通过输入法来收集每个人的用词，是个好主意。 今天一时好奇想看看文品测试是个什么好东东，口碑这么好，就去看了，地址是http://www.sogou.com/labs/wenpin/ （我不是sohu的，不要因为我贴地址就是枪手，哈哈，chin和霍炬要帮我做证啊） 。 我输的资料是： 旧诗杂烩 半生飘零不得志，北风未起冰满池。 当年雄心今何在，半壶冷酒度时日。 冬日春日各不同，醉者醒者不相干。 燕京日日风光好，何时再得临南山？ 春时繁华今成泥，旧时盛景今难觅。 何时聚得儿时伴，庭前对酒赋新词。 Google 怎么分析出我叫什么名字的？ 今天晚上和大牛聊过一阵之后，去搜了一把自己的名字，居然就发现，原来我的名字还是比较有性格的，居然就少有重复的，除开一个是袁世凯手下的。 第二个发现，是我用一米六二搜的时候，我的博客http://blog.deskor.com是排在第一位的。因为博客的外部链接都是用的一米六二这个词了。但不可思议的是，我用我真名搜的时候，居然google也能把blog.deskor.com排在第一。这就神了。太他妈的不可思议了。google能分析出这个博客的主人叫什么？ 第三个发现，居然是，我大学的简历居然被一个网站拿去做为“精美的个人简历模板&quot;放在网上。奶奶的，这也行？看：http://www.yibinu.cn/department/zhzhx/skx/shownews.asp?id=100 太他妈不可思议了?还好我的电话什么的都已经换了 问题是这个学校凭什么把我的简历放在网上做模板？而且连名字都不改？ 然后点&quot;评测&quot;钮，右边出来一个很Q的很醒目的Flash.并伴有进度条，带百分比。很快分析完成，显示结果。有相似度，并且相似度也有不同颜色的条状图显示。 我的结果是：技术性极强的文字风格，缜密的思维体现在字里行间；富含科技信息量的内容，充实易懂。词藻华丽雅致，文风绚烂；文章内容丰富，观点翔实可圈可点；在用词范围方面可以着重下功夫改进。 对比之下我跟洪波有70%的相似度,比较夸张。 下面是结果页的地址：http://www.sogou.com/labs/wenpin/index.jsp?his=002011003003000001044070000003047020000009041009000010&amp;hisname=一米六二 .articletest {width: 305px;background: url(http://www.sogou.com/images/statsword/logo.gif) no-repeat 8px top;padding: 37px 8px 8px;font-size: 12px;}.resultbox{border: 1px solid #bbb;padding: 5px 13px;margin-bottom: 5px;}.resultbox dl, .resultbox dd { margin: 0;padding: 0;}.authorname {width: 70px;float: left;font-weight: bold;}.bar{width: 80px;float: left;}.similarity{color: #DF5900;float: left;font-weight: bold;}.comment {clear: both;}.bg1 {background:url(http://www.sogou.com/images/statsword/star1.gif) no-repeat right top;}.bg2 {background: url(http://www.sogou.com/images/statsword/star2.gif) no-repeat right top; }.bg3 { background: url(http://www.sogou.com/images/statsword/star3.gif) no-repeat right top; }.wanttest { float: left; clear:both; font-weight: bold; color: red; padding: 4px 6px; line-height: normal; border: 1px solid #D6D3B7;}.wanttest { float: left; clear:both; font-weight: bold; color: red; padding: 4px 6px 4px 13px; line-height: normal; border: 1px solid #D6D3B7; background: url(http://www.sogou.com/images/statsword/ss.gif) no-repeat 7px 8px;}.wanttest a { color: red; text-decoration: none;}.title1, .title2, .title3 { font-size: 14px; color: #f60;}.title1 { background: url(http://www.sogou.com/images/statsword/icon1.gif) no-repeat 4px center; padding: 0 12px; height:1%;}</p>
+          </div>
+          <div class="post-content">
+            <p>突然发现原来sogou这么有google潜质。 印象中，张朝阳不知是否个人有啥生理问题，他的sohu一直致力于阴茎增大广告。很久没上过sogou. 今天在新聚上看到一篇文章，就去看了下，发现原来sogou实验室比google做的可能更人性化，更细腻。 首先，sogou实验室很大方地公布了一些可能是通过自己的积累和分析得到的一些数据，这是比较难得的。也许，一个月前聚会上passman说得没错，sogou是很用心地在做搜索。技术可能已经是相当牛了。passman的原话是，可能sogou的技术比百度的好。百度的分词技术也是用海量的。(我个人觉得，要做中文搜索老大， 一定要把中文分词这个核心技术弄到手，而且自己一定要养一帮人来研究这个） 现在sougou通过输入法来收集每个人的用词，是个好主意。 今天一时好奇想看看文品测试是个什么好东东，口碑这么好，就去看了，地址是http://www.sogou.com/labs/wenpin/ （我不是sohu的，不要因为我贴地址就是枪手，哈哈，chin和霍炬要帮我做证啊） 。 我输的资料是： 旧诗杂烩 半生飘零不得志，北风未起冰满池。 当年雄心今何在，半壶冷酒度时日。 冬日春日各不同，醉者醒者不相干。 燕京日日风光好，何时再得临南山？ 春时繁华今成泥，旧时盛景今难觅。 何时聚得儿时伴，庭前对酒赋新词。 Google 怎么分析出我叫什么名字的？ 今天晚上和大牛聊过一阵之后，去搜了一把自己的名字，居然就发现，原来我的名字还是比较有性格的，居然就少有重复的，除开一个是袁世凯手下的。 第二个发现，是我用一米六二搜的时候，我的博客http://blog.deskor.com是排在第一位的。因为博客的外部链接都是用的一米六二这个词了。但不可思议的是，我用我真名搜的时候，居然google也能把blog.deskor.com排在第一。这就神了。太他妈的不可思议了。google能分析出这个博客的主人叫什么？ 第三个发现，居然是，我大学的简历居然被一个网站拿去做为“精美的个人简历模板&quot;放在网上。奶奶的，这也行？看：http://www.yibinu.cn/department/zhzhx/skx/shownews.asp?id=100 太他妈不可思议了?还好我的电话什么的都已经换了 问题是这个学校凭什么把我的简历放在网上做模板？而且连名字都不改？ 然后点&quot;评测&quot;钮，右边出来一个很Q的很醒目的Flash.并伴有进度条，带百分比。很快分析完成，显示结果。有相似度，并且相似度也有不同颜色的条状图显示。 我的结果是：技术性极强的文字风格，缜密的思维体现在字里行间；富含科技信息量的内容，充实易懂。词藻华丽雅致，文风绚烂；文章内容丰富，观点翔实可圈可点；在用词范围方面可以着重下功夫改进。 对比之下我跟洪波有70%的相似度,比较夸张。 下面是结果页的地址：http://www.sogou.com/labs/wenpin/index.jsp?his=002011003003000001044070000003047020000009041009000010&amp;hisname=一米六二 .articletest {width: 305px;background: url(http://www.sogou.com/images/statsword/logo.gif) no-repeat 8px top;padding: 37px 8px 8px;font-size: 12px;}.resultbox{border: 1px solid #bbb;padding: 5px 13px;margin-bottom: 5px;}.resultbox dl, .resultbox dd { margin: 0;padding: 0;}.authorname {width: 70px;float: left;font-weight: bold;}.bar{width: 80px;float: left;}.similarity{color: #DF5900;float: left;font-weight: bold;}.comment {clear: both;}.bg1 {background:url(http://www.sogou.com/images/statsword/star1.gif) no-repeat right top;}.bg2 {background: url(http://www.sogou.com/images/statsword/star2.gif) no-repeat right top; }.bg3 { background: url(http://www.sogou.com/images/statsword/star3.gif) no-repeat right top; }.wanttest { float: left; clear:both; font-weight: bold; color: red; padding: 4px 6px; line-height: normal; border: 1px solid #D6D3B7;}.wanttest { float: left; clear:both; font-weight: bold; color: red; padding: 4px 6px 4px 13px; line-height: normal; border: 1px solid #D6D3B7; background: url(http://www.sogou.com/images/statsword/ss.gif) no-repeat 7px 8px;}.wanttest a { color: red; text-decoration: none;}.title1, .title2, .title3 { font-size: 14px; color: #f60;}.title1 { background: url(http://www.sogou.com/images/statsword/icon1.gif) no-repeat 4px center; padding: 0 12px; height:1%;}</p>
 <h2 id="一米六二您的评测结果">一米六二，您的评测结果：</h2>
 <p>[洪波](http://www.sogou.com/web?query= 洪波)</p>
 <figure data-type="image" tabindex="1"><img src="http://www.sogou.com/images/statsword/bar1.gif" alt="" loading="lazy"></figure>
@@ -110,31 +102,45 @@
 <p>如果不是我们科学的分析结果，你没有发觉自己还有些许这位作家的风格吧<sup>_</sup></p>
 <p><a href="http://www.sogou.com/websearch/test/statsword.jsp">有意思，我也要去试试！</a></p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/320/">
-                  <h3 class="post-title">
-                    Google 怎么分析出我叫什么名字的？
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/320/">
+              <h3 class="post-title">
+                下一篇：Google 怎么分析出我叫什么名字的？
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -144,8 +150,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

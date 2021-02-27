@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Flickr能上啦 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="中午休息时,同事发来一个链接,是关于公司内部的一些福利的,看到其间提到有一个Flickr的优惠,很感兴趣,就去看了下. 照说明点进去,就给出提示说我的帐户已经升级成为专业版了,一大排&quot;unlimited ****'的说明,让人挺有..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Flickr能上啦</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-09-21</span>
+            
+          </div>
+          <div class="post-content">
+            <p>中午休息时,同事发来一个链接,是关于公司内部的一些福利的,看到其间提到有一个Flickr的优惠,很感兴趣,就去看了下. 照说明点进去,就给出提示说我的帐户已经升级成为专业版了,一大排&quot;unlimited ****'的说明,让人挺有满足感. 有一个同事很郁闷的说,有专业版又怎么样呢?现在Flickr都不能上了.我已经用又拍来存照片了.也就在公司内网能用一下,同事之间用flick 来share照片了. 但我记得在之前在央视国际的内部也能上Flickr的. 晚上在家试了下,Flickr确实是能上的.看来是6月份flick撞猪上了,猪撞墙上了,现在这头猪又回头了.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/476/">
+              <h3 class="post-title">
+                下一篇：2007.9.15(周六)聚会地点.
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Flickr能上啦</h2>
-            <div class="post-date">2007-09-21</div>
-            
-            <div class="post-content" v-pre>
-              <p>中午休息时,同事发来一个链接,是关于公司内部的一些福利的,看到其间提到有一个Flickr的优惠,很感兴趣,就去看了下. 照说明点进去,就给出提示说我的帐户已经升级成为专业版了,一大排&quot;unlimited ****'的说明,让人挺有满足感. 有一个同事很郁闷的说,有专业版又怎么样呢?现在Flickr都不能上了.我已经用又拍来存照片了.也就在公司内网能用一下,同事之间用flick 来share照片了. 但我记得在之前在央视国际的内部也能上Flickr的. 晚上在家试了下,Flickr确实是能上的.看来是6月份flick撞猪上了,猪撞墙上了,现在这头猪又回头了.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/476/">
-                  <h3 class="post-title">
-                    2007.9.15(周六)聚会地点.
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

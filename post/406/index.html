@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>用PHP5.2+APC实现超酷的PHP进度条 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="英文原文（并非按词一个个译过来的) http://martinjansen.com/2007/04/upload-progress/ 这里是Rasmus Lerdorf实现的一个利用php5.2的新特性来进行上传进度条的例子。 为了让php..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">用PHP5.2+APC实现超酷的PHP进度条</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-04-30</span>
+            
+          </div>
+          <div class="post-content">
+            <p>英文原文（并非按词一个个译过来的) http://martinjansen.com/2007/04/upload-progress/ <a href="http://progphp.com/progress.php">这里</a>是Rasmus Lerdorf实现的一个利用php5.2的新特性来进行上传进度条的例子。 为了让php存储并显示文件上传进度，他利用了APC来实现内存级缓存。APC最新的版本有一个特性（虽然没有文档化），一旦开启，将会监听包含 APC_UPLOAD_PROGRESS的表单的文件上传进度。一旦发现这个POST变量，APC将会创建一个缓存入口，并把文件上传进度放到这个缓存里。这个入口的值取决于POST变量APC_UPLOAD_PROGRESS的值 。 如果你仔细看他的例子代码，你发现他用了apc_fetch来读内存值。同时在共享内存里，包含了APC_UPLOAD_PROGRESS这个魔术数字。 但是怎么让APC像这样工作呢？<a href="http://cn.php.net/manual/zh/ref.apc.php">文档</a>中并没有告诉我们。其实在CVS里的安装说明上写了： 在php.ini文件设置apc.rfc1867=1就行了。 我把例子代码弄过来了: if($_SERVER['REQUEST_METHOD']=='POST') { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>s</mi><mo>=</mo><mi>a</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><msup><mo>(</mo><mo mathvariant="normal">′</mo></msup><mi>u</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><msup><mi mathvariant="normal">_</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">status = apc\_fetch(&#x27;upload\_&#x27;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.061892em;vertical-align:-0.31em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">c</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord" style="margin-right:0.02778em;">_</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span>_POST['APC_UPLOAD_PROGRESS']); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 7: status\̲[̲&#039;done&#039;\]=1; ech…'>status\[&#039;done&#039;\]=1; echo json\_encode(</span>status); exit; } else if(isset($_GET['progress_key'])) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>s</mi><mo>=</mo><mi>a</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><msup><mo>(</mo><mo mathvariant="normal">′</mo></msup><mi>u</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><msup><mi mathvariant="normal">_</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">status = apc\_fetch(&#x27;upload\_&#x27;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.061892em;vertical-align:-0.31em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">c</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord" style="margin-right:0.02778em;">_</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span>_GET['progress_key']); echo json_encode($status); exit; } ?&gt;  var fN = function callBack(o) { var resp = eval('(' + o.responseText + ')'); var rate = parseInt(resp['rate']/1024); if(resp['cancel_upload']) { txt=&quot;Cancelled after &quot;+resp['current']+&quot; bytes!&quot;; } else { txt=resp['total']+&quot; bytes uploaded!&quot;; } txt += &quot; Upload rate was &quot;+rate+&quot; kbps.&quot;; document.getElementById('pbar').style.width = '100%'; document.getElementById('ppct').innerHTML = &quot;100%&quot;; document.getElementById('ptxt').innerHTML = txt; setTimeout(&quot;progress_win.hide(); window.location.reload(true);&quot;,2000); } var callback = { upload:fN } var fP = function callBack(o) { var resp = eval('(' + o.responseText + ')'); if(!resp['done']) { if(resp['total']) { var pct = parseInt(100*(resp['current']/resp['total'])); document.getElementById('pbar').style.width = ''+pct+'%'; document.getElementById('ppct').innerHTML = &quot; &quot;+pct+&quot;%&quot;; document.getElementById('ptxt').innerHTML = resp['current']+&quot; of &quot;+resp['total']+&quot; bytes&quot;; } setTimeout(&quot;update_progress()&quot;,500); } else if(resp['cancel_upload']) { txt=&quot;Cancelled after &quot;+resp['current']+&quot; bytes!&quot;; document.getElementById('ptxt').innerHTML = txt; setTimeout(&quot;progress_win.hide(); window.location.reload(true);&quot;,2000); } } var progress_callback = { success:fP } function update_progress() { progress_key = document.getElementById('progress_key').value; YAHOO.util.Connect.asyncRequest('GET','progress.php?progress_key='+progress_key, progress_callback); } var progress_win; function postForm(target,formName) { YAHOO.util.Connect.setForm(formName,true); YAHOO.util.Connect.asyncRequest('POST',target,callback); /* Is there some event that triggers on an aborted file upload? */ /* YAHOO.util.Event.addListener(window, &quot;abort&quot;, function () { alert('abort') } ); */ progress_win = new YAHOO.widget.Panel(&quot;progress_win&quot;, { width:&quot;421px&quot;, fixedcenter:false, underlay:&quot;shadow&quot;, close:false, draggable:true, modal:true, effect:{effect:YAHOO.widget.ContainerEffect.FADE, duration:0.3} } ); progress_win.setHeader(&quot;Uploading &quot;+document.getElementById('test_file').value+&quot; ...&quot;); progress_win.setBody(' <div style="height: 1em; width: 400px; border:1px solid #000;"> <div id="pbar" style="background: #99e; height: 98%; width:0%; float:left;"> </div> <div id="ppct" style="height: 90%; position: absolute; margin: 1 0 0 185;">0%</div> </div> <div id="ptxt" style="margin: 3 0 0 5">0 of 0 bytes</div> '); progress_win.render(document.body); update_progress(); } 附本人意见： php5.2之前解决大文件上传进度条显示一种是猜临时文件名另一种是用php创建webserver,需要iptables打开一些80之外的端口，还有一些是自己编译apache或php模块，基本没太大用途。有时间我详细说一下这几种情况。 目前这个看起来似乎是一个比较漂亮的解决办法。但是仍需要系统管理员(root)权限来装APC和改php.ini文件。 希望在更新版本中php能给出一个比较好的解决文件上传的办法。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/405/">
+              <h3 class="post-title">
+                下一篇：VirtualBox 的一些错误
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">用PHP5.2+APC实现超酷的PHP进度条</h2>
-            <div class="post-date">2007-04-30</div>
-            
-            <div class="post-content" v-pre>
-              <p>英文原文（并非按词一个个译过来的) http://martinjansen.com/2007/04/upload-progress/ <a href="http://progphp.com/progress.php">这里</a>是Rasmus Lerdorf实现的一个利用php5.2的新特性来进行上传进度条的例子。 为了让php存储并显示文件上传进度，他利用了APC来实现内存级缓存。APC最新的版本有一个特性（虽然没有文档化），一旦开启，将会监听包含 APC_UPLOAD_PROGRESS的表单的文件上传进度。一旦发现这个POST变量，APC将会创建一个缓存入口，并把文件上传进度放到这个缓存里。这个入口的值取决于POST变量APC_UPLOAD_PROGRESS的值 。 如果你仔细看他的例子代码，你发现他用了apc_fetch来读内存值。同时在共享内存里，包含了APC_UPLOAD_PROGRESS这个魔术数字。 但是怎么让APC像这样工作呢？<a href="http://cn.php.net/manual/zh/ref.apc.php">文档</a>中并没有告诉我们。其实在CVS里的安装说明上写了： 在php.ini文件设置apc.rfc1867=1就行了。 我把例子代码弄过来了: if($_SERVER['REQUEST_METHOD']=='POST') { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>s</mi><mo>=</mo><mi>a</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><msup><mo>(</mo><mo mathvariant="normal">′</mo></msup><mi>u</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><msup><mi mathvariant="normal">_</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">status = apc\_fetch(&#x27;upload\_&#x27;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.061892em;vertical-align:-0.31em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">c</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord" style="margin-right:0.02778em;">_</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span>_POST['APC_UPLOAD_PROGRESS']); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 7: status\̲[̲&#039;done&#039;\]=1; ech…'>status\[&#039;done&#039;\]=1; echo json\_encode(</span>status); exit; } else if(isset($_GET['progress_key'])) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>s</mi><mo>=</mo><mi>a</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><msup><mo>(</mo><mo mathvariant="normal">′</mo></msup><mi>u</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><msup><mi mathvariant="normal">_</mi><mo mathvariant="normal">′</mo></msup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">status = apc\_fetch(&#x27;upload\_&#x27;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.061892em;vertical-align:-0.31em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">c</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord"><span class="mord" style="margin-right:0.02778em;">_</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span>_GET['progress_key']); echo json_encode($status); exit; } ?&gt;  var fN = function callBack(o) { var resp = eval('(' + o.responseText + ')'); var rate = parseInt(resp['rate']/1024); if(resp['cancel_upload']) { txt=&quot;Cancelled after &quot;+resp['current']+&quot; bytes!&quot;; } else { txt=resp['total']+&quot; bytes uploaded!&quot;; } txt += &quot; Upload rate was &quot;+rate+&quot; kbps.&quot;; document.getElementById('pbar').style.width = '100%'; document.getElementById('ppct').innerHTML = &quot;100%&quot;; document.getElementById('ptxt').innerHTML = txt; setTimeout(&quot;progress_win.hide(); window.location.reload(true);&quot;,2000); } var callback = { upload:fN } var fP = function callBack(o) { var resp = eval('(' + o.responseText + ')'); if(!resp['done']) { if(resp['total']) { var pct = parseInt(100*(resp['current']/resp['total'])); document.getElementById('pbar').style.width = ''+pct+'%'; document.getElementById('ppct').innerHTML = &quot; &quot;+pct+&quot;%&quot;; document.getElementById('ptxt').innerHTML = resp['current']+&quot; of &quot;+resp['total']+&quot; bytes&quot;; } setTimeout(&quot;update_progress()&quot;,500); } else if(resp['cancel_upload']) { txt=&quot;Cancelled after &quot;+resp['current']+&quot; bytes!&quot;; document.getElementById('ptxt').innerHTML = txt; setTimeout(&quot;progress_win.hide(); window.location.reload(true);&quot;,2000); } } var progress_callback = { success:fP } function update_progress() { progress_key = document.getElementById('progress_key').value; YAHOO.util.Connect.asyncRequest('GET','progress.php?progress_key='+progress_key, progress_callback); } var progress_win; function postForm(target,formName) { YAHOO.util.Connect.setForm(formName,true); YAHOO.util.Connect.asyncRequest('POST',target,callback); /* Is there some event that triggers on an aborted file upload? */ /* YAHOO.util.Event.addListener(window, &quot;abort&quot;, function () { alert('abort') } ); */ progress_win = new YAHOO.widget.Panel(&quot;progress_win&quot;, { width:&quot;421px&quot;, fixedcenter:false, underlay:&quot;shadow&quot;, close:false, draggable:true, modal:true, effect:{effect:YAHOO.widget.ContainerEffect.FADE, duration:0.3} } ); progress_win.setHeader(&quot;Uploading &quot;+document.getElementById('test_file').value+&quot; ...&quot;); progress_win.setBody(' <div style="height: 1em; width: 400px; border:1px solid #000;"> <div id="pbar" style="background: #99e; height: 98%; width:0%; float:left;"> </div> <div id="ppct" style="height: 90%; position: absolute; margin: 1 0 0 185;">0%</div> </div> <div id="ptxt" style="margin: 3 0 0 5">0 of 0 bytes</div> '); progress_win.render(document.body); update_progress(); } 附本人意见： php5.2之前解决大文件上传进度条显示一种是猜临时文件名另一种是用php创建webserver,需要iptables打开一些80之外的端口，还有一些是自己编译apache或php模块，基本没太大用途。有时间我详细说一下这几种情况。 目前这个看起来似乎是一个比较漂亮的解决办法。但是仍需要系统管理员(root)权限来装APC和改php.ini文件。 希望在更新版本中php能给出一个比较好的解决文件上传的办法。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/405/">
-                  <h3 class="post-title">
-                    VirtualBox 的一些错误
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

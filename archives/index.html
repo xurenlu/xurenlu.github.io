@@ -1,850 +1,889 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
-<title>文章归档 | 黄滚的Blog</title>
+<title>黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+        <div class="content-container">
+          
           
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2017</h2>
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1430/">
-                      <h2 class="post-title">
-                        再回乡
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1427/">
-                      <h2 class="post-title">
-                        写点儿软件给自己用
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1411/">
-                      <h2 class="post-title">
-                        Drill: Hive 插件
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1409/">
-                      <h2 class="post-title">
-                        Drill:HBase 插件
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1407/">
-                      <h2 class="post-title">
-                        Drill:文件系统插件
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1405/">
-                      <h2 class="post-title">
-                        Drill:关系数据库查询
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1403/">
-                      <h2 class="post-title">
-                        Drill:工作空间
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1401/">
-                      <h2 class="post-title">
-                        Drill:插件的基本配置
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1399/">
-                      <h2 class="post-title">
-                        Drill:存储插件的注册
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1397/">
-                      <h2 class="post-title">
-                        Drill:连接到数据源
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1395/">
-                      <h2 class="post-title">
-                        Drill:概要
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1393/">
-                      <h2 class="post-title">
-                        Drill:查询的执行
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1391/">
-                      <h2 class="post-title">
-                        Drill:核心模块
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1389/">
-                      <h2 class="post-title">
-                        Drill:架构总览
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1380/">
-                      <h2 class="post-title">
-                        2017，做自己
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2016</h2>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1382/">
-                      <h2 class="post-title">
-                        我们这个小公司的技术【二】
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1378/">
-                      <h2 class="post-title">
-                        不将就,做自己
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1376/">
-                      <h2 class="post-title">
-                        关于月饼
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1374/">
-                      <h2 class="post-title">
-                        滚哥互联网家装乱弹之一
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1372/">
-                      <h2 class="post-title">
-                        我们这个小公司的技术
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1370/">
-                      <h2 class="post-title">
-                        政治不正确的教师节献礼
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1368/">
-                      <h2 class="post-title">
-                        总有一天轮到你
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1384/">
-                      <h2 class="post-title">
-                        是不是,对生活不太满意
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1366/">
-                      <h2 class="post-title">
-                        碎片阅读，还是深度思考
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1364/">
-                      <h2 class="post-title">
-                        不提升自己，连婚姻都保不住
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1362/">
-                      <h2 class="post-title">
-                        回乡记【2】
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1360/">
-                      <h2 class="post-title">
-                        回乡记【1】
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2015</h2>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1345/">
-                      <h2 class="post-title">
-                        大叔路人甲
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1342/">
-                      <h2 class="post-title">
-                        借钱记--续集
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1337/">
-                      <h2 class="post-title">
-                        借钱记
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1331/">
-                      <h2 class="post-title">
-                        162Share:开发工程师手边的工具推荐
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1328/">
-                      <h2 class="post-title">
-                        KlipMonster:Web开发工程师手边的工具推荐
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1326/">
-                      <h2 class="post-title">
-                        爱一些人,然后成长
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1322/">
-                      <h2 class="post-title">
-                        162host:Web开发工程师手边的工具推荐
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1315/">
-                      <h2 class="post-title">
-                        一个程序员的血泪史
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1311/">
-                      <h2 class="post-title">
-                        那些租在北京的日子
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1307/">
-                      <h2 class="post-title">
-                        有感
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-                
-              
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2011</h2>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1279/">
-                      <h2 class="post-title">
-                        帅才、将才、领导力、执行力和管理
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2010</h2>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1253/">
-                      <h2 class="post-title">
-                        一个在线编辑电子表格的小工具
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1248/">
-                      <h2 class="post-title">
-                        基于web的项目管理工具redmine
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-
-          <div class="pagination-container">
+<div class="archives-container">
   
+    <h2 class="year">2017</h2>
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1430/">
+            <h2 class="post-title">
+              再回乡
+              <small>2017-04-16</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1427/">
+            <h2 class="post-title">
+              写点儿软件给自己用
+              <small>2017-04-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1411/">
+            <h2 class="post-title">
+              Drill: Hive 插件
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1409/">
+            <h2 class="post-title">
+              Drill:HBase 插件
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1407/">
+            <h2 class="post-title">
+              Drill:文件系统插件
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1405/">
+            <h2 class="post-title">
+              Drill:关系数据库查询
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1403/">
+            <h2 class="post-title">
+              Drill:工作空间
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1401/">
+            <h2 class="post-title">
+              Drill:插件的基本配置
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1399/">
+            <h2 class="post-title">
+              Drill:存储插件的注册
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1397/">
+            <h2 class="post-title">
+              Drill:连接到数据源
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1395/">
+            <h2 class="post-title">
+              Drill:概要
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1393/">
+            <h2 class="post-title">
+              Drill:查询的执行
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1391/">
+            <h2 class="post-title">
+              Drill:核心模块
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1389/">
+            <h2 class="post-title">
+              Drill:架构总览
+              <small>2017-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1380/">
+            <h2 class="post-title">
+              2017，做自己
+              <small>2017-01-05</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
-    <a href="http://162cm.com/archives/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+    <h2 class="year">2016</h2>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1382/">
+            <h2 class="post-title">
+              我们这个小公司的技术【二】
+              <small>2016-10-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1378/">
+            <h2 class="post-title">
+              不将就,做自己
+              <small>2016-10-16</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1376/">
+            <h2 class="post-title">
+              关于月饼
+              <small>2016-09-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1374/">
+            <h2 class="post-title">
+              滚哥互联网家装乱弹之一
+              <small>2016-09-12</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1372/">
+            <h2 class="post-title">
+              我们这个小公司的技术
+              <small>2016-09-12</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1370/">
+            <h2 class="post-title">
+              政治不正确的教师节献礼
+              <small>2016-09-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1368/">
+            <h2 class="post-title">
+              总有一天轮到你
+              <small>2016-07-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1384/">
+            <h2 class="post-title">
+              是不是,对生活不太满意
+              <small>2016-07-12</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1366/">
+            <h2 class="post-title">
+              碎片阅读，还是深度思考
+              <small>2016-05-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1364/">
+            <h2 class="post-title">
+              不提升自己，连婚姻都保不住
+              <small>2016-04-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1362/">
+            <h2 class="post-title">
+              回乡记【2】
+              <small>2016-02-28</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1360/">
+            <h2 class="post-title">
+              回乡记【1】
+              <small>2016-02-25</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    <h2 class="year">2015</h2>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1345/">
+            <h2 class="post-title">
+              大叔路人甲
+              <small>2015-12-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1342/">
+            <h2 class="post-title">
+              借钱记--续集
+              <small>2015-11-28</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1337/">
+            <h2 class="post-title">
+              借钱记
+              <small>2015-11-09</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1331/">
+            <h2 class="post-title">
+              162Share:开发工程师手边的工具推荐
+              <small>2015-10-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1328/">
+            <h2 class="post-title">
+              KlipMonster:Web开发工程师手边的工具推荐
+              <small>2015-10-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1326/">
+            <h2 class="post-title">
+              爱一些人,然后成长
+              <small>2015-10-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1322/">
+            <h2 class="post-title">
+              162host:Web开发工程师手边的工具推荐
+              <small>2015-10-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1315/">
+            <h2 class="post-title">
+              一个程序员的血泪史
+              <small>2015-07-31</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1311/">
+            <h2 class="post-title">
+              那些租在北京的日子
+              <small>2015-05-27</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1307/">
+            <h2 class="post-title">
+              有感
+              <small>2015-05-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    <h2 class="year">2011</h2>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1279/">
+            <h2 class="post-title">
+              帅才、将才、领导力、执行力和管理
+              <small>2011-01-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+    
+      
+    
+  
+    <h2 class="year">2010</h2>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1253/">
+            <h2 class="post-title">
+              一个在线编辑电子表格的小工具
+              <small>2010-11-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1248/">
+            <h2 class="post-title">
+              基于web的项目管理工具redmine
+              <small>2010-11-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
   
 </div>
 
+
         </div>
+
+        <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
       </div>
-    </div>
+      <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -858,7 +897,6 @@ var app = new Vue({
 
 
 
-
-
+    </div>
   </body>
 </html>

@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>php高手之路之---纵横天下 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="想想,当您感觉到自己的已经非常牛X的时候,肯定想着自己写一个wordpress,或是discuz了.现在您开始考虑,如何架构一个国际化的(多语言)的程序了。 学会用不同的语言与不同的对手打交道,是纵横天下第一重要的事. 如何开始呢? 我所了..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">php高手之路之---纵横天下</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-04-03</span>
+            
+          </div>
+          <div class="post-content">
+            <p>想想,当您感觉到自己的已经非常牛X的时候,肯定想着自己写一个wordpress,或是discuz了.现在您开始考虑,如何架构一个国际化的(多语言)的程序了。 学会用不同的语言与不同的对手打交道,是纵横天下第一重要的事. 如何开始呢? 我所了解的有三种方案: 方案一:利用模板引擎,每一种语言,制做一套模板.选中不同的模板,就等于选用了不同的语言.模板引擎这玩意儿是已经被我批得不成样子了,因为php本身就是相当不错的模板.不过还是很多人用。您可以尝试smarty,phplib,fast template等。另外国内也有不少人自行开发模板引擎。一年以前，我也是他们中的一员。 方案二:不同的语言包含不同的文件。把要翻译的语句放在单独的文件中,选用不同语言时,require或是include不同的文件。例如: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi>e</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>U</mi><mi>S</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>r</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">lang=&quot;en\_US&quot;; require(&quot;lang/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord">&quot;</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">/</span></span></span></span>lang/lang.php&quot;); echo $msg[&quot;WELCOME&quot;]; ?&gt; 而lang/en_US/lang.php中可能是: $msg[&quot;WELCOME&quot;]=&quot;Welcome to ...&quot;; ?&gt; 要改成中文,需要添加lang/zh_CN/lang.php文件： $msg[&quot;WELCOME&quot;]=&quot;欢迎来到...&quot;; ?&gt; 对应的把文件中的代码改为下面的就行了: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi>z</mi><mi>h</mi><mi mathvariant="normal">_</mi><mi>C</mi><mi>N</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>r</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">lang=&quot;zh\_CN&quot;; require(&quot;lang/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">h</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">/</span></span></span></span>lang/lang.php&quot;); echo <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 4: msg\̲[̲&quot;WELCOME&quot;\]; ?&gt;…'>msg\[&quot;WELCOME&quot;\]; ?&gt; 目前大部分的程序,使用这种方法来达到国际化,多语种.比如Xoops.不过xoops在语言包文件中不是用数组来存储翻译的词语的,而是用Define(&quot;MSG\_WELCOME&quot;,&quot;欢迎来到...&quot;)来存储的。这个是为了速度能更快.数组和常量存储的方式不一样. 但这样做的缺点也不言而喻。因为,您至少需要做一个语言包(一般而言是英文)而且需要记住那些词条名,比如MSG\_WELCOME,MSG\_REGISTER\_SUCCESS等等.在程序中出现在就是MSG\_WELCOME,MSG\_REGISTER\_SUCCESS这些不易看懂的内容,一旦您的语言包中缺少这一条,显示的就是空的,啥也没有. 方案三:使用Gnu GetText方案.Gnu程序中推荐的是使用GetText函数.这个最初是在C语言中出现的。但是现在php中也有了gettext函数了.Wordpress中就是使用的这种方案. 看看其步骤. 第一步: 使用一个函数将您的字串包起来.您的程序应该写成这样子: //file:test.php echo \_\_(&quot;I am Mr Wung&quot;); function \_\_(</span>msgid) { return <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 8: msgid; }̲ ?&gt; 您目前可以加上\_\_…'>msgid; } ?&gt; 您目前可以加上\_\_(</span>msg)函数的定义，函数可以直接返回msg本身. 第二步:生成语言文件: (在linux中)运行 xgettext --keyword=__ test.php,完成后将会生成一个messages.po文件。内容如下: # SOME DESCRIPTIVE TITLE. # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER # This file is distributed under the same license as the PACKAGE package. # FIRST AUTHOR , YEAR. # #, fuzzy msgid &quot;&quot; msgstr &quot;&quot; &quot;Project-Id-Version: PACKAGE VERSIONn&quot; &quot;Report-Msgid-Bugs-To: n&quot; &quot;POT-Creation-Date: 2007-03-20 11:44+0800n&quot; &quot;PO-Revision-Date: YEAR-MO-DA HO:MI+ZONEn&quot; &quot;Last-Translator: FULL NAME n&quot; &quot;Language-Team: LANGUAGE n&quot; &quot;MIME-Version: 1.0n&quot; &quot;Content-Type: text/plain; charset=CHARSETn&quot; &quot;Content-Transfer-Encoding: 8bitn&quot; #: test.php:3 msgid &quot;I am Mr Wung&quot; msgstr &quot;&quot; 您看到了,messages.po中已经把程序中所有用__函数包起来的字符串找出来了。现在您编辑它，将最后一行中的msgstr &quot;&quot;改为msgstr &quot;我是王先生&quot;;将倒数第六行中的charset=CHARSET改为charset=UTF-8; 现在再运行msgfmt messages.po,将会在当前路径生成一个messages.mo文件.这个文件是编译以后的二进制文件,因为messages.po文件用来搜索字符串太慢了. 有了这个文件以后，__()函数就可以在messages.mo文件中进行查找,如果找到了对应的字符串,则可以给出翻译,如果找不到,就会直接返回它本身.而且,您用vim,editplus或是其他文件打开test.php文件,也能从echo __(&quot;I am Mr Wung&quot;)看出这一句是什么用途.相比之下,Xoops方式的echo MSG_I_AM_MR_WUNG;就晦涩多了. 至于__()函数,其实是一个别名,它实际调用了gettext函数.这个函数,在Wordpress中已经给出,是一个open项目.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/393/">
+              <h3 class="post-title">
+                下一篇：PHP高手之路之---折柳为剑
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">php高手之路之---纵横天下</h2>
-            <div class="post-date">2007-04-03</div>
-            
-            <div class="post-content" v-pre>
-              <p>想想,当您感觉到自己的已经非常牛X的时候,肯定想着自己写一个wordpress,或是discuz了.现在您开始考虑,如何架构一个国际化的(多语言)的程序了。 学会用不同的语言与不同的对手打交道,是纵横天下第一重要的事. 如何开始呢? 我所了解的有三种方案: 方案一:利用模板引擎,每一种语言,制做一套模板.选中不同的模板,就等于选用了不同的语言.模板引擎这玩意儿是已经被我批得不成样子了,因为php本身就是相当不错的模板.不过还是很多人用。您可以尝试smarty,phplib,fast template等。另外国内也有不少人自行开发模板引擎。一年以前，我也是他们中的一员。 方案二:不同的语言包含不同的文件。把要翻译的语句放在单独的文件中,选用不同语言时,require或是include不同的文件。例如: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi>e</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>U</mi><mi>S</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>r</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">lang=&quot;en\_US&quot;; require(&quot;lang/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord">&quot;</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">/</span></span></span></span>lang/lang.php&quot;); echo $msg[&quot;WELCOME&quot;]; ?&gt; 而lang/en_US/lang.php中可能是: $msg[&quot;WELCOME&quot;]=&quot;Welcome to ...&quot;; ?&gt; 要改成中文,需要添加lang/zh_CN/lang.php文件： $msg[&quot;WELCOME&quot;]=&quot;欢迎来到...&quot;; ?&gt; 对应的把文件中的代码改为下面的就行了: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi>z</mi><mi>h</mi><mi mathvariant="normal">_</mi><mi>C</mi><mi>N</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>r</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>l</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">lang=&quot;zh\_CN&quot;; require(&quot;lang/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">h</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord">/</span></span></span></span>lang/lang.php&quot;); echo <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 4: msg\̲[̲&quot;WELCOME&quot;\]; ?&gt;…'>msg\[&quot;WELCOME&quot;\]; ?&gt; 目前大部分的程序,使用这种方法来达到国际化,多语种.比如Xoops.不过xoops在语言包文件中不是用数组来存储翻译的词语的,而是用Define(&quot;MSG\_WELCOME&quot;,&quot;欢迎来到...&quot;)来存储的。这个是为了速度能更快.数组和常量存储的方式不一样. 但这样做的缺点也不言而喻。因为,您至少需要做一个语言包(一般而言是英文)而且需要记住那些词条名,比如MSG\_WELCOME,MSG\_REGISTER\_SUCCESS等等.在程序中出现在就是MSG\_WELCOME,MSG\_REGISTER\_SUCCESS这些不易看懂的内容,一旦您的语言包中缺少这一条,显示的就是空的,啥也没有. 方案三:使用Gnu GetText方案.Gnu程序中推荐的是使用GetText函数.这个最初是在C语言中出现的。但是现在php中也有了gettext函数了.Wordpress中就是使用的这种方案. 看看其步骤. 第一步: 使用一个函数将您的字串包起来.您的程序应该写成这样子: //file:test.php echo \_\_(&quot;I am Mr Wung&quot;); function \_\_(</span>msgid) { return <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 8: msgid; }̲ ?&gt; 您目前可以加上\_\_…'>msgid; } ?&gt; 您目前可以加上\_\_(</span>msg)函数的定义，函数可以直接返回msg本身. 第二步:生成语言文件: (在linux中)运行 xgettext --keyword=__ test.php,完成后将会生成一个messages.po文件。内容如下: # SOME DESCRIPTIVE TITLE. # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER # This file is distributed under the same license as the PACKAGE package. # FIRST AUTHOR , YEAR. # #, fuzzy msgid &quot;&quot; msgstr &quot;&quot; &quot;Project-Id-Version: PACKAGE VERSIONn&quot; &quot;Report-Msgid-Bugs-To: n&quot; &quot;POT-Creation-Date: 2007-03-20 11:44+0800n&quot; &quot;PO-Revision-Date: YEAR-MO-DA HO:MI+ZONEn&quot; &quot;Last-Translator: FULL NAME n&quot; &quot;Language-Team: LANGUAGE n&quot; &quot;MIME-Version: 1.0n&quot; &quot;Content-Type: text/plain; charset=CHARSETn&quot; &quot;Content-Transfer-Encoding: 8bitn&quot; #: test.php:3 msgid &quot;I am Mr Wung&quot; msgstr &quot;&quot; 您看到了,messages.po中已经把程序中所有用__函数包起来的字符串找出来了。现在您编辑它，将最后一行中的msgstr &quot;&quot;改为msgstr &quot;我是王先生&quot;;将倒数第六行中的charset=CHARSET改为charset=UTF-8; 现在再运行msgfmt messages.po,将会在当前路径生成一个messages.mo文件.这个文件是编译以后的二进制文件,因为messages.po文件用来搜索字符串太慢了. 有了这个文件以后，__()函数就可以在messages.mo文件中进行查找,如果找到了对应的字符串,则可以给出翻译,如果找不到,就会直接返回它本身.而且,您用vim,editplus或是其他文件打开test.php文件,也能从echo __(&quot;I am Mr Wung&quot;)看出这一句是什么用途.相比之下,Xoops方式的echo MSG_I_AM_MR_WUNG;就晦涩多了. 至于__()函数,其实是一个别名,它实际调用了gettext函数.这个函数,在Wordpress中已经给出,是一个open项目.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/393/">
-                  <h3 class="post-title">
-                    PHP高手之路之---折柳为剑
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>为什么我认为每个穷网站开发程序员都应该用Linux[工具篇] | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="1.因Mac很好用.详细的嘛,请看为什么我认为每个程序员都应该用Mac OS X？ 而如果你买不起Mac的话,装个Ubuntu是不错的选择:Ubuntu可以免费给你把光盘寄到家,而WindowsXp不会(你可以昧着良心在小区门口以四块钱一张..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]</h2>
-            <div class="post-date">2010-03-13</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2010-03-13</span>
             
-            <div class="post-content" v-pre>
-              <p>1.因Mac很好用.详细的嘛,请看<a href="http://tiny4.org/blog/2010/02/why-programmers-should-use-mac-os-x/">为什么我认为每个程序员都应该用Mac OS X？</a> 而如果你买不起Mac的话,装个Ubuntu是不错的选择:Ubuntu可以免费给你把光盘寄到家,而WindowsXp不会(你可以昧着良心在小区门口以四块钱一张买,也可以挂机一天一夜从bt上download). 另外,Linux 跟Mac 有亲戚关系,他们都可以运行相同的Gnu程序,而windows不是. 2.讲好看的话,Linux 其实很好看了.比如我的这个桌面: <img src="http://pic.yupoo.com/162cm/721648fe7d00/medium.jpg" alt="linux desktop" loading="lazy"> 我的图标主题是elementary,一个热心的团队自己做的,打磨的非常精致.本来我以前是用的模仿Mac的一个主题,后来容易被人鄙视,所以就改用这个了.也挺好,不比Mac的差.但是我也不能保证这些图标可能有抄袭的成分什么的,也不接受在评论中讨论是Mac抄windows还是windows抄Mac的话题什么的. 3.这是正题:关于软件 a:**开发工具:**其实除开visual studio,我们有很多开发工具可以选.比如,最常见的vim.这里我就顺便秀一下我的vim.我主要装了这么几个插件:superTab,snipmate,zencoding. 很多人即使做服务器端开发也要用zend这个玩意,并且吧,还给不起钱,用破解版.他们对zend忠贞不二的原因是,记不住变量名,因此需要zend的自动被全功能.其实这个有了supertab后很简单: <img src="http://pic.yupoo.com/162cm/050878fe7e83/small.jpg" alt="vim" loading="lazy"> 另外,vim的snipmates插件还能做到类似textmate的snippets功能.也秀一下: 新建一个php文件.输入fun,紧接着按tab键: <img src="http://pic.yupoo.com/162cm/399658fe7f8d/small.jpg" alt="vim-snipmates1" loading="lazy"> 按了tab键之后就成了这样: <img src="http://pic.yupoo.com/162cm/516468fe7fe8/medium.jpg" alt="vim snipmates2" loading="lazy"> 直接输函数,按tab键,接着输函数内容.注意,这里自动补全的内容我稍做了调整,如果您也要做调整,请修改~/.vim/snippets/php.snippets文件. zencoding的用法是这样的: 新建一个html文件,新起一行输入:</p>
+          </div>
+          <div class="post-content">
+            <p>1.因Mac很好用.详细的嘛,请看<a href="http://tiny4.org/blog/2010/02/why-programmers-should-use-mac-os-x/">为什么我认为每个程序员都应该用Mac OS X？</a> 而如果你买不起Mac的话,装个Ubuntu是不错的选择:Ubuntu可以免费给你把光盘寄到家,而WindowsXp不会(你可以昧着良心在小区门口以四块钱一张买,也可以挂机一天一夜从bt上download). 另外,Linux 跟Mac 有亲戚关系,他们都可以运行相同的Gnu程序,而windows不是. 2.讲好看的话,Linux 其实很好看了.比如我的这个桌面: <img src="http://pic.yupoo.com/162cm/721648fe7d00/medium.jpg" alt="linux desktop" loading="lazy"> 我的图标主题是elementary,一个热心的团队自己做的,打磨的非常精致.本来我以前是用的模仿Mac的一个主题,后来容易被人鄙视,所以就改用这个了.也挺好,不比Mac的差.但是我也不能保证这些图标可能有抄袭的成分什么的,也不接受在评论中讨论是Mac抄windows还是windows抄Mac的话题什么的. 3.这是正题:关于软件 a:**开发工具:**其实除开visual studio,我们有很多开发工具可以选.比如,最常见的vim.这里我就顺便秀一下我的vim.我主要装了这么几个插件:superTab,snipmate,zencoding. 很多人即使做服务器端开发也要用zend这个玩意,并且吧,还给不起钱,用破解版.他们对zend忠贞不二的原因是,记不住变量名,因此需要zend的自动被全功能.其实这个有了supertab后很简单: <img src="http://pic.yupoo.com/162cm/050878fe7e83/small.jpg" alt="vim" loading="lazy"> 另外,vim的snipmates插件还能做到类似textmate的snippets功能.也秀一下: 新建一个php文件.输入fun,紧接着按tab键: <img src="http://pic.yupoo.com/162cm/399658fe7f8d/small.jpg" alt="vim-snipmates1" loading="lazy"> 按了tab键之后就成了这样: <img src="http://pic.yupoo.com/162cm/516468fe7fe8/medium.jpg" alt="vim snipmates2" loading="lazy"> 直接输函数,按tab键,接着输函数内容.注意,这里自动补全的内容我稍做了调整,如果您也要做调整,请修改~/.vim/snippets/php.snippets文件. zencoding的用法是这样的: 新建一个html文件,新起一行输入:</p>
 <p>html&gt;body&gt;div#main-wrapper&gt;ul.general-nav&gt;li.no-list</p>
 <p>按Ctrl-Y再按逗号,就会补全成为:</p>
 <html>
@@ -109,31 +101,45 @@
 <html> <body> <div id="main-wrapper"> <ul class="general-nav"> <li class="no-list"></li> </ul> </div> </body> </html>
 <p>怎么样,很省事吧. b.<strong>开发语言</strong>了.嗯,这个我就这么说吧,我了解很多大公司的服务器端环境,基本上就知道稍大一点的用windows做服务器的就只有两种情况:一是被逼的,比如一些财经类的接收数据的....因为用卫星天线什么的收数据,只有windows的驱动.还有一种,是跟微软合作紧密,而且一开始就用的windows的系统,即便如此,他们也为windows服务器的高昂费用和不稳定性深感苦恼.我知道的这因为后一种原因上windows服务器系统的两家公司,后来都上了一半的linux机器做server. (题外话,有不少技术人员主导的创业,一开始选型的时候头脑不清醒,一种选择了windows做网站服务器后来不稳定,经常出问题.一种选择了python/ruby类的新技术,结果后来招不来人,来了人也给不起工资.我建议是,这些技术人员,要么对学新技术感到力不从心,没兴趣,要么没有团队精神.如果新创业,我建议就主流技术好了,php,jsp都行. .net吧,成本太高,一个lincense几万呢. rubyonrails呢,太新潮,团队一时半会成不了规模.) 既然服务器都用*nix系统,那你的笔记本,最好换成linux是不是?熟悉熟悉环境呗. c.<strong>日常工作</strong> 如果您说,管理伤务太重,太多需要做PPT,画甘特图啥的,那你基本已经不是网站开发程序员了,不是受众了.如果将来您升成CEO,每天陪银行家打打高尔夫,没事去欧洲参加个达沃斯论坛什么的就行了,电脑也不需要了呀. 顺便说下,linux下的一些跟日常办公相关的替代工具(这些是我正在用的:) 邮件客户端,如果懒得换,用默认的evolution就挺好.基本就是一个outlook的翻版.我以前用它.并且用一个叫taque的GTD工具,把任务存在evolution-data-server里,这样evolution也可以提醒我.我现在用的是thunderbird 3 beta.非常好用,搜索功能很强大,界面也很漂亮.强烈五星级推荐.如果您也是苹果界面爱好者,您可以装上thunderbird的iLeopard-Mail 皮肤,很漂亮.thunderbird从2到3的这个大版本升级,很是让人惊喜. 项目管理:这个,默认的,planner.没啥好说的,我也用.团队小,用着很好,没啥不适. 截图工具:要给QA截个图报个bug?没问题,用shutter.支持截全屏,截指定窗口,截指定程序的菜单,截指定选区,截一个tips,截一个网页等,截完可以加标注,还可以一键上传到几个图片共享站和FTP站点.我需要的它全有. 网页和图片三剑客:这个,本来有gimp,但是我不习惯用.我用wine来模拟adobe的一全套软件:fireworks,dreamworks,photoshop. Macromedia是个好同志,啥东东都能用wine完美运行.而且这几个软件一来就可以试用上一个月.我一般都懒得找什么破解之类的,我就不停地试用,不停地重装(哥有毅力吧).wine工作得很好,速度也很快(我感觉比xp下快,就是不敢用wine跑IE6,那个超慢,IE7还可以接受).这么搞图片,猥琐是猥琐了点,不过我真的很喜欢~ 我唯一的遗憾是:不能native地运行旺旺.虽然做为一个阿里系的,我仍然要鄙视一下阿里软件,到现在也没出一个支持mac或是linux的旺旺.这个是上班必须的,很痛苦.当然,如果你不是阿里巴巴的,也就没这个痛苦. (另外还有点不爽的事,内网证书只能在xp下导入,无法搞到linux去,不爽) <strong>其他工具:</strong> Gnome-do:似乎是Linux 版的QuickSilver. 强烈推荐.这个窗口比较特殊,自动隐藏,不知道怎么截图.但是仍然强力推荐. Docky:本身是gnome-do实现Dock效果的一套皮肤,后来独立出来,成为一个单独的软件.我觉得开发者很有功底,功能够用就好,简单极致,跟gnome-do一样,默认功能就够了, 一般人不用去做配置,这个跟一般linux程序还真不一样.那什么openbox,e17啥的,不配置简直没法用了. easystroke: 是一个鼠标手势工具.我有一个汉王手写笔(鄙视我吧.....),用它来配置了,画个e就是启动chrome上网,画个叉是关闭窗口,画个波浪线是firefox上网.偶而无聊了偷偷懒.没什么大用.用鼠标也可以. tomby: linuxer们人手一个,不说了.</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/1016/">
-                  <h3 class="post-title">
-                    手头有PHP的职位一大堆,人才大把大把地来吧
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/1016/">
+              <h3 class="post-title">
+                下一篇：手头有PHP的职位一大堆,人才大把大把地来吧
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -143,8 +149,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

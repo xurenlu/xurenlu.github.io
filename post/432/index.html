@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Hust牛人之&#34;郭启睿&#34;(awflasher) | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="写这篇，压力挺大。 老覃毕竟比我大一点点,而且老覃的经历可以说还是带一点偶然性。aw就比我小了，在他面前，压力大得多了。 aw的简历在这里.aw的学习成绩比我好，这就不说了。我一向不肯承认学习成绩比我好的人:( 但是做东西确实不错。 大学的..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Hust牛人之&#34;郭启睿&#34;(awflasher)</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-07-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p>写这篇，压力挺大。 <a href="http://www.162cm.com/archives/431.html">老覃</a>毕竟比我大一点点,而且老覃的经历可以说还是带一点偶然性。aw就比我小了，在他面前，压力大得多了。 aw的简历在<a href="http://www.awflasher.com/blog/archives/83">这里</a>.aw的学习成绩比我好，这就不说了。我一向不肯承认学习成绩比我好的人:( 但是做东西确实不错。 大学的时候，aw在校园门户网站做flash,开始学习UI/UE,而我了无生气地在混日子。我大学唯一认真过的时间有两段，一段是泡在图书馆里看了一学期的书，当然这一学期不怎么上课的教训也是惨痛的，我挂了两科，还有几科险挂。这段日子我在图书馆里看得最多的书是java类的，但是当时没电脑，没机会实战，所以到现在为止看java程序我没问题，但让我写我还是什么都不会。我知道用ruby,用open(&quot;file&quot;,&quot;r&quot;).read()就可以读入文件，但是java我没概念。 另一段日子，是做毕业设计。当时的课题是用Ansys做有限元分析，因为国内相关资料奇缺，所以只好求助于网络。图书馆里弄到了几本书，但是可气的就是，全部是翻译的这个软件自带的帮助文档。翻译得好也就算了，问题在于，这帮人不仅翻译水平不咱的，照着人家帮助手册抄命令也抄错。我很卖力地啃了一些英文文档，还四处整理出来一些。后来觉得这些东西放我硬盘里可惜，就用Dreamweaver用三天时间借自动生成代码功能弄出一个小文章系统，把这些资料放了上去。你永远想不到，这类资料是多么受欢迎，网站放出来没多久，访问人数哗哗哗地上涨。那时Google adsence上，Ansys的每次点击能给站长带来的广告费是1美元。可惜网站以使用的动网论坛数次被黑，最后域名被抢注而结束。 这两段日子以后，我的大学是一处空白。 而aw同学的生活则比我好得多，因为某件事件的打击，aw结束了我那样的晃荡日子，玩命地学。未出校园，aw已经在Flash圈出小有名气。 当然说aw牛，不光是指他的flash造诣。作为他的同学和朋友,我知道他有两方面是不错的： 1. 非常极力。而且，肯投入。4月20号，我和老覃，<a href="http://www.tuniu.com">途牛</a>的CEO于敦德一起去长城玩。aw来的时候，疲惫不堪，眼圈发黑。他老人家原来是头天晚上干活到四点，早上6天就又出发来陪我们。并且，作为他们公司的UI/UE组的team leader,他经常要自己为公司付出许多，帮新同事解决住地之类的事啦，自己掏腰包解决团队住宿问题什么的事情他都干。所以，雇到他的公司，都是幸运的。 2.善于个人品牌，信用的建设。在个人能力上，aw从来不低调。aw的人脉不错，他的博客现在人气也挺旺，不仅google adsence有收入，ms还接了一个分类信息网站的广告。注重个人品牌建设的，aw是我见到的做的最好的。 aw唯一缺的是，时间。再过三年看看。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/431/">
+              <h3 class="post-title">
+                下一篇：Hust牛人之&#34;覃健祥&#34;
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Hust牛人之&#34;郭启睿&#34;(awflasher)</h2>
-            <div class="post-date">2007-07-26</div>
-            
-            <div class="post-content" v-pre>
-              <p>写这篇，压力挺大。 <a href="http://www.162cm.com/archives/431.html">老覃</a>毕竟比我大一点点,而且老覃的经历可以说还是带一点偶然性。aw就比我小了，在他面前，压力大得多了。 aw的简历在<a href="http://www.awflasher.com/blog/archives/83">这里</a>.aw的学习成绩比我好，这就不说了。我一向不肯承认学习成绩比我好的人:( 但是做东西确实不错。 大学的时候，aw在校园门户网站做flash,开始学习UI/UE,而我了无生气地在混日子。我大学唯一认真过的时间有两段，一段是泡在图书馆里看了一学期的书，当然这一学期不怎么上课的教训也是惨痛的，我挂了两科，还有几科险挂。这段日子我在图书馆里看得最多的书是java类的，但是当时没电脑，没机会实战，所以到现在为止看java程序我没问题，但让我写我还是什么都不会。我知道用ruby,用open(&quot;file&quot;,&quot;r&quot;).read()就可以读入文件，但是java我没概念。 另一段日子，是做毕业设计。当时的课题是用Ansys做有限元分析，因为国内相关资料奇缺，所以只好求助于网络。图书馆里弄到了几本书，但是可气的就是，全部是翻译的这个软件自带的帮助文档。翻译得好也就算了，问题在于，这帮人不仅翻译水平不咱的，照着人家帮助手册抄命令也抄错。我很卖力地啃了一些英文文档，还四处整理出来一些。后来觉得这些东西放我硬盘里可惜，就用Dreamweaver用三天时间借自动生成代码功能弄出一个小文章系统，把这些资料放了上去。你永远想不到，这类资料是多么受欢迎，网站放出来没多久，访问人数哗哗哗地上涨。那时Google adsence上，Ansys的每次点击能给站长带来的广告费是1美元。可惜网站以使用的动网论坛数次被黑，最后域名被抢注而结束。 这两段日子以后，我的大学是一处空白。 而aw同学的生活则比我好得多，因为某件事件的打击，aw结束了我那样的晃荡日子，玩命地学。未出校园，aw已经在Flash圈出小有名气。 当然说aw牛，不光是指他的flash造诣。作为他的同学和朋友,我知道他有两方面是不错的： 1. 非常极力。而且，肯投入。4月20号，我和老覃，<a href="http://www.tuniu.com">途牛</a>的CEO于敦德一起去长城玩。aw来的时候，疲惫不堪，眼圈发黑。他老人家原来是头天晚上干活到四点，早上6天就又出发来陪我们。并且，作为他们公司的UI/UE组的team leader,他经常要自己为公司付出许多，帮新同事解决住地之类的事啦，自己掏腰包解决团队住宿问题什么的事情他都干。所以，雇到他的公司，都是幸运的。 2.善于个人品牌，信用的建设。在个人能力上，aw从来不低调。aw的人脉不错，他的博客现在人气也挺旺，不仅google adsence有收入，ms还接了一个分类信息网站的广告。注重个人品牌建设的，aw是我见到的做的最好的。 aw唯一缺的是，时间。再过三年看看。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/431/">
-                  <h3 class="post-title">
-                    Hust牛人之&#34;覃健祥&#34;
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

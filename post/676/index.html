@@ -1,130 +1,136 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>珍爱生命 远离IT 之 乙肝 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content=".... 听说有两个熟人得了乙肝,于是也去医院做个检查,上周五去做的，这周去，拿到化验单子上有三个加号，很吃惊，心想，难道这是传说中的小三阳吗?心里顿时特别难过，不过还是想，这单子我也看不懂，还是去问医生吧。他们才是专业的。 于是挂了号，去..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">珍爱生命 远离IT 之 乙肝</h2>
-            <div class="post-date">2008-08-17</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">珍爱生命 远离IT 之 乙肝</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-08-17</span>
             
-            <div class="post-content" v-pre>
-              <p>.... 听说有两个熟人得了乙肝,于是也去医院做个检查,上周五去做的，这周去，拿到化验单子上有三个加号，很吃惊，心想，难道这是传说中的小三阳吗?心里顿时特别难过，不过还是想，这单子我也看不懂，还是去问医生吧。他们才是专业的。 于是挂了号，去消化内科问了一下。医生是个年轻MM,看了一下，说，这是完全正常的，不用担心。抗体呈阳性，说明以前“得过肝炎，现在有了抗体。我问了下疫苗，她说不用打疫苗。 回来突然想起，“说明原来得过肝炎”，啥意思啊？我原来没得过肝炎啊?....回来一查，原来网上有些医生们也这么说。其实准确的说法应该是打过疫苗. 至于说有三个加号，也完全没事。并不是有三个加号就是有问题的，一般的化验单上，1,3为抗原，,2,4,5项为抗体。245项带加号，说明抗体活跃，一般来说是不会再得乙肝。如果1,4,5项带加号，则是俗称的小三阳。如果1,3,5带加号，则是俗称的大三阳.还好我的化验单子上是2,4,5项加号。 大小三阳都是反映体内乙肝病毒数量和活跃程度的一个数据，只是反映人体内携带病毒的状况，都不能反映肝脏功能的正常与否，因而不能用来判断病情的轻重。 家释疑：人们常说的某人“大三阳”、“小三阳”，是处于乙肝病毒携带状态，只是说他感染了乙肝病毒或是携带乙肝病毒，并不能说明这人就得了乙型肝炎，是乙肝病毒携带者而非患病者。 “大三阳”、“小三阳”伴有转氨酶异常才诊断为乙肝。 一般认为，“大三阳”表示病毒复制活跃，常同时伴有乙肝病毒DNA(脱氧核糖核酸)阳性，说明具有较强的传染性，同时演变成慢性乙型肝炎的可能性也比较大。 小三阳表示病毒已基本停止复制，传染性比“大三阳”小，若乙肝病毒DNA阴性，则基本不再具有传染性。 有部分人的“大三阳”经过数年后，可自然转为“小三阳”。 曾经感染过乙肝，痊愈后自己产生抗体的人，就不必再注射疫苗了。而且，自己产生抗体的有效期要比注射疫苗的有效期长，理论上是终生有效。 关于疫苗：</p>
+          </div>
+          <div class="post-content">
+            <p>.... 听说有两个熟人得了乙肝,于是也去医院做个检查,上周五去做的，这周去，拿到化验单子上有三个加号，很吃惊，心想，难道这是传说中的小三阳吗?心里顿时特别难过，不过还是想，这单子我也看不懂，还是去问医生吧。他们才是专业的。 于是挂了号，去消化内科问了一下。医生是个年轻MM,看了一下，说，这是完全正常的，不用担心。抗体呈阳性，说明以前“得过肝炎，现在有了抗体。我问了下疫苗，她说不用打疫苗。 回来突然想起，“说明原来得过肝炎”，啥意思啊？我原来没得过肝炎啊?....回来一查，原来网上有些医生们也这么说。其实准确的说法应该是打过疫苗. 至于说有三个加号，也完全没事。并不是有三个加号就是有问题的，一般的化验单上，1,3为抗原，,2,4,5项为抗体。245项带加号，说明抗体活跃，一般来说是不会再得乙肝。如果1,4,5项带加号，则是俗称的小三阳。如果1,3,5带加号，则是俗称的大三阳.还好我的化验单子上是2,4,5项加号。 大小三阳都是反映体内乙肝病毒数量和活跃程度的一个数据，只是反映人体内携带病毒的状况，都不能反映肝脏功能的正常与否，因而不能用来判断病情的轻重。 家释疑：人们常说的某人“大三阳”、“小三阳”，是处于乙肝病毒携带状态，只是说他感染了乙肝病毒或是携带乙肝病毒，并不能说明这人就得了乙型肝炎，是乙肝病毒携带者而非患病者。 “大三阳”、“小三阳”伴有转氨酶异常才诊断为乙肝。 一般认为，“大三阳”表示病毒复制活跃，常同时伴有乙肝病毒DNA(脱氧核糖核酸)阳性，说明具有较强的传染性，同时演变成慢性乙型肝炎的可能性也比较大。 小三阳表示病毒已基本停止复制，传染性比“大三阳”小，若乙肝病毒DNA阴性，则基本不再具有传染性。 有部分人的“大三阳”经过数年后，可自然转为“小三阳”。 曾经感染过乙肝，痊愈后自己产生抗体的人，就不必再注射疫苗了。而且，自己产生抗体的有效期要比注射疫苗的有效期长，理论上是终生有效。 关于疫苗：</p>
 <blockquote>
 <p>对于健康的成年人来说，注射乙肝疫苗是没有坏处的。特别是医护人员、记者、银行职员等与外界接触比较多的高危人群，最好能在身体没有抗体时注射乙肝疫苗。 一般说来，新生儿打过三针乙肝疫苗，半年后可产生抗体，直到上初中前都不用再打疫苗了。成年人打过三针疫苗后，也是半年后产生抗体。 但注射疫苗后要定期到医院进行检查，看是否真的产生了抗体，如果没有，还要适当加量。即使产生了抗体，也要在5至7年后再进行一次检查，看抗体是否还存在。</p>
 </blockquote>
 <p>所以: 一定要打疫苗...(现在携带者太多了) 善待大小三阳，就算你没打疫苗，说个话吃个饭并不会传染，乙肝患者是可以和有了抗体的人结婚的... (实际上，艾滋病患者也是可以和正常人结婚的,当然需要医学指导) (如果发现是大小三阳）不要恐慌...大小三阳是可以转阴的... (如果发现是大小三阳）不要吃这样那样的西药,乙肝基本无法冶疗.但是完全可控...</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/674/">
-                  <h3 class="post-title">
-                    记忆力严重退化
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/674/">
+              <h3 class="post-title">
+                下一篇：记忆力严重退化
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -134,8 +140,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

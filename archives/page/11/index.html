@@ -1,603 +1,640 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
-<title>文章归档 | 黄滚的Blog</title>
+<title>黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+        <div class="content-container">
+          
           
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2007</h2>
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/344/">
-                      <h2 class="post-title">
-                        写在2007年的第一天
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2006</h2>
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/343/">
-                      <h2 class="post-title">
-                        links for 2006-12-25
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/342/">
-                      <h2 class="post-title">
-                        累而充实的一个周末
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/341/">
-                      <h2 class="post-title">
-                        links for 2006-12-22
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/340/">
-                      <h2 class="post-title">
-                        谷歌要做点公益活动了
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/339/">
-                      <h2 class="post-title">
-                        第一次被骂，居然这么恶毒
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/338/">
-                      <h2 class="post-title">
-                        links for 2006-12-21
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/335/">
-                      <h2 class="post-title">
-                        让Wordpress的管理登陆更快！
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/334/">
-                      <h2 class="post-title">
-                        好大一[陀]公益广告
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/333/">
-                      <h2 class="post-title">
-                        家有phper初长成
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/332/">
-                      <h2 class="post-title">
-                        吴莹莹...
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/331/">
-                      <h2 class="post-title">
-                        不用申请APIkey，也能用akismet让wordpress的垃圾评论大大减少
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/330/">
-                      <h2 class="post-title">
-                        用python开发SeachEngin spiders的构想:
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/329/">
-                      <h2 class="post-title">
-                        该死的垃圾评论
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/327/">
-                      <h2 class="post-title">
-                        不爽的几件事－我的网络生活:
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/326/">
-                      <h2 class="post-title">
-                        张钰事件..
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/324/">
-                      <h2 class="post-title">
-                        张钰、流氓燕、木子美们帮了谁？
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/323/">
-                      <h2 class="post-title">
-                        Yahoo 这次算是出位了，跟baidu肉博
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/322/">
-                      <h2 class="post-title">
-                        我的系统光荣了  电脑用不了了  是yahoo toolbar和safe360的错
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/321/">
-                      <h2 class="post-title">
-                        sohu的文品测试试用手记
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/320/">
-                      <h2 class="post-title">
-                        Google 怎么分析出我叫什么名字的？
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/319/">
-                      <h2 class="post-title">
-                        旧诗杂烩
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/318/">
-                      <h2 class="post-title">
-                        计划放到我的框架中去的一个所见即所得编辑器的prototype
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/315/">
-                      <h2 class="post-title">
-                        Deskor文档：从零开始写一个deskor模块
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/314/">
-                      <h2 class="post-title">
-                        Desko文档：关于程序安装
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/313/">
-                      <h2 class="post-title">
-                        Feeling Lonely
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/312/">
-                      <h2 class="post-title">
-                        开源项目寻求协助:
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/311/">
-                      <h2 class="post-title">
-                        公司招全职员工(php 开发工程师/网页美工/网站编辑):
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/310/">
-                      <h2 class="post-title">
-                        I am so upset....
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/309/">
-                      <h2 class="post-title">
-                        跟覃总聊了好久
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/308/">
-                      <h2 class="post-title">
-                        风
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/306/">
-                      <h2 class="post-title">
-                        极度缺钱中...
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/305/">
-                      <h2 class="post-title">
-                        给XOOPS加一个Hack,以增加某些AJAX应用支持...
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/304/">
-                      <h2 class="post-title">
-                        xoops:article模块加入所见即所得功能支持(用TinyMCE)
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/303/">
-                      <h2 class="post-title">
-                        cake的安装
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/302/">
-                      <h2 class="post-title">
-                        CakePHP：基本知识..
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/301/">
-                      <h2 class="post-title">
-                        推荐一个小站:百度粉丝网:
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/300/">
-                      <h2 class="post-title">
-                        老婆大人的博客也开通了!
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/299/">
-                      <h2 class="post-title">
-                        如何用php和AJAX来创建mailing List （译文，勿转载。）
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/298/">
-                      <h2 class="post-title">
-                        道可道，非常道---PHP模板技术
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-
-          <div class="pagination-container">
+<div class="archives-container">
   
-    <a href="http://162cm.com/archives/page/10/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
+    <h2 class="year">2007</h2>
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/344/">
+            <h2 class="post-title">
+              写在2007年的第一天
+              <small>2007-01-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
-  
-    <a href="http://162cm.com/archives/page/12/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+    <h2 class="year">2006</h2>
+    
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/343/">
+            <h2 class="post-title">
+              links for 2006-12-25
+              <small>2006-12-26</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/342/">
+            <h2 class="post-title">
+              累而充实的一个周末
+              <small>2006-12-24</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/341/">
+            <h2 class="post-title">
+              links for 2006-12-22
+              <small>2006-12-23</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/340/">
+            <h2 class="post-title">
+              谷歌要做点公益活动了
+              <small>2006-12-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/339/">
+            <h2 class="post-title">
+              第一次被骂，居然这么恶毒
+              <small>2006-12-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/338/">
+            <h2 class="post-title">
+              links for 2006-12-21
+              <small>2006-12-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/335/">
+            <h2 class="post-title">
+              让Wordpress的管理登陆更快！
+              <small>2006-12-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/334/">
+            <h2 class="post-title">
+              好大一[陀]公益广告
+              <small>2006-12-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/333/">
+            <h2 class="post-title">
+              家有phper初长成
+              <small>2006-12-20</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/332/">
+            <h2 class="post-title">
+              吴莹莹...
+              <small>2006-12-17</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/331/">
+            <h2 class="post-title">
+              不用申请APIkey，也能用akismet让wordpress的垃圾评论大大减少
+              <small>2006-12-17</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/330/">
+            <h2 class="post-title">
+              用python开发SeachEngin spiders的构想:
+              <small>2006-12-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/329/">
+            <h2 class="post-title">
+              该死的垃圾评论
+              <small>2006-12-12</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/327/">
+            <h2 class="post-title">
+              不爽的几件事－我的网络生活:
+              <small>2006-12-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/326/">
+            <h2 class="post-title">
+              张钰事件..
+              <small>2006-11-23</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/324/">
+            <h2 class="post-title">
+              张钰、流氓燕、木子美们帮了谁？
+              <small>2006-11-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/323/">
+            <h2 class="post-title">
+              Yahoo 这次算是出位了，跟baidu肉博
+              <small>2006-11-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/322/">
+            <h2 class="post-title">
+              我的系统光荣了  电脑用不了了  是yahoo toolbar和safe360的错
+              <small>2006-11-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/321/">
+            <h2 class="post-title">
+              sohu的文品测试试用手记
+              <small>2006-11-16</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/320/">
+            <h2 class="post-title">
+              Google 怎么分析出我叫什么名字的？
+              <small>2006-11-16</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/319/">
+            <h2 class="post-title">
+              旧诗杂烩
+              <small>2006-11-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/318/">
+            <h2 class="post-title">
+              计划放到我的框架中去的一个所见即所得编辑器的prototype
+              <small>2006-11-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/315/">
+            <h2 class="post-title">
+              Deskor文档：从零开始写一个deskor模块
+              <small>2006-11-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/314/">
+            <h2 class="post-title">
+              Desko文档：关于程序安装
+              <small>2006-11-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/313/">
+            <h2 class="post-title">
+              Feeling Lonely
+              <small>2006-11-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/312/">
+            <h2 class="post-title">
+              开源项目寻求协助:
+              <small>2006-11-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/311/">
+            <h2 class="post-title">
+              公司招全职员工(php 开发工程师/网页美工/网站编辑):
+              <small>2006-11-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/310/">
+            <h2 class="post-title">
+              I am so upset....
+              <small>2006-11-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/309/">
+            <h2 class="post-title">
+              跟覃总聊了好久
+              <small>2006-11-05</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/308/">
+            <h2 class="post-title">
+              风
+              <small>2006-11-05</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/306/">
+            <h2 class="post-title">
+              极度缺钱中...
+              <small>2006-11-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/305/">
+            <h2 class="post-title">
+              给XOOPS加一个Hack,以增加某些AJAX应用支持...
+              <small>2006-11-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/304/">
+            <h2 class="post-title">
+              xoops:article模块加入所见即所得功能支持(用TinyMCE)
+              <small>2006-11-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/303/">
+            <h2 class="post-title">
+              cake的安装
+              <small>2006-11-02</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/302/">
+            <h2 class="post-title">
+              CakePHP：基本知识..
+              <small>2006-11-02</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/301/">
+            <h2 class="post-title">
+              推荐一个小站:百度粉丝网:
+              <small>2006-11-02</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/300/">
+            <h2 class="post-title">
+              老婆大人的博客也开通了!
+              <small>2006-11-02</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/299/">
+            <h2 class="post-title">
+              如何用php和AJAX来创建mailing List （译文，勿转载。）
+              <small>2006-11-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/298/">
+            <h2 class="post-title">
+              道可道，非常道---PHP模板技术
+              <small>2006-10-26</small>
+            </h2>
+          </a>
+        </article>
+      
+    
   
 </div>
 
+
         </div>
+
+        <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
       </div>
-    </div>
+      <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -611,7 +648,6 @@ var app = new Vue({
 
 
 
-
-
+    </div>
   </body>
 </html>

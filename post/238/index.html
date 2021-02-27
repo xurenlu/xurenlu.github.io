@@ -1,107 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>最nb的个人网站　中国个人网站研究之（一） | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="网站名字：HAO123网址之家
-网址：http://www.hao123.com
-建站时间：1999年5月
-世界排名：88
-站长：Li XingPin
-站长年龄：22岁
-e-mail: hao123com0608@21cn.com
-估计收入..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">最nb的个人网站　中国个人网站研究之（一）</h2>
-            <div class="post-date">2004-10-08</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">最nb的个人网站　中国个人网站研究之（一）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2004-10-08</span>
             
-            <div class="post-content" v-pre>
-              <p>网站名字：HAO123网址之家</p>
+          </div>
+          <div class="post-content">
+            <p>网站名字：HAO123网址之家</p>
 <p>网址：http://www.hao123.com</p>
 <p>建站时间：1999年5月</p>
 <p>世界排名：88</p>
@@ -136,31 +121,45 @@ e-mail: hao123com0608@21cn.com
 <p>Hao123的域名策略： hao123系列网站中的域名都没有什么特速的意思，但是都比较好记。这年代，又有意思，又短的域名早就光了，所以给网站找域名，最好还是找比较简单好记的。Hao123的这种域名策略可以只得我们的学习，字母加数字，及不长，又好记（QQ163.COM / OICQ88. COM / TT67.COM ）。我今年就帮朋友起了 许多这样的域名。比如帮比如手机之家（http://www.sj007.com ）网络营销资源 （http://www.cn006.com ） 电子商务指南 （http://www.web136.net ）等等.</p>
 <p>HAO123的盈利模式：hao123的盈利模式和中国大多个人网站都一样，很直白简单，就靠各类加盟方式的广告。 虽然hao123目前流量很大，在其里面推广网站的效果非常好，但是hao123并没有进行收费登陆，宁就保持自己的原则，多少次一些朋友让我朋友他们登陆hao123.com 说花钱无所谓，但是，hao123都是有选择的收录。（电子商务指南网站的流量统计之中，hao123带来的流量仅仅次于GOOGLE和百度，3721带来的流量，电子商务指南目前收录在hao123的一个内页，同时打入电子商务，Google排名 等词，都排在Google和百度前面）</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/239/">
-                  <h3 class="post-title">
-                    做了一个asp版本的template
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/239/">
+              <h3 class="post-title">
+                下一篇：做了一个asp版本的template
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -170,8 +169,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

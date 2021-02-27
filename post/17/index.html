@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>很想说…. | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="1.赵总说:你是干净利索，昱龙是心肠太好太软，做事拖泥带水。其实我觉得我挺婆婆妈妈的。现在一天也能出好几天博。郑渊洁一天”勃”好几次，大约最多一天能勃5到7次，所以被我鄙视（虽然是作家，但这频率也太高了，容易早衰啊，年轻人，不要纵欲啊，呵呵..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">很想说….</h2>
-            <div class="post-date">2006-05-25</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">很想说….</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-05-25</span>
             
-            <div class="post-content" v-pre>
-              <p>1.赵总说:你是干净利索，昱龙是心肠太好太软，做事拖泥带水。其实我觉得我挺婆婆妈妈的。现在一天也能出好几天博。郑渊洁一天”勃”好几次，大约最多一天能勃5到7次，所以被我鄙视（虽然是作家，但这频率也太高了，容易早衰啊，年轻人，不要纵欲啊，呵呵）,但我还是保留他的订阅。但人总有表达的欲望的，想说，就说。<br>
+          </div>
+          <div class="post-content">
+            <p>1.赵总说:你是干净利索，昱龙是心肠太好太软，做事拖泥带水。其实我觉得我挺婆婆妈妈的。现在一天也能出好几天博。郑渊洁一天”勃”好几次，大约最多一天能勃5到7次，所以被我鄙视（虽然是作家，但这频率也太高了，容易早衰啊，年轻人，不要纵欲啊，呵呵）,但我还是保留他的订阅。但人总有表达的欲望的，想说，就说。<br>
 2.我今天看赵总不停研究新聚，就说:”你快成web2.0专家了”.没想到赵总马上出来说:”我们的首席架构师说，我是web2.0的专家了”.得，我们成了互相吹捧了。（everfly应该请我吃饭，因为在我的平鼓吹下同事们都开始用新聚了去发现世界了。）<br>
 3.某网站给鲁迅开博客了，不用去找，我也能知道地址是HTTP://blog.****.com.cn/m/luxun<br>
 因为我了解这个浪人，如果你是普通人，就只能给一个blog.****.com.cn/u/########的地址。”#”号一般是数字组合,但名人就可以自选名字。名人嫖也有身份的，可以不用套.不过对死人也能主动送上门的小姐，我还闻所未闻。但这次显然这个小姐投错了怀抱，找错了对象。当今社会，没有人有资格去玷污鲁迅。<br>
@@ -109,31 +101,45 @@ b.所有用户空间升为100G!<br>
 除去周六，周日休息日，一个用户要用完这100G空间，需要在所有工作日不吃不喝不睡觉上传一个月。如果假设用户一天上传8个小时，需要三个月。再考虑到用户不可能一直是上传大文件，所有有重新连接服务器等情况，还有用户整理的时间，得出一个结论:个人用户需要手不停蹄地传上半年到一年时间。再者，一般人的硬盘估计在60G左右,想象一下，有可能，有必要把你的整个硬盘放到blogcn上去吗?<br>
 再算成本:假设1G硬盘的初始购买成本，维护本成是10元钱，那么每一个用户blogcn需要投入1000元，假设有100,000用,就需要blogcn投入1000*100,000=100,000,000=1亿人氏币。而这只算了硬盘，没有算附加的CPU,内存等其他硬件。当然，对于考虑到中国有13亿人，数亿网民，10W用户已经是相当少的一部分了。如果加上这100*100000=10,000,000G文件在网络上产生的网络带宽的费用，就可以得出一个结论:blogcn就在扯白.(哈，我终于没有骂人).不过从商业宣传的角度来说，它这样做是对,可能起到相当的效果。但是不得不说，此广告有欺诈之嫌。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/18/">
-                  <h3 class="post-title">
-                    新聚果然动作快
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/18/">
+              <h3 class="post-title">
+                下一篇：新聚果然动作快
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -143,8 +149,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

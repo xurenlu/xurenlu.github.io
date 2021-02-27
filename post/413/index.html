@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Mysql server tuning(译文) | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="从某个英文pdf文档译过来的,很久了，还是Mysql Conference 2007时的PDF. (如果能找到，我把原文地址和pdf给出来) 向原作者致谢.... 调整Server Config时需要考虑的事情 设置是针对负载的，不存在说有..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Mysql server tuning(译文)</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-06-29</span>
+            
+          </div>
+          <div class="post-content">
+            <p>从某个英文pdf文档译过来的,很久了，还是Mysql Conference 2007时的PDF. (如果能找到，我把原文地址和pdf给出来) 向原作者致谢.... 调整Server Config时需要考虑的事情 设置是针对负载的，不存在说有什么针对一个16GB内存的优化方案这种说法. 存储引擎的选择或是混用是很重要的 有些设置取决于您的硬件和操作系统。 Approaching?tuning 您只需要设置一部分，其余的一些要具体分析（这些也很难决定如何去调整） 有些设置会影响Mysql的行为和安全，要小心 有些设置是可以基于连接的，利用这一点! 首先优化您的查询，否则您需要重新检阅您的设置。 常见错误: 运行默认设置。（当然如果您用来在您的本儿上存您的DVD收集资料， 那当然可以） 直接使用其他人的My.conf文件，都没检查一下是否符合您的需求。 虽然只有一两个查询需要，您仍为它设置了一个巨大的全局设置。您可以这样： SET sort_buffer_size=128000000; set sort_buffer_size=DEFAULT 我们能得到的信息： SHOW STATUS SHOW INNODB STATUS 操作系统的命令比如：vmstat,iostat,mpstat 使用内存: 为Mysql server分配更多内存常常带来显著的性能提升. 但是分配过多的内存会损失性能甚至是稳定性 检查一下： Swapping 查看swap IO ，这比简单地使用swap space要好 使用了32位以上的地址(确保OS和mysql server都是64位的) 战胜Swapping 有些操作系统会使用Swap,虽然内存充足。 处理好IO cache和swap间的平衡。 设置VM子系统为只有在最后一次使用resort的时候才swap tune VM subsystem to use swap only as last resort echo 1 &gt;/proc/sys/vm/swappiness 如果在linux上使用innodb可以用直接磁盘IO: innodb_flush_method=O_DIRECt 了解一下变量的单位： table_cache=128M 错了，它的单位是用个(entries)来衡量的。 key_buffer_size=1024 错了，key buffer size要用bytes来设定。 innodb_max_dirty_pages_pct=8GB 这个设置准确无误。 了解作用域和内存分配规则 key_buffer_size 全局的，由所有线程共用。 sort_buffer_size 需要排序时将内存分配给线程。 read_buffer_size: 一次性就分配指定大小的内存，虽然可能更小的内存就够了 过大的值反而会让事情慢得糟糕 更多的分配常常由OS来完成。 tmp_table_size: 指定一个最大值，在需要的时候会增长到这个值 。 调得过大也没什么事 细节: 关于SHOW STATUS show global status:了解服务器的全局状态。了解负载的好方法。在Mysql4.1和以下版本中唯一一个。 show local status: 查询/会话配置的好东西 从mysql 5.0开始能用 show status 默认就是这个 有些变量是全局的 也出现会在show status 的输出中 mysqladmin extended -i100 -r 抽样一下，看看Mysql server现在干了些什么，这是个好办法 Show status: aborted clients: 不用担心，许多程序都没有恰当地关闭连接。 aborted_connects: 可能意味着认证失败，网络超时或其他错误。 值得看一看，因为可能引起主机blocked out max_connect_errors=100000 可能意味着有人尝试暴力密码破解 binlog_cache_disk_use/binlog_cache_use bin log 溢出到磁盘的频率。 如果太频繁，需要增大--binlog_cache_size com_xxx: 按查询来了解服务器负载 查询可以是相当复杂多样的</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/412/">
+              <h3 class="post-title">
+                下一篇：升级了!Fedora  7 moonshine 升级成功
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Mysql server tuning(译文)</h2>
-            <div class="post-date">2007-06-29</div>
-            
-            <div class="post-content" v-pre>
-              <p>从某个英文pdf文档译过来的,很久了，还是Mysql Conference 2007时的PDF. (如果能找到，我把原文地址和pdf给出来) 向原作者致谢.... 调整Server Config时需要考虑的事情 设置是针对负载的，不存在说有什么针对一个16GB内存的优化方案这种说法. 存储引擎的选择或是混用是很重要的 有些设置取决于您的硬件和操作系统。 Approaching?tuning 您只需要设置一部分，其余的一些要具体分析（这些也很难决定如何去调整） 有些设置会影响Mysql的行为和安全，要小心 有些设置是可以基于连接的，利用这一点! 首先优化您的查询，否则您需要重新检阅您的设置。 常见错误: 运行默认设置。（当然如果您用来在您的本儿上存您的DVD收集资料， 那当然可以） 直接使用其他人的My.conf文件，都没检查一下是否符合您的需求。 虽然只有一两个查询需要，您仍为它设置了一个巨大的全局设置。您可以这样： SET sort_buffer_size=128000000; set sort_buffer_size=DEFAULT 我们能得到的信息： SHOW STATUS SHOW INNODB STATUS 操作系统的命令比如：vmstat,iostat,mpstat 使用内存: 为Mysql server分配更多内存常常带来显著的性能提升. 但是分配过多的内存会损失性能甚至是稳定性 检查一下： Swapping 查看swap IO ，这比简单地使用swap space要好 使用了32位以上的地址(确保OS和mysql server都是64位的) 战胜Swapping 有些操作系统会使用Swap,虽然内存充足。 处理好IO cache和swap间的平衡。 设置VM子系统为只有在最后一次使用resort的时候才swap tune VM subsystem to use swap only as last resort echo 1 &gt;/proc/sys/vm/swappiness 如果在linux上使用innodb可以用直接磁盘IO: innodb_flush_method=O_DIRECt 了解一下变量的单位： table_cache=128M 错了，它的单位是用个(entries)来衡量的。 key_buffer_size=1024 错了，key buffer size要用bytes来设定。 innodb_max_dirty_pages_pct=8GB 这个设置准确无误。 了解作用域和内存分配规则 key_buffer_size 全局的，由所有线程共用。 sort_buffer_size 需要排序时将内存分配给线程。 read_buffer_size: 一次性就分配指定大小的内存，虽然可能更小的内存就够了 过大的值反而会让事情慢得糟糕 更多的分配常常由OS来完成。 tmp_table_size: 指定一个最大值，在需要的时候会增长到这个值 。 调得过大也没什么事 细节: 关于SHOW STATUS show global status:了解服务器的全局状态。了解负载的好方法。在Mysql4.1和以下版本中唯一一个。 show local status: 查询/会话配置的好东西 从mysql 5.0开始能用 show status 默认就是这个 有些变量是全局的 也出现会在show status 的输出中 mysqladmin extended -i100 -r 抽样一下，看看Mysql server现在干了些什么，这是个好办法 Show status: aborted clients: 不用担心，许多程序都没有恰当地关闭连接。 aborted_connects: 可能意味着认证失败，网络超时或其他错误。 值得看一看，因为可能引起主机blocked out max_connect_errors=100000 可能意味着有人尝试暴力密码破解 binlog_cache_disk_use/binlog_cache_use bin log 溢出到磁盘的频率。 如果太频繁，需要增大--binlog_cache_size com_xxx: 按查询来了解服务器负载 查询可以是相当复杂多样的</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/412/">
-                  <h3 class="post-title">
-                    升级了!Fedora  7 moonshine 升级成功
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

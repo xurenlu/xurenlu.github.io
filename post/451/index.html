@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>php-APC介绍 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="前面几篇文章提到了APC.很多人问我:APC是什么?这里做个比较全面的介绍: APC,全称是Alternative PHP Cache,官方翻译叫&quot;可选PHP缓存&quot;,但我个人觉得应该叫&quot;另一个PHP缓存&quo..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">php-APC介绍</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-08-14</span>
+            
+          </div>
+          <div class="post-content">
+            <p>前面几篇文章提到了APC.很多人问我:APC是什么?这里做个比较全面的介绍: APC,全称是Alternative PHP Cache,官方翻译叫&quot;可选PHP缓存&quot;,但我个人觉得应该叫&quot;另一个PHP缓存&quot;.因为这个东西如果叫&quot;可选PHP缓存&quot;,容易给人一种可要可不要的,不怎么有用的错觉. APC的主页是:&lt;a href=&quot;http://pecl.php.net/package/apc&quot; mce_href=&quot;http://pecl.php.net/package/apc&quot;&gt;http://pecl.php.net/package/apc</a>.目前的版本是3.0.14,通过PECL安装,需要php4.3.0或更高版本. <b>APC的安装:</b> 一般是下载源代码然后phpize来编译安装,安装完以后在加上php.ini里加上 <coolcode> extension=apc.so </coolcode> 这么一行就行了. <b>APC的使用</b> APC的使用其实倒说不上.APC是个优化器,自安装之日起,就默默地在后台为您的PHP应用服务了.您的所有PHP代码会被缓存起来. 另外,APC可提供一定的内存缓存功能.但是这个功能并不是十分完美,有报告说如果频繁使用APC缓存的写入功能,会导致不可预料的错误.如果想使用这个功能,可以看看apc_fetch,apc_store等几个与apc缓存相关的函数. 从PHP5.2开始,APC引入了一个小甜饼,解决了困扰大家已久的大文件上传的进度条问题.具体请看看我这篇&lt;a href=&quot;http://www.162cm.com/archives/406.html&quot; mce_href=&quot;http://www.162cm.com/archives/406.html&quot;&gt;blog</a>. <b>APC的高级使用</b> 1.缓存期限: APC的缓存分两部分:系统缓存和用户数据缓存. 系统缓存是自动使用的,是指APC把PHP文件源码的编译结果缓存起来,然后在再次调用时先对比时间标记。如果未过期,则使用缓存代码运行。默认缓存3600s(一小时).但是这样仍会浪费大量CPU时间.因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0).不过如果这样设置,改运php代码后需要restart一下您的web服务器(比如apache...).目前对APC的性能测试一般指的是这一层cache; 用户数据缓存由用户在编写php代码时用apc_store和apc_fetch函数操作读取、写入的.如果量不大的话我建议可以使用一下.如果量大,我建议使用memcache会更好. 如果要享受APC带来的缓存大文件上传进度的特性,需要在php.ini中将apc.rfc1867设为1,并且在表单中加一个隐藏域APC_UPLOAD_PROGRESS,这个域的值可以随机生成一个hash,以确何唯一.具体例子请参见前面给出的链接. 2.状态控制和分析: APC的源码包自带了一个apc.php;您可以将这个文件上传到web服务器的某个目录下,用浏览器访问,这会显示当前的状态.我们可以从这里的表格分析当前的缓存状况,作出进一步优化. <a href="http://www.162cm.com/wp-content/uploads/2007/08/apc-info-clublocalhost2.png" title="apc-info-clublocalhost2.png"><img src="http://www.162cm.com/wp-content/uploads/2007/08/apc-info-clublocalhost2.png" alt="apc-info-clublocalhost2.png" loading="lazy"></a> 这是某test站点的状态.您可以慢慢分析,这个工具会提供很多有用的工具.比如您可以看到哪些文件经常被包含(访问),您缓存的哪个变量经常被读取,或经常被更新等. 最后顺便提一句,有独立报告说,APC的代码缓存、优化效果要高出zend优化器.就算不是真的,他开源而又免费,实在是一个相当不错的选择.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/447/">
+              <h3 class="post-title">
+                下一篇：某国警告中国:
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">php-APC介绍</h2>
-            <div class="post-date">2007-08-14</div>
-            
-            <div class="post-content" v-pre>
-              <p>前面几篇文章提到了APC.很多人问我:APC是什么?这里做个比较全面的介绍: APC,全称是Alternative PHP Cache,官方翻译叫&quot;可选PHP缓存&quot;,但我个人觉得应该叫&quot;另一个PHP缓存&quot;.因为这个东西如果叫&quot;可选PHP缓存&quot;,容易给人一种可要可不要的,不怎么有用的错觉. APC的主页是:&lt;a href=&quot;http://pecl.php.net/package/apc&quot; mce_href=&quot;http://pecl.php.net/package/apc&quot;&gt;http://pecl.php.net/package/apc</a>.目前的版本是3.0.14,通过PECL安装,需要php4.3.0或更高版本. <b>APC的安装:</b> 一般是下载源代码然后phpize来编译安装,安装完以后在加上php.ini里加上 <coolcode> extension=apc.so </coolcode> 这么一行就行了. <b>APC的使用</b> APC的使用其实倒说不上.APC是个优化器,自安装之日起,就默默地在后台为您的PHP应用服务了.您的所有PHP代码会被缓存起来. 另外,APC可提供一定的内存缓存功能.但是这个功能并不是十分完美,有报告说如果频繁使用APC缓存的写入功能,会导致不可预料的错误.如果想使用这个功能,可以看看apc_fetch,apc_store等几个与apc缓存相关的函数. 从PHP5.2开始,APC引入了一个小甜饼,解决了困扰大家已久的大文件上传的进度条问题.具体请看看我这篇&lt;a href=&quot;http://www.162cm.com/archives/406.html&quot; mce_href=&quot;http://www.162cm.com/archives/406.html&quot;&gt;blog</a>. <b>APC的高级使用</b> 1.缓存期限: APC的缓存分两部分:系统缓存和用户数据缓存. 系统缓存是自动使用的,是指APC把PHP文件源码的编译结果缓存起来,然后在再次调用时先对比时间标记。如果未过期,则使用缓存代码运行。默认缓存3600s(一小时).但是这样仍会浪费大量CPU时间.因此可以在php.ini中设置system缓存为永不过期(apc.ttl=0).不过如果这样设置,改运php代码后需要restart一下您的web服务器(比如apache...).目前对APC的性能测试一般指的是这一层cache; 用户数据缓存由用户在编写php代码时用apc_store和apc_fetch函数操作读取、写入的.如果量不大的话我建议可以使用一下.如果量大,我建议使用memcache会更好. 如果要享受APC带来的缓存大文件上传进度的特性,需要在php.ini中将apc.rfc1867设为1,并且在表单中加一个隐藏域APC_UPLOAD_PROGRESS,这个域的值可以随机生成一个hash,以确何唯一.具体例子请参见前面给出的链接. 2.状态控制和分析: APC的源码包自带了一个apc.php;您可以将这个文件上传到web服务器的某个目录下,用浏览器访问,这会显示当前的状态.我们可以从这里的表格分析当前的缓存状况,作出进一步优化. <a href="http://www.162cm.com/wp-content/uploads/2007/08/apc-info-clublocalhost2.png" title="apc-info-clublocalhost2.png"><img src="http://www.162cm.com/wp-content/uploads/2007/08/apc-info-clublocalhost2.png" alt="apc-info-clublocalhost2.png" loading="lazy"></a> 这是某test站点的状态.您可以慢慢分析,这个工具会提供很多有用的工具.比如您可以看到哪些文件经常被包含(访问),您缓存的哪个变量经常被读取,或经常被更新等. 最后顺便提一句,有独立报告说,APC的代码缓存、优化效果要高出zend优化器.就算不是真的,他开源而又免费,实在是一个相当不错的选择.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/447/">
-                  <h3 class="post-title">
-                    某国警告中国:
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

@@ -1,127 +1,133 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>一个显示最新评论的wordpress插件 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="用法:将deskor_comments.php传到wp-contents/plugins目录，然后在插件管理中激活。 在需要显示最新评论的地方，比发themes/你的风格名称/sitebar.php中加: deskor_comments.p..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">一个显示最新评论的wordpress插件</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-10-06</span>
+            
+          </div>
+          <div class="post-content">
+            <p>用法:将deskor_comments.php传到wp-contents/plugins目录，然后在插件管理中激活。 在需要显示最新评论的地方，比发themes/你的风格名称/sitebar.php中加: deskor_comments.php文件的内容: 调用方法:在需要显示的地方写上: Author: renlu xu Version: 1.0 Author URI: http://www.162cm.com */ function get_deskor_comments($count=10) { global $wpdb; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">res=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>wpdb-&gt;get_results(&quot;SELECT * FROM <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mi>p</mi><mi>d</mi><mi>b</mi><mo>−</mo><mo>&gt;</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>e</mi><mi>r</mi><mi>b</mi><mi>y</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi mathvariant="normal">_</mi><mi>I</mi><mi>D</mi><mi>D</mi><mi>E</mi><mi>S</mi><mi>C</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">wpdb-&gt;comments order by comment\_ID DESC limit &quot;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">p</span><span class="mord mathdefault">d</span><span class="mord mathdefault">b</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord">&quot;</span><span class="mord">.</span></span></span></span>count); foreach($res as <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;#&#039; at position 47: …nt\_post\_ID).&quot;#̲comment-&quot;.'>row) { echo &quot;*   &quot;; echo &quot;comment\_post\_ID).&quot;#comment-&quot;.</span>row-&gt;comment_ID.&quot;&quot;&gt;[&quot;; echo <span class='katex-error' title='ParseError: KaTeX parse error: Can&#039;t use function &#039;\]&#039; in math mode at position 23: …mment\_author.&quot;\̲]̲says(&quot;.xoops\_s…'>row-&gt;comment\_author.&quot;\]says(&quot;.xoops\_substr(</span>row-&gt;comment_content,0,45); echo &quot;)<br>
+&quot;; } } /** 截取函数，从xoops中挪过来的. */ function xoops_substr($str, $start, $length, $trimmarker = '...') { if (function_exists('mb_internal_encoding') &amp;&amp; @mb_internal_encoding(_CHARSET)) { $str2 = mb_strcut( $str , $start , $length - strlen( $trimmarker ) ); return <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mn>2.</mn><mo>(</mo><mi>m</mi><mi>b</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">str2 . ( mb\_strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">2</span><span class="mord">.</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>str)!=mb_strlen($str2) ? $trimmarker : '' ); } // phppp patch $DEP_CHAR=127; $pos_st=0; $action = false; for ( $pos_i = 0; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>i</mi><mo>&lt;</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">pos\_i &lt; strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9695199999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>str); $pos_i++ ) { if ( ord( substr( $str, $pos_i, 1) ) &gt; 127 ) { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: pos\_i++; }̲ if ('>pos\_i++; } if (</span>pos_i&lt;=$start) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">pos\_st=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9250799999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>pos_i; } if (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>i</mi><mo>&gt;</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">pos\_i&gt;=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9695199999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>pos_st+$length) { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 23: …= true; break; }̲ } return ('>action = true; break; } } return (</span>action) ? substr( $str, $pos_st, $pos_i - <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">pos\_st - strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9250799999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>trimmarker) ) . $trimmarker : $str; } ?&gt;</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/273/">
+              <h3 class="post-title">
+                下一篇：通过XOOPS模块整合Mu.wordpress的完整方案(一)
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">一个显示最新评论的wordpress插件</h2>
-            <div class="post-date">2006-10-06</div>
-            
-            <div class="post-content" v-pre>
-              <p>用法:将deskor_comments.php传到wp-contents/plugins目录，然后在插件管理中激活。 在需要显示最新评论的地方，比发themes/你的风格名称/sitebar.php中加: deskor_comments.php文件的内容: 调用方法:在需要显示的地方写上: Author: renlu xu Version: 1.0 Author URI: http://www.162cm.com */ function get_deskor_comments($count=10) { global $wpdb; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">res=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>wpdb-&gt;get_results(&quot;SELECT * FROM <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mi>p</mi><mi>d</mi><mi>b</mi><mo>−</mo><mo>&gt;</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>e</mi><mi>r</mi><mi>b</mi><mi>y</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi mathvariant="normal">_</mi><mi>I</mi><mi>D</mi><mi>D</mi><mi>E</mi><mi>S</mi><mi>C</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">wpdb-&gt;comments order by comment\_ID DESC limit &quot;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">p</span><span class="mord mathdefault">d</span><span class="mord mathdefault">b</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord">&quot;</span><span class="mord">.</span></span></span></span>count); foreach($res as <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;#&#039; at position 47: …nt\_post\_ID).&quot;#̲comment-&quot;.'>row) { echo &quot;*   &quot;; echo &quot;comment\_post\_ID).&quot;#comment-&quot;.</span>row-&gt;comment_ID.&quot;&quot;&gt;[&quot;; echo <span class='katex-error' title='ParseError: KaTeX parse error: Can&#039;t use function &#039;\]&#039; in math mode at position 23: …mment\_author.&quot;\̲]̲says(&quot;.xoops\_s…'>row-&gt;comment\_author.&quot;\]says(&quot;.xoops\_substr(</span>row-&gt;comment_content,0,45); echo &quot;)<br>
-&quot;; } } /** 截取函数，从xoops中挪过来的. */ function xoops_substr($str, $start, $length, $trimmarker = '...') { if (function_exists('mb_internal_encoding') &amp;&amp; @mb_internal_encoding(_CHARSET)) { $str2 = mb_strcut( $str , $start , $length - strlen( $trimmarker ) ); return <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mn>2.</mn><mo>(</mo><mi>m</mi><mi>b</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">str2 . ( mb\_strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">2</span><span class="mord">.</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>str)!=mb_strlen($str2) ? $trimmarker : '' ); } // phppp patch $DEP_CHAR=127; $pos_st=0; $action = false; for ( $pos_i = 0; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>i</mi><mo>&lt;</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">pos\_i &lt; strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9695199999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>str); $pos_i++ ) { if ( ord( substr( $str, $pos_i, 1) ) &gt; 127 ) { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: pos\_i++; }̲ if ('>pos\_i++; } if (</span>pos_i&lt;=$start) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">pos\_st=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9250799999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>pos_i; } if (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>i</mi><mo>&gt;</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">pos\_i&gt;=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9695199999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span>pos_st+$length) { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 23: …= true; break; }̲ } return ('>action = true; break; } } return (</span>action) ? substr( $str, $pos_st, $pos_i - <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>o</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">pos\_st - strlen(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9250799999999999em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span></span></span></span>trimmarker) ) . $trimmarker : $str; } ?&gt;</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/273/">
-                  <h3 class="post-title">
-                    通过XOOPS模块整合Mu.wordpress的完整方案(一)
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -131,8 +137,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

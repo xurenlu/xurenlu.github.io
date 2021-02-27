@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>rlucene 0.13释出.... | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="前一阵偏离了方向，一直在努力地做分词的性能优化。 后来发现,有时越优化性能反而越差，所以打算改改方向。 于是挑了一个版本拿出来随便打了一个包，版本号定为0.13，就这 么发出来了。 这一个月时间才出来了一个版本却还不让我自己满意。不过先放出..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">rlucene 0.13释出....</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-07-16</span>
+            
+          </div>
+          <div class="post-content">
+            <p>前一阵偏离了方向，一直在努力地做分词的性能优化。 后来发现,有时越优化性能反而越差，所以打算改改方向。 于是挑了一个版本拿出来随便打了一个包，版本号定为0.13，就这 么发出来了。 这一个月时间才出来了一个版本却还不让我自己满意。不过先放出来吧。 马上学习一下Ferret，打算在下一个版本开始引入它的一些特性。现在的rlucene实际上还根本不能为检索提供任何实质用处....(我脸皮还真厚吧?) Rlucene地址:https://rubyforge.org/projects/rlucene/ 更新手记: 2007.7.3 1.加入了对网址,数字的预先处理,这类词能正确处理. 2.autotag.gettags返回的词能自动去重了. 2007.7.1 今天我改动不少： 1.分词时引入jcode,效率提高不少. 2.autotag和segserver改写了,减少重复的操作 3.用Marshal保存词库数据,启动速度提高不少 2007.6.24 example/demo edition 0.09 将公司的php的基础服务做完之后，忽然很 有成就感,原来以为会很难的东西竟然一周内全盘搞定,权限系统,Cron服务,多mysql server架构问题,all done,非常爽,于是加紧把这个project给改了一下. 解决了一个Bug:就是在一段中文一段英文的情况下分词时,会丢失中文的最后 一个词. 但是我认为还是不适合实用. to do: 下一步我将从互联网上抓到大约100,000条大文本,然后做分词检测,算出最常见词,在某些应用中会用到. 2007.6.16 example/demo edition 这是我学完python之后做完分词demo后一边啃ruby 一边做出来的东东。 可能不太好，只能给大家提供一种分词,索引，搜索的思路罢了。 慢慢完善之后，在下一版争取加入异常处理之类的。 这一版我甚至不知道如何加入注释，加&quot;#&quot;还是我猜出来的.. 完成后一直还在想为什么ruby没有异常处理,原来ruby其实是有的，只是我没有google 到相应文档而已。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/424/">
+              <h3 class="post-title">
+                下一篇：累坏了
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">rlucene 0.13释出....</h2>
-            <div class="post-date">2007-07-16</div>
-            
-            <div class="post-content" v-pre>
-              <p>前一阵偏离了方向，一直在努力地做分词的性能优化。 后来发现,有时越优化性能反而越差，所以打算改改方向。 于是挑了一个版本拿出来随便打了一个包，版本号定为0.13，就这 么发出来了。 这一个月时间才出来了一个版本却还不让我自己满意。不过先放出来吧。 马上学习一下Ferret，打算在下一个版本开始引入它的一些特性。现在的rlucene实际上还根本不能为检索提供任何实质用处....(我脸皮还真厚吧?) Rlucene地址:https://rubyforge.org/projects/rlucene/ 更新手记: 2007.7.3 1.加入了对网址,数字的预先处理,这类词能正确处理. 2.autotag.gettags返回的词能自动去重了. 2007.7.1 今天我改动不少： 1.分词时引入jcode,效率提高不少. 2.autotag和segserver改写了,减少重复的操作 3.用Marshal保存词库数据,启动速度提高不少 2007.6.24 example/demo edition 0.09 将公司的php的基础服务做完之后，忽然很 有成就感,原来以为会很难的东西竟然一周内全盘搞定,权限系统,Cron服务,多mysql server架构问题,all done,非常爽,于是加紧把这个project给改了一下. 解决了一个Bug:就是在一段中文一段英文的情况下分词时,会丢失中文的最后 一个词. 但是我认为还是不适合实用. to do: 下一步我将从互联网上抓到大约100,000条大文本,然后做分词检测,算出最常见词,在某些应用中会用到. 2007.6.16 example/demo edition 这是我学完python之后做完分词demo后一边啃ruby 一边做出来的东东。 可能不太好，只能给大家提供一种分词,索引，搜索的思路罢了。 慢慢完善之后，在下一版争取加入异常处理之类的。 这一版我甚至不知道如何加入注释，加&quot;#&quot;还是我猜出来的.. 完成后一直还在想为什么ruby没有异常处理,原来ruby其实是有的，只是我没有google 到相应文档而已。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/424/">
-                  <h3 class="post-title">
-                    累坏了
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

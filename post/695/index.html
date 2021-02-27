@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>CSS学习之:认识浏览器和标准 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="我们都知道，要做WD,首先得伺侯好几个浏览器:IE6,IE7,Firefox.一般的页面，都只要求在IE6,IE7,Firefox下正常工作就行了。 但是实际上，浏览器远远不止这几个,Firefox分为Firefox 1.5,Firefox..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">CSS学习之:认识浏览器和标准</h2>
-            <div class="post-date">2008-09-16</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">CSS学习之:认识浏览器和标准</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-09-16</span>
             
-            <div class="post-content" v-pre>
-              <p>我们都知道，要做WD,首先得伺侯好几个浏览器:IE6,IE7,Firefox.一般的页面，都只要求在IE6,IE7,Firefox下正常工作就行了。 但是实际上，浏览器远远不止这几个,Firefox分为Firefox 1.5,Firefox 2,Firefox 3几个主要版本，IE7,IE6中也各有好几个系列,另外除开这两个主流厂商的产品之外，还有Opera,Konqueror,Netscape,chrome等一系列。 这些浏览器，各有各的一套，往往在这里运行正常，在那里运行就不正常了。于是WD们拆东边补西边，终于能在几个浏览器下都正常了。结果，产品经理又有了新的需求，需要在哪儿哪儿那儿改一下，于是乎，好不容易糊弄好的的纸架子一下子倒塌了，WD们又忙得焦头烂额。之所以这么说，因为，这是我的经验。 大凡是WD，总是收集了一堆Css Hacking 技巧，为的是在各个浏览器下正常。网上一搜，一大堆。 然而，首先WD们没有弄清楚一个基本问题，我们为什么需要css Hacking?如果有1000种浏览器,我们是不是要记住1000种浏览器的Hack 技巧？ 事实上, Css Hacking从某种程度上说，是一个拿不上台面的东西。Css Hacking有很多技巧，纯粹就是利用了浏览器的Bug.比如常见的用_class{....} 去区别IE和firefox,按理说_class是一个不合法的标记方法。Css Hacking的出现，是WD们不得已而为之，WD们的日常工作并不是疯狂地Css Hack. 其实这么多浏览器,并不是可以随便乱来，想自己定义个啥就定义个啥标记的。人们习惯了在标准的世界里生活，在网页世界里，也有一系列标准。浏览器们也都努力地做到web标准兼容。但是有些浏览器出道得早，可以说后来出现的web标准就是在它们的影响下诞生的。还有一个，当年非常牛B,所以做了很多创新，没有把web标准放在心上，蛮不在乎。更何况，标准自身也是在不断更新的。因此，一般各个浏览器产品系统都曾有过一段没有不太在乎web标准的日子，后来大家都意识到不行了，我们大家都妥协一下，要制订一套标准，大家都遵守。可是以前各家都有自己制订的一些小条条小框框，他们不符合标准，咋办呢? 于是，这些人想了个法子：标准模式和怪异模式。另外还有一种，叫“近乎标准模式&quot;,almost standard.要说真是够怪异，我都听晕了。别着急，听我慢慢道来。 不是说了吗，这些老大们坐在一起，制定了各式各样的标准，以后大家都按这套标准来解释网页。如果你做的网页可以按这套标准来解释，那就用一个标记doctype注明这是可以按web标准来解释的。这就是标准模式。 那以前各家都生产过，规定过的小九九们不符合标准，咋办啊？也不能就马上把它们全扔掉不要了吧?软件上大抵有这样一套原则，叫向下兼容。在怪异模式下，各个浏览器都模拟那些老版本的浏览器的操作，以防止老的页面无法工作。在网页没有指定doctype时，浏览器一般就都按怪异模式工作，以防老页面无法工作。</p>
+          </div>
+          <div class="post-content">
+            <p>我们都知道，要做WD,首先得伺侯好几个浏览器:IE6,IE7,Firefox.一般的页面，都只要求在IE6,IE7,Firefox下正常工作就行了。 但是实际上，浏览器远远不止这几个,Firefox分为Firefox 1.5,Firefox 2,Firefox 3几个主要版本，IE7,IE6中也各有好几个系列,另外除开这两个主流厂商的产品之外，还有Opera,Konqueror,Netscape,chrome等一系列。 这些浏览器，各有各的一套，往往在这里运行正常，在那里运行就不正常了。于是WD们拆东边补西边，终于能在几个浏览器下都正常了。结果，产品经理又有了新的需求，需要在哪儿哪儿那儿改一下，于是乎，好不容易糊弄好的的纸架子一下子倒塌了，WD们又忙得焦头烂额。之所以这么说，因为，这是我的经验。 大凡是WD，总是收集了一堆Css Hacking 技巧，为的是在各个浏览器下正常。网上一搜，一大堆。 然而，首先WD们没有弄清楚一个基本问题，我们为什么需要css Hacking?如果有1000种浏览器,我们是不是要记住1000种浏览器的Hack 技巧？ 事实上, Css Hacking从某种程度上说，是一个拿不上台面的东西。Css Hacking有很多技巧，纯粹就是利用了浏览器的Bug.比如常见的用_class{....} 去区别IE和firefox,按理说_class是一个不合法的标记方法。Css Hacking的出现，是WD们不得已而为之，WD们的日常工作并不是疯狂地Css Hack. 其实这么多浏览器,并不是可以随便乱来，想自己定义个啥就定义个啥标记的。人们习惯了在标准的世界里生活，在网页世界里，也有一系列标准。浏览器们也都努力地做到web标准兼容。但是有些浏览器出道得早，可以说后来出现的web标准就是在它们的影响下诞生的。还有一个，当年非常牛B,所以做了很多创新，没有把web标准放在心上，蛮不在乎。更何况，标准自身也是在不断更新的。因此，一般各个浏览器产品系统都曾有过一段没有不太在乎web标准的日子，后来大家都意识到不行了，我们大家都妥协一下，要制订一套标准，大家都遵守。可是以前各家都有自己制订的一些小条条小框框，他们不符合标准，咋办呢? 于是，这些人想了个法子：标准模式和怪异模式。另外还有一种，叫“近乎标准模式&quot;,almost standard.要说真是够怪异，我都听晕了。别着急，听我慢慢道来。 不是说了吗，这些老大们坐在一起，制定了各式各样的标准，以后大家都按这套标准来解释网页。如果你做的网页可以按这套标准来解释，那就用一个标记doctype注明这是可以按web标准来解释的。这就是标准模式。 那以前各家都生产过，规定过的小九九们不符合标准，咋办啊？也不能就马上把它们全扔掉不要了吧?软件上大抵有这样一套原则，叫向下兼容。在怪异模式下，各个浏览器都模拟那些老版本的浏览器的操作，以防止老的页面无法工作。在网页没有指定doctype时，浏览器一般就都按怪异模式工作，以防老页面无法工作。</p>
 <blockquote>
 <p>对于这两种模式之间的差异，最显著的例子涉及Windows上IE专有的框模型。在IE 6出现时，在标准模式中使用正确的框模型，在怪异模式中使用老式的专有框模型。为了维持对IE 5和更低版本的向后兼容性，Opera 7和更高版本也在怪异模式中使用有缺点的IE框模型。 Mozilla和Safari还有第三种模式，称为“几乎标准的模式（almost standards mode）”，除了在处理表格的方式方面有一些细微的差异之外，这种模式与标准模式相同。</p>
 </blockquote>
@@ -106,31 +98,45 @@
 </code></pre>
 <p>我说，这种书真是误人子弟。因为，只要正确指定了doctype,这些浏览器解释上的差异就都不存在了，我们按照标准来就行了。 这个模式的指位于HTML文件开头的DOCTYPE域指定的。一般常见的有这几种: HTML 4.01 Transitional： HTML 4.01 Frameset XHTML 1.0 Strict XHTML 1.0 Transitional XHTML 1.0 Frameset XHTML 1.1</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/694/">
-                  <h3 class="post-title">
-                    自问自答
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/694/">
+              <h3 class="post-title">
+                下一篇：自问自答
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -140,8 +146,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

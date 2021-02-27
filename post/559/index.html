@@ -1,105 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>FASTCGI学习笔记一:mod_fastcgi模块伪指令 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="FastCGI 伪指令
-
-FastCgiAccessChecker
-FastCgiAccessCheckerAuthoritative
-FastCgiAuthenticator
-FastCgiAuthenticatorAuthoritati..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">FASTCGI学习笔记一:mod_fastcgi模块伪指令</h2>
-            <div class="post-date">2007-11-28</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">FASTCGI学习笔记一:mod_fastcgi模块伪指令</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-11-28</span>
             
-            <div class="post-content" v-pre>
-              <p>FastCGI 伪指令</p>
+          </div>
+          <div class="post-content">
+            <p>FastCGI 伪指令</p>
 <ul>
 <li><a href="#fastcgiaccesschecker">FastCgiAccessChecker</a></li>
 <li><a href="#fastcgiaccesscheckerauthoritative">FastCgiAccessCheckerAuthoritative</a></li>
@@ -176,31 +163,45 @@ FastCgiAuthenticatorAuthoritati..." />
 </ul>
 <p>FastCgiSuexec 伪指令用于启用对 suexec-wrapper 的支持。FastCgiSuexec 要求在 Apache 中启用（对于 CGI）。要使用 Apache 所使用的同一个 suexec-wrapper，将 FastCgiSuexec 设置成 On。要使用不同的 suexec-wrapper，指定 suexec-wrapper 的文件名。如果此文件名不是斜杠 (/) 开头的，则假设此文件名相对于 <a href="http://www.apache.org/docs/mod/core.html#serverroot">ServerRoot</a>。 当启用 FastCgiSuexec 时，静态或外部 FastCGI 应用程序定义的位置十分重要。它们从定义它们的虚拟服务器中的 User 和 Group 伪指令继承了它们的用户和组。User 和 Group 伪指令应在 FastCGI 应用程序之前进行定义。此功能不会将 FastCGI 应用程序限制在定义它的虚拟服务器中，允许此应用程序对任何来自同一用户和组的虚拟服务器的请求进行服务。如果接收到的是对 FastCGI 应用程序的请求，而又不存在以此正确用户和组运行的现有匹配定义，则将用正确的用户和组启动此应用程序的动态实例。该操作将导致以不同用户／组运行同一应用程序的多个副本。如果这是问题，请从其它虚拟服务器中排除到此应用程序的导航，或者使用相同的用户和组来配置虚拟服务器。 请参阅 Apache 文档以获得更多有关 suexec 的信息（确保您已完全理解安全性含义）。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/557/">
-                  <h3 class="post-title">
-                    适合拿笔记本看的电影：阳光小美女
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/557/">
+              <h3 class="post-title">
+                下一篇：适合拿笔记本看的电影：阳光小美女
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -210,8 +211,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

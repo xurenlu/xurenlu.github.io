@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>流氓和绅士的转变？ | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="百度变了。 百度好像去掉了MP3中一些歌曲的搜索结果。我搜一些歌曲时，明明是很流行的歌曲，居然说找不到。 这真不像百度。 百度还跟唱片公司同台唱戏了。（百代公司，就是花儿乐队的那个) 百度好像还推出了正版电影 收费观看服务。 一些“高端”用..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">流氓和绅士的转变？</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-01-22</span>
+            
+          </div>
+          <div class="post-content">
+            <p>百度变了。 百度好像去掉了MP3中一些歌曲的搜索结果。我搜一些歌曲时，明明是很流行的歌曲，居然说找不到。 这真不像百度。 百度还跟唱片公司同台唱戏了。（百代公司，就是花儿乐队的那个) 百度好像还推出了正版电影 收费观看服务。 一些“高端”用户以前总骂百度不尊重版权，而一向为google着迷。哈哈。 现在google也做了一个让他们的这些用户失望的举动：投资迅雷。 迅雷是什么呢？可以这么说，用迅雷来下载的，除开有一部分是网络游戏厂商等提供的大型文件外，大量存在的是可能涉及版权纠纷的文件！ 特别是提供给用户发布内容的权限，成了许多别有用心的人传播色情、病毒的温床。 当然，可以说迅雷的出发点是好的，这个技术很有用。但是类似的下载加速技术以前也有，有某些大学也开发出了相当不错的分发软件，最后却也沦落成为传播色情信息的渠道。 许多人正在通过迅雷下载并观看人们通常要花费百元左右去电影院才能看的大片。 而google投资迅雷，正助长了这种气焰。 .... google fans别骂我。我也欣赏google的技术和服务。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/370/">
+              <h3 class="post-title">
+                下一篇：CMS系统中一个Bug的解决过程(about javascript and urlencode ,php)
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">流氓和绅士的转变？</h2>
-            <div class="post-date">2007-01-22</div>
-            
-            <div class="post-content" v-pre>
-              <p>百度变了。 百度好像去掉了MP3中一些歌曲的搜索结果。我搜一些歌曲时，明明是很流行的歌曲，居然说找不到。 这真不像百度。 百度还跟唱片公司同台唱戏了。（百代公司，就是花儿乐队的那个) 百度好像还推出了正版电影 收费观看服务。 一些“高端”用户以前总骂百度不尊重版权，而一向为google着迷。哈哈。 现在google也做了一个让他们的这些用户失望的举动：投资迅雷。 迅雷是什么呢？可以这么说，用迅雷来下载的，除开有一部分是网络游戏厂商等提供的大型文件外，大量存在的是可能涉及版权纠纷的文件！ 特别是提供给用户发布内容的权限，成了许多别有用心的人传播色情、病毒的温床。 当然，可以说迅雷的出发点是好的，这个技术很有用。但是类似的下载加速技术以前也有，有某些大学也开发出了相当不错的分发软件，最后却也沦落成为传播色情信息的渠道。 许多人正在通过迅雷下载并观看人们通常要花费百元左右去电影院才能看的大片。 而google投资迅雷，正助长了这种气焰。 .... google fans别骂我。我也欣赏google的技术和服务。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/370/">
-                  <h3 class="post-title">
-                    CMS系统中一个Bug的解决过程(about javascript and urlencode ,php)
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

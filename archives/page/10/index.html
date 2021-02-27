@@ -1,520 +1,557 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
-<title>文章归档 | 黄滚的Blog</title>
+<title>黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+        <div class="content-container">
+          
           
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2007</h2>
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/387/">
-                      <h2 class="post-title">
-                        种老婆
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/386/">
-                      <h2 class="post-title">
-                        不举的中国人
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/385/">
-                      <h2 class="post-title">
-                        我的海尔H40才买来两个月就坏了
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/384/">
-                      <h2 class="post-title">
-                        当当的“特别推荐“是怎么算出来的？
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/383/">
-                      <h2 class="post-title">
-                        有如此好的忘性，也真是难得
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/382/">
-                      <h2 class="post-title">
-                        VirtualBox是个不错的虚拟机。
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/381/">
-                      <h2 class="post-title">
-                        linux下的虚拟机软件
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/380/">
-                      <h2 class="post-title">
-                        阿瓦的博客和其他
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/379/">
-                      <h2 class="post-title">
-                        自己动手，做个五笔码查询的工具。
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/377/">
-                      <h2 class="post-title">
-                        做了一个比较好玩的应用:wordperss的自动Tag插件：（
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/375/">
-                      <h2 class="post-title">
-                        Google docs出中文版本了！
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/374/">
-                      <h2 class="post-title">
-                        狂汗的一个问题
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/373/">
-                      <h2 class="post-title">
-                        我愤怒了
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/372/">
-                      <h2 class="post-title">
-                        珍爱生命，远离加班
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/371/">
-                      <h2 class="post-title">
-                        流氓和绅士的转变？
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/370/">
-                      <h2 class="post-title">
-                        CMS系统中一个Bug的解决过程(about javascript and urlencode ,php)
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/369/">
-                      <h2 class="post-title">
-                        links for 2007-01-19
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/368/">
-                      <h2 class="post-title">
-                        links for 2007-01-18
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/366/">
-                      <h2 class="post-title">
-                        links for 2007-01-17
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/365/">
-                      <h2 class="post-title">
-                        links for 2007-01-16
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/364/">
-                      <h2 class="post-title">
-                        links for 2007-01-15
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/363/">
-                      <h2 class="post-title">
-                        恶心的互联网
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/362/">
-                      <h2 class="post-title">
-                        需求来自生活
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/361/">
-                      <h2 class="post-title">
-                        弱如我辈的phper可以退休了
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/360/">
-                      <h2 class="post-title">
-                        links for 2007-01-13
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/359/">
-                      <h2 class="post-title">
-                        装上了google toolbar
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/358/">
-                      <h2 class="post-title">
-                        酒色财气..
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/357/">
-                      <h2 class="post-title">
-                        links for 2007-01-12
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/356/">
-                      <h2 class="post-title">
-                        links for 2007-01-11
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/355/">
-                      <h2 class="post-title">
-                        links for 2007-01-10
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/354/">
-                      <h2 class="post-title">
-                        真烦人
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/353/">
-                      <h2 class="post-title">
-                        links for 2007-01-09
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/352/">
-                      <h2 class="post-title">
-                        links for 2007-01-08
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/351/">
-                      <h2 class="post-title">
-                        links for 2007-01-07
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/350/">
-                      <h2 class="post-title">
-                        推介一个新服务:www.deskor.comRSS浏览器。
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/349/">
-                      <h2 class="post-title">
-                        1.逛街的成本核算
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/348/">
-                      <h2 class="post-title">
-                        2006.平安夜的聚会照片
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/347/">
-                      <h2 class="post-title">
-                        links for 2007-01-06
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/346/">
-                      <h2 class="post-title">
-                        欢迎阿瓦加入wordpress的队伍!
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/345/">
-                      <h2 class="post-title">
-                        links for 2007-01-03
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-
-          <div class="pagination-container">
+<div class="archives-container">
   
-    <a href="http://162cm.com/archives/page/9/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
-  
-  
-    <a href="http://162cm.com/archives/page/11/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+    <h2 class="year">2007</h2>
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/387/">
+            <h2 class="post-title">
+              种老婆
+              <small>2007-03-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/386/">
+            <h2 class="post-title">
+              不举的中国人
+              <small>2007-03-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/385/">
+            <h2 class="post-title">
+              我的海尔H40才买来两个月就坏了
+              <small>2007-03-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/384/">
+            <h2 class="post-title">
+              当当的“特别推荐“是怎么算出来的？
+              <small>2007-03-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/383/">
+            <h2 class="post-title">
+              有如此好的忘性，也真是难得
+              <small>2007-03-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/382/">
+            <h2 class="post-title">
+              VirtualBox是个不错的虚拟机。
+              <small>2007-02-27</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/381/">
+            <h2 class="post-title">
+              linux下的虚拟机软件
+              <small>2007-02-24</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/380/">
+            <h2 class="post-title">
+              阿瓦的博客和其他
+              <small>2007-02-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/379/">
+            <h2 class="post-title">
+              自己动手，做个五笔码查询的工具。
+              <small>2007-02-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/377/">
+            <h2 class="post-title">
+              做了一个比较好玩的应用:wordperss的自动Tag插件：（
+              <small>2007-02-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/375/">
+            <h2 class="post-title">
+              Google docs出中文版本了！
+              <small>2007-02-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/374/">
+            <h2 class="post-title">
+              狂汗的一个问题
+              <small>2007-02-06</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/373/">
+            <h2 class="post-title">
+              我愤怒了
+              <small>2007-02-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/372/">
+            <h2 class="post-title">
+              珍爱生命，远离加班
+              <small>2007-01-31</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/371/">
+            <h2 class="post-title">
+              流氓和绅士的转变？
+              <small>2007-01-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/370/">
+            <h2 class="post-title">
+              CMS系统中一个Bug的解决过程(about javascript and urlencode ,php)
+              <small>2007-01-21</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/369/">
+            <h2 class="post-title">
+              links for 2007-01-19
+              <small>2007-01-20</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/368/">
+            <h2 class="post-title">
+              links for 2007-01-18
+              <small>2007-01-19</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/366/">
+            <h2 class="post-title">
+              links for 2007-01-17
+              <small>2007-01-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/365/">
+            <h2 class="post-title">
+              links for 2007-01-16
+              <small>2007-01-17</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/364/">
+            <h2 class="post-title">
+              links for 2007-01-15
+              <small>2007-01-16</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/363/">
+            <h2 class="post-title">
+              恶心的互联网
+              <small>2007-01-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/362/">
+            <h2 class="post-title">
+              需求来自生活
+              <small>2007-01-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/361/">
+            <h2 class="post-title">
+              弱如我辈的phper可以退休了
+              <small>2007-01-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/360/">
+            <h2 class="post-title">
+              links for 2007-01-13
+              <small>2007-01-14</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/359/">
+            <h2 class="post-title">
+              装上了google toolbar
+              <small>2007-01-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/358/">
+            <h2 class="post-title">
+              酒色财气..
+              <small>2007-01-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/357/">
+            <h2 class="post-title">
+              links for 2007-01-12
+              <small>2007-01-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/356/">
+            <h2 class="post-title">
+              links for 2007-01-11
+              <small>2007-01-12</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/355/">
+            <h2 class="post-title">
+              links for 2007-01-10
+              <small>2007-01-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/354/">
+            <h2 class="post-title">
+              真烦人
+              <small>2007-01-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/353/">
+            <h2 class="post-title">
+              links for 2007-01-09
+              <small>2007-01-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/352/">
+            <h2 class="post-title">
+              links for 2007-01-08
+              <small>2007-01-09</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/351/">
+            <h2 class="post-title">
+              links for 2007-01-07
+              <small>2007-01-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/350/">
+            <h2 class="post-title">
+              推介一个新服务:www.deskor.comRSS浏览器。
+              <small>2007-01-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/349/">
+            <h2 class="post-title">
+              1.逛街的成本核算
+              <small>2007-01-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/348/">
+            <h2 class="post-title">
+              2006.平安夜的聚会照片
+              <small>2007-01-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/347/">
+            <h2 class="post-title">
+              links for 2007-01-06
+              <small>2007-01-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/346/">
+            <h2 class="post-title">
+              欢迎阿瓦加入wordpress的队伍!
+              <small>2007-01-06</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/345/">
+            <h2 class="post-title">
+              links for 2007-01-03
+              <small>2007-01-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
   
 </div>
 
+
         </div>
+
+        <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
       </div>
-    </div>
+      <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -528,7 +565,6 @@ var app = new Vue({
 
 
 
-
-
+    </div>
   </body>
 </html>

@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>不用申请APIkey，也能用akismet让wordpress的垃圾评论大大减少 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="今天打开wordpress,我晕，留言数已经有10多万。 老外们工作还真积极，这几天垃圾评论是越来越厉害了。 我想起前几天还说要自己写一个能分页管理评论的hack呢。不过现在实在没空。 于是想到，管他垃圾不垃圾，我现在暂时先全删除了再说。 ..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">不用申请APIkey，也能用akismet让wordpress的垃圾评论大大减少</h2>
-            <div class="post-date">2006-12-17</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">不用申请APIkey，也能用akismet让wordpress的垃圾评论大大减少</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-12-17</span>
             
-            <div class="post-content" v-pre>
-              <p>今天打开wordpress,我晕，留言数已经有10多万。 老外们工作还真积极，这几天垃圾评论是越来越厉害了。 我想起前几天还说要自己写一个能分页管理评论的hack呢。不过现在实在没空。 于是想到，管他垃圾不垃圾，我现在暂时先全删除了再说。 于是打phpmyadmin,把ID&gt;350的记录全删除了。 这下再打开，不过发现马上就又有了几十条记录了。看来垃圾生产机器工作真够负责的啊，简直是日夜不停了。 想起有一个什么反垃圾评论的插件，google一下，叫akismet,装上一看，倒，还要我去申请一个API　key才能用。 本来特懒，不过现在垃圾评论这么狂，只好去注册。 结果，打了好几次地址，wordpress.com/api-keys都打不开，没办法。我想，那我做一个hack,把用api key认证的这一步去掉不行吗? 打开akismet.php，哈哈，原来如此简单，修改过程如下: 找到function akismet_verify_key( $key ) { ,直接在后面加上: return ture; 就行了。 上传了一下，然后再来到要求输入API key的页面:/wp-admin/plugins.php?page=akismet/akismet.php,随便输入一个，我输的是123456,然后update,就成功了。 返回管理页面一个，哈哈，下面就列着一个大大的菜单: <strong>Akismet反垃圾(0)</strong>。棒极了！ 点进去一看: 抓到的垃圾: 队列中没有垃圾评论，今天可能是您的幸运日！: 真不错。看来akismet的作者也是深受垃圾侵扰之苦，所以要这么写。 附上akismet的全部代码. 如果您还没有安装akismet,您可以下载下来，保存成akismet.php,放到您的wordpress的wp-content/plugins/akismet.php位置，再到插件菜单下去激活，安装一下就可以了: WordPress.com API key to use this service. You can review the spam it catches under &quot;Manage&quot; and it automatically deletes old spam after 15 days. Hat tip: <a href="http://ioerror.us/">Michael Hampton</a> and <a href="http://chrisjdavis.org/">Chris J. Davis</a> for help with the plugin. Author: Matt Mullenweg Version: 1.14 Author URI: http://photomatt.net/ */ add_action('admin_menu', 'ksd_config_page'); function ksd_config_page() { global <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 184: …ismet\_conf&#039;); }̲ function akism…'>wpdb; if ( function\_exists(&#039;add\_submenu\_page&#039;) ) add\_submenu\_page(&#039;plugins.php&#039;, \_\_(&#039;Akismet Configuration&#039;), \_\_(&#039;Akismet Configuration&#039;), 1, \_\_FILE\_\_, &#039;akismet\_conf&#039;); } function akismet\_conf() { if ( isset(</span>_POST['submit']) ) { check_admin_referer(); $key = preg_replace('/[^a-h0-9]/i', '', $_POST['key']); if ( akismet_verify_key( $key ) ) update_option('wordpress_api_key', $key); else $invalid_key = true; } if ( !akismet_verify_key( get_option('wordpress_api_key') ) ) $invalid_key = true; ?&gt;</p>
+          </div>
+          <div class="post-content">
+            <p>今天打开wordpress,我晕，留言数已经有10多万。 老外们工作还真积极，这几天垃圾评论是越来越厉害了。 我想起前几天还说要自己写一个能分页管理评论的hack呢。不过现在实在没空。 于是想到，管他垃圾不垃圾，我现在暂时先全删除了再说。 于是打phpmyadmin,把ID&gt;350的记录全删除了。 这下再打开，不过发现马上就又有了几十条记录了。看来垃圾生产机器工作真够负责的啊，简直是日夜不停了。 想起有一个什么反垃圾评论的插件，google一下，叫akismet,装上一看，倒，还要我去申请一个API　key才能用。 本来特懒，不过现在垃圾评论这么狂，只好去注册。 结果，打了好几次地址，wordpress.com/api-keys都打不开，没办法。我想，那我做一个hack,把用api key认证的这一步去掉不行吗? 打开akismet.php，哈哈，原来如此简单，修改过程如下: 找到function akismet_verify_key( $key ) { ,直接在后面加上: return ture; 就行了。 上传了一下，然后再来到要求输入API key的页面:/wp-admin/plugins.php?page=akismet/akismet.php,随便输入一个，我输的是123456,然后update,就成功了。 返回管理页面一个，哈哈，下面就列着一个大大的菜单: <strong>Akismet反垃圾(0)</strong>。棒极了！ 点进去一看: 抓到的垃圾: 队列中没有垃圾评论，今天可能是您的幸运日！: 真不错。看来akismet的作者也是深受垃圾侵扰之苦，所以要这么写。 附上akismet的全部代码. 如果您还没有安装akismet,您可以下载下来，保存成akismet.php,放到您的wordpress的wp-content/plugins/akismet.php位置，再到插件菜单下去激活，安装一下就可以了: WordPress.com API key to use this service. You can review the spam it catches under &quot;Manage&quot; and it automatically deletes old spam after 15 days. Hat tip: <a href="http://ioerror.us/">Michael Hampton</a> and <a href="http://chrisjdavis.org/">Chris J. Davis</a> for help with the plugin. Author: Matt Mullenweg Version: 1.14 Author URI: http://photomatt.net/ */ add_action('admin_menu', 'ksd_config_page'); function ksd_config_page() { global <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 184: …ismet\_conf&#039;); }̲ function akism…'>wpdb; if ( function\_exists(&#039;add\_submenu\_page&#039;) ) add\_submenu\_page(&#039;plugins.php&#039;, \_\_(&#039;Akismet Configuration&#039;), \_\_(&#039;Akismet Configuration&#039;), 1, \_\_FILE\_\_, &#039;akismet\_conf&#039;); } function akismet\_conf() { if ( isset(</span>_POST['submit']) ) { check_admin_referer(); $key = preg_replace('/[^a-h0-9]/i', '', $_POST['key']); if ( akismet_verify_key( $key ) ) update_option('wordpress_api_key', $key); else $invalid_key = true; } if ( !akismet_verify_key( get_option('wordpress_api_key') ) ) $invalid_key = true; ?&gt;</p>
 <p>Akismet will greatly reduce or even completely eliminate the comment and trackback spam you get on your site. If one does happen to get through, simply mark it as &quot;spam&quot; on the moderation screen and Akismet will learn from the mistakes. If you don't have a WordPress.com account yet, you can get one at <a href="%252$s">WordPress.com</a>.'), 'http://akismet.com/', 'http://wordpress.com/api-keys/'); ?&gt;</p>
 <p>(What is this?'); ?&gt;)</p>
 <p><strong>&quot;.__('Akismet is not active.').&quot;</strong> &quot;.sprintf(__('You must <a href="%251$s">enter your WordPress.com API key</a> for it to work.'), &quot;plugins.php?page=$path&quot;).&quot;</p>
@@ -119,31 +111,45 @@
 <p>'.sprintf(__('<a href="%251$s">Akismet</a> has protected your site from [%3<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>m</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi><mo>]</mo><mo>(</mo></mrow><annotation encoding="application/x-tex">s spam comments](%2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mclose">]</span><span class="mopen">(</span></span></span></span>s).'), 'http://akismet.com/', &quot;edit.php?page=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>a</mi><mi>t</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">path&quot;, number\_format(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord">&quot;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mopen">(</span></span></span></span>count) ).'</p>
 <p>'; } add_action('activity_box_end', 'akismet_stats'); ?&gt;</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/330/">
-                  <h3 class="post-title">
-                    用python开发SeachEngin spiders的构想:
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/330/">
+              <h3 class="post-title">
+                下一篇：用python开发SeachEngin spiders的构想:
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -153,8 +159,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

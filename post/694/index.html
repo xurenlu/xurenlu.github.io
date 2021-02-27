@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>自问自答 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="1.淘宝的成长靠的是百度吗? 不是。靠的是那些流量在一天100ip,200ip,顶多1万IP的千千万万中小网站。 2.百度的流量可以忽略吗? 不可以。百度的流量还是很大的。百度摇摆一下，多少网站着涼。 3.淘宝真得可以封得了百度的访问吗? ..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">自问自答</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-09-11</span>
+            
+          </div>
+          <div class="post-content">
+            <p>1.淘宝的成长靠的是百度吗? 不是。靠的是那些流量在一天100ip,200ip,顶多1万IP的千千万万中小网站。 2.百度的流量可以忽略吗? 不可以。百度的流量还是很大的。百度摇摆一下，多少网站着涼。 3.淘宝真得可以封得了百度的访问吗? 封不了的。如果百度想通过抓取淘宝的网页进行学习和完善自己的产品、数据，他是不需要遵守robots.txt的协议的。 4.没有百度的流量,淘宝就完了吗? 不会。某人好像说过,根据CNNIC的报告,三分之一的购物者来自搜索引擎。CNNIC的报告嘛...嗯 是在愚人节出的吧?就算是真的有三分之一来源于搜索引擎,这话从CNNIC的报告里出来我倒反而不信了。 5.没有百度，淘宝的用户就搜不了商品了吗? 淘宝的商品搜索技术来自中国雅虎的搜索团队。事实上从改换技术到雅虎平台后，商品搜索的用户体验是大幅提高了。你可以不认可中国雅虎的产品和推广，但是你不能否认它的技术。 6.围绕C2C，二者都有些啥武器? 淘宝有:支付手段：支付宝(占据国内在线支付的最大市场)，IM工具(除开QQ,MSN,好像淘宝旺旺的用户数是第三了).阿里巴巴B2B.雅虎搜索（市场是小了点)和邮箱(这也是一宝，用户基数大，可以发直邮广告),资讯(PV比较少),另外对于广告诉求，淘宝还有个阿里妈妈，起步才一年 百度:有支付手段:百付宝(起步),IM工具(百度Hi,f起步中),B2C处于招商阶段,搜索（国内市场最大，一大金矿),贴吧，百度空间，也有部分资讯类业务(百度财经之类)，百度空间 嘿嘿 基本上淘宝这边有的百度都在做了，但是很多人料想的邮箱，百度却放弃没有做。... 嗯 看来这场戏有看头。前面完胜易趣，再看后面淘宝如何和百度这位搜索一哥过招儿。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/693/">
+              <h3 class="post-title">
+                下一篇：屏蔽百度,淘宝恰恰做对了
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">自问自答</h2>
-            <div class="post-date">2008-09-11</div>
-            
-            <div class="post-content" v-pre>
-              <p>1.淘宝的成长靠的是百度吗? 不是。靠的是那些流量在一天100ip,200ip,顶多1万IP的千千万万中小网站。 2.百度的流量可以忽略吗? 不可以。百度的流量还是很大的。百度摇摆一下，多少网站着涼。 3.淘宝真得可以封得了百度的访问吗? 封不了的。如果百度想通过抓取淘宝的网页进行学习和完善自己的产品、数据，他是不需要遵守robots.txt的协议的。 4.没有百度的流量,淘宝就完了吗? 不会。某人好像说过,根据CNNIC的报告,三分之一的购物者来自搜索引擎。CNNIC的报告嘛...嗯 是在愚人节出的吧?就算是真的有三分之一来源于搜索引擎,这话从CNNIC的报告里出来我倒反而不信了。 5.没有百度，淘宝的用户就搜不了商品了吗? 淘宝的商品搜索技术来自中国雅虎的搜索团队。事实上从改换技术到雅虎平台后，商品搜索的用户体验是大幅提高了。你可以不认可中国雅虎的产品和推广，但是你不能否认它的技术。 6.围绕C2C，二者都有些啥武器? 淘宝有:支付手段：支付宝(占据国内在线支付的最大市场)，IM工具(除开QQ,MSN,好像淘宝旺旺的用户数是第三了).阿里巴巴B2B.雅虎搜索（市场是小了点)和邮箱(这也是一宝，用户基数大，可以发直邮广告),资讯(PV比较少),另外对于广告诉求，淘宝还有个阿里妈妈，起步才一年 百度:有支付手段:百付宝(起步),IM工具(百度Hi,f起步中),B2C处于招商阶段,搜索（国内市场最大，一大金矿),贴吧，百度空间，也有部分资讯类业务(百度财经之类)，百度空间 嘿嘿 基本上淘宝这边有的百度都在做了，但是很多人料想的邮箱，百度却放弃没有做。... 嗯 看来这场戏有看头。前面完胜易趣，再看后面淘宝如何和百度这位搜索一哥过招儿。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/693/">
-                  <h3 class="post-title">
-                    屏蔽百度,淘宝恰恰做对了
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

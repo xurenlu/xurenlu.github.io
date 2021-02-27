@@ -1,108 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>让电脑开口朗读汉语的java 代码. | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="/* test.java
-基本原理就是把汉字的拼音找出来，然后播放拼音文件。
-需要jmf的支持。
-@author:面条
-@mail:xurenlu@126.com
-@qq:55547082
-注意：里面有些内容需要自己修改一下.
-*/
-imp..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">让电脑开口朗读汉语的java 代码.</h2>
-            <div class="post-date">2005-05-20</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">让电脑开口朗读汉语的java 代码.</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2005-05-20</span>
             
-            <div class="post-content" v-pre>
-              <p>/* test.java<br>
+          </div>
+          <div class="post-content">
+            <p>/* test.java<br>
 基本原理就是把汉字的拼音找出来，然后播放拼音文件。<br>
 需要jmf的支持。<br>
 @author:面条<br>
@@ -125,31 +109,45 @@ private boolean ends=true;<br>
 String [] keys={”a”,”ai”,”an”,”ang”,”ao”,”ba”,”bai”,”ban”,”bang”,”bao”,”bei”,”ben”,”beng”,”bi”,”bian”,”biao”,”bie”,”bin”,”bing”,”bo”,”bu”,”ca”,”cai”,”can”,”cang”,”cao”,”ce”,”ceng”,”cha”,”chai”,”chan”,”chang”,”chao”,”che”,”chen”,”cheng”,”chi”,”chong”,”chou”,”chu”,”chuai”,”chuan”,”chuang”,”chui”,”chun”,”chuo”,”ci”,”cong”,”cou”,”cu”,”cuan”,”cui”,”cun”,”cuo”,”da”,”dai”,”dan”,”dang”,”dao”,”de”,”deng”,”di”,”dian”,”diao”,”die”,”ding”,”diu”,”dong”,”dou”,”du”,”duan”,”dui”,”dun”,”duo”,”e”,”en”,”er”,”fa”,”fan”,”fang”,”fei”,”fen”,”feng”,”fo”,”fou”,”fu”,”ga”,”gai”,”gan”,”gang”,”gao”,”ge”,”gei”,”gen”,”geng”,”gong”,”gou”,”gu”,”gua”,”guai”,”guan”,”guang”,”gui”,”gun”,”guo”,”ha”,”hai”,”han”,”hang”,”hao”,”he”,”hei”,”hen”,”heng”,”hong”,”hou”,”hu”,”hua”,”huai”,”huan”,”huang”,”hui”,”hun”,”huo”,”ji”,”jia”,”jian”,”jiang”,”jiao”,”jie”,”jin”,”jing”,”jiong”,”jiu”,”ju”,”juan”,”jue”,”jun”,”ka”,”kai”,”kan”,”kang”,”kao”,”ke”,”ken”,”keng”,”kong”,”kou”,”ku”,”kua”,”kuai”,”kuan”,”kuang”,”kui”,”kun”,”kuo”,”la”,”lai”,”lan”,”lang”,”lao”,”le”,”lei”,”leng”,”li”,”lia”,”lian”,”liang”,”liao”,”lie”,”lin”,”ling”,”liu”,”long”,”lou”,”lu”,”lv”,”luan”,”lue”,”lun”,”luo”,”ma”,”mai”,”man”,”mang”,”mao”,”me”,”mei”,”men”,”meng”,”mi”,”mian”,”miao”,”mie”,”min”,”ming”,”miu”,”mo”,”mou”,”mu”,”na”,”nai”,”nan”,”nang”,”nao”,”ne”,”nei”,”nen”,”neng”,”ni”,”nian”,”niang”,”niao”,”nie”,”nin”,”ning”,”niu”,”nong”,”nu”,”nv”,”nuan”,”nue”,”nuo”,”o”,”ou”,”pa”,”pai”,”pan”,”pang”,”pao”,”pei”,”pen”,”peng”,”pi”,”pian”,”piao”,”pie”,”pin”,”ping”,”po”,”pu”,”qi”,”qia”,”qian”,”qiang”,”qiao”,”qie”,”qin”,”qing”,”qiong”,”qiu”,”qu”,”quan”,”que”,”qun”,”ran”,”rang”,”rao”,”re”,”ren”,”reng”,”ri”,”rong”,”rou”,”ru”,”ruan”,”rui”,”run”,”ruo”,”sa”,”sai”,”san”,”sang”,”sao”,”se”,”sen”,”seng”,”sha”,”shai”,”shan”,”shang”,”shao”,”she”,”shen”,”sheng”,”shi”,”shou”,”shu”,”shua”,”shuai”,”shuan”,”shuang”,”shui”,”shun”,”shuo”,”si”,”song”,”sou”,”su”,”suan”,”sui”,”sun”,”suo”,”ta”,”tai”,”tan”,”tang”,”tao”,”te”,”teng”,”ti”,”tian”,”tiao”,”tie”,”ting”,”tong”,”tou”,”tu”,”tuan”,”tui”,”tun”,”tuo”,”wa”,”wai”,”wan”,”wang”,”wei”,”wen”,”weng”,”wo”,”wu”,”xi”,”xia”,”xian”,”xiang”,”xiao”,”xie”,”xin”,”xing”,”xiong”,”xiu”,”xu”,”xuan”,”xue”,”xun”,”ya”,”yan”,”yang”,”yao”,”ye”,”yi”,”yin”,”ying”,”yo”,”yong”,”you”,”yu”,”yuan”,”yue”,”yun”,”za”,”zai”,”zan”,”zang”,”zao”,”ze”,”zei”,”zen”,”zeng”,”zha”,”zhai”,”zhan”,”zhang”,”zhao”,”zhe”,”zhen”,”zheng”,”zhi”,”zhong”,”zhou”,”zhu”,”zhua”,”zhuai”,”zhuan”,”zhuang”,”zhui”,”zhun”,”zhuo”,”zi”,”zong”,”zou”,”zu”,”zuan”,”zui”,”zun”,”zuo”};<br>
 int [] values={-20319,-20317,-20304,-20295,-20292,-20283,-20265,-20257,-20242,-20230,-20051,-20036,-20032,-20026,-20002,-19990,-19986,-19982,-19976,-19805,-19784,-19775,-19774,-19763,-19756,-19751,-19746,-19741,-19739,-19728,-19725,-19715,-19540,-19531,-19525,-19515,-19500,-19484,-19479,-19467,-19289,-19288,-19281,-19275,-19270,-19263,-19261,-19249,-19243,-19242,-19238,-19235,-19227,-19224,-19218,-19212,-19038,-19023,-19018,-19006,-19003,-18996,-18977,-18961,-18952,-18783,-18774,-18773,-18763,-18756,-18741,-18735,-18731,-18722,-18710,-18697,-18696,-18526,-18518,-18501,-18490,-18478,-18463,-18448,-18447,-18446,-18239,-18237,-18231,-18220,-18211,-18201,-18184,-18183,-18181,-18012,-17997,-17988,-17970,-17964,-17961,-17950,-17947,-17931,-17928,-17922,-17759,-17752,-17733,-17730,-17721,-17703,-17701,-17697,-17692,-17683,-17676,-17496,-17487,-17482,-17468,-17454,-17433,-17427,-17417,-17202,-17185,-16983,-16970,-16942,-16915,-16733,-16708,-16706,-16689,-16664,-16657,-16647,-16474,-16470,-16465,-16459,-16452,-16448,-16433,-16429,-16427,-16423,-16419,-16412,-16407,-16403,-16401,-16393,-16220,-16216,-16212,-16205,-16202,-16187,-16180,-16171,-16169,-16158,-16155,-1595</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/123/">
-                  <h3 class="post-title">
-                    FireFox与IE 之争
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/123/">
+              <h3 class="post-title">
+                下一篇：FireFox与IE 之争
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -159,8 +157,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

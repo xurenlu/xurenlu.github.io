@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>加班，加班 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="加班。。。。 今天客服过来催，说有一个用户投诉投稿功能不正常了。本来这个bug被转给了同事，我说：这个js问题我可以帮你看一下。于是他 把Bug转给我了。 过了一个小时客服就过来盯着了，呵呵，说明天一定要给用户一个交待，用户一连打了几次电话..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">加班，加班</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-03-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p>加班。。。。 今天客服过来催，说有一个用户投诉投稿功能不正常了。本来这个bug被转给了同事，我说：这个js问题我可以帮你看一下。于是他 把Bug转给我了。 过了一个小时客服就过来盯着了，呵呵，说明天一定要给用户一个交待，用户一连打了几次电话了。 去看了一下那个截图，再在其他站试了一下，一切正常。但是因为又没有办法实地重现用户的出错场景，不知如何 下手。我都想给用户打电话要用户的密码去上去看看了。最后实在是觉得不可能是我们这边问题了，最后只好把用户的css和Js弄下来一点点看。 最后终于发现，用户自行弄的css样式中，有几行设置了z-index.本来我们的ajax提示层设的z坐标很大了，用户给他的背景层设的比我们的还大，把js层给挡住了所以看起来就是那个js库整体不工作了。整完自己都觉得很有成就感。 不过发现线上的接口机器一有台似乎很慢，但是没权限。没法子上去看。 无法重现的问题，最难整。完全乱猜。 22:25,收功，打车，回家！</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/613/">
+              <h3 class="post-title">
+                下一篇：Rails 2.0的一些变化
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">加班，加班</h2>
-            <div class="post-date">2008-03-26</div>
-            
-            <div class="post-content" v-pre>
-              <p>加班。。。。 今天客服过来催，说有一个用户投诉投稿功能不正常了。本来这个bug被转给了同事，我说：这个js问题我可以帮你看一下。于是他 把Bug转给我了。 过了一个小时客服就过来盯着了，呵呵，说明天一定要给用户一个交待，用户一连打了几次电话了。 去看了一下那个截图，再在其他站试了一下，一切正常。但是因为又没有办法实地重现用户的出错场景，不知如何 下手。我都想给用户打电话要用户的密码去上去看看了。最后实在是觉得不可能是我们这边问题了，最后只好把用户的css和Js弄下来一点点看。 最后终于发现，用户自行弄的css样式中，有几行设置了z-index.本来我们的ajax提示层设的z坐标很大了，用户给他的背景层设的比我们的还大，把js层给挡住了所以看起来就是那个js库整体不工作了。整完自己都觉得很有成就感。 不过发现线上的接口机器一有台似乎很慢，但是没权限。没法子上去看。 无法重现的问题，最难整。完全乱猜。 22:25,收功，打车，回家！</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/613/">
-                  <h3 class="post-title">
-                    Rails 2.0的一些变化
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

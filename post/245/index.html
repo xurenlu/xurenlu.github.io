@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>致联想集团全体同仁的一封信 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="我们怀着非常兴奋的心情向大家宣布，就在今天，2004年12月8日，联想集团以12.5亿美元的价格并购了IBM的全球个人电脑业务，包括台式机和笔记本电脑，以及与个人电脑业务相关的研发中心、制造工厂、全球的经销网络和服务中心，新联想将在5年之内..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">致联想集团全体同仁的一封信</h2>
-            <div class="post-date">2004-01-15</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">致联想集团全体同仁的一封信</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2004-01-15</span>
             
-            <div class="post-content" v-pre>
-              <p>我们怀着非常兴奋的心情向大家宣布，就在今天，2004年12月8日，联想集团以12.5亿美元的价格并购了IBM的全球个人电脑业务，包括台式机和笔记本电脑，以及与个人电脑业务相关的研发中心、制造工厂、全球的经销网络和服务中心，新联想将在5年之内无偿使用IBM品牌，并永久保留使用全球著名的“Think”商标的权利；与此同时，IBM将持有联想集团19%左右的股份，成为联想集团的战略合作伙伴。并购完成后，新联想将一举成为全球第三大个人电脑公司，拥有在全球范围内更加广泛的品牌认知，更多元化的客户基础及庞大的分销网络、全球一流的管理团队、世界级的领先科技、更丰富的产品组合、更高效的运作能力，实现我们梦寐以求的国际化战略愿景。</p>
+          </div>
+          <div class="post-content">
+            <p>我们怀着非常兴奋的心情向大家宣布，就在今天，2004年12月8日，联想集团以12.5亿美元的价格并购了IBM的全球个人电脑业务，包括台式机和笔记本电脑，以及与个人电脑业务相关的研发中心、制造工厂、全球的经销网络和服务中心，新联想将在5年之内无偿使用IBM品牌，并永久保留使用全球著名的“Think”商标的权利；与此同时，IBM将持有联想集团19%左右的股份，成为联想集团的战略合作伙伴。并购完成后，新联想将一举成为全球第三大个人电脑公司，拥有在全球范围内更加广泛的品牌认知，更多元化的客户基础及庞大的分销网络、全球一流的管理团队、世界级的领先科技、更丰富的产品组合、更高效的运作能力，实现我们梦寐以求的国际化战略愿景。</p>
 <p>12月8日将成为联想人一个伟大的日子，也必将成为中国企业发展历史上的一个重要时刻。在联想全体同仁所书写的联想历史过程中，没有一件事情能象今天这样，对全球的IT行业以及经济社会产生震动性的影响。这是联想用进取创新精神取得的无与伦比的战略突破，更是联想20年间所创造的企业价值的最好证明！我们和大家一道为能够见证和参与这一历史性的并购而倍感骄傲和自豪！</p>
 <p>并购IBM的全球个人电脑业务，使联想成为一间全球性公司，是我们在既定的国际化战略道路上迈出的关键而重要的一步。在过去的十年间，靠着全体员工的努力拼搏，我们建立了在中国市场上的绝对优势，奠定了国际化的雄厚基础；今天，我们通过并购IBM的个人电脑业务，缩短了我们可能要花费20年甚至更长时间才能达到的国际化目标历程，这将是一个新的历史起点，各位同仁过去创造了联想的辉煌历史，相信今后也同样会全心致力于推动新公司的成功运作，创造更辉煌的经营业绩。</p>
 <p>并购完成之后，新联想将进入平稳的过渡期和整合期，各方面运营将有序进行，在近期，中国的业务结构将保持稳定，我们已经和客户、渠道、供应商和政府进行了积极的沟通，通报了我们的进展情况，并承诺产品和服务的品质不变、服务团队不变、已签署和在执行的合约不变。中国市场是新联想的大本营，我们将保证中国业务稳定和持续的增长。</p>
@@ -106,22 +98,37 @@
 <p>联想集团总裁兼CEO 杨元庆</p>
 <p>二零零四年十二月八日</p>
 
-            </div>
-            
-            
-
-            
-
           </div>
-
         </div>
+
+        
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -131,8 +138,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

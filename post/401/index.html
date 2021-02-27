@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>创业者值得一看的三个小故事 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="1.我在四川的时候，在长途车上上来一个卖报的大婶。女友花了几毛钱的报纸，随口说了声&quot;谢谢&quot;.卖报的大婶一个劲地说:&quot;不谢不谢，你们花钱，应该要我说谢谢，怎么让你们说谢谢呢“。这就是对客户的态度。哪怕花了三毛钱，..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">创业者值得一看的三个小故事</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-04-14</span>
+            
+          </div>
+          <div class="post-content">
+            <p>1.我在四川的时候，在长途车上上来一个卖报的大婶。女友花了几毛钱的报纸，随口说了声&quot;谢谢&quot;.卖报的大婶一个劲地说:&quot;不谢不谢，你们花钱，应该要我说谢谢，怎么让你们说谢谢呢“。这就是对客户的态度。哪怕花了三毛钱，也要谢谢客户. 2.从杂志上看来的一个故事:一个死囚在临死前,被问及有什么要求。他说:请给我一年时间，我可以教会国王的马飞。当然这不可能,不过他是这么想的:一年之中，可能马真得飞了,也可能国王死了新君即位大赦天下。最差我也可以多活一年. 是的，创业企业首先要敢想。再要敢说。意外和转机随时可能发生. 3.我一个朋友在被问及靥字读什么，怎么写时，他这么说:我老爸告诉我，你做什么事情时都要知道，有很多人正和你做同样的事。所以，我肯定会有人在查这个字怎么读。于是他把人问的“上面一个厌，下面是面，这个字怎么打？&quot;输入百度知道,居然出来好多结果，看来果然如此。 回头一想，当你觉得你这个创意完美无暇，你做这个事情绝对不会有其他人竟争时，是否要再想想呢？中国人这么多，怎么保证只能有你会想到这个呢。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/399/">
+              <h3 class="post-title">
+                下一篇：上帝的玩笑
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">创业者值得一看的三个小故事</h2>
-            <div class="post-date">2007-04-14</div>
-            
-            <div class="post-content" v-pre>
-              <p>1.我在四川的时候，在长途车上上来一个卖报的大婶。女友花了几毛钱的报纸，随口说了声&quot;谢谢&quot;.卖报的大婶一个劲地说:&quot;不谢不谢，你们花钱，应该要我说谢谢，怎么让你们说谢谢呢“。这就是对客户的态度。哪怕花了三毛钱，也要谢谢客户. 2.从杂志上看来的一个故事:一个死囚在临死前,被问及有什么要求。他说:请给我一年时间，我可以教会国王的马飞。当然这不可能,不过他是这么想的:一年之中，可能马真得飞了,也可能国王死了新君即位大赦天下。最差我也可以多活一年. 是的，创业企业首先要敢想。再要敢说。意外和转机随时可能发生. 3.我一个朋友在被问及靥字读什么，怎么写时，他这么说:我老爸告诉我，你做什么事情时都要知道，有很多人正和你做同样的事。所以，我肯定会有人在查这个字怎么读。于是他把人问的“上面一个厌，下面是面，这个字怎么打？&quot;输入百度知道,居然出来好多结果，看来果然如此。 回头一想，当你觉得你这个创意完美无暇，你做这个事情绝对不会有其他人竟争时，是否要再想想呢？中国人这么多，怎么保证只能有你会想到这个呢。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/399/">
-                  <h3 class="post-title">
-                    上帝的玩笑
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

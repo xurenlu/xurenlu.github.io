@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>澳门人的招聘公告 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="看看人家的学位要求： 娛樂場餐飲部清潔員 - 小學畢業，懂廣東話。 Graduated from primary school, know Cantonese. 負責餐飲部一切清潔等工作。 Responsible for the work ..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">澳门人的招聘公告</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-11-06</span>
+            
+          </div>
+          <div class="post-content">
+            <p>看看人家的学位要求： 娛樂場餐飲部清潔員 - 小學畢業，懂廣東話。 Graduated from primary school, know Cantonese. 負責餐飲部一切清潔等工作。 Responsible for the work such as being clean in union of the food and beverage department. 需輪班工作。 Work on shift. 員工餐廳服務員/樓面服務員 - 初中畢業，懂國語及英語優先。 Graduating from junior middle school, person who knows mandarin and English has priority. 相關餐飲工作經驗。 Working experience of relevant food and beverage. 殷勤有禮、相貌端莊、工作熱誠、有責任心、具良好人際及溝通技巧。 Solicitous and courteous, good appearance, working cordiality, have sense of responsibility, possess the good and interpersonal and communicative skill. 娛樂場餐飲部酒吧部長 - 中學畢業，有基本酒吧運作及有調酒經驗。 Secondary Graduated, basic operation bar and adjust wine experience. 能獨立處理工作。 Can deal with all working independently. 持有餐飲業務/職業技術證書者，可獲優先考慮。需輪班工作。 Food and Beverage business/Job Technological Certificate holders have priority. Work on shift. 娛樂場餐飲部樓面主任 - 中學畢業，兩年或以上相關酒店餐廳營運及管理工作經驗。 Secondary Graduated, two years or the above relevant food and beverage are operated and management experience. 能獨立處理及管理服務的一切工作範疇。 Can deal with and manage and serve all working categories independently. 持有餐飲業務/職業技術證書者，可獲優先考慮。需輪班工作。 Food and Beverage business/Job Technological Certificate holders have priority. Work on shift. 員工餐廳初級廚師 - 小學畢業，具備中菜/西菜之食品烹調技巧。 Graduated from primary school, posses the Chinese food/western food cooking skill. 擁三年或以上相關工作經驗，並具廚房運作及出品的工作經驗。 Three years or above relevant working experience, produce to the operation of the kitchen and have working experience. 持有職業技術/食物衛生證書者，可獲優先考慮。需輪班工作。 Job technology/Food hygiene certificate holders have priority. Work on shift. 賭場庄荷 - 初中畢業或以上。 Junior middle school graduated or above. 已取得庄荷培訓課程認可。 Recognized dealing course. 懂中文和英文。 Know Chinese and English. 編更部文員 - 中學畢業，懂國語及英語。 Secondary Graduated, speak Mandarin &amp; English. 負責一般文書處理工作，懂中英文電腦輸入法Word; Excel。 Handle general documents, knowledge in Chinese &amp; English typing, Word, Excel, and etc operation. 需輪班工作。 Require to perform shift duties. 博彩優化事務分析員 - 高中畢業程度或相等經驗。具中、英文閱讀、書寫及口頭表達能力。 High School/Diploma in any discipline or equivalent, able to read, write, speak English and Chinese. 具一至兩年對大量數據的多變量分析經驗，需高度分析能力。 Possess 1 to 2 years experience in analyzing large amounts of data with multiple variables and strong analytical skills. 以深入的統計分析爲工具，分析賭檯博彩部的營運狀況，以整體博彩利潤最大 化爲主要考慮，同時也兼顧博彩顧客與其博彩喜好之間的複雜交互關係。 Responsible for analysis of the performance of the Table Games Department through in-depth statistical analysis with ultimate goal of maximizing the overall gaming profit, while taking into account the complex interactions between customers and their gaming preferences. 糾察部 - 50歲以下，具健康體魄，無任何犯罪紀錄。 Age below 50, good health and no criminal record. 具責任心，能在壓力下工作。需輪班工作。 Responsible and able to work under pressure. Require to perform shift duties. 具保安及客戶服務經驗者優先。 Experience with security and customer service is preferred. 領班司機 - 持有效輕型車輛駕駛執照三年或以上。 A valid light vehicle driving license with more than 3 years. 外貌端正及禮貌待人。 Have a presentable appearance and nice manner. 三年或以上前線服務監督， 尤以客運行業為佳。 At least 3 years experience in front line supervision, preferably in transportation field.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/525/">
+              <h3 class="post-title">
+                下一篇：枪稿，您看吗?阿里妈妈与NCP的合围
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">澳门人的招聘公告</h2>
-            <div class="post-date">2007-11-06</div>
-            
-            <div class="post-content" v-pre>
-              <p>看看人家的学位要求： 娛樂場餐飲部清潔員 - 小學畢業，懂廣東話。 Graduated from primary school, know Cantonese. 負責餐飲部一切清潔等工作。 Responsible for the work such as being clean in union of the food and beverage department. 需輪班工作。 Work on shift. 員工餐廳服務員/樓面服務員 - 初中畢業，懂國語及英語優先。 Graduating from junior middle school, person who knows mandarin and English has priority. 相關餐飲工作經驗。 Working experience of relevant food and beverage. 殷勤有禮、相貌端莊、工作熱誠、有責任心、具良好人際及溝通技巧。 Solicitous and courteous, good appearance, working cordiality, have sense of responsibility, possess the good and interpersonal and communicative skill. 娛樂場餐飲部酒吧部長 - 中學畢業，有基本酒吧運作及有調酒經驗。 Secondary Graduated, basic operation bar and adjust wine experience. 能獨立處理工作。 Can deal with all working independently. 持有餐飲業務/職業技術證書者，可獲優先考慮。需輪班工作。 Food and Beverage business/Job Technological Certificate holders have priority. Work on shift. 娛樂場餐飲部樓面主任 - 中學畢業，兩年或以上相關酒店餐廳營運及管理工作經驗。 Secondary Graduated, two years or the above relevant food and beverage are operated and management experience. 能獨立處理及管理服務的一切工作範疇。 Can deal with and manage and serve all working categories independently. 持有餐飲業務/職業技術證書者，可獲優先考慮。需輪班工作。 Food and Beverage business/Job Technological Certificate holders have priority. Work on shift. 員工餐廳初級廚師 - 小學畢業，具備中菜/西菜之食品烹調技巧。 Graduated from primary school, posses the Chinese food/western food cooking skill. 擁三年或以上相關工作經驗，並具廚房運作及出品的工作經驗。 Three years or above relevant working experience, produce to the operation of the kitchen and have working experience. 持有職業技術/食物衛生證書者，可獲優先考慮。需輪班工作。 Job technology/Food hygiene certificate holders have priority. Work on shift. 賭場庄荷 - 初中畢業或以上。 Junior middle school graduated or above. 已取得庄荷培訓課程認可。 Recognized dealing course. 懂中文和英文。 Know Chinese and English. 編更部文員 - 中學畢業，懂國語及英語。 Secondary Graduated, speak Mandarin &amp; English. 負責一般文書處理工作，懂中英文電腦輸入法Word; Excel。 Handle general documents, knowledge in Chinese &amp; English typing, Word, Excel, and etc operation. 需輪班工作。 Require to perform shift duties. 博彩優化事務分析員 - 高中畢業程度或相等經驗。具中、英文閱讀、書寫及口頭表達能力。 High School/Diploma in any discipline or equivalent, able to read, write, speak English and Chinese. 具一至兩年對大量數據的多變量分析經驗，需高度分析能力。 Possess 1 to 2 years experience in analyzing large amounts of data with multiple variables and strong analytical skills. 以深入的統計分析爲工具，分析賭檯博彩部的營運狀況，以整體博彩利潤最大 化爲主要考慮，同時也兼顧博彩顧客與其博彩喜好之間的複雜交互關係。 Responsible for analysis of the performance of the Table Games Department through in-depth statistical analysis with ultimate goal of maximizing the overall gaming profit, while taking into account the complex interactions between customers and their gaming preferences. 糾察部 - 50歲以下，具健康體魄，無任何犯罪紀錄。 Age below 50, good health and no criminal record. 具責任心，能在壓力下工作。需輪班工作。 Responsible and able to work under pressure. Require to perform shift duties. 具保安及客戶服務經驗者優先。 Experience with security and customer service is preferred. 領班司機 - 持有效輕型車輛駕駛執照三年或以上。 A valid light vehicle driving license with more than 3 years. 外貌端正及禮貌待人。 Have a presentable appearance and nice manner. 三年或以上前線服務監督， 尤以客運行業為佳。 At least 3 years experience in front line supervision, preferably in transportation field.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/525/">
-                  <h3 class="post-title">
-                    枪稿，您看吗?阿里妈妈与NCP的合围
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

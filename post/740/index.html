@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Mysql做主从同步(replication) | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="哈，原来手里有一份教程， 每次做同步都照做，一直很顺利。这次很久没做同步了，竟然不会了。折腾了好久，特地做个笔记。 Mysql 同步笔记 1.a为主，b为从. a的ip:10.62.240.128 b的ip:10.62.240.126 a,..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Mysql做主从同步(replication)</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-11-25</span>
+            
+          </div>
+          <div class="post-content">
+            <p>哈，原来手里有一份教程， 每次做同步都照做，一直很顺利。这次很久没做同步了，竟然不会了。折腾了好久，特地做个笔记。 Mysql 同步笔记 1.a为主，b为从. a的ip:10.62.240.128 b的ip:10.62.240.126 a,b 两台机器均装好Mysql,同时确保配置文件中 character_set_server = utf8 collation_server = utf8_unicode_ci 两台机器的设置相同。 2.在主(a)上配置: [/etc/my.cnf]中mysqld域新增: log-bin server-id = 1 sql-bin-update-same binlog-do-db = database_name 3.在从机器中配置: master-host=10.62.240.128 #a的ip master-user=replication master-password=replication master-port=3306 server-id=2 master-connect-retry=60 replicate-do-db=database_name log-slave-updates 4.授权:在a上面进入mysql: GRANT REPLICATION SLAVE ON *.* TO 'replication'@'10.62.240.126' IDENTIFIED BY 'replication'; flush privileges; 5.锁定a: mysql&gt; use database_name; mysql&gt;FLUSH TABLES WITH READ LOCK; #锁定要同步的test表，然后导出数据结构 mysql&gt;show master status;#记录这里的结果。记录如下: mysqld-bin.000003 | 1399444 | reping | mysqldump database_name &gt; dump.sql mysql&gt; UNLOCK TABLES; #已做好同步数据库结构导出后，解锁这个表 6.在b(从)中载入sql: mysql -uroot &lt; dump.sql 7:在b中对replication位置进行设定: mysql&gt;change master to master_host='10.62.240.128', master_port=3306, master_user='replication',master_password='replication',master_log_file='mysqld-bin.000003', MASTER_LOG_POS=1399444; mysql&gt;start slave;#启动复制服务 8:检查主和从之间的同步是否已经跟上: 在a中运行mysql&gt;show master status; mysql&gt; show master status; +-------------------+----------+--------------+------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | +-------------------+----------+--------------+------------------+ | mysqld-bin.000003 | 5614301 | reping | 再在从中运行msyql&gt; show slave status; show slave statusG *************************** 1. row *************************** Slave_IO_State: Waiting for master to send event Master_Host: 10.62.240.128 Master_User: replication Master_Port: 3306 Connect_Retry: 60 Master_Log_File: mysqld-bin.000003 Read_Master_Log_Pos: 5614301 Relay_Log_File: mysqld-relay-bin.000001 Relay_Log_Pos: 4214905 Relay_Master_Log_File: mysqld-bin.000003 Slave_IO_Running: Yes Slave_SQL_Running: Yes Replicate_Do_DB: Replicate_Ignore_DB: Replicate_Do_Table: Replicate_Ignore_Table: Replicate_Wild_Do_Table: Replicate_Wild_Ignore_Table: Last_Errno: 0 Last_Error: Skip_Counter: 0 Exec_Master_Log_Pos: 5614301 Relay_Log_Space: 4214905 Until_Condition: None Until_Log_File: Until_Log_Pos: 0 Master_SSL_Allowed: No Master_SSL_CA_File: Master_SSL_CA_Path: Master_SSL_Cert: Master_SSL_Cipher: Master_SSL_Key: Seconds_Behind_Master: 0 1 row in set (0.01 sec) 注意read_master_log_pos也是5614301,说明复制成功。 以后复制出问题时，也是用这种方式查看和修改。那种查入一条记录然后看从库中是不是也执行了的办法，不可取。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/738/">
+              <h3 class="post-title">
+                下一篇：嗯,我闻到豆浆味儿了
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Mysql做主从同步(replication)</h2>
-            <div class="post-date">2008-11-25</div>
-            
-            <div class="post-content" v-pre>
-              <p>哈，原来手里有一份教程， 每次做同步都照做，一直很顺利。这次很久没做同步了，竟然不会了。折腾了好久，特地做个笔记。 Mysql 同步笔记 1.a为主，b为从. a的ip:10.62.240.128 b的ip:10.62.240.126 a,b 两台机器均装好Mysql,同时确保配置文件中 character_set_server = utf8 collation_server = utf8_unicode_ci 两台机器的设置相同。 2.在主(a)上配置: [/etc/my.cnf]中mysqld域新增: log-bin server-id = 1 sql-bin-update-same binlog-do-db = database_name 3.在从机器中配置: master-host=10.62.240.128 #a的ip master-user=replication master-password=replication master-port=3306 server-id=2 master-connect-retry=60 replicate-do-db=database_name log-slave-updates 4.授权:在a上面进入mysql: GRANT REPLICATION SLAVE ON *.* TO 'replication'@'10.62.240.126' IDENTIFIED BY 'replication'; flush privileges; 5.锁定a: mysql&gt; use database_name; mysql&gt;FLUSH TABLES WITH READ LOCK; #锁定要同步的test表，然后导出数据结构 mysql&gt;show master status;#记录这里的结果。记录如下: mysqld-bin.000003 | 1399444 | reping | mysqldump database_name &gt; dump.sql mysql&gt; UNLOCK TABLES; #已做好同步数据库结构导出后，解锁这个表 6.在b(从)中载入sql: mysql -uroot &lt; dump.sql 7:在b中对replication位置进行设定: mysql&gt;change master to master_host='10.62.240.128', master_port=3306, master_user='replication',master_password='replication',master_log_file='mysqld-bin.000003', MASTER_LOG_POS=1399444; mysql&gt;start slave;#启动复制服务 8:检查主和从之间的同步是否已经跟上: 在a中运行mysql&gt;show master status; mysql&gt; show master status; +-------------------+----------+--------------+------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | +-------------------+----------+--------------+------------------+ | mysqld-bin.000003 | 5614301 | reping | 再在从中运行msyql&gt; show slave status; show slave statusG *************************** 1. row *************************** Slave_IO_State: Waiting for master to send event Master_Host: 10.62.240.128 Master_User: replication Master_Port: 3306 Connect_Retry: 60 Master_Log_File: mysqld-bin.000003 Read_Master_Log_Pos: 5614301 Relay_Log_File: mysqld-relay-bin.000001 Relay_Log_Pos: 4214905 Relay_Master_Log_File: mysqld-bin.000003 Slave_IO_Running: Yes Slave_SQL_Running: Yes Replicate_Do_DB: Replicate_Ignore_DB: Replicate_Do_Table: Replicate_Ignore_Table: Replicate_Wild_Do_Table: Replicate_Wild_Ignore_Table: Last_Errno: 0 Last_Error: Skip_Counter: 0 Exec_Master_Log_Pos: 5614301 Relay_Log_Space: 4214905 Until_Condition: None Until_Log_File: Until_Log_Pos: 0 Master_SSL_Allowed: No Master_SSL_CA_File: Master_SSL_CA_Path: Master_SSL_Cert: Master_SSL_Cipher: Master_SSL_Key: Seconds_Behind_Master: 0 1 row in set (0.01 sec) 注意read_master_log_pos也是5614301,说明复制成功。 以后复制出问题时，也是用这种方式查看和修改。那种查入一条记录然后看从库中是不是也执行了的办法，不可取。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/738/">
-                  <h3 class="post-title">
-                    嗯,我闻到豆浆味儿了
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

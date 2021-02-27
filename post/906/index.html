@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>我的vimrc 文件 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="嗯，给大家共享一下。都是从各地copy来的。 &quot;vimim 相关 let g:vimim_enable_static_enu=1 &quot;let g:vimim_enable_sexy_input_style=1 &quot;..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">我的vimrc 文件</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2009-06-25</span>
+            
+          </div>
+          <div class="post-content">
+            <p>嗯，给大家共享一下。都是从各地copy来的。 &quot;vimim 相关 let g:vimim_enable_static_enu=1 &quot;let g:vimim_enable_sexy_input_style=1 &quot; 关闭中文标点 let g:vimim_disable_chinese_punctuation=1 &quot;中英文之间不加空格 let g:vimim_disable_seamless_english_input=1 set dictionary-=/etc/funclist.txt dictionary+=/etc/funclist.txt &quot;Use the dictionary completion set complete-=k complete+=k &quot;自动补全.. set completeopt=longest,menu imap set nu autocmd FileType python set complete+=k~/.vim/tools/pydiction filetype plugin indent on set nocp filetype plugin on set helplang=cn map :Project &quot;autocmd BufNewFile *.py 0r ~/.vim/template/simple.py &quot; &quot; set ignorecase set shiftwidth=4 set softtabstop=4 set tabstop=4 set nocompatible &quot; Use Vim defaults (much better!) &quot;set ai &quot; always set autoindenting on &quot;set backup &quot; keep a backup file set viminfo='200,f1,&lt;1500 &quot; read/write a .viminfo file, don't store more &quot; than 50 lines of registers set history=1500 &quot; keep 50 lines of command line history set ruler &quot; show the cursor position all the time if has(&quot;autocmd&quot;) filetype plugin indent on autocmd FileType python set omnifunc=pythoncomplete#Complete autocmd FileType ruby set omnifunc=rubycomplete#Complete autocmd FileType c set omnifunc=ccomplete#Complete autocmd FileType ada set omnifunc=adacomplete#Complete autocmd FileType php set omnifunc=phpcomplete#CompletePHP autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS autocmd FileType html set omnifunc=htmlcomplete#CompleteTags autocmd FileType css set omnifunc=csscomplete#CompleteCSS autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags autocmd FileType sql set omnifunc=sqlcomplete#Complete endif set ru &quot;该命令打开 VIM 的状态栏标尺。 默认情况下， VIM 的状态栏标尺在屏幕底部， 它能即时显示当前光标所在位置在文件中的行号、列号， 以及对应的整个文件的百分比。 打开标尺可以给文件的编辑工作带来一定方便。 set nocp &quot;该命令指定让 VIM 工作在不兼容模式下。 在 VIM 之前， 出现过一个非常流行的编辑器叫 vi。 VIM 许多操作与 vi 很相似，但也有许多操作与 vi 是不一样的。 如果使用“:set cp”命令打开了兼容模式开关的话， VIM 将尽可能地模仿 vi 的操作模式。 &quot;也许有许多人喜欢“最正统的 vi”的操作模式， 对于初学者来说， vi 里许多操作是比较不方便的。 &quot;举一个例子， VIM 里允许在 Insert 模式下使用方向键移动光标， 而 vi 里在 Insert 模式下是不能移动光标的， 必须使用 ESC 退回到 Normal 模式下才行。 &quot;再举一个例子， vi 里使用 u 命令可以撤消一次先前的操作， 再次按下 u 时， 将撤消“撤消”这个动作本身，也就是我们常说的“重复”(redo)。 而 VIM 里可以使用 u 命令撤消多步操作， “重复”使用的快捷键是 Ctrl + R。 &quot;使用兼容模式后， VIM 将放弃这些新的功能， 尽量模仿 vi 的各种操作方式。 只有在不兼容模式下， 才能更好地发挥 VIM 自身的特点。 Bram 爷爷强烈推荐大家使用 VIM 的不兼容模式， 滇狐也是这样推荐的。 请务必在你的 .vimrc 中的第一行写上： “set nocp”。 set hls &quot;搜索时高亮显示被找到的文本。 该指令的功能在 vimtutor 中已经有过介绍， 这里就不多说了。 其实似乎许多人并不喜欢这个功能。 &quot;set is &quot;搜索时在未完全输入完毕要检索的文本时就开始检索。 vimtutor 对该命令也有过介绍， 滇狐并不喜欢这个功能， 因此滇狐自己的配置文件里是没有这条命令的。 但是周围有朋友很喜欢这个， 因此滇狐还是将它列在这里。 syntax on &quot;打开关键字上色。 进行程序设计的朋友应该都知道关键字上色是什么东西， 因此这里就不多说了。 不进行程序设计的朋友不妨也打开这个功能， 虽然不一定能够用得着， 但这个功能其实也是很好玩的。 set backspace=indent,eol,start &quot;设想这样一个情况： 当前光标前面有若干字母， 我们按下 i 键进入了 Insert 模式， 然后输入了 3 个字母， 再按 5 下删除(Backspace)。 默认情况下， VIM 仅能删除我们新输入的 3 个字母， 然后喇叭“嘟嘟”响两声。 如果我们“set backspace=start”， 则可以在删除了新输入的 3 个字母之后， 继续向前删除原有的两个字符。 &quot;再设想一个情况： 有若干行文字， 我们把光标移到中间某一行的行首， 按 i 键进入 Insert 模式， 然后按一下 Backspace。默认情况下， 喇叭会“嘟”一声， 然后没有任何动静。 如果我们“set backspace=eol”， 则可以删除前一行行末的回车，也就是说将两行拼接起来。 &quot;当我们设置了自动缩进后， 如果前一行缩进了一定距离， 按下回车后， 下一行也会保持相同的缩进。 默认情况下， 我们不能在 Insert 模式下直接按 Backspace 删除行首的缩进。 如果我们“set backspace=indent”， 则可以开启这一项功能。 &quot;上述三项功能， 你可以根据自己的需要， 选择其中一种或几种， 用逗号分隔各个选项。 建议把这三个选项都选上。 set whichwrap=b,s,&lt;,&gt;,[,] &quot;默认情况下， 在 VIM 中当光标移到一行最左边的时候， 我们继续按左键， 光标不能回到上一行的最右边。 同样地， 光标到了一行最右边的时候，我们不能通过继续按右跳到下一行的最左边。 但是， 通过设置 whichwrap 我们可以对一部分按键开启这项功能。如果想对某一个或几个按键开启到头后自动折向下一行的功能， 可以把需要开启的键的代号写到 whichwrap 的参数列表中，各个键之间使用逗号分隔。 以下是 whichwrap 支持的按键名称列表： &quot; * b &quot; 在 Normal 或 Visual 模式下按删除(Backspace)键。 &quot; * s &quot; 在 Normal 或 Visual 模式下按空格键。 &quot; * h &quot; 在 Normal 或 Visual 模式下按 h 键。 &quot; * l &quot; 在 Normal 或 Visual 模式下按 l 键。 &quot; * &lt; &quot; 在 Normal 或 Visual 模式下按左方向键。 &quot; * &gt; &quot; 在 Normal 或 Visual 模式下按右方向键。 &quot; * ~ &quot; 在 Normal 模式下按 ~ 键(翻转当前字母大小写)。 &quot; * [ &quot; 在 Insert 或 Replace 模式下按左方向键。 &quot; * ] &quot; 在 Insert 或 Replace 模式下按右方向键。 set encoding=utf-8 &quot;设置当前字符编码为 UTF-8。 UTF-8 是支持字符集最多的编码之一， 在 UTF-8 下进行工作， 会带来许多方便之处。 由于 VIM 在运行过程中切换 encoding 会造成许多问题， 如提示信息乱码、 register 丢失等， 因此强烈建议大家在启动 VIM 的时候把 encoding 设置为 UTF-8， 在编辑非 UTF-8 的文件时， 通过 fileencoding 来进行转码。 set langmenu=zh_CN.UTF-8 &quot;使用中文菜单， 并使用 UTF-8 编码。 如果没有这句的话， 在非 UTF-8 的系统， 如 Windows 下， 用了 UTF-8 的 encoding 后菜单会乱码。 &quot;language message en_US.UTF-8 &quot;使用中文提示信息， 并使用 UTF-8 编码。 如果没有这句的话， 在非 UTF-8 的系统， 如 Windows 下， 用了 UTF-8 的 encoding 后系统提示会乱码。 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 &quot;设置编码的自动识别。 关于这条设置的详细含义， 请参看这篇文章。 &quot;set ambiwidth=double &quot;防止特殊符号无法正常显示。 在 Unicode 中， 许多来自不同语言的字符， 如果字型足够近似的话， 会把它们放在同一个编码中。但在不同编码中， 字符的宽度是不一样的。 例如中文汉语拼音中的 ā 就很宽， 而欧洲语言中同样的字符就很窄。 当 VIM 工作在 Unicode 状态时， 遇到这些宽度不明的字符时， 默认使用窄字符， 这会导致中文的破折号“——”非常短， 五角星“★”等符号只能显示一半。因此， 我们需要设置 ambiwidth=double 来解决这个问题。 filetype plugin indent on &quot;开启文件类型自动识别， 启用文件类型插件， 启用针对文件类型的自动缩进 set smarttab &quot;当使用 et 将 Tab 替换为空格之后， 按下一个 Tab 键就能插入 4 个空格， &quot;但要想删除这 4 个空格， 就得按 4 下 Backspace， 很不方便。 设置 smarttab &quot;之后， 就可以只按一下 Backspace 就删除 4 个空格了。 &quot;set spell &quot;打开拼写检查。 拼写有错的单词下方会有红色波浪线， 将光标放在单词上， 按 z= 就会出现拼写建议， 按 ]s 可以直接跳到下一个拼写错误处。 &quot;set tw=78 &quot;设置光标超过 78 列的时候折行。 set lbr &quot;不在单词中间断行。 设置了这个选项后， 如果一行文字非常长， 无法在一行内显示完的话， 它会在单词与单词间的空白处断开， 尽量不会把一个单词分成两截放在两个不同的行里。 set fo+=mB &quot;打开断行模块对亚洲语言支持。 m 表示允许在两个汉字之间断行， 即使汉字之间没有出现空格。 B 表示将两行合并为一行的时候， 汉字与汉字之间不要补空格。 该命令支持的更多的选项请参看用户手册。 &quot; &quot; &quot; &quot; c/c++ set sm &quot;显示括号配对情况。 打开这个选项后， 当输入后括号 (包括小括号、中括号、大括号) &quot;的时候， 光标会跳回前括号片刻， 然后跳回来， 以此显示括号的配对情况。 set ai &quot;打开普通文件类型的自动缩进。 该自动缩进不如 cindent 智能， 但它可以为你编辑非 &quot;C/C++ 文件提供一定帮助。 set selectmode= &quot;不使用 selectmode。 set keymodel= &quot;不使用“Shift + 方向键”选择文本， “Shift + 方向键”代表向指定方向跳一个单词。 如果你喜欢这项功能的话， 可以使用“set keymodel=startsel,stopsel”打开它。 set keymodel=startsel,stopsel set wildmenu &quot;在命令模式下使用 Tab 自动补全的时候， &quot;将补全内容使用一个漂亮的单行菜单形式显示出来。 set sw=4 &quot;自动缩进的时候， 缩进尺寸为 4 个空格。 set ts=4 &quot;Tab 宽度为 4 个字符。 set et &quot;编辑时将所有 Tab 替换为空格。 &quot;该选项只在编辑时将 Tab 替换为空格， 如果打开一个已经存在的文件， 并不会将已有的 Tab 替换为空格。 如果希望进行这样的替换的话， 可以使用这条命令“:retab”。 retab &quot;set paste &quot;set nopaste set pastetoggle= &quot;很多兄弟都碰到过这样一个问题，在vim中粘贴代码有时会自动增加缩进，造成代码排版 &quot;的混乱。如何让它不缩进,保持原格式?其实vim有一个paste开关。 &quot;输入 :set paste &quot;需要关闭时 &quot;输入:set nopaste &quot;我是在vimrc中加入了： &quot;set pastetoggle= &quot;这样就可以用F3来切换了。 if (has(&quot;win32&quot;)) &quot;------------------------------------------------------------------------- &quot; Win32 &quot;------------------------------------------------------------------------- if (has(&quot;gui_running&quot;)) set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI set guifontwide=NSimSun:h9:cGB2312 endif else if (has(&quot;gui_running&quot;)) set guifont=Bitstream Vera Sans Mono 9 endif endif &quot;如果去掉这一行,默认值set mouse=a就生效了,这时不能用鼠标选中复制. set mouse=v &quot;打开文件时自动到达上次浏览时的位置 &quot; Only do this part when compiled with support for autocommands if has(&quot;autocmd&quot;) &quot; &quot; In text files, always limit the width of text to 78 characters autocmd BufRead *.txt set tw=78 &quot; &quot; When editing a file, always jump to the last cursor position autocmd BufReadPost * if line(&quot;'&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;'&quot;&quot;) &lt;= line(&quot;<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \* at position 52: …au BufReadPost \̲*̲ if line(&quot;&#039;&quot;&quot;) …'>&quot;) | exe &quot;normal g&#039;&quot;&quot; | endif endif au BufReadPost \* if line(&quot;&#039;&quot;&quot;) &gt; 0|if line(&quot;&#039;&quot;&quot;) &lt;= line(&quot;</span>&quot;)|exe(&quot;norm '&quot;&quot;)|else|exe &quot;norm $&quot;|endif|endif &quot; &quot;其中字符串 “string” 规定了什么要储存。该字符串的语法为一个选项字符跟一个参数. &quot;&quot;选项和参数组成的对子之间由逗号分隔. &quot;&quot;来看一下你可以怎样构建你自己的 viminfo 字符串。首先，选项 ‘ 用于规定你为多 &quot;少个文件保存标记 (a-z)。为此选项挑一个美妙的偶数 (比如 1000). 你的命令现在看 &quot;起来像这样: &quot; &quot;:set viminfo=’1000 &quot; &quot;选项 f 控制是否要储存全局标记 (A-Z 和 0-9)。如果这个选项设为 0，那么什么也不 &quot;存储。如果设为 1 ，或你对 f 选项不作规定, 那么标记就被存储. 你要这个功能, 现 &quot;在你有了: &quot; &quot;:set viminfo=’1000,f1 &quot; &quot;选项 &lt; 控制着每个寄存器内保存几行文本。默认情况下，所有的文本行都被保存. 如果 &quot;设为 0，则什么也不保存。为了避免成千上万行文本被加入你的信息文件 (那些文本可能 &quot;永远也没用，徒然使 Vim 起动得更慢), 你采用 500 行的上限: &quot; &quot;:set viminfo='1000,f1,&lt;500 &quot; &quot;你也许用得着的其它选项: &quot;: 保存命令行历史记录内的行数 &quot;@ 保存输入行历史记录内的行数 &quot;/ 保存搜索历史记录内的行数 &quot;r 可移介质，其中没有任何标记存入 (可用多次) &quot;! 以大写字母开头的全局变数，并且不含有小写字母 &quot;h 起动时解除选项 'hlsearch' 的高亮度显示 &quot;% 缓冲列表 (只有当不带参数起动 Vim 时才还原) &quot;c 用编码 'encoding' 转换文本 &quot;n 用于 viminfo 文件的名称 (必须为最后一项选项) set viminfo='1000,f1,&lt;500</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/904/">
+              <h3 class="post-title">
+                下一篇：python多线程程序的中断(信号)处理
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">我的vimrc 文件</h2>
-            <div class="post-date">2009-06-25</div>
-            
-            <div class="post-content" v-pre>
-              <p>嗯，给大家共享一下。都是从各地copy来的。 &quot;vimim 相关 let g:vimim_enable_static_enu=1 &quot;let g:vimim_enable_sexy_input_style=1 &quot; 关闭中文标点 let g:vimim_disable_chinese_punctuation=1 &quot;中英文之间不加空格 let g:vimim_disable_seamless_english_input=1 set dictionary-=/etc/funclist.txt dictionary+=/etc/funclist.txt &quot;Use the dictionary completion set complete-=k complete+=k &quot;自动补全.. set completeopt=longest,menu imap set nu autocmd FileType python set complete+=k~/.vim/tools/pydiction filetype plugin indent on set nocp filetype plugin on set helplang=cn map :Project &quot;autocmd BufNewFile *.py 0r ~/.vim/template/simple.py &quot; &quot; set ignorecase set shiftwidth=4 set softtabstop=4 set tabstop=4 set nocompatible &quot; Use Vim defaults (much better!) &quot;set ai &quot; always set autoindenting on &quot;set backup &quot; keep a backup file set viminfo='200,f1,&lt;1500 &quot; read/write a .viminfo file, don't store more &quot; than 50 lines of registers set history=1500 &quot; keep 50 lines of command line history set ruler &quot; show the cursor position all the time if has(&quot;autocmd&quot;) filetype plugin indent on autocmd FileType python set omnifunc=pythoncomplete#Complete autocmd FileType ruby set omnifunc=rubycomplete#Complete autocmd FileType c set omnifunc=ccomplete#Complete autocmd FileType ada set omnifunc=adacomplete#Complete autocmd FileType php set omnifunc=phpcomplete#CompletePHP autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS autocmd FileType html set omnifunc=htmlcomplete#CompleteTags autocmd FileType css set omnifunc=csscomplete#CompleteCSS autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags autocmd FileType sql set omnifunc=sqlcomplete#Complete endif set ru &quot;该命令打开 VIM 的状态栏标尺。 默认情况下， VIM 的状态栏标尺在屏幕底部， 它能即时显示当前光标所在位置在文件中的行号、列号， 以及对应的整个文件的百分比。 打开标尺可以给文件的编辑工作带来一定方便。 set nocp &quot;该命令指定让 VIM 工作在不兼容模式下。 在 VIM 之前， 出现过一个非常流行的编辑器叫 vi。 VIM 许多操作与 vi 很相似，但也有许多操作与 vi 是不一样的。 如果使用“:set cp”命令打开了兼容模式开关的话， VIM 将尽可能地模仿 vi 的操作模式。 &quot;也许有许多人喜欢“最正统的 vi”的操作模式， 对于初学者来说， vi 里许多操作是比较不方便的。 &quot;举一个例子， VIM 里允许在 Insert 模式下使用方向键移动光标， 而 vi 里在 Insert 模式下是不能移动光标的， 必须使用 ESC 退回到 Normal 模式下才行。 &quot;再举一个例子， vi 里使用 u 命令可以撤消一次先前的操作， 再次按下 u 时， 将撤消“撤消”这个动作本身，也就是我们常说的“重复”(redo)。 而 VIM 里可以使用 u 命令撤消多步操作， “重复”使用的快捷键是 Ctrl + R。 &quot;使用兼容模式后， VIM 将放弃这些新的功能， 尽量模仿 vi 的各种操作方式。 只有在不兼容模式下， 才能更好地发挥 VIM 自身的特点。 Bram 爷爷强烈推荐大家使用 VIM 的不兼容模式， 滇狐也是这样推荐的。 请务必在你的 .vimrc 中的第一行写上： “set nocp”。 set hls &quot;搜索时高亮显示被找到的文本。 该指令的功能在 vimtutor 中已经有过介绍， 这里就不多说了。 其实似乎许多人并不喜欢这个功能。 &quot;set is &quot;搜索时在未完全输入完毕要检索的文本时就开始检索。 vimtutor 对该命令也有过介绍， 滇狐并不喜欢这个功能， 因此滇狐自己的配置文件里是没有这条命令的。 但是周围有朋友很喜欢这个， 因此滇狐还是将它列在这里。 syntax on &quot;打开关键字上色。 进行程序设计的朋友应该都知道关键字上色是什么东西， 因此这里就不多说了。 不进行程序设计的朋友不妨也打开这个功能， 虽然不一定能够用得着， 但这个功能其实也是很好玩的。 set backspace=indent,eol,start &quot;设想这样一个情况： 当前光标前面有若干字母， 我们按下 i 键进入了 Insert 模式， 然后输入了 3 个字母， 再按 5 下删除(Backspace)。 默认情况下， VIM 仅能删除我们新输入的 3 个字母， 然后喇叭“嘟嘟”响两声。 如果我们“set backspace=start”， 则可以在删除了新输入的 3 个字母之后， 继续向前删除原有的两个字符。 &quot;再设想一个情况： 有若干行文字， 我们把光标移到中间某一行的行首， 按 i 键进入 Insert 模式， 然后按一下 Backspace。默认情况下， 喇叭会“嘟”一声， 然后没有任何动静。 如果我们“set backspace=eol”， 则可以删除前一行行末的回车，也就是说将两行拼接起来。 &quot;当我们设置了自动缩进后， 如果前一行缩进了一定距离， 按下回车后， 下一行也会保持相同的缩进。 默认情况下， 我们不能在 Insert 模式下直接按 Backspace 删除行首的缩进。 如果我们“set backspace=indent”， 则可以开启这一项功能。 &quot;上述三项功能， 你可以根据自己的需要， 选择其中一种或几种， 用逗号分隔各个选项。 建议把这三个选项都选上。 set whichwrap=b,s,&lt;,&gt;,[,] &quot;默认情况下， 在 VIM 中当光标移到一行最左边的时候， 我们继续按左键， 光标不能回到上一行的最右边。 同样地， 光标到了一行最右边的时候，我们不能通过继续按右跳到下一行的最左边。 但是， 通过设置 whichwrap 我们可以对一部分按键开启这项功能。如果想对某一个或几个按键开启到头后自动折向下一行的功能， 可以把需要开启的键的代号写到 whichwrap 的参数列表中，各个键之间使用逗号分隔。 以下是 whichwrap 支持的按键名称列表： &quot; * b &quot; 在 Normal 或 Visual 模式下按删除(Backspace)键。 &quot; * s &quot; 在 Normal 或 Visual 模式下按空格键。 &quot; * h &quot; 在 Normal 或 Visual 模式下按 h 键。 &quot; * l &quot; 在 Normal 或 Visual 模式下按 l 键。 &quot; * &lt; &quot; 在 Normal 或 Visual 模式下按左方向键。 &quot; * &gt; &quot; 在 Normal 或 Visual 模式下按右方向键。 &quot; * ~ &quot; 在 Normal 模式下按 ~ 键(翻转当前字母大小写)。 &quot; * [ &quot; 在 Insert 或 Replace 模式下按左方向键。 &quot; * ] &quot; 在 Insert 或 Replace 模式下按右方向键。 set encoding=utf-8 &quot;设置当前字符编码为 UTF-8。 UTF-8 是支持字符集最多的编码之一， 在 UTF-8 下进行工作， 会带来许多方便之处。 由于 VIM 在运行过程中切换 encoding 会造成许多问题， 如提示信息乱码、 register 丢失等， 因此强烈建议大家在启动 VIM 的时候把 encoding 设置为 UTF-8， 在编辑非 UTF-8 的文件时， 通过 fileencoding 来进行转码。 set langmenu=zh_CN.UTF-8 &quot;使用中文菜单， 并使用 UTF-8 编码。 如果没有这句的话， 在非 UTF-8 的系统， 如 Windows 下， 用了 UTF-8 的 encoding 后菜单会乱码。 &quot;language message en_US.UTF-8 &quot;使用中文提示信息， 并使用 UTF-8 编码。 如果没有这句的话， 在非 UTF-8 的系统， 如 Windows 下， 用了 UTF-8 的 encoding 后系统提示会乱码。 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 &quot;设置编码的自动识别。 关于这条设置的详细含义， 请参看这篇文章。 &quot;set ambiwidth=double &quot;防止特殊符号无法正常显示。 在 Unicode 中， 许多来自不同语言的字符， 如果字型足够近似的话， 会把它们放在同一个编码中。但在不同编码中， 字符的宽度是不一样的。 例如中文汉语拼音中的 ā 就很宽， 而欧洲语言中同样的字符就很窄。 当 VIM 工作在 Unicode 状态时， 遇到这些宽度不明的字符时， 默认使用窄字符， 这会导致中文的破折号“——”非常短， 五角星“★”等符号只能显示一半。因此， 我们需要设置 ambiwidth=double 来解决这个问题。 filetype plugin indent on &quot;开启文件类型自动识别， 启用文件类型插件， 启用针对文件类型的自动缩进 set smarttab &quot;当使用 et 将 Tab 替换为空格之后， 按下一个 Tab 键就能插入 4 个空格， &quot;但要想删除这 4 个空格， 就得按 4 下 Backspace， 很不方便。 设置 smarttab &quot;之后， 就可以只按一下 Backspace 就删除 4 个空格了。 &quot;set spell &quot;打开拼写检查。 拼写有错的单词下方会有红色波浪线， 将光标放在单词上， 按 z= 就会出现拼写建议， 按 ]s 可以直接跳到下一个拼写错误处。 &quot;set tw=78 &quot;设置光标超过 78 列的时候折行。 set lbr &quot;不在单词中间断行。 设置了这个选项后， 如果一行文字非常长， 无法在一行内显示完的话， 它会在单词与单词间的空白处断开， 尽量不会把一个单词分成两截放在两个不同的行里。 set fo+=mB &quot;打开断行模块对亚洲语言支持。 m 表示允许在两个汉字之间断行， 即使汉字之间没有出现空格。 B 表示将两行合并为一行的时候， 汉字与汉字之间不要补空格。 该命令支持的更多的选项请参看用户手册。 &quot; &quot; &quot; &quot; c/c++ set sm &quot;显示括号配对情况。 打开这个选项后， 当输入后括号 (包括小括号、中括号、大括号) &quot;的时候， 光标会跳回前括号片刻， 然后跳回来， 以此显示括号的配对情况。 set ai &quot;打开普通文件类型的自动缩进。 该自动缩进不如 cindent 智能， 但它可以为你编辑非 &quot;C/C++ 文件提供一定帮助。 set selectmode= &quot;不使用 selectmode。 set keymodel= &quot;不使用“Shift + 方向键”选择文本， “Shift + 方向键”代表向指定方向跳一个单词。 如果你喜欢这项功能的话， 可以使用“set keymodel=startsel,stopsel”打开它。 set keymodel=startsel,stopsel set wildmenu &quot;在命令模式下使用 Tab 自动补全的时候， &quot;将补全内容使用一个漂亮的单行菜单形式显示出来。 set sw=4 &quot;自动缩进的时候， 缩进尺寸为 4 个空格。 set ts=4 &quot;Tab 宽度为 4 个字符。 set et &quot;编辑时将所有 Tab 替换为空格。 &quot;该选项只在编辑时将 Tab 替换为空格， 如果打开一个已经存在的文件， 并不会将已有的 Tab 替换为空格。 如果希望进行这样的替换的话， 可以使用这条命令“:retab”。 retab &quot;set paste &quot;set nopaste set pastetoggle= &quot;很多兄弟都碰到过这样一个问题，在vim中粘贴代码有时会自动增加缩进，造成代码排版 &quot;的混乱。如何让它不缩进,保持原格式?其实vim有一个paste开关。 &quot;输入 :set paste &quot;需要关闭时 &quot;输入:set nopaste &quot;我是在vimrc中加入了： &quot;set pastetoggle= &quot;这样就可以用F3来切换了。 if (has(&quot;win32&quot;)) &quot;------------------------------------------------------------------------- &quot; Win32 &quot;------------------------------------------------------------------------- if (has(&quot;gui_running&quot;)) set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI set guifontwide=NSimSun:h9:cGB2312 endif else if (has(&quot;gui_running&quot;)) set guifont=Bitstream Vera Sans Mono 9 endif endif &quot;如果去掉这一行,默认值set mouse=a就生效了,这时不能用鼠标选中复制. set mouse=v &quot;打开文件时自动到达上次浏览时的位置 &quot; Only do this part when compiled with support for autocommands if has(&quot;autocmd&quot;) &quot; &quot; In text files, always limit the width of text to 78 characters autocmd BufRead *.txt set tw=78 &quot; &quot; When editing a file, always jump to the last cursor position autocmd BufReadPost * if line(&quot;'&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;'&quot;&quot;) &lt;= line(&quot;<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \* at position 52: …au BufReadPost \̲*̲ if line(&quot;&#039;&quot;&quot;) …'>&quot;) | exe &quot;normal g&#039;&quot;&quot; | endif endif au BufReadPost \* if line(&quot;&#039;&quot;&quot;) &gt; 0|if line(&quot;&#039;&quot;&quot;) &lt;= line(&quot;</span>&quot;)|exe(&quot;norm '&quot;&quot;)|else|exe &quot;norm $&quot;|endif|endif &quot; &quot;其中字符串 “string” 规定了什么要储存。该字符串的语法为一个选项字符跟一个参数. &quot;&quot;选项和参数组成的对子之间由逗号分隔. &quot;&quot;来看一下你可以怎样构建你自己的 viminfo 字符串。首先，选项 ‘ 用于规定你为多 &quot;少个文件保存标记 (a-z)。为此选项挑一个美妙的偶数 (比如 1000). 你的命令现在看 &quot;起来像这样: &quot; &quot;:set viminfo=’1000 &quot; &quot;选项 f 控制是否要储存全局标记 (A-Z 和 0-9)。如果这个选项设为 0，那么什么也不 &quot;存储。如果设为 1 ，或你对 f 选项不作规定, 那么标记就被存储. 你要这个功能, 现 &quot;在你有了: &quot; &quot;:set viminfo=’1000,f1 &quot; &quot;选项 &lt; 控制着每个寄存器内保存几行文本。默认情况下，所有的文本行都被保存. 如果 &quot;设为 0，则什么也不保存。为了避免成千上万行文本被加入你的信息文件 (那些文本可能 &quot;永远也没用，徒然使 Vim 起动得更慢), 你采用 500 行的上限: &quot; &quot;:set viminfo='1000,f1,&lt;500 &quot; &quot;你也许用得着的其它选项: &quot;: 保存命令行历史记录内的行数 &quot;@ 保存输入行历史记录内的行数 &quot;/ 保存搜索历史记录内的行数 &quot;r 可移介质，其中没有任何标记存入 (可用多次) &quot;! 以大写字母开头的全局变数，并且不含有小写字母 &quot;h 起动时解除选项 'hlsearch' 的高亮度显示 &quot;% 缓冲列表 (只有当不带参数起动 Vim 时才还原) &quot;c 用编码 'encoding' 转换文本 &quot;n 用于 viminfo 文件的名称 (必须为最后一项选项) set viminfo='1000,f1,&lt;500</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/904/">
-                  <h3 class="post-title">
-                    python多线程程序的中断(信号)处理
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

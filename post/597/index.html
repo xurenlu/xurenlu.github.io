@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>yum错误修复 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="今天想把fedora8升级到fedora9,结果先把fedora-release＊的包升级以后，发现系统fedora源已经全部变成fedora9的了，但是因几个基本包有问题，我用yum安装什么包都装不了了。 只好回退，结果遇上这样一个问题：..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">yum错误修复</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-02-22</span>
+            
+          </div>
+          <div class="post-content">
+            <p>今天想把fedora8升级到fedora9,结果先把fedora-release＊的包升级以后，发现系统fedora源已经全部变成fedora9的了，但是因几个基本包有问题，我用yum安装什么包都装不了了。 只好回退，结果遇上这样一个问题： Cannot retrieve repository metadata (repomd.xml) for repository:/var/cache/yum/fedora/mirrorlist.txt 到处查，都搞不懂为什么。最后只好自己查查yum的源代码，再加上我天才般的瞎猜，终于整出来了： 记下过程: 手工建立/var/cache/yum/fedora/和/var/cache/yum/updates两个目录。 编辑/var/cache/yum/fedora/mirrorlist.txt为 # repo = fedora-8 arch = x86_64 country = CN country = RU country = JP country = HK country = KR country = TW country = TH country = IN http://fedora.candishosting.com.cn/pub/fedora/linux/releases/8/Everything/x86_64/os http://opensource.nchc.org.tw/fedora/linux/releases/8/Everything/x86_64/os http://ftp.twaren.net/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://linux.ntcu.net/ftp/dists/fedora/releases/8/Everything/x86_64/os http://ftp.yz.yamagata-u.ac.jp/pub/linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.hostrino.com/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.rhd.ru/pub/fedora/linux/releases/8/Everything/x86_64/os http://ftp.cse.yzu.edu.tw/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.chg.ru/pub/Linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.jaist.ac.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.ncnu.edu.tw/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://allotter.yandex.net/fedora/linux/releases/8/Everything/x86_64/os http://ftp.kddilabs.jp/Linux/packages/fedora/releases/8/Everything/x86_64/os http://ftp.kaist.ac.kr/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.riken.jp/Linux/fedora/releases/8/Everything/x86_64/os http://spreader.yandex.net/fedora/linux/releases/8/Everything/x86_64/os 编辑/var/cache/yum/updates/mirrorlist.txt为: # repo = updates-released-f8 arch = x86_64 country = RU country = JP country = HK country = CY country = SG country = TW country = TH country = IN http://spreader.yandex.net/fedora/linux/updates/8/x86_64 http://ftp.kddilabs.jp/Linux/packages/fedora/updates/8/x86_64 http://allotter.yandex.net/fedora/linux/updates/8/x86_64 http://ftp.hostrino.com/pub/fedora/linux/updates/8/x86_64 http://ftp.riken.jp/Linux/fedora/updates/8/x86_64 ftp://ftp.oss.eznetsols.org/linux/fedora/updates/8/x86_64 ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/updates/8/x86_64 http://opensource.nchc.org.tw/fedora/linux/updates/8/x86_64 http://ftp.jaist.ac.jp/pub/Linux/Fedora/updates/8/x86_64 http://mirrors.cytanet.com.cy/linux/fedora/linux/updates/8/x86_64 大功告成。 再运行yum install mplayer,一切正常。 原因(个人瞎猜版): /var/cache/yum/下是yum的缓存目录。当我运行yum clean all时，把这两个目录下的一些文件清空了。但是可能yum存在一个bug, /var/cache/yum/fedora/repomd.xml能重新下载生成，/var/cache/yum/fedora/mirrotlist.txt却不能正常生成。因此需要我们手工构造这个文件。 那我是怎么构造这个文件的内容的呢？ 注意看/etc/yum.repos.d/fedora.repod文件，中有 mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: releasever&amp;̲arch='>releasever&amp;arch=</span>basearch <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">应</mi><mi mathvariant="normal">该</mi><mi mathvariant="normal">是</mi><mn>8</mn><mo>(</mo><mi mathvariant="normal">我</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">是</mi><mi>f</mi><mi>e</mi><mi>d</mi><mi>o</mi><mi>r</mi><mi>a</mi><mn>8</mn><mo>)</mo><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">releasever应该是8(我用的是fedora 8),</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">该</span><span class="mord cjk_fallback">是</span><span class="mord">8</span><span class="mopen">(</span><span class="mord cjk_fallback">我</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">是</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord">8</span><span class="mclose">)</span><span class="mpunct">,</span></span></span></span>basearch是架构的意思，我的是x86_64,替换上，访问之，得到: # repo = fedora-8 arch = x86_64 country = CN country = RU country = JP country = HK country = KR country = TW country = TH country = IN http://fedora.candishosting.com.cn/pub/fedora/linux/releases/8/Everything/x86_64/os http://opensource.nchc.org.tw/fedora/linux/releases/8/Everything/x86_64/os http://ftp.twaren.net/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://linux.ntcu.net/ftp/dists/fedora/releases/8/Everything/x86_64/os http://ftp.yz.yamagata-u.ac.jp/pub/linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.hostrino.com/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.rhd.ru/pub/fedora/linux/releases/8/Everything/x86_64/os http://ftp.cse.yzu.edu.tw/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.chg.ru/pub/Linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.jaist.ac.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.ncnu.edu.tw/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://allotter.yandex.net/fedora/linux/releases/8/Everything/x86_64/os http://ftp.kddilabs.jp/Linux/packages/fedora/releases/8/Everything/x86_64/os http://ftp.kaist.ac.kr/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.riken.jp/Linux/fedora/releases/8/Everything/x86_64/os http://spreader.yandex.net/fedora/linux/releases/8/Everything/x86_64/os 这就是/var/cache/yum/fedora/mirrorlist.txt的内容了。 对应地，查看/etc/yum.repos.d/fedora-updates.repo，去访问对应的地址，取得内容写入到/var/cache/yum/updates/mirrorlist.txt.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/596/">
+              <h3 class="post-title">
+                下一篇：这些软件都疯了,都要re(***)个东西
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">yum错误修复</h2>
-            <div class="post-date">2008-02-22</div>
-            
-            <div class="post-content" v-pre>
-              <p>今天想把fedora8升级到fedora9,结果先把fedora-release＊的包升级以后，发现系统fedora源已经全部变成fedora9的了，但是因几个基本包有问题，我用yum安装什么包都装不了了。 只好回退，结果遇上这样一个问题： Cannot retrieve repository metadata (repomd.xml) for repository:/var/cache/yum/fedora/mirrorlist.txt 到处查，都搞不懂为什么。最后只好自己查查yum的源代码，再加上我天才般的瞎猜，终于整出来了： 记下过程: 手工建立/var/cache/yum/fedora/和/var/cache/yum/updates两个目录。 编辑/var/cache/yum/fedora/mirrorlist.txt为 # repo = fedora-8 arch = x86_64 country = CN country = RU country = JP country = HK country = KR country = TW country = TH country = IN http://fedora.candishosting.com.cn/pub/fedora/linux/releases/8/Everything/x86_64/os http://opensource.nchc.org.tw/fedora/linux/releases/8/Everything/x86_64/os http://ftp.twaren.net/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://linux.ntcu.net/ftp/dists/fedora/releases/8/Everything/x86_64/os http://ftp.yz.yamagata-u.ac.jp/pub/linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.hostrino.com/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.rhd.ru/pub/fedora/linux/releases/8/Everything/x86_64/os http://ftp.cse.yzu.edu.tw/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.chg.ru/pub/Linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.jaist.ac.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.ncnu.edu.tw/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://allotter.yandex.net/fedora/linux/releases/8/Everything/x86_64/os http://ftp.kddilabs.jp/Linux/packages/fedora/releases/8/Everything/x86_64/os http://ftp.kaist.ac.kr/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.riken.jp/Linux/fedora/releases/8/Everything/x86_64/os http://spreader.yandex.net/fedora/linux/releases/8/Everything/x86_64/os 编辑/var/cache/yum/updates/mirrorlist.txt为: # repo = updates-released-f8 arch = x86_64 country = RU country = JP country = HK country = CY country = SG country = TW country = TH country = IN http://spreader.yandex.net/fedora/linux/updates/8/x86_64 http://ftp.kddilabs.jp/Linux/packages/fedora/updates/8/x86_64 http://allotter.yandex.net/fedora/linux/updates/8/x86_64 http://ftp.hostrino.com/pub/fedora/linux/updates/8/x86_64 http://ftp.riken.jp/Linux/fedora/updates/8/x86_64 ftp://ftp.oss.eznetsols.org/linux/fedora/updates/8/x86_64 ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/updates/8/x86_64 http://opensource.nchc.org.tw/fedora/linux/updates/8/x86_64 http://ftp.jaist.ac.jp/pub/Linux/Fedora/updates/8/x86_64 http://mirrors.cytanet.com.cy/linux/fedora/linux/updates/8/x86_64 大功告成。 再运行yum install mplayer,一切正常。 原因(个人瞎猜版): /var/cache/yum/下是yum的缓存目录。当我运行yum clean all时，把这两个目录下的一些文件清空了。但是可能yum存在一个bug, /var/cache/yum/fedora/repomd.xml能重新下载生成，/var/cache/yum/fedora/mirrotlist.txt却不能正常生成。因此需要我们手工构造这个文件。 那我是怎么构造这个文件的内容的呢？ 注意看/etc/yum.repos.d/fedora.repod文件，中有 mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;&amp;&#039; at position 11: releasever&amp;̲arch='>releasever&amp;arch=</span>basearch <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">应</mi><mi mathvariant="normal">该</mi><mi mathvariant="normal">是</mi><mn>8</mn><mo>(</mo><mi mathvariant="normal">我</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">是</mi><mi>f</mi><mi>e</mi><mi>d</mi><mi>o</mi><mi>r</mi><mi>a</mi><mn>8</mn><mo>)</mo><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">releasever应该是8(我用的是fedora 8),</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">该</span><span class="mord cjk_fallback">是</span><span class="mord">8</span><span class="mopen">(</span><span class="mord cjk_fallback">我</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">是</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord">8</span><span class="mclose">)</span><span class="mpunct">,</span></span></span></span>basearch是架构的意思，我的是x86_64,替换上，访问之，得到: # repo = fedora-8 arch = x86_64 country = CN country = RU country = JP country = HK country = KR country = TW country = TH country = IN http://fedora.candishosting.com.cn/pub/fedora/linux/releases/8/Everything/x86_64/os http://opensource.nchc.org.tw/fedora/linux/releases/8/Everything/x86_64/os http://ftp.twaren.net/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://linux.ntcu.net/ftp/dists/fedora/releases/8/Everything/x86_64/os http://ftp.yz.yamagata-u.ac.jp/pub/linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.hostrino.com/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.rhd.ru/pub/fedora/linux/releases/8/Everything/x86_64/os http://ftp.cse.yzu.edu.tw/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.chg.ru/pub/Linux/fedora/linux/releases/8/Everything/x86_64/os http://ftp.jaist.ac.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.ncnu.edu.tw/Linux/Fedora/linux/releases/8/Everything/x86_64/os http://allotter.yandex.net/fedora/linux/releases/8/Everything/x86_64/os http://ftp.kddilabs.jp/Linux/packages/fedora/releases/8/Everything/x86_64/os http://ftp.kaist.ac.kr/pub/fedora/linux/releases/8/Everything/x86_64/os ftp://ftp.sfc.wide.ad.jp/pub/Linux/Fedora/releases/8/Everything/x86_64/os http://ftp.riken.jp/Linux/fedora/releases/8/Everything/x86_64/os http://spreader.yandex.net/fedora/linux/releases/8/Everything/x86_64/os 这就是/var/cache/yum/fedora/mirrorlist.txt的内容了。 对应地，查看/etc/yum.repos.d/fedora-updates.repo，去访问对应的地址，取得内容写入到/var/cache/yum/updates/mirrorlist.txt.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/596/">
-                  <h3 class="post-title">
-                    这些软件都疯了,都要re(***)个东西
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

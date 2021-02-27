@@ -1,130 +1,135 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>昨天做了一宿的梦，一个怪恐怖的 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="昨天做了好几个梦.
-第一个又是这个: 我兴冲冲和几个同学到湖北电建上班，结果马上就让我们上炉子，然后刚上去，就有两个人打闹，有一个一下子就从70多米高的炉子上掉下去，赶紧下去看，已经咽气了! 直不知道为什么老做这个梦，我已经从那里辞职很久了..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">昨天做了一宿的梦，一个怪恐怖的</h2>
-            <div class="post-date">2006-03-21</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">昨天做了一宿的梦，一个怪恐怖的</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-03-21</span>
             
-            <div class="post-content" v-pre>
-              <p>昨天做了好几个梦.</p>
+          </div>
+          <div class="post-content">
+            <p>昨天做了好几个梦.</p>
 <p>第一个又是这个: 我兴冲冲和几个同学到湖北电建上班，结果马上就让我们上炉子，然后刚上去，就有两个人打闹，有一个一下子就从70多米高的炉子上掉下去，赶紧下去看，已经咽气了! 直不知道为什么老做这个梦，我已经从那里辞职很久了!可能是那次差点掉下去在潜意识里的阴影吧，虽然我自己不太在意.</p>
 <p>第二个，居然是我昨天没有完成的那个统计的代码，今天来一试，果然跟在梦里想的那样，改了一行就行了。</p>
 <p>第三个是最恐怖的!如高中做的一次梦一样，又是和别人做一样的梦，不过这次不完全一样了!醒来时，听到隔壁的女孩子对他男友说他刚做了一梦，梦里她惹恼了一个男的，那男的把她杀了(住在地下室，隔音效果很差，晚上都能听到隔壁俩人”嘿咻”)。恰恰我做的梦就是一个女孩子惹怒了我，我一刀把她杀了。只是我梦里是一个古代的君王，不知道她梦里的是怎样的,真恐怖。高中时是和室友同时做梦梦见父亲死去，然人两人迷迷糊糊地大哭，过一会清醒了都问对方问啥哭!</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/48/">
-                  <h3 class="post-title">
-                    BLOG起新的名字，打造个人品牌宣传媒介
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/48/">
+              <h3 class="post-title">
+                下一篇：BLOG起新的名字，打造个人品牌宣传媒介
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -134,8 +139,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

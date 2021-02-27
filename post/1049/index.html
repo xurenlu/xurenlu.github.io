@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>tokyo cabinet的替代产品:kyoto cabinet | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="说起tokyocabinet,大家应该都知道,知名的key-value对数据库,memcache的替代产品,tokyotyrant和flare都是用的tokyocabinet来做的底层存储,嗯;tokyocabinet是作者对他之前的qdb..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">tokyo cabinet的替代产品:kyoto cabinet</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2010-04-13</span>
+            
+          </div>
+          <div class="post-content">
+            <p>说起tokyocabinet,大家应该都知道,知名的key-value对数据库,memcache的替代产品,tokyotyrant和flare都是用的tokyocabinet来做的底层存储,嗯;tokyocabinet是作者对他之前的qdbm的一个升华. 作者果然&quot;很猛很持久&quot;,最近新推出了kyoto cabinet,是用C++写的,嗯,作者终于学会C++了(嗯,我是调侃一下,作者之前的所有作品都是用纯C写的,我很欣赏;现在用C++,可不是个好兆头!); 之前的tokyo cabinet意思好像是&quot;东京柜子&quot;,不知道为什么作者这么怀念东京的小柜子呢...刚出炉的这个kyoto cabinet,呃,名字似乎就是京都小柜子.... 来自评论采集机器人:tokyo cabinet的意思是,东京内阁,kyoto cabinet 的意思是,京都内阁, 而tokyo tyrant的意思是.....东京暴君; 长话短说,拿kyoto cabinet和tokyo cabinet比较一下:(来源:作者pdf说明文档) 空间效率更高(数据库尺寸更小) 并发性能:在 多线程情况下性能更好(使用了CAS等原子操作) 可移植性:不再需要posix的依赖(也就是说,windows上应该也能跑了) 可用性:面向对象的编程(当然,用上C++了嘛) 鲁棒性(通俗一点:健壮性):自动的事务和回滚 另外: kyoto cabinet 依赖于现代的C++实现,并且在线程实现多了锁的开销. 项目地址:<a href="http://www.1978th.net/kyotocabinet/">http://www.1978th.net/kyotocabinet/</a></p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/1047/">
+              <h3 class="post-title">
+                下一篇：cloudapi.info 预谋提供的下一个云接口:垃圾评论判别
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">tokyo cabinet的替代产品:kyoto cabinet</h2>
-            <div class="post-date">2010-04-13</div>
-            
-            <div class="post-content" v-pre>
-              <p>说起tokyocabinet,大家应该都知道,知名的key-value对数据库,memcache的替代产品,tokyotyrant和flare都是用的tokyocabinet来做的底层存储,嗯;tokyocabinet是作者对他之前的qdbm的一个升华. 作者果然&quot;很猛很持久&quot;,最近新推出了kyoto cabinet,是用C++写的,嗯,作者终于学会C++了(嗯,我是调侃一下,作者之前的所有作品都是用纯C写的,我很欣赏;现在用C++,可不是个好兆头!); 之前的tokyo cabinet意思好像是&quot;东京柜子&quot;,不知道为什么作者这么怀念东京的小柜子呢...刚出炉的这个kyoto cabinet,呃,名字似乎就是京都小柜子.... 来自评论采集机器人:tokyo cabinet的意思是,东京内阁,kyoto cabinet 的意思是,京都内阁, 而tokyo tyrant的意思是.....东京暴君; 长话短说,拿kyoto cabinet和tokyo cabinet比较一下:(来源:作者pdf说明文档) 空间效率更高(数据库尺寸更小) 并发性能:在 多线程情况下性能更好(使用了CAS等原子操作) 可移植性:不再需要posix的依赖(也就是说,windows上应该也能跑了) 可用性:面向对象的编程(当然,用上C++了嘛) 鲁棒性(通俗一点:健壮性):自动的事务和回滚 另外: kyoto cabinet 依赖于现代的C++实现,并且在线程实现多了锁的开销. 项目地址:<a href="http://www.1978th.net/kyotocabinet/">http://www.1978th.net/kyotocabinet/</a></p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/1047/">
-                  <h3 class="post-title">
-                    cloudapi.info 预谋提供的下一个云接口:垃圾评论判别
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

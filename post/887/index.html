@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>好色的程序员：怎么加上彩色显示 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="问题列表 1.终端如何支持显示彩色      现代终端基本上都已经支持彩色显示了。【8色的显示屏是什么时候发明的?】 您可以在bash下用这段来试试: echo -e &quot;33[40;32mcolored text33[0;0m&q..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">好色的程序员：怎么加上彩色显示</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2009-06-09</span>
+            
+          </div>
+          <div class="post-content">
+            <p>问题列表 1.终端如何支持显示彩色      现代终端基本上都已经支持彩色显示了。【8色的显示屏是什么时候发明的?】 您可以在bash下用这段来试试:<coolcode> echo -e &quot;33[40;32mcolored text33[0;0m&quot; </coolcode> 如果这里出来的是彩色文字，那就说明您的终端是支持彩色显示的。如是没有出来彩色文字，那就，改您的终端类型。一般情况下您的终端软件可选的有vt100,vt102,vt220,vt320,linux,xterm等几种。我一般选linux. 2.终端颜色和颜色表:    要在终端中显示彩色文字，需要这样输出<coolcode> ESC[attr;frontcolor;backgroundcolor;m 要加彩色的文字。 </coolcode> ESC是ESCAPE键，它的ASC码是十进制的27,八进制的33.所以我们用echo -e &quot;33...&quot;来输入。attr是要给文字设置的属性代号，frontcolor是文字颜色代号，backgroundcolor是文字背景色代码。这些代号及意义如下: <coolcode>   前景             背景              颜色     ---------------------------------------     30                40               黑色     31                41               紅色     32                42               綠色     33                43               黃色     34                44               藍色     35                45               紫紅色     36                46               青藍色     37                47               白色     代码              意义     -------------------------     0                 OFF     1                 高亮显示     4                 underline     5                 闪烁     7                 反白显示     8                 不可见  </coolcode>  2.PS1,ls ,grep 如何加彩色   PS1是bash一个特殊的变量，用来指定提示符。我们只要修改它的值就可以指定提示符如何显示。在这里h表示主机名，u表示当前用户,w表示当前目录。我的设置是: <coolcode>export PS1=&quot;[e[36;1m]u@[e[32;1m]H&gt;:w&gt;[e[0m]&quot;</coolcode>  这里bash的提示符已经变成彩色了，但是ls的输出还不是彩色的。也很简单,man一下就知道了，在linux下, <coolcode>alias ls=&quot;ls --color=auto&quot;</coolcode>就行了。在FreeBSD下，<coolcode>alias ls=&quot;ls -G&quot;</coolcode>即可。 grep也是支持彩色的: <coolcode> alias grep=&quot;grep --color=auto&quot; </coolcode>  好了，现在我们可以把~/.bashrc文件 改一下: <coolcode> export PS1=&quot;[e[36;1m]u@[e[32;1m]H&gt;:w&gt;[e[0m]&quot; alias ls=&quot;ls --color=auto&quot; alias grep=&quot;grep --color=auto&quot; </coolcode>    2.svn diff怎么加彩色: 我写了一个脚本,放在http://xurenlu.googlecode.com/files/svncolor.py这里。只需要svn diff|python svncolor.py即可把svn diff的结果转成彩色的。 3.git diff怎么加彩色 git diff加颜色非常简单:修改.git/config,加上 <coolcode> [diff]     color = auto  </coolcode>  4.vim 怎么支持彩色 非常简单,如果是php文件: <coolcode> :set ft=php :set syntax </coolcode>  就行了。  6.怎么去彩色 为什么要去颜色呢,因为有时候我们需要把一些输出重定向到vim中间,这时在vim中会出现很多控制字符。所以我们要再转成黑底白字。 我这里也有一个脚本。  <coolcode> #!/usr/bin/python import sys,re PESC=chr(27) nocolor_re=re.compile(PESC+'[[d;]+m') if __name__==&quot;__main__&quot;:     while(True):         line=sys.stdin.readline()         if not line: break         line=line.replace(&quot;n&quot;,&quot;&quot;)         print nocolor_re.sub(&quot;&quot;,line) </coolcode></p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/889/">
+              <h3 class="post-title">
+                下一篇：PHP注释查看器
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">好色的程序员：怎么加上彩色显示</h2>
-            <div class="post-date">2009-06-09</div>
-            
-            <div class="post-content" v-pre>
-              <p>问题列表 1.终端如何支持显示彩色      现代终端基本上都已经支持彩色显示了。【8色的显示屏是什么时候发明的?】 您可以在bash下用这段来试试:<coolcode> echo -e &quot;33[40;32mcolored text33[0;0m&quot; </coolcode> 如果这里出来的是彩色文字，那就说明您的终端是支持彩色显示的。如是没有出来彩色文字，那就，改您的终端类型。一般情况下您的终端软件可选的有vt100,vt102,vt220,vt320,linux,xterm等几种。我一般选linux. 2.终端颜色和颜色表:    要在终端中显示彩色文字，需要这样输出<coolcode> ESC[attr;frontcolor;backgroundcolor;m 要加彩色的文字。 </coolcode> ESC是ESCAPE键，它的ASC码是十进制的27,八进制的33.所以我们用echo -e &quot;33...&quot;来输入。attr是要给文字设置的属性代号，frontcolor是文字颜色代号，backgroundcolor是文字背景色代码。这些代号及意义如下: <coolcode>   前景             背景              颜色     ---------------------------------------     30                40               黑色     31                41               紅色     32                42               綠色     33                43               黃色     34                44               藍色     35                45               紫紅色     36                46               青藍色     37                47               白色     代码              意义     -------------------------     0                 OFF     1                 高亮显示     4                 underline     5                 闪烁     7                 反白显示     8                 不可见  </coolcode>  2.PS1,ls ,grep 如何加彩色   PS1是bash一个特殊的变量，用来指定提示符。我们只要修改它的值就可以指定提示符如何显示。在这里h表示主机名，u表示当前用户,w表示当前目录。我的设置是: <coolcode>export PS1=&quot;[e[36;1m]u@[e[32;1m]H&gt;:w&gt;[e[0m]&quot;</coolcode>  这里bash的提示符已经变成彩色了，但是ls的输出还不是彩色的。也很简单,man一下就知道了，在linux下, <coolcode>alias ls=&quot;ls --color=auto&quot;</coolcode>就行了。在FreeBSD下，<coolcode>alias ls=&quot;ls -G&quot;</coolcode>即可。 grep也是支持彩色的: <coolcode> alias grep=&quot;grep --color=auto&quot; </coolcode>  好了，现在我们可以把~/.bashrc文件 改一下: <coolcode> export PS1=&quot;[e[36;1m]u@[e[32;1m]H&gt;:w&gt;[e[0m]&quot; alias ls=&quot;ls --color=auto&quot; alias grep=&quot;grep --color=auto&quot; </coolcode>    2.svn diff怎么加彩色: 我写了一个脚本,放在http://xurenlu.googlecode.com/files/svncolor.py这里。只需要svn diff|python svncolor.py即可把svn diff的结果转成彩色的。 3.git diff怎么加彩色 git diff加颜色非常简单:修改.git/config,加上 <coolcode> [diff]     color = auto  </coolcode>  4.vim 怎么支持彩色 非常简单,如果是php文件: <coolcode> :set ft=php :set syntax </coolcode>  就行了。  6.怎么去彩色 为什么要去颜色呢,因为有时候我们需要把一些输出重定向到vim中间,这时在vim中会出现很多控制字符。所以我们要再转成黑底白字。 我这里也有一个脚本。  <coolcode> #!/usr/bin/python import sys,re PESC=chr(27) nocolor_re=re.compile(PESC+'[[d;]+m') if __name__==&quot;__main__&quot;:     while(True):         line=sys.stdin.readline()         if not line: break         line=line.replace(&quot;n&quot;,&quot;&quot;)         print nocolor_re.sub(&quot;&quot;,line) </coolcode></p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/889/">
-                  <h3 class="post-title">
-                    PHP注释查看器
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

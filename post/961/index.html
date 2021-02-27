@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>母亲也是爱美的 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="看了黑夜路人的博客《妈妈，我再也没法这样叫你》，不仅感慨万千，赶紧上gtalk,跟他说了声，节哀吧，兄弟。 其实，对于每个人，这都是撕心裂肺之疼。至亲的失去，有谁能够承受！ 这个时候，我刚刚把母亲送上回家的火车。 母亲是我接过来小住的。一辈..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">母亲也是爱美的</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2009-09-03</span>
+            
+          </div>
+          <div class="post-content">
+            <p>看了黑夜路人的博客<a href="http://hi.baidu.com/heiyeluren/blog/item/1c620a557c4d3acdb745aed6.html">《妈妈，我再也没法这样叫你》</a>，不仅感慨万千，赶紧上gtalk,跟他说了声，节哀吧，兄弟。 其实，对于每个人，这都是撕心裂肺之疼。至亲的失去，有谁能够承受！ 这个时候，我刚刚把母亲送上回家的火车。 母亲是我接过来小住的。一辈子没有出过远门，这次终于有机会走出来，看看外面的世界。 小时候，家里穷，偏远的农村，穷得你无法想象。我把那些都市人看起来年代遥远的故事揉进了小说，一个读者留言说：你好啊，爱写小说的大叔......他以为我是六十年代的人呢。不是，我是地地道道的八零后。 你们这样称呼我这号的人，认为我们生在福窝里。 种种原因，包括两个舅舅的残疾，外公想要个儿子来养老，计划生育政策决定用不给分土地来惩罚这些不守政策的超生户，导致的直接后果就是，我们家在一个偏僻的农村，却没有土地！ 想象一下吧，刚刚进入80年代，偏远的小山村，老实巴交的农民，打压私营经济的社会....那这一家子人，是怎么活下来的呢? 父亲挖出一座窑，烧瓦。烧瓦的流程很麻烦，得先和上一大堆泥，然后在一个转动的工具上面做成一个个圆筒状的东西，堆在外面晒干。还不能太暴晒，那样容易裂，遇到下雨， 就得赶紧收屋里来。这玩意儿，一见水就废了。等都晒干了，就拿捏好力度，轻轻一拍，因为做的时候就留好了薄的地方，这时候就会顺薄沟裂开。现在瓦已经做好，就等烧了。母亲就到山上把那些大大小小的灌木都砍下来，捆一大捆，背回来做燃料。好了，开烧吧。一窑瓦大概得烧一天一夜吧。整个窑里的瓦烧得通红的时候，就要在窑顶放水下去。放水的时间，多少，就决定了瓦的颜色。颜色其实也就是红瓦跟青瓦了，没啥好选的。 就是靠着辛辛苦苦的烧瓦，养活了一家人。时间就这么进入了90年代。 一件大事:重新分田了。重于，吃饭不是重要难题了。那年秋天，打下来的稻谷，堆在墙角，金灿灿的。母亲站在谷堆边，捧起一把稻子说，我们一定得打一个谷仓。 父亲从外公那里用板车拉回一车柳木。母亲说，柳木，打谷仓最好了。料子轻，结实，不招老鼠。 谷仓打好的时候，我们一家就如过年一般。 那个时候，我从来没有听到母亲说过，衣服好看不好看。母亲从不给自己买衣服。母亲一分钱也啥不得花，全给孩子们攒着。 印象最深的是有一次母亲去给住校的我送东西。那时候的学生们都是说方言，除开一个从外地大城市转学过来的戴一副大眼镜以外。他最热衷的莫过于宣传他的父母月薪加起来有2000块钱，一幅瞧不起所有人的样子。那天，他走进教室，用着那时我非常不习惯的普通话说，你妈妈来找你了。 母亲就站在教室外。她刚干完农活，也没有换衣服就来了。其实，也没啥衣服好玩的，都是旧衣服。我注意到母亲的衣服上一块块的污渍。母亲却完全不知情。她完全不曾去想这些。 那天接下来我就一直在想，那个眼镜一定会到处说谁谁谁的妈来了 衣服脏兮兮的。 但是，他没有说，啥也没有说。 从此以来，我对他改变看法。我从心底感谢他。 在家的时候，有时候觉得母亲应该换一下衣服，也经常让她买件新衣服。可是她总是蛮不在乎，就跟没有听到一样。 于是，活到27岁，我一直以为，母亲是不爱美的。再说了，现在母亲都55岁了，头发花白了。 可是，两个星期前，去颐和园玩的时候，我一说让我给她照张像，母亲立马开始整理衣服。然后站得正儿八经的，像是谁会检查似地。我心底好笑，何必呢，这都数码相机了，想照多少张就照多少张了，何必站这么标准呢？ 然后再出去的时候，母亲一大早就把衣服换好了。然后出门的时候说：我觉得换这件衣服照像好看一些，你说呢？ 那一刻，我如遭雷击。 每一个女人，都是爱美的。哪怕是生在三年自然灾害年代挨过饿受过冻的女人。 只是，为了孩子，她们可以把这颗心，埋在心里二十多年。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/959/">
+              <h3 class="post-title">
+                下一篇：一个小小的C 写的web server
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">母亲也是爱美的</h2>
-            <div class="post-date">2009-09-03</div>
-            
-            <div class="post-content" v-pre>
-              <p>看了黑夜路人的博客<a href="http://hi.baidu.com/heiyeluren/blog/item/1c620a557c4d3acdb745aed6.html">《妈妈，我再也没法这样叫你》</a>，不仅感慨万千，赶紧上gtalk,跟他说了声，节哀吧，兄弟。 其实，对于每个人，这都是撕心裂肺之疼。至亲的失去，有谁能够承受！ 这个时候，我刚刚把母亲送上回家的火车。 母亲是我接过来小住的。一辈子没有出过远门，这次终于有机会走出来，看看外面的世界。 小时候，家里穷，偏远的农村，穷得你无法想象。我把那些都市人看起来年代遥远的故事揉进了小说，一个读者留言说：你好啊，爱写小说的大叔......他以为我是六十年代的人呢。不是，我是地地道道的八零后。 你们这样称呼我这号的人，认为我们生在福窝里。 种种原因，包括两个舅舅的残疾，外公想要个儿子来养老，计划生育政策决定用不给分土地来惩罚这些不守政策的超生户，导致的直接后果就是，我们家在一个偏僻的农村，却没有土地！ 想象一下吧，刚刚进入80年代，偏远的小山村，老实巴交的农民，打压私营经济的社会....那这一家子人，是怎么活下来的呢? 父亲挖出一座窑，烧瓦。烧瓦的流程很麻烦，得先和上一大堆泥，然后在一个转动的工具上面做成一个个圆筒状的东西，堆在外面晒干。还不能太暴晒，那样容易裂，遇到下雨， 就得赶紧收屋里来。这玩意儿，一见水就废了。等都晒干了，就拿捏好力度，轻轻一拍，因为做的时候就留好了薄的地方，这时候就会顺薄沟裂开。现在瓦已经做好，就等烧了。母亲就到山上把那些大大小小的灌木都砍下来，捆一大捆，背回来做燃料。好了，开烧吧。一窑瓦大概得烧一天一夜吧。整个窑里的瓦烧得通红的时候，就要在窑顶放水下去。放水的时间，多少，就决定了瓦的颜色。颜色其实也就是红瓦跟青瓦了，没啥好选的。 就是靠着辛辛苦苦的烧瓦，养活了一家人。时间就这么进入了90年代。 一件大事:重新分田了。重于，吃饭不是重要难题了。那年秋天，打下来的稻谷，堆在墙角，金灿灿的。母亲站在谷堆边，捧起一把稻子说，我们一定得打一个谷仓。 父亲从外公那里用板车拉回一车柳木。母亲说，柳木，打谷仓最好了。料子轻，结实，不招老鼠。 谷仓打好的时候，我们一家就如过年一般。 那个时候，我从来没有听到母亲说过，衣服好看不好看。母亲从不给自己买衣服。母亲一分钱也啥不得花，全给孩子们攒着。 印象最深的是有一次母亲去给住校的我送东西。那时候的学生们都是说方言，除开一个从外地大城市转学过来的戴一副大眼镜以外。他最热衷的莫过于宣传他的父母月薪加起来有2000块钱，一幅瞧不起所有人的样子。那天，他走进教室，用着那时我非常不习惯的普通话说，你妈妈来找你了。 母亲就站在教室外。她刚干完农活，也没有换衣服就来了。其实，也没啥衣服好玩的，都是旧衣服。我注意到母亲的衣服上一块块的污渍。母亲却完全不知情。她完全不曾去想这些。 那天接下来我就一直在想，那个眼镜一定会到处说谁谁谁的妈来了 衣服脏兮兮的。 但是，他没有说，啥也没有说。 从此以来，我对他改变看法。我从心底感谢他。 在家的时候，有时候觉得母亲应该换一下衣服，也经常让她买件新衣服。可是她总是蛮不在乎，就跟没有听到一样。 于是，活到27岁，我一直以为，母亲是不爱美的。再说了，现在母亲都55岁了，头发花白了。 可是，两个星期前，去颐和园玩的时候，我一说让我给她照张像，母亲立马开始整理衣服。然后站得正儿八经的，像是谁会检查似地。我心底好笑，何必呢，这都数码相机了，想照多少张就照多少张了，何必站这么标准呢？ 然后再出去的时候，母亲一大早就把衣服换好了。然后出门的时候说：我觉得换这件衣服照像好看一些，你说呢？ 那一刻，我如遭雷击。 每一个女人，都是爱美的。哪怕是生在三年自然灾害年代挨过饿受过冻的女人。 只是，为了孩子，她们可以把这颗心，埋在心里二十多年。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/959/">
-                  <h3 class="post-title">
-                    一个小小的C 写的web server
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

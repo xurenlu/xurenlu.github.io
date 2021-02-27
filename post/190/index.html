@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>站长必知： Google的页面等级（PR值） | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="无论是对普通网络冲浪者还是网站管理员来说，Google都是目前世界范围内最受欢迎的搜索引擎。它每天处理的搜索请求高达1.5亿次，几乎占全球所有搜索量的1/3。网络冲浪者对Google情有独钟，是由于Google所提供的快速搜索速度及高命中率..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">站长必知： Google的页面等级（PR值）</h2>
-            <div class="post-date">2005-03-26</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">站长必知： Google的页面等级（PR值）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2005-03-26</span>
             
-            <div class="post-content" v-pre>
-              <p>无论是对普通网络冲浪者还是网站管理员来说，Google都是目前世界范围内最受欢迎的搜索引擎。它每天处理的搜索请求高达1.5亿次，几乎占全球所有搜索量的1/3。网络冲浪者对Google情有独钟，是由于Google所提供的快速搜索速度及高命中率搜索结果。这些都是基于Google的复杂文本匹配运算法则及其搜索程序所使用的Pagerank系统（网页级别技术）。</p>
+          </div>
+          <div class="post-content">
+            <p>无论是对普通网络冲浪者还是网站管理员来说，Google都是目前世界范围内最受欢迎的搜索引擎。它每天处理的搜索请求高达1.5亿次，几乎占全球所有搜索量的1/3。网络冲浪者对Google情有独钟，是由于Google所提供的快速搜索速度及高命中率搜索结果。这些都是基于Google的复杂文本匹配运算法则及其搜索程序所使用的Pagerank系统（网页级别技术）。</p>
 <p>Google之所以受网站管理员和Internet媒体服务的欢迎，是由于它并非只使用关键词或代理搜索技术，而是将自身建立在高级的网页级别技术基础之上。别的搜索引擎提供给搜索者的是多种渠道得来的一个粗略的搜索结果，而Google提供给它的搜索者的则是它自己产生的高度精确的搜索结果。这就是为什么网站管理员会千方百计去提高自己网站在Google的排名。</p>
 <p>Google大受青睐的另一个原因就是它的网站索引速度。向Google提交你的网站直到为Google收录，一般只需两个星期。如果你的网站已经为Google收录，那么通常Google会每月一次遍历和更新(重新索引)你的网站信息。不过对于那些PR值(Pagerank)较高的网站，Google索引周期会相应的短一些。</p>
 <p>Google的索引/重新索引周期比大多数搜索引擎要短。这就允许网站管理员可以对网站的页面属性进行编辑修改，如网页标题、头几行文字内容、大字标题、关键字分布，当然了还有外部链接的数量。然后他们很快就可以发现对网页所做的这些更改是否成功。</p>
@@ -106,31 +98,45 @@
 2. 提高网站外部链接的质量和数量；<br>
 3. 使网站为三大知名网络目录DMOZ，Yahoo和Looksmart收录上 。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/191/">
-                  <h3 class="post-title">
-                    一个人要学会先做重要的事
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/191/">
+              <h3 class="post-title">
+                下一篇：一个人要学会先做重要的事
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -140,8 +146,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

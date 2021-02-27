@@ -1,130 +1,136 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>qemu:一个win/linux/bsd/mac下的虚拟机软件 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="上班没几天，就很好奇公司运行于BSD系统之上的虚拟机系统。就是一台物理主机上设置n个IP,每个ip连上去都是一个独立的主机环境，可以单独安装系统，运行相应服务。当然，每个虚拟机都是需要资源开销的，不过整体来说，CPU占用还是不大。 这周末就..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">qemu:一个win/linux/bsd/mac下的虚拟机软件</h2>
-            <div class="post-date">2007-09-02</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">qemu:一个win/linux/bsd/mac下的虚拟机软件</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-09-02</span>
             
-            <div class="post-content" v-pre>
-              <p>上班没几天，就很好奇公司运行于BSD系统之上的虚拟机系统。就是一台物理主机上设置n个IP,每个ip连上去都是一个独立的主机环境，可以单独安装系统，运行相应服务。当然，每个虚拟机都是需要资源开销的，不过整体来说，CPU占用还是不大。 这周末就开始折腾我的3000块钱的破本儿。以前装过VirtualBox,Qemu等不少虚拟机.Virtual Box因为GuestOS与HostOS通信有问题，而且只能在X中运行，虽然可能会比qemu快，还是被我放弃了。主攻qemu! qemu的一个简介:</p>
+          </div>
+          <div class="post-content">
+            <p>上班没几天，就很好奇公司运行于BSD系统之上的虚拟机系统。就是一台物理主机上设置n个IP,每个ip连上去都是一个独立的主机环境，可以单独安装系统，运行相应服务。当然，每个虚拟机都是需要资源开销的，不过整体来说，CPU占用还是不大。 这周末就开始折腾我的3000块钱的破本儿。以前装过VirtualBox,Qemu等不少虚拟机.Virtual Box因为GuestOS与HostOS通信有问题，而且只能在X中运行，虽然可能会比qemu快，还是被我放弃了。主攻qemu! qemu的一个简介:</p>
 <blockquote>
 <p>QEMU是一套可以在Windows操作系统中仿真出另一套操作系统的仿真软件。因为它可以在系统中仿真出一颗虚拟的CPU，然后将要仿真的操作系统交给这颗虚拟CPU去处理，所以能够达到同一平台却能同时执行两种操作系统的目的。 QEMU的使用非常简单，因为它不用安装，只要使用文字指令和参数就可以操作。而它可以仿真的操作系统类型也非常多元，包括Linux系列、Mac OS系列、FreeBSD系列、Windows系列等等操作系统通通都没问题。 一般的操作系统仿真程序的执行速度都非常慢，但是QEMU的速度居然可以达到正常的四分之一以上，在仿真程序中算是快的了。对于有需要在同一台计算机上安装多个操作系统的人来说，QEMU一定可以帮的上很大的忙。</p>
 </blockquote>
 <p>Qemu还可以通过一个对个人用户免费的kQemu模块来加速。同时，qemu支持的虚拟磁盘文件格式很多，可以与virtualbox,vmware等软件通用。qemu可以设置dhcp方式实现最简单的GuestOS上网，也可以通过Tap/Tun方式来实现HostOS与GuestOS之间的直接通信。我试了下，很不错。最主要的是，qemu虽然跟virtualbox一样是用SDL库来开发的，但是与Virtualbox不同的是,qemu可以通过加-nographic在纯文本方式运行,不再需要X server.这样就可以在服务器上运行了。 安装qemu: (不要生气哟,我是yum install qemu就ok了...),如果你没有类似机制，那从<a href="http://fabrice.bellard.free.fr/qemu/">http://fabrice.bellard.free.fr/qemu/</a>主页下源码安装吧。 安装kqemu: down下源码，configure ;make ;make install就行了。新版 的不需要用户做任何 设置。如果安装成功但是kqemu模块没起作用，需要: modprobe kqemu mknod /dev/kqemu c 250 0 chmod 666 /dev/kqemu 如果安装不成功.....啊，今儿天气不错啊！ 安装成功后，用qemu-img可以创建磁盘文件。用 qemu -cdrom fedora_livecd.iso -boot d 可以挂载光盘并从光盘启动。这种方式启动的是-net user这个默认方式。 如何启用tap/tun方式，我下次再整。因为要用iptables进行地址转换，比较麻烦。 (补记：还有其他不少虚拟机软件，但是我比较喜欢开源产品，所以我只讲virtualbox和qemu...收费产品也都不错，但是我可不会在blog上写如何用crack版本)</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/461/">
-                  <h3 class="post-title">
-                    wordcamp beijing 2007 回来
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/461/">
+              <h3 class="post-title">
+                下一篇：wordcamp beijing 2007 回来
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -134,8 +140,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

@@ -1,101 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>地方性行业网站的发展前景 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="随着互联时代的到来，中国的传统媒体不约而同的受到不同幅度的影响。各家企业的上线给我们带来了后期的思考。
-从2000年到2004年，各大中小型企业纷纷立马建立起自己的独立网站，我所在的安徽市场分析来看，2000年的10家企业上网到2004年的..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">地方性行业网站的发展前景</h2>
-            <div class="post-date">2005-03-27</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">地方性行业网站的发展前景</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2005-03-27</span>
             
-            <div class="post-content" v-pre>
-              <p>随着互联时代的到来，中国的传统媒体不约而同的受到不同幅度的影响。各家企业的上线给我们带来了后期的思考。</p>
+          </div>
+          <div class="post-content">
+            <p>随着互联时代的到来，中国的传统媒体不约而同的受到不同幅度的影响。各家企业的上线给我们带来了后期的思考。</p>
 <p>从2000年到2004年，各大中小型企业纷纷立马建立起自己的独立网站，我所在的安徽市场分析来看，2000年的10家企业上网到2004年的13000家企业上网。大的企业拥有网站是无可厚非的，为了保护品牌，不惜一切代价在网络中树立自己的地位。而中小型企业呢？不是说有网站是一种错误，但可以直接的说是一种盲目的追风。</p>
 <p>一家企业按照本地行情来看，建立自己的网站需要花费的费用不下于5000元，其中每年付出的费用高于1000元。但是他们从互联网中收到多少收益呢？我的一个企业客户网站留言版，一年才20来条（包括自己员工的留言；在线定单5条。说此必然会考虑到后期的网络推广没有做到位。试想，目前有什么能适合中小企业不花费大量费用而又能得到好的宣传效果呢？可以说，他们请求的有二条路，一、购买搜索引擎以及排名。二、登陆行业网站，借东风以慰自己。</p>
 <p>关于搜索引擎以及排名，大家懂的都比较多，实际的效果大凡同行中人都有所了解。3721、通用网址、baidu、google 他们哪个能起到一个真正的好的作用呢，图增点击率的同时增加了大量的垃圾邮件。</p>
@@ -116,31 +107,45 @@
 <p>它的优势是无法用字能打的出来的，接触过地方性行业网站的同仁都会知道，它难道没存在的可能？各种行业网站的诞生证明了它的蓬勃生机。</p>
 <p>你要是一个商家业主，你会选择把建立自己的网站还是加盟地方行业网站？不难想象，答案只有一个。因为费用比你自己独立网站的费用不知道小多少，效果却好的多。物美而价廉的东西经商的人看的最清楚。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/182/">
-                  <h3 class="post-title">
-                    无线游戏是下一座金矿吗？
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/182/">
+              <h3 class="post-title">
+                下一篇：无线游戏是下一座金矿吗？
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -150,8 +155,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

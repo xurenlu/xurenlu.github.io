@@ -1,102 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>全球财经观察：中国互联网寻找下一个金矿 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="从1969年到2005年，互联网沉淀了几代人的汗水与理想。投入商业使用才不足10年，网络改变了我们获取信息、管理公司甚至安排生活的方式。
-在一个被窄带网络改变后的世界里，更深入的改变正在到来。但谁能在宽带网络里，制造出让人咋舌的奇迹呢？
-搜..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">全球财经观察：中国互联网寻找下一个金矿</h2>
-            <div class="post-date">2005-03-27</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">全球财经观察：中国互联网寻找下一个金矿</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2005-03-27</span>
             
-            <div class="post-content" v-pre>
-              <p>从1969年到2005年，互联网沉淀了几代人的汗水与理想。投入商业使用才不足10年，网络改变了我们获取信息、管理公司甚至安排生活的方式。</p>
+          </div>
+          <div class="post-content">
+            <p>从1969年到2005年，互联网沉淀了几代人的汗水与理想。投入商业使用才不足10年，网络改变了我们获取信息、管理公司甚至安排生活的方式。</p>
 <p>在一个被窄带网络改变后的世界里，更深入的改变正在到来。但谁能在宽带网络里，制造出让人咋舌的奇迹呢？</p>
 <p>搜索的空间有多大？博客掘金是否正当时？专业门户网站的市场空间在哪里？</p>
 <p>电子商务是不是已经到了一个十字路口？</p>
@@ -151,31 +141,45 @@
 <p>”这不是个故事，这样的事情每天都会发生，中文搜索引擎市场正被中国1000多万中小企业客户所看好。”百度在线网络技术公司的首席运营官朱洪波表示。百度是目前中国最具影响力的网络搜索服务提供商。</p>
 <p>有”互联网女皇”之称的Mary Meeker曾在一份报告中指出：搜索引擎是互联网经济中继浏览器和电子商务之后的第三次浪潮。Mary Meeker是著名投资银行摩根斯丹利的首席互联网分析师，曾在2002年为Netscape、AOL、Amazo</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/187/">
-                  <h3 class="post-title">
-                    google排名内部优化攻略
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/187/">
+              <h3 class="post-title">
+                下一篇：google排名内部优化攻略
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -185,8 +189,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

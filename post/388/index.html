@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>把握web 开发的平衡与不平衡 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="a.web开发服务的对象是人.人呢，当然，人的生活习惯是不均衡的。所以，记住，一般情况下，您可以在晚上用您的服务器跑一些平时没有空，没有资源跑的应用。比如，对用户行为分析，数据挖掘的这些工作，或是对网站统计数据汇总、生成报表，对日志进行检查..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">把握web 开发的平衡与不平衡</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-03-08</span>
+            
+          </div>
+          <div class="post-content">
+            <p>a.web开发服务的对象是人.人呢，当然，人的生活习惯是不均衡的。所以，记住，一般情况下，您可以在晚上用您的服务器跑一些平时没有空，没有资源跑的应用。比如，对用户行为分析，数据挖掘的这些工作，或是对网站统计数据汇总、生成报表，对日志进行检查分析等工作。 b.数据总是不需要绝对的准确。比如，用户搜索某个词，其实搜索结果可能会有成千上万条，没有人把这一条一条地都看了，所以你1万条结果中可以少个百八十条的。当然，没到这个级别的就不需要了（如果您总共就千把篇文章，还这么爽小伎俩当然就不行了。不过，如果你是做银行系统，或是搞医院的人命关天的系统....当我没说,我可赔不起。 c.很多情况（比如，统计功能中生成上一月，上一天的数据的报表只需要生成一次就行了)，所以设计好的缓存、同步机制，就不需要每次都嘎吱嘎吱地运行了。计算机资源，在不必要的时候，还是用不着浪费的。 d.适当地把握硬件与软件的投入平衡。用不着的内存，节约了是没有用的。这东西不是用一次就少一点。一般来说，如果非要在硬件和软件上选择，我个人选择加大硬件投入。当然，也许这是因为我个人的应用没有达到那个级别。 e.在程序的可维护性和性能压榨上把握平衡。我有个哥们儿，(也是响当当的人物，不过人家现在这么牛了，我怎么能把这事儿和他的名字都讲出来呢),他最初学php时，在mysql中设计数据库时，为了性能，字段名都设为Char型，还把字段长度也定得不多半个字节，PHP脚本中也为了性能，不用mysql_fetch_assoc取出data[&quot;name&quot;]=&quot;***&quot;,data[&quot;age&quot;]=21这样的数组，而用mysql_fetch_row取data[0]=&quot;***&quot;,data[1]=21这样的。结果没几天，程序要改，又慢慢地一个人瞪着大眼把代码改了。 f.我本来躺在床上想得挺细的，现在想不起来，等系列二吧。 g.反驳我不要紧，别骂我。如果你管理着一个特大型系统，有丰富的经验，您也用不着，也不会看到这儿。如果您自个儿在创业（而且是一个技术人员）您肯定会想着节约每一分钱，一台server恨不能当3台用的话，当然看我这个不爽，不过，那只能说明，你没钱。如果不是您自己的系统，您哪有哪个劲头半夜里还在忙着调程序呢)</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/387/">
+              <h3 class="post-title">
+                下一篇：种老婆
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">把握web 开发的平衡与不平衡</h2>
-            <div class="post-date">2007-03-08</div>
-            
-            <div class="post-content" v-pre>
-              <p>a.web开发服务的对象是人.人呢，当然，人的生活习惯是不均衡的。所以，记住，一般情况下，您可以在晚上用您的服务器跑一些平时没有空，没有资源跑的应用。比如，对用户行为分析，数据挖掘的这些工作，或是对网站统计数据汇总、生成报表，对日志进行检查分析等工作。 b.数据总是不需要绝对的准确。比如，用户搜索某个词，其实搜索结果可能会有成千上万条，没有人把这一条一条地都看了，所以你1万条结果中可以少个百八十条的。当然，没到这个级别的就不需要了（如果您总共就千把篇文章，还这么爽小伎俩当然就不行了。不过，如果你是做银行系统，或是搞医院的人命关天的系统....当我没说,我可赔不起。 c.很多情况（比如，统计功能中生成上一月，上一天的数据的报表只需要生成一次就行了)，所以设计好的缓存、同步机制，就不需要每次都嘎吱嘎吱地运行了。计算机资源，在不必要的时候，还是用不着浪费的。 d.适当地把握硬件与软件的投入平衡。用不着的内存，节约了是没有用的。这东西不是用一次就少一点。一般来说，如果非要在硬件和软件上选择，我个人选择加大硬件投入。当然，也许这是因为我个人的应用没有达到那个级别。 e.在程序的可维护性和性能压榨上把握平衡。我有个哥们儿，(也是响当当的人物，不过人家现在这么牛了，我怎么能把这事儿和他的名字都讲出来呢),他最初学php时，在mysql中设计数据库时，为了性能，字段名都设为Char型，还把字段长度也定得不多半个字节，PHP脚本中也为了性能，不用mysql_fetch_assoc取出data[&quot;name&quot;]=&quot;***&quot;,data[&quot;age&quot;]=21这样的数组，而用mysql_fetch_row取data[0]=&quot;***&quot;,data[1]=21这样的。结果没几天，程序要改，又慢慢地一个人瞪着大眼把代码改了。 f.我本来躺在床上想得挺细的，现在想不起来，等系列二吧。 g.反驳我不要紧，别骂我。如果你管理着一个特大型系统，有丰富的经验，您也用不着，也不会看到这儿。如果您自个儿在创业（而且是一个技术人员）您肯定会想着节约每一分钱，一台server恨不能当3台用的话，当然看我这个不爽，不过，那只能说明，你没钱。如果不是您自己的系统，您哪有哪个劲头半夜里还在忙着调程序呢)</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/387/">
-                  <h3 class="post-title">
-                    种老婆
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

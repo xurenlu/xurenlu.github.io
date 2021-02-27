@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>景爷的脚崴了 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="景爷的脚崴了,发了封电子邮件请假。 至于怎么受伤了，景爷怎么都不说。于是，team的各位色狼们决定自由发挥,在回信中展开自由想象。 周一,这个版本是: 某夜,月黑风高。景爷悄悄趴在隔壁某MM的窗台上偷看人家洗澡,这时忽听一声尖叫,接着有人开..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">景爷的脚崴了</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-04-18</span>
+            
+          </div>
+          <div class="post-content">
+            <p>景爷的脚崴了,发了封电子邮件请假。 至于怎么受伤了，景爷怎么都不说。于是，team的各位色狼们决定自由发挥,在回信中展开自由想象。 周一,这个版本是: 某夜,月黑风高。景爷悄悄趴在隔壁某MM的窗台上偷看人家洗澡,这时忽听一声尖叫,接着有人开门冲出来。景徐仓皇而逃,混乱中把脚伤了. 周三,这个版本是: 是夜,景爷骗来MM,浪漫的烛光夜宴进行到一半，景爷露出凶悍面孔，要求XXX.MM不从，景爷一怒，将MM扔上床，刚要扑上去，MM径直一脚,景爷跌下床去，发现脚跌伤了. 周五,这个版本是: 某日,景爷与某某某正在OOXX,这时某某某的老公在外面敲门,说忘带工卡了!景爷情急之下打开窗户跳了下去，将脚摔了. 周日,这个版本是: 同周五版本。唯不同的是,景爷情急之下，先是看床底下,发现床下已经躲了一个了,再打开衣柜,发现躲了俩!打开冰箱,发现有一个已经冻傻了！最后只好从窗户跳了下去... 展望版: 三月之后,市面上出一畅销书,书名曰&quot;景爷自揭秘:我的脚是怎么跌伤的&quot;,曙名:保尔-牙虎中国有限公司,成为第一本某公司全体php工程师创作的小说... 半年之后,由于该书以最宽松的MIT style lisence方式发行,市面上发行了各种变种: &lt;&lt;疯狂医生之手把手教崴脚&gt;&gt; &lt;&lt;24小时系列之:24小时教会你崴脚&gt;&gt; &lt;&lt;红宝书系列:崴脚宝典&gt;&gt; &lt;&lt;崴脚走遍美国&gt;&gt; &lt;&lt;景爷教你来崴脚&gt;&gt; ....</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/622/">
+              <h3 class="post-title">
+                下一篇：70后“美女&#34;兰董有多少钱？
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">景爷的脚崴了</h2>
-            <div class="post-date">2008-04-18</div>
-            
-            <div class="post-content" v-pre>
-              <p>景爷的脚崴了,发了封电子邮件请假。 至于怎么受伤了，景爷怎么都不说。于是，team的各位色狼们决定自由发挥,在回信中展开自由想象。 周一,这个版本是: 某夜,月黑风高。景爷悄悄趴在隔壁某MM的窗台上偷看人家洗澡,这时忽听一声尖叫,接着有人开门冲出来。景徐仓皇而逃,混乱中把脚伤了. 周三,这个版本是: 是夜,景爷骗来MM,浪漫的烛光夜宴进行到一半，景爷露出凶悍面孔，要求XXX.MM不从，景爷一怒，将MM扔上床，刚要扑上去，MM径直一脚,景爷跌下床去，发现脚跌伤了. 周五,这个版本是: 某日,景爷与某某某正在OOXX,这时某某某的老公在外面敲门,说忘带工卡了!景爷情急之下打开窗户跳了下去，将脚摔了. 周日,这个版本是: 同周五版本。唯不同的是,景爷情急之下，先是看床底下,发现床下已经躲了一个了,再打开衣柜,发现躲了俩!打开冰箱,发现有一个已经冻傻了！最后只好从窗户跳了下去... 展望版: 三月之后,市面上出一畅销书,书名曰&quot;景爷自揭秘:我的脚是怎么跌伤的&quot;,曙名:保尔-牙虎中国有限公司,成为第一本某公司全体php工程师创作的小说... 半年之后,由于该书以最宽松的MIT style lisence方式发行,市面上发行了各种变种: &lt;&lt;疯狂医生之手把手教崴脚&gt;&gt; &lt;&lt;24小时系列之:24小时教会你崴脚&gt;&gt; &lt;&lt;红宝书系列:崴脚宝典&gt;&gt; &lt;&lt;崴脚走遍美国&gt;&gt; &lt;&lt;景爷教你来崴脚&gt;&gt; ....</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/622/">
-                  <h3 class="post-title">
-                    70后“美女&#34;兰董有多少钱？
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

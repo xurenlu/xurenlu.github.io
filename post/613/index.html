@@ -1,130 +1,136 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Rails 2.0的一些变化 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="1.ActionView的变化： 模板文件默认扩展名从.rhtml改成了.html.erb 新的规则是:[动作名.扩展名.渲染引擎],因此黙 认模板文件就是类似view.html.erb.当然view.rhtml也能正常工作. 比如我希望用..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Rails 2.0的一些变化</h2>
-            <div class="post-date">2008-03-23</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Rails 2.0的一些变化</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-03-23</span>
             
-            <div class="post-content" v-pre>
-              <p>1.ActionView的变化： 模板文件默认扩展名从.rhtml改成了.html.erb 新的规则是:[动作名.扩展名.渲染引擎],因此黙 认模板文件就是类似view.html.erb.当然view.rhtml也能正常工作. 比如我希望用户访问/post/rss/1.atom时，调用builder来解析，我的模板文件应该是rss.xml.builder.这个builder很方便，创建Rss时非常爽。语法像这样:</p>
+          </div>
+          <div class="post-content">
+            <p>1.ActionView的变化： 模板文件默认扩展名从.rhtml改成了.html.erb 新的规则是:[动作名.扩展名.渲染引擎],因此黙 认模板文件就是类似view.html.erb.当然view.rhtml也能正常工作. 比如我希望用户访问/post/rss/1.atom时，调用builder来解析，我的模板文件应该是rss.xml.builder.这个builder很方便，创建Rss时非常爽。语法像这样:</p>
 <blockquote>
 <p>xml.instruct! xml.rss(&quot;version&quot;=&gt;&quot;2.0&quot;, &quot;xmlns:dc&quot;=&gt;&quot;http://purl.org/dc/elements/1.1/&quot;) do xml.channel do xml.title &quot;renlu.xu 's blog&quot; xml.link(url_for(:action=&gt;&quot;start&quot;,:only_path=&gt;false)) xml.description &quot;My life My love&quot; xml.language &quot;zh_CN&quot; xml.ttl 60 for event in @posts do xml.item do xml.title(event.title) xml.description(event.body) xml.pubDate(event.created_at.to_s(:rfc822)) xml.guid(event.id) xml.link(&quot;http://.....#{event.id}&quot;) end end end end</p>
 </blockquote>
 <p>2. 一些Helper改进了 我能感觉到的是，在生成表单时，生成时，用form_tag能生成一个表单，这个表单默认带了一个隐藏的域。这个域的值是一个加密的串，用来验证当前表单提交的合法性。这一点很好。yahoo的产品体系中，也有类似的检查，叫crumb机制。存有不包含crumb的from表单提交时，程序是不能通过安全审查的。 3 Router的改进。 将用分号来区隔的方法去掉了。比如/post/view/1:edit这种就去掉了。统一成了斜线方式:/post/view/1/edit。 经过我测试，rails的route好像存在一个很可耻的Bug.....有些地址死活不能被认出来... 另外，route需要Sqlite3的支持。 4 默认的数据库支持类型据说换成sqlite3了。render_text 被去掉了 5... 不少Bug 仍然性格倔强地拒绝被修改....</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/612/">
-                  <h3 class="post-title">
-                    历史上的徐庶
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/612/">
+              <h3 class="post-title">
+                下一篇：历史上的徐庶
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -134,8 +140,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

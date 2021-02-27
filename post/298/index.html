@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>道可道，非常道---PHP模板技术 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="道可道，非常道---PHP模板技术 道可道，非常道。 当我第一次见到php模板的时候，简直被迷上了。原来php世界里还有这么好的东西。我疯狂地学习。 好在当时的php模板还不是很庞大，很快我了解了它的原理，并也能自己写一些了。 后来，sma..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">道可道，非常道---PHP模板技术</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-10-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p>道可道，非常道---PHP模板技术 道可道，非常道。 当我第一次见到php模板的时候，简直被迷上了。原来php世界里还有这么好的东西。我疯狂地学习。 好在当时的php模板还不是很庞大，很快我了解了它的原理，并也能自己写一些了。 后来，smarty横空出世，更是拥有了许多为它着迷的fans.许多人开始写模板引擎，将smarty或其他模板加以改造，使之符合自己的需要。 纵观当今模板世界，php模板引擎主要分为两种： 一种是替换特定字串型的。美工做出来的页面，中间会嵌入一些什么{block.title}这样的字符串，然后程序读入这个模板文件，将中间的{block.title}的字样替换成实际从数据库中读取的内容。 还有一种符杂一些，是一种编译型的。以smarty为代表，模板文件中实际上包含了一些简化的php代码，比如有的写的是&lt;{=$site_name}&gt;,&lt;{if <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 10: counts&gt;0 }̲&gt;这样的语句，实际是一种自行定…'>counts&gt;0 }&gt;这样的语句，实际是一种自行定义的语言格式。web开发久的人一眼能看出它们指的是什么。这一类往往会在第一次访问时被预编译，转换成一个php文件何存起来。比如 &lt;{=</span>site_name}&gt;就变成了,&lt;{if $count&gt;0 }&gt; 就变成了0) {?&gt;。从第二次起，就直接包含已经编译出来的php文件。当然，各种模板的处理的具体细节不一样。 但是，我们为什么要用模板？ 这个问题我也不能很好的回答。但是有很多人这么说：要让美工和程序员的工作分开。要让代码层和表现层分开。 那么我们看这两种方式实现了吗? 让您的美工人员打开一个smarty文件，让他按他的思路去改一下视图设计。他会告诉您，天哪，你怎么把我的设计变成这样一幅样子了？这些foreach,if都是什么意思？噢，天哪，我的表格怎么撑得这么大了？.... 原来编译型的模板技术让美工更没法子做美工了。 那么替换字符串型的呢?看起来是轻松多了。不过您可以测测您的程序速度，看看他是否已经慢了一倍以上。很容易，您用了太多的有preg_match,或是str_ireplace之类的语句来替换。程序重复一次又一次在您那几万个甚至更多字节的模板文件中查找某个字串，来替换内容。 不仅如此，你还发现您哪天想在视层面插一点东西时，处处受制于模板。您肯定很想直接在模板中写一段之类的语句，但是，很抱歉，您不能这么写。如果只是想echo 一个什么东西，您可以在模板中加一个{{var}}的串，然后在php程序中写 $var=&quot;这一个串&quot;; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>e</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>a</mi><mi>t</mi><mi>e</mi><mo>−</mo><mo>&gt;</mo><mi>a</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>g</mi><mi>n</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>v</mi><mi>a</mi><mi>r</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">template-&gt;assign(&quot;var&quot;,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">&quot;</span><span class="mpunct">,</span></span></span></span>var); 但是如果您不是想输出呢，想做其他操作？抱歉，您还是得改php代码。这些模板都支持规矩矩的表格状的输出，但是，如果我想输出20条记录，我要弄一个第一行2列记录的，第二行3列的，第三行又是2行的之类的，或者是其他类似找码，您打算怎么办? 难道再让您的模板引擎也升级成为编译性的，好让您往您的模板中加入php语句? 您错了。其实，我们看一看，我们的模板引擎充当了什么样的角色呢?我们把一段特定的按一定规则编写的html代码进行一定的数据处理后输出成了另外一段，输出过程中某些字符发生了改变。那我们的伟大的php干了什么呢?它帮我们把我们按规则写好的php代码也按一定规则输出成了一段html。两者本质是一样的。只是，php本身比我们那些蹩脚的模板引擎更快，更漂亮。 再说细一点，现在用的最多的Smarty.看一看它的结构: &lt;{if <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 14: article.rates}̲&gt; &lt;{php}&gt;echo a…'>article.rates}&gt; &lt;{php}&gt;echo art\_constant(&quot;MD\_RATE&quot;);&lt;{/php}&gt;: &lt;{</span>article.rating}&gt;/&lt;{$article.rates}&gt; &lt;{/if}&gt; 你觉得它是一个美工能看清的html文件么? 看看编译后的结果,它看起来应该是这样的: : / 哈。我们伟大的smarty把这html也变成了php了。然后在以后的工作中，这些php代码会直接被运行。 有必要吗?本来是apache承载php,php直接编译php 源代码，现在变成了apache承载php,php编译smarty引擎，smarty引擎又去编译html文件。反而多了一层，smarty自个儿把本来php要做的工作拿了做了。 而且糟糕的是，smarty的模板打开来以后，比php文件更让人难以看清。 所以我说，放弃您的模板系统吧。但记住我们开发模板系统的初衷。 您会说：那要是放弃模板系统了，我怎么分开程序逻辑和视图层面？ 这个也太好办了。您可以这样写： 第一个文件这样写: @link http://www.162cm.com */ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>s</mi><mo>=</mo><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>d</mi><mo separator="true">,</mo><mi>t</mi><mi>i</mi><mi>t</mi><mi>l</mi><mi>e</mi><mo separator="true">,</mo><mi>b</mi><mi>o</mi><mi>d</mi><mi>y</mi><mi>f</mi><mi>r</mi><mi>o</mi><mi>m</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>l</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>e</mi><mi>r</mi><mi>b</mi><mi>y</mi><mi>i</mi><mi>d</mi><mi>d</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mn>30</mn><mi mathvariant="normal">&quot;</mi><mo>)</mo><mo separator="true">;</mo><mi>w</mi><mi>h</mi><mi>i</mi><mi>l</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">rs=mysql\_query(&quot;select id,title,body from articles order by id desc limit 30&quot;); while(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord">3</span><span class="mord">0</span><span class="mord">&quot;</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>row=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><mi mathvariant="normal">_</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>o</mi><mi>c</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">mysql\_fetch\_assoc(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mopen">(</span></span></span></span>rs)) { <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: rows\̲[̲\]='>rows\[\]=</span>row; } ?&gt; 第二个文件作为您的视层面的文件。您可以让您的平面设计师在mac上设计漂亮绝顶的图片，然后切成html文件，交给您的页面整合工程师。这个工程不需要懂太多php，他基本上只需要会用print就行了。他把这个html文件改名为view.php,然后在里面加上相应代码: @link http://www.162cm.com */ foreach($rows as $row) { echo &quot;&quot;; echo &quot;&quot;; echo $row[&quot;id&quot;]; echo &quot;&quot;; echo &quot;&quot;; echo $row[&quot;title&quot;]; echo &quot;&quot;; echo &quot;&quot;; } ?&gt; ok.这就视层面文件。这个文件用织梦者(dreamweaver）打开后，应该跟美工做出来的图是一样的,就仅仅多了用那个黄色的问号代表的php代码。写得好时，dreamweaver还能列出您的php代码中输出了什么内容，效果更佳。 这两个文件，就是一个是逻辑层，一个是视层面。 然后用index.php将他们包含起来。 @link http://www.162cm.com */ include &quot;databaseConnect.php&quot;;//连接数据库的代码，我就不写了 include &quot;logic.php&quot;; include &quot;view.php&quot;; include &quot;cache.php&quot;; ?&gt; 这样逻辑和视，就分开了。那有人会说，如果我用模板，可以将要输出的内容写入到静态文件中，现在没了模板我该怎么办？ 这个不是问题。我们用的是php,超酷的php. 看看，我们加了cache.php.这就是用来实现您说的缓存效果的。 我们的cache文件: @link http://www.162cm.com */ $content=ob_get_content(); <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>p</mi><mo>=</mo><mi>f</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mi mathvariant="normal">.</mi><mi>h</mi><mi>t</mi><mi>m</mi><mi>l</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo><mi mathvariant="normal">&quot;</mi><mi>w</mi><mi mathvariant="normal">&quot;</mi><mo>)</mo><mo separator="true">;</mo><mi>f</mi><mi>w</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">fp=fopen(&quot;index.html&quot;,&quot;w&quot;); fwrite(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord">&quot;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord">&quot;</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>fp,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>)</mo><mo separator="true">;</mo><mi>f</mi><mi>c</mi><mi>l</mi><mi>o</mi><mi>s</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">content); fclose(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>fp); ?&gt; 当然，index.php也改成: @link http://www.162cm.com */ if(file_exists(&quot;index.html&quot;)) { include &quot;index.html&quot;; exit(); } include &quot;databaseConnect.php&quot;;//连接数据库的代码，我就不写了 include &quot;logic.php&quot;; include &quot;view.php&quot;; incldue &quot;cache.php&quot;; ?&gt; 这样您看这缓存效果是不是就出来了？ 有人说：我用模板还有一个好处啊,就是模板写错了还不会影响到程序的运行。是的。咳，怎么说呢？您在模板中将&lt;{=<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: site\_name}̲&gt;写成了&lt;{='>site\_name}&gt;写成了&lt;{=</span>sie_name}&gt;是没啥，您的php程序还是很&quot;健壮&quot;地运行着。不过您没觉得，当您期望的那一个将由&lt;{=$site_name}&gt;来打出来的网站名称没有出现的时候，您排起错来会很难找吗?对于一个程序师来说，您不觉得，光只视层面的那些echo语句，只应该是您工作中极微不足道的一部分吗？在这个主要是echo语句构成的视层面文件view.php，您还出现编译期错误，是不是该拉出去打屁屁？ 另外，在php程序正式上线运行时，您也可以将它的报错功能关闭啊。 常道，亦非常之道。 无为，无所不为。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/297/">
+              <h3 class="post-title">
+                下一篇：替女友感谢一些曾经关注过帮忙过的朋友
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">道可道，非常道---PHP模板技术</h2>
-            <div class="post-date">2006-10-26</div>
-            
-            <div class="post-content" v-pre>
-              <p>道可道，非常道---PHP模板技术 道可道，非常道。 当我第一次见到php模板的时候，简直被迷上了。原来php世界里还有这么好的东西。我疯狂地学习。 好在当时的php模板还不是很庞大，很快我了解了它的原理，并也能自己写一些了。 后来，smarty横空出世，更是拥有了许多为它着迷的fans.许多人开始写模板引擎，将smarty或其他模板加以改造，使之符合自己的需要。 纵观当今模板世界，php模板引擎主要分为两种： 一种是替换特定字串型的。美工做出来的页面，中间会嵌入一些什么{block.title}这样的字符串，然后程序读入这个模板文件，将中间的{block.title}的字样替换成实际从数据库中读取的内容。 还有一种符杂一些，是一种编译型的。以smarty为代表，模板文件中实际上包含了一些简化的php代码，比如有的写的是&lt;{=$site_name}&gt;,&lt;{if <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 10: counts&gt;0 }̲&gt;这样的语句，实际是一种自行定…'>counts&gt;0 }&gt;这样的语句，实际是一种自行定义的语言格式。web开发久的人一眼能看出它们指的是什么。这一类往往会在第一次访问时被预编译，转换成一个php文件何存起来。比如 &lt;{=</span>site_name}&gt;就变成了,&lt;{if $count&gt;0 }&gt; 就变成了0) {?&gt;。从第二次起，就直接包含已经编译出来的php文件。当然，各种模板的处理的具体细节不一样。 但是，我们为什么要用模板？ 这个问题我也不能很好的回答。但是有很多人这么说：要让美工和程序员的工作分开。要让代码层和表现层分开。 那么我们看这两种方式实现了吗? 让您的美工人员打开一个smarty文件，让他按他的思路去改一下视图设计。他会告诉您，天哪，你怎么把我的设计变成这样一幅样子了？这些foreach,if都是什么意思？噢，天哪，我的表格怎么撑得这么大了？.... 原来编译型的模板技术让美工更没法子做美工了。 那么替换字符串型的呢?看起来是轻松多了。不过您可以测测您的程序速度，看看他是否已经慢了一倍以上。很容易，您用了太多的有preg_match,或是str_ireplace之类的语句来替换。程序重复一次又一次在您那几万个甚至更多字节的模板文件中查找某个字串，来替换内容。 不仅如此，你还发现您哪天想在视层面插一点东西时，处处受制于模板。您肯定很想直接在模板中写一段之类的语句，但是，很抱歉，您不能这么写。如果只是想echo 一个什么东西，您可以在模板中加一个{{var}}的串，然后在php程序中写 $var=&quot;这一个串&quot;; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>e</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>a</mi><mi>t</mi><mi>e</mi><mo>−</mo><mo>&gt;</mo><mi>a</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>g</mi><mi>n</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>v</mi><mi>a</mi><mi>r</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">template-&gt;assign(&quot;var&quot;,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">&quot;</span><span class="mpunct">,</span></span></span></span>var); 但是如果您不是想输出呢，想做其他操作？抱歉，您还是得改php代码。这些模板都支持规矩矩的表格状的输出，但是，如果我想输出20条记录，我要弄一个第一行2列记录的，第二行3列的，第三行又是2行的之类的，或者是其他类似找码，您打算怎么办? 难道再让您的模板引擎也升级成为编译性的，好让您往您的模板中加入php语句? 您错了。其实，我们看一看，我们的模板引擎充当了什么样的角色呢?我们把一段特定的按一定规则编写的html代码进行一定的数据处理后输出成了另外一段，输出过程中某些字符发生了改变。那我们的伟大的php干了什么呢?它帮我们把我们按规则写好的php代码也按一定规则输出成了一段html。两者本质是一样的。只是，php本身比我们那些蹩脚的模板引擎更快，更漂亮。 再说细一点，现在用的最多的Smarty.看一看它的结构: &lt;{if <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 14: article.rates}̲&gt; &lt;{php}&gt;echo a…'>article.rates}&gt; &lt;{php}&gt;echo art\_constant(&quot;MD\_RATE&quot;);&lt;{/php}&gt;: &lt;{</span>article.rating}&gt;/&lt;{$article.rates}&gt; &lt;{/if}&gt; 你觉得它是一个美工能看清的html文件么? 看看编译后的结果,它看起来应该是这样的: : / 哈。我们伟大的smarty把这html也变成了php了。然后在以后的工作中，这些php代码会直接被运行。 有必要吗?本来是apache承载php,php直接编译php 源代码，现在变成了apache承载php,php编译smarty引擎，smarty引擎又去编译html文件。反而多了一层，smarty自个儿把本来php要做的工作拿了做了。 而且糟糕的是，smarty的模板打开来以后，比php文件更让人难以看清。 所以我说，放弃您的模板系统吧。但记住我们开发模板系统的初衷。 您会说：那要是放弃模板系统了，我怎么分开程序逻辑和视图层面？ 这个也太好办了。您可以这样写： 第一个文件这样写: @link http://www.162cm.com */ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>s</mi><mo>=</mo><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>s</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>d</mi><mo separator="true">,</mo><mi>t</mi><mi>i</mi><mi>t</mi><mi>l</mi><mi>e</mi><mo separator="true">,</mo><mi>b</mi><mi>o</mi><mi>d</mi><mi>y</mi><mi>f</mi><mi>r</mi><mi>o</mi><mi>m</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>l</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>r</mi><mi>d</mi><mi>e</mi><mi>r</mi><mi>b</mi><mi>y</mi><mi>i</mi><mi>d</mi><mi>d</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mn>30</mn><mi mathvariant="normal">&quot;</mi><mo>)</mo><mo separator="true">;</mo><mi>w</mi><mi>h</mi><mi>i</mi><mi>l</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">rs=mysql\_query(&quot;select id,title,body from articles order by id desc limit 30&quot;); while(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord">3</span><span class="mord">0</span><span class="mord">&quot;</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>row=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><mi mathvariant="normal">_</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>o</mi><mi>c</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">mysql\_fetch\_assoc(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mopen">(</span></span></span></span>rs)) { <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: rows\̲[̲\]='>rows\[\]=</span>row; } ?&gt; 第二个文件作为您的视层面的文件。您可以让您的平面设计师在mac上设计漂亮绝顶的图片，然后切成html文件，交给您的页面整合工程师。这个工程不需要懂太多php，他基本上只需要会用print就行了。他把这个html文件改名为view.php,然后在里面加上相应代码: @link http://www.162cm.com */ foreach($rows as $row) { echo &quot;&quot;; echo &quot;&quot;; echo $row[&quot;id&quot;]; echo &quot;&quot;; echo &quot;&quot;; echo $row[&quot;title&quot;]; echo &quot;&quot;; echo &quot;&quot;; } ?&gt; ok.这就视层面文件。这个文件用织梦者(dreamweaver）打开后，应该跟美工做出来的图是一样的,就仅仅多了用那个黄色的问号代表的php代码。写得好时，dreamweaver还能列出您的php代码中输出了什么内容，效果更佳。 这两个文件，就是一个是逻辑层，一个是视层面。 然后用index.php将他们包含起来。 @link http://www.162cm.com */ include &quot;databaseConnect.php&quot;;//连接数据库的代码，我就不写了 include &quot;logic.php&quot;; include &quot;view.php&quot;; include &quot;cache.php&quot;; ?&gt; 这样逻辑和视，就分开了。那有人会说，如果我用模板，可以将要输出的内容写入到静态文件中，现在没了模板我该怎么办？ 这个不是问题。我们用的是php,超酷的php. 看看，我们加了cache.php.这就是用来实现您说的缓存效果的。 我们的cache文件: @link http://www.162cm.com */ $content=ob_get_content(); <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>p</mi><mo>=</mo><mi>f</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mi mathvariant="normal">.</mi><mi>h</mi><mi>t</mi><mi>m</mi><mi>l</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo><mi mathvariant="normal">&quot;</mi><mi>w</mi><mi mathvariant="normal">&quot;</mi><mo>)</mo><mo separator="true">;</mo><mi>f</mi><mi>w</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">fp=fopen(&quot;index.html&quot;,&quot;w&quot;); fwrite(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord">&quot;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord">&quot;</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>fp,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>)</mo><mo separator="true">;</mo><mi>f</mi><mi>c</mi><mi>l</mi><mi>o</mi><mi>s</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">content); fclose(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>fp); ?&gt; 当然，index.php也改成: @link http://www.162cm.com */ if(file_exists(&quot;index.html&quot;)) { include &quot;index.html&quot;; exit(); } include &quot;databaseConnect.php&quot;;//连接数据库的代码，我就不写了 include &quot;logic.php&quot;; include &quot;view.php&quot;; incldue &quot;cache.php&quot;; ?&gt; 这样您看这缓存效果是不是就出来了？ 有人说：我用模板还有一个好处啊,就是模板写错了还不会影响到程序的运行。是的。咳，怎么说呢？您在模板中将&lt;{=<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: site\_name}̲&gt;写成了&lt;{='>site\_name}&gt;写成了&lt;{=</span>sie_name}&gt;是没啥，您的php程序还是很&quot;健壮&quot;地运行着。不过您没觉得，当您期望的那一个将由&lt;{=$site_name}&gt;来打出来的网站名称没有出现的时候，您排起错来会很难找吗?对于一个程序师来说，您不觉得，光只视层面的那些echo语句，只应该是您工作中极微不足道的一部分吗？在这个主要是echo语句构成的视层面文件view.php，您还出现编译期错误，是不是该拉出去打屁屁？ 另外，在php程序正式上线运行时，您也可以将它的报错功能关闭啊。 常道，亦非常之道。 无为，无所不为。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/297/">
-                  <h3 class="post-title">
-                    替女友感谢一些曾经关注过帮忙过的朋友
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

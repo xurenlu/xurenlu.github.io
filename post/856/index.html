@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>更改字符集设置[译文] | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="更改字符集设置 原文设置:http://www.mysqlperformanceblog.com/2009/03/17/converting-character-sets/ Web世界已经走向UTF8;Drizzle选中它作为默认的字符集。..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">更改字符集设置[译文]</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2009-03-24</span>
+            
+          </div>
+          <div class="post-content">
+            <p>更改字符集设置 原文设置:<a href="http://www.mysqlperformanceblog.com/2009/03/17/converting-character-sets/">http://www.mysqlperformanceblog.com/2009/03/17/converting-character-sets/</a> Web世界已经走向UTF8;Drizzle选中它作为默认的字符集。大多网站后端用utf-8来存储文本数据，另外那些用latin1字符集的网也开始将他们的数据库迁移到utf8;google一下&quot;mysql convert charset to utf8&quot;,可以找到大量的网站，每个途径都有些微的不同，又在某些方面都有些不对。我会总结一下这些方法，说明他们为什么不奏效，然后给出一段脚本，大致上可以用来转换一个数据库或是一系列表到目标字标集。 方法一: ALTER TABLE `t1` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci; 拿这个数据表作例子，我们可以看到这种方法为啥子行不通呢。 SQL: 1. mysql&gt; CREATE TABLE `t1` ( 2. -&gt; `c1` text NOT NULL 3. -&gt; ) ENGINE=MyISAM DEFAULT CHARSET=latin1; 4. Query OK, 0 rows affected (0.02 sec) 5. 6. mysql&gt; ALTER TABLE `t1` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci; 7. Query OK, 0 rows affected (0.02 sec) 8. Records: 0 Duplicates: 0 Warnings: 0 9. 10. mysql&gt; SHOW CREATE TABLE `t1`G 11. *************************** 1. row *************************** 12. TABLE: t1 13. CREATE TABLE: CREATE TABLE `t1` ( 14. `c1` mediumtext NOT NULL 15. ) ENGINE=MyISAM DEFAULT CHARSET=utf8 16. 1 row IN SET (0.01 sec) 注意这里的c1隐含的从text到mediumtext的转换。这种方法能引起改变的数据类型和没有提示的截断，这从我们的目的上说是不能接受的。 方法二［在<a href="http://www.haidongji.com/2008/11/11/convert-character-set-to-utf8-in-mysql/">这里</a>记录着］: 这种方法在转换之前,把所有的数据都转成了他二进制相似的数据类类型，避免了隐含的类型转换。由于实现方式的限制，他把原来以二进制形式存储的数据列也转成了文本的近似列。另外，这种方式有可能因为二进制数据不能进行全文检索而失败。即使这些解决了，这个过程也因为它过多的在每个表上执行alter语句而不能用在大数据量的数据库上。这些语句包括: 1) Drop FULLTEXT indexes 2) Convert target columns to their binary counterparts 3) Convert the table to the target character set 4) Convert target columns to their original data types 5) Add FULLTEXT indexes back 由于这些语句有时执行一句我们都需要花上n个钟头（我们是不是该庆幸是用小时来计数而不是用天来计数？），这也是不可接受的。 方法三: 导出整个数据库，再导入进去。当然，导入导出时选用正确的server端和client端字符集。 这是一个有三个步骤的过程。我们先导出数据库结构，然后手工编辑把数据字符集修改正确，接出单独导出数据。接下来，创建数据表结构，导入数据。如果你在使用复制(replication),这通常不太可取，因为这样导致可笑的一大堆日志，并引起复制链上所有服务器重新载入数据。 除开方法一之外，这些方法都不必要地麻烦。针对方法一，考虑一下下面这个alter语句： 1. ALTER TABLE `t1` 2. DEFAULT CHARSET=utf8, 3. MODIFY COLUMN `c1` text CHARACTER SET utf8; 这个语句能转换整个表的默认字符集和目标数据表列的字符集，并且保持全文索引不变。对于一个指定的数据表，只需要一句sql语句。一个perl脚本已经写好了，它可以将这个alter table 的操作原子化，您可以从这里下载: $ wget http://www.pablowe.net/convert_charset 当这个脚本完成后，它会加到launchpad的Percona Tools 中去（也许是maatkit,如果证明是足够有用的话).它的一些不错的特性包括: 1.对字符型外键的恰当处理。（当下还没搞定，不过你可能最好不要使用字符型外键) 2.可以调节这个脚本创建的线程数目。（目前是每个表一个线程). 用法: Usage: convert_charset --database=database [options] Options: --askpass Prompt for a MySQL password --charset The target character set to convert to --collate The target collation to convert to --database|d The target database --help|? Display this help and exit --host|h The target host --ignore-columns Columns to ignore, useful if you want to keep the existing charset for a target column Comma-separated. NO SPACES. table.column --ignore-tables A comma-separated list of tables to ignore --password|p The MySQL password to use --port The target port --tables A comma-separated list of tables to convert. All non-named tables will be ignored --test Print the ALTER statements that would be executed without executing them. --user|u The MySQL user --version|V Display version information and exit defaults are: ATTRIBUTE VALUE -------------------------- ------------------ askpass FALSE charset utf8 collate No Default Value database No Default Value help FALSE host localhost ignore-columns No Default Value ignore-tables No Default Value password No Default Value port 3306 tables No Default Value test FALSE user Current User version FALSE</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/853/">
+              <h3 class="post-title">
+                下一篇：archlinux   配置声卡
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">更改字符集设置[译文]</h2>
-            <div class="post-date">2009-03-24</div>
-            
-            <div class="post-content" v-pre>
-              <p>更改字符集设置 原文设置:<a href="http://www.mysqlperformanceblog.com/2009/03/17/converting-character-sets/">http://www.mysqlperformanceblog.com/2009/03/17/converting-character-sets/</a> Web世界已经走向UTF8;Drizzle选中它作为默认的字符集。大多网站后端用utf-8来存储文本数据，另外那些用latin1字符集的网也开始将他们的数据库迁移到utf8;google一下&quot;mysql convert charset to utf8&quot;,可以找到大量的网站，每个途径都有些微的不同，又在某些方面都有些不对。我会总结一下这些方法，说明他们为什么不奏效，然后给出一段脚本，大致上可以用来转换一个数据库或是一系列表到目标字标集。 方法一: ALTER TABLE `t1` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci; 拿这个数据表作例子，我们可以看到这种方法为啥子行不通呢。 SQL: 1. mysql&gt; CREATE TABLE `t1` ( 2. -&gt; `c1` text NOT NULL 3. -&gt; ) ENGINE=MyISAM DEFAULT CHARSET=latin1; 4. Query OK, 0 rows affected (0.02 sec) 5. 6. mysql&gt; ALTER TABLE `t1` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci; 7. Query OK, 0 rows affected (0.02 sec) 8. Records: 0 Duplicates: 0 Warnings: 0 9. 10. mysql&gt; SHOW CREATE TABLE `t1`G 11. *************************** 1. row *************************** 12. TABLE: t1 13. CREATE TABLE: CREATE TABLE `t1` ( 14. `c1` mediumtext NOT NULL 15. ) ENGINE=MyISAM DEFAULT CHARSET=utf8 16. 1 row IN SET (0.01 sec) 注意这里的c1隐含的从text到mediumtext的转换。这种方法能引起改变的数据类型和没有提示的截断，这从我们的目的上说是不能接受的。 方法二［在<a href="http://www.haidongji.com/2008/11/11/convert-character-set-to-utf8-in-mysql/">这里</a>记录着］: 这种方法在转换之前,把所有的数据都转成了他二进制相似的数据类类型，避免了隐含的类型转换。由于实现方式的限制，他把原来以二进制形式存储的数据列也转成了文本的近似列。另外，这种方式有可能因为二进制数据不能进行全文检索而失败。即使这些解决了，这个过程也因为它过多的在每个表上执行alter语句而不能用在大数据量的数据库上。这些语句包括: 1) Drop FULLTEXT indexes 2) Convert target columns to their binary counterparts 3) Convert the table to the target character set 4) Convert target columns to their original data types 5) Add FULLTEXT indexes back 由于这些语句有时执行一句我们都需要花上n个钟头（我们是不是该庆幸是用小时来计数而不是用天来计数？），这也是不可接受的。 方法三: 导出整个数据库，再导入进去。当然，导入导出时选用正确的server端和client端字符集。 这是一个有三个步骤的过程。我们先导出数据库结构，然后手工编辑把数据字符集修改正确，接出单独导出数据。接下来，创建数据表结构，导入数据。如果你在使用复制(replication),这通常不太可取，因为这样导致可笑的一大堆日志，并引起复制链上所有服务器重新载入数据。 除开方法一之外，这些方法都不必要地麻烦。针对方法一，考虑一下下面这个alter语句： 1. ALTER TABLE `t1` 2. DEFAULT CHARSET=utf8, 3. MODIFY COLUMN `c1` text CHARACTER SET utf8; 这个语句能转换整个表的默认字符集和目标数据表列的字符集，并且保持全文索引不变。对于一个指定的数据表，只需要一句sql语句。一个perl脚本已经写好了，它可以将这个alter table 的操作原子化，您可以从这里下载: $ wget http://www.pablowe.net/convert_charset 当这个脚本完成后，它会加到launchpad的Percona Tools 中去（也许是maatkit,如果证明是足够有用的话).它的一些不错的特性包括: 1.对字符型外键的恰当处理。（当下还没搞定，不过你可能最好不要使用字符型外键) 2.可以调节这个脚本创建的线程数目。（目前是每个表一个线程). 用法: Usage: convert_charset --database=database [options] Options: --askpass Prompt for a MySQL password --charset The target character set to convert to --collate The target collation to convert to --database|d The target database --help|? Display this help and exit --host|h The target host --ignore-columns Columns to ignore, useful if you want to keep the existing charset for a target column Comma-separated. NO SPACES. table.column --ignore-tables A comma-separated list of tables to ignore --password|p The MySQL password to use --port The target port --tables A comma-separated list of tables to convert. All non-named tables will be ignored --test Print the ALTER statements that would be executed without executing them. --user|u The MySQL user --version|V Display version information and exit defaults are: ATTRIBUTE VALUE -------------------------- ------------------ askpass FALSE charset utf8 collate No Default Value database No Default Value help FALSE host localhost ignore-columns No Default Value ignore-tables No Default Value password No Default Value port 3306 tables No Default Value test FALSE user Current User version FALSE</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/853/">
-                  <h3 class="post-title">
-                    archlinux   配置声卡
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

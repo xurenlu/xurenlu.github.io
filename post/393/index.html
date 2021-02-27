@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>PHP高手之路之---折柳为剑 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="php只可以做网站吗?NO! 我上talks.php.net,发现这里的人们不仅讨论用php来做网站,还用php来做应用程序,还有人用php完成了一个web服务器.国内的大师们,曾用php完成了一个web server,然后用这个serve..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">PHP高手之路之---折柳为剑</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-04-03</span>
+            
+          </div>
+          <div class="post-content">
+            <p>php只可以做网站吗?NO! 我上talks.php.net,发现这里的人们不仅讨论用php来做网站,还用php来做应用程序,还有人用php完成了一个web服务器.国内的大师们,曾用php完成了一个web server,然后用这个server来解决php的一个顽疾:大文件上传问题.(见:http://www.ugia.cn/?p=70) 现在看看php如何做应用程序(目前只在linux下试过) #! /usr/bin/php echo &quot;Hello world!n&quot;; echo &quot;您输入了&quot;.<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 9: \_SERVER\̲[̲&quot;argc&quot;\].&quot;个参数n&quot;…'>\_SERVER\[&quot;argc&quot;\].&quot;个参数n&quot;; foreach(</span>_SERVER[&quot;argv&quot;] as <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: … { echo &quot; 参数:&quot;.'>v) { echo &quot; 参数:&quot;.</span>v.&quot;n&quot;; } ?&gt; 存为hello_world.php.然后在shell中执行chmod +x hello_world.php. 接着运行./hello_world.php arg1 arg2看看结果: Hello world 您输入了3个参数 参数./hello_world.php 参数arg1 参数arg2 看看,就是这么简单. 我个人比较喜欢console模式下写东西,遇到一些英文词不认识,就经常需要打开firefox 上dict.cn或是dict.yodao.com来查。后来就想了一个办法,用php写了一个脚本,去dict.yodao.com上查询，然后把html格式符号去掉,截取翻译的那一段来显示并缓存到本地.这一段,您也可以试试. 要查询当前程序是否运行在cli模式下,只需检查php_sapi_name==&quot;cli&quot;是否为真。 要更详细的内容,请查询php手册的Cli模式的相关内容。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/392/">
+              <h3 class="post-title">
+                下一篇：php高手之路之---狐假虎威
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">PHP高手之路之---折柳为剑</h2>
-            <div class="post-date">2007-04-03</div>
-            
-            <div class="post-content" v-pre>
-              <p>php只可以做网站吗?NO! 我上talks.php.net,发现这里的人们不仅讨论用php来做网站,还用php来做应用程序,还有人用php完成了一个web服务器.国内的大师们,曾用php完成了一个web server,然后用这个server来解决php的一个顽疾:大文件上传问题.(见:http://www.ugia.cn/?p=70) 现在看看php如何做应用程序(目前只在linux下试过) #! /usr/bin/php echo &quot;Hello world!n&quot;; echo &quot;您输入了&quot;.<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 9: \_SERVER\̲[̲&quot;argc&quot;\].&quot;个参数n&quot;…'>\_SERVER\[&quot;argc&quot;\].&quot;个参数n&quot;; foreach(</span>_SERVER[&quot;argv&quot;] as <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: … { echo &quot; 参数:&quot;.'>v) { echo &quot; 参数:&quot;.</span>v.&quot;n&quot;; } ?&gt; 存为hello_world.php.然后在shell中执行chmod +x hello_world.php. 接着运行./hello_world.php arg1 arg2看看结果: Hello world 您输入了3个参数 参数./hello_world.php 参数arg1 参数arg2 看看,就是这么简单. 我个人比较喜欢console模式下写东西,遇到一些英文词不认识,就经常需要打开firefox 上dict.cn或是dict.yodao.com来查。后来就想了一个办法,用php写了一个脚本,去dict.yodao.com上查询，然后把html格式符号去掉,截取翻译的那一段来显示并缓存到本地.这一段,您也可以试试. 要查询当前程序是否运行在cli模式下,只需检查php_sapi_name==&quot;cli&quot;是否为真。 要更详细的内容,请查询php手册的Cli模式的相关内容。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/392/">
-                  <h3 class="post-title">
-                    php高手之路之---狐假虎威
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

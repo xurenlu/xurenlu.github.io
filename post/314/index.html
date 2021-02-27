@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Desko文档：关于程序安装 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="程序安装非常简单。当然，要让deskor支持大负载的站点，您安装之后还需要做许多工作。不过这不是我们这个安装指示文档的目的。 安装所需要的条件: 1.MP环境: WEB服务器:Apache或其他web服务器,比如lightHttpd之类，如..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Desko文档：关于程序安装</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-11-11</span>
+            
+          </div>
+          <div class="post-content">
+            <p>程序安装非常简单。当然，要让deskor支持大负载的站点，您安装之后还需要做许多工作。不过这不是我们这个安装指示文档的目的。 安装所需要的条件: <strong>1.MP环境:</strong> WEB服务器:Apache或其他web服务器,比如lightHttpd之类，如果您搞得定的话。 Mysql数据库:一般来说您选用mysql 4.1.0以上的版本会好一些。但是Mysql 3.23版的也足够了。😦 PHP：我们的程序是php写的，当然您得需要有PHP的支持。php的版本，我推荐在php4.4.4或以上。不过我并没有对所有版本做测试，如果有困难，请跟我联系。 <strong>2.参数设置</strong> 安装之前，需要知道:我们的程序会自动帮您完成一些工作，不过您仍然需要做一些工作。首先，您得把它放在您的web服务器的根目录下，或是其他能通过web访问的目录。 然后，请修改您的index.php中的这些项: $config[&quot;dbhost&quot;]=&quot;localhost&quot;; //数据库服务器地址,这个在99%的情况下是都不会变化的。 $config[&quot;dbuser&quot;]=&quot;root&quot;; //数据库用户名，一般的虚拟主机的用户是不能用root的 $config[&quot;dbpass&quot;]=&quot;santower&quot;; //数据库密码 $config[&quot;dbname&quot;]=&quot;mystyle&quot;; //数据库名称。 $config[&quot;dbprefix&quot;]=&quot;xoops__&quot;; //数据表前缀。这个您可以随便定一个与其他应用不相重复的。我是为了与我原来的xoops的表兼容，所以保留为xoops__. 改好之后，您就可以开始运行您的程序了。 <strong>3.安装脚本:</strong> 如果您用过Discuz,Xoops等开源产品，您肯定在期待更多的步骤或是其他安装步骤之类。不好意思，我让您失望了已经没了! 现在您可以打入Url来查看您的deskor了.有时SQL语句会出错，提示什么表不存在之类。不过这完全没关系。再刷新一下，您会发现这个错误不再出现了。因为deskor在检测到表不存在之后，会帮您把需要的表建立起来。当然，这不是Deskor全部的过人之处。慢慢地，您会发现Deskor有更多让您拍案叫绝的地方!</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/313/">
+              <h3 class="post-title">
+                下一篇：Feeling Lonely
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Desko文档：关于程序安装</h2>
-            <div class="post-date">2006-11-11</div>
-            
-            <div class="post-content" v-pre>
-              <p>程序安装非常简单。当然，要让deskor支持大负载的站点，您安装之后还需要做许多工作。不过这不是我们这个安装指示文档的目的。 安装所需要的条件: <strong>1.MP环境:</strong> WEB服务器:Apache或其他web服务器,比如lightHttpd之类，如果您搞得定的话。 Mysql数据库:一般来说您选用mysql 4.1.0以上的版本会好一些。但是Mysql 3.23版的也足够了。😦 PHP：我们的程序是php写的，当然您得需要有PHP的支持。php的版本，我推荐在php4.4.4或以上。不过我并没有对所有版本做测试，如果有困难，请跟我联系。 <strong>2.参数设置</strong> 安装之前，需要知道:我们的程序会自动帮您完成一些工作，不过您仍然需要做一些工作。首先，您得把它放在您的web服务器的根目录下，或是其他能通过web访问的目录。 然后，请修改您的index.php中的这些项: $config[&quot;dbhost&quot;]=&quot;localhost&quot;; //数据库服务器地址,这个在99%的情况下是都不会变化的。 $config[&quot;dbuser&quot;]=&quot;root&quot;; //数据库用户名，一般的虚拟主机的用户是不能用root的 $config[&quot;dbpass&quot;]=&quot;santower&quot;; //数据库密码 $config[&quot;dbname&quot;]=&quot;mystyle&quot;; //数据库名称。 $config[&quot;dbprefix&quot;]=&quot;xoops__&quot;; //数据表前缀。这个您可以随便定一个与其他应用不相重复的。我是为了与我原来的xoops的表兼容，所以保留为xoops__. 改好之后，您就可以开始运行您的程序了。 <strong>3.安装脚本:</strong> 如果您用过Discuz,Xoops等开源产品，您肯定在期待更多的步骤或是其他安装步骤之类。不好意思，我让您失望了已经没了! 现在您可以打入Url来查看您的deskor了.有时SQL语句会出错，提示什么表不存在之类。不过这完全没关系。再刷新一下，您会发现这个错误不再出现了。因为deskor在检测到表不存在之后，会帮您把需要的表建立起来。当然，这不是Deskor全部的过人之处。慢慢地，您会发现Deskor有更多让您拍案叫绝的地方!</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/313/">
-                  <h3 class="post-title">
-                    Feeling Lonely
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

@@ -1,100 +1,92 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>对Google更新过程的最终解释 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="有相当多的用户和公司都已经发现，为了在早期的搜索引擎优化中，能在Google里有个很好的排名，在认真做计划之前就要采取一切必要的措施。就免费提交的搜索引擎来说，Google是为数极少之中的一个，也是最早将网站收录到数据库的搜索引擎之一。到2..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">对Google更新过程的最终解释</h2>
-            <div class="post-date">2005-03-24</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">对Google更新过程的最终解释</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2005-03-24</span>
             
-            <div class="post-content" v-pre>
-              <p>有相当多的用户和公司都已经发现，为了在早期的搜索引擎优化中，能在Google里有个很好的排名，在认真做计划之前就要采取一切必要的措施。就免费提交的搜索引擎来说，Google是为数极少之中的一个，也是最早将网站收录到数据库的搜索引擎之一。到2003年7月10日为止，Google已经成为收录34亿个网页之多的最广泛的数据库。其中只有一小部分不能够被Google访问，因为这些站点是不能够被搜索引擎爬虫或蜘蛛所访问的。　　就象在现实生活中一样，无论是对网站所有者、网站管理员还是搜索引擎优化专家来说，当开始一个新产品的市场时，有很大的风险和潜在的复杂性。然而大多数专家都一致同意在使用Google搜索时，要正确输入关键字，这样才可以有效地搜索到你所要查找的信息。因为Google每个月都会更新它的数据库。在这篇文章中，我们要解释关于“Google Dance”的信息，还有如何在恰当的时间理解“Googlebot”。另外，我们也会告诉你如何进行搜索引擎的优化。著名的“Google Dance” 　<br>
+          </div>
+          <div class="post-content">
+            <p>有相当多的用户和公司都已经发现，为了在早期的搜索引擎优化中，能在Google里有个很好的排名，在认真做计划之前就要采取一切必要的措施。就免费提交的搜索引擎来说，Google是为数极少之中的一个，也是最早将网站收录到数据库的搜索引擎之一。到2003年7月10日为止，Google已经成为收录34亿个网页之多的最广泛的数据库。其中只有一小部分不能够被Google访问，因为这些站点是不能够被搜索引擎爬虫或蜘蛛所访问的。　　就象在现实生活中一样，无论是对网站所有者、网站管理员还是搜索引擎优化专家来说，当开始一个新产品的市场时，有很大的风险和潜在的复杂性。然而大多数专家都一致同意在使用Google搜索时，要正确输入关键字，这样才可以有效地搜索到你所要查找的信息。因为Google每个月都会更新它的数据库。在这篇文章中，我们要解释关于“Google Dance”的信息，还有如何在恰当的时间理解“Googlebot”。另外，我们也会告诉你如何进行搜索引擎的优化。著名的“Google Dance” 　<br>
 　　如果你想写封信去参加在Google总部的年度更新过程，那么你可能希望继续读到GooglePlex这篇文章，从中了解Google数据库和搜索引擎机器人是何如工作的。关于Google每月周期性的更新过程有很多的文档记录。而在过去整整一年，Google的这种每个月的周期性更新(如今人们亲切称之为“Google Dance”)对那些焦虑等待的网站所有者和网站管理员来说，都变得愈加复杂和不可琢磨。<br>
 　每次的更新都是从Google的一个主要的深层次的爬虫开始的。我们先把它叫做爬虫A。它是如何索引到整个网站中至少三四十亿的网页的呢？Google使用了15,000多台位于不同数据中心的计算机，来索引全世界范围内的站点。当Googlebot来搜索数据库中现有站点时，同时也会搜索到最新的网站。一旦Google完成了爬虫A这个过程，就会为下一步的更新有效地搜索到所有的网页，然后便是两个星期后的第二次更新过程。　<br>
 　最后，Google会更新整个数据库，在www2.google.com和ww3.google.com这两个站点上可以看到最新的更新结果。在更新的同时，其结果会很快的连接在主要数据库和第二、第三个数据库之间。由于Google使用的服务器有15,000台之多，因此在整个更新结束之前，不同地方的人们所得到的搜索结果是不同的。“Google Dance”会持续好几天，但是不会超过一个星期。除非Google要改变一些主要的规则，比如2003年4月份的更新。无论是在Google的每个数据库更新的时候还是在更新之后, 只要其中一个数据库进行更新，Google又会开始新一轮的“全面”检索。我们把它称做爬虫B。这次检索仍然包括数据库中所有已被收录站点和一些新发布的网站。GoogleBot的这次检索完成之后，就是Google下一轮更新的起点，意味着下个月的更新又全面开始了。在完美时间“捕捉”Googlebot<br>
@@ -106,31 +98,45 @@
 　　你也可以选择Yahoo的有偿收录服务，这样可以保证在七天内被Yahoo收录。一旦为Yahoo收录，你的网站就会很快被Google收录了。当然你不用每年都花299美元。还有一个不用花钱的方法，就是把你的网站提交到DMOZ。虽然它的服务器有时会出现问题，而且被DMOZ收录可能要花很长的时间。但这确是一个能让您的网站被Google收录的好方法。<br>
 　　结论:所有可以提供给网站管理员和搜索引擎优化专家的技术信息，都是从Google爬虫和更新模式那里得到的。它们会对搜索引擎优化的计划和实施有很大帮助。其中最主要的是有助于我们安排计划，因为新的提高和更新需要一个被收录到搜索引擎数据库的特定时间和日期。由于Google决定了大部分的目标搜索引擎访问量，所以让你的网站为Google收录是十分有必要的</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/194/">
-                  <h3 class="post-title">
-                    访问率上不去的N个因素
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/194/">
+              <h3 class="post-title">
+                下一篇：访问率上不去的N个因素
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -140,8 +146,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

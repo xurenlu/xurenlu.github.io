@@ -1,130 +1,136 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>屏蔽百度,淘宝恰恰做对了 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="淘宝屏掉了百度的spider.一时间议论纷纷，好事者甚至说看到淘宝固步自封因而自取灭亡。实际上，屏蔽搜索引擎的，不止淘宝一家。一些封闭社区，SNS,也都屏蔽掉了搜索引擎。只是因为屏搜索引擎的网站比较少，看起来比较另类，搞得好像屏搜索引擎就不..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">屏蔽百度,淘宝恰恰做对了</h2>
-            <div class="post-date">2008-09-11</div>
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">屏蔽百度,淘宝恰恰做对了</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2008-09-11</span>
             
-            <div class="post-content" v-pre>
-              <p>淘宝屏掉了百度的spider.一时间议论纷纷，好事者甚至说看到淘宝固步自封因而自取灭亡。实际上，屏蔽搜索引擎的，不止淘宝一家。一些封闭社区，SNS,也都屏蔽掉了搜索引擎。只是因为屏搜索引擎的网站比较少，看起来比较另类，搞得好像屏搜索引擎就不合法了一样。 但是实际上，这事真没啥不妥。人家淘宝自己就是不希望百度的程序来抓它的页面，人家遵守robots.txt文件约定制定了规则，有啥不行的？就像某地的酒店，原来一开始大家都认为，如果你不喝酒，你也可以只坐在那喝免费的茶水。后来忽然来了一家酒店，你不喝酒，他就不欢迎你进去了，于是喝惯了免费的茶水的人们就觉得这一家实在很嚣张...人家都提供免费茶水，你为啥不能提供呢?但是人家是酒店，为什么一定要提供免费茶水呢? 当然，这事还是一件大事，至少说明了好几个问题:</p>
+          </div>
+          <div class="post-content">
+            <p>淘宝屏掉了百度的spider.一时间议论纷纷，好事者甚至说看到淘宝固步自封因而自取灭亡。实际上，屏蔽搜索引擎的，不止淘宝一家。一些封闭社区，SNS,也都屏蔽掉了搜索引擎。只是因为屏搜索引擎的网站比较少，看起来比较另类，搞得好像屏搜索引擎就不合法了一样。 但是实际上，这事真没啥不妥。人家淘宝自己就是不希望百度的程序来抓它的页面，人家遵守robots.txt文件约定制定了规则，有啥不行的？就像某地的酒店，原来一开始大家都认为，如果你不喝酒，你也可以只坐在那喝免费的茶水。后来忽然来了一家酒店，你不喝酒，他就不欢迎你进去了，于是喝惯了免费的茶水的人们就觉得这一家实在很嚣张...人家都提供免费茶水，你为啥不能提供呢?但是人家是酒店，为什么一定要提供免费茶水呢? 当然，这事还是一件大事，至少说明了好几个问题:</p>
 <blockquote>
 <p><strong>1.以前淘宝和百度是合作伙伴，以前淘宝花不少钱买百度的竟价排名,通过百度进行了网站的推广，获得了一定的流量和收益。百度乐得挣钱，两家和和气气。现在，两家已经在台面上公开竟争了。 2.阿里巴巴上市了，百度不乐意了。本来中国互联网我是大佬一个，忽然冒出来一个不起眼的小子，抢了我的风头。我百度掐着多少小网站的喉咙，一向风光无限，怎能受这口气?于是我也要上B2C,我也要上C2C.我要继续做老大。没想到，一向没有哪个网站敢说不要从我百度过去的流量，淘宝怎么可以对我说不?淘宝封百度，百度很生气，后果很严重。 3.淘宝能大大方方地屏百度的程序，当然是深思熟虑了的。淘宝已经坐稳了国内C2C交易的头把交椅，现在需要的是规范市场， 引导市场，不能再做搅局者。因此只要淘宝坚持不犯错，一切就都OK。百度在搜索市场是大佬，做电子商务还是学生。淘宝要做的，就是挡。挡住百度的一切进攻就是胜利。这说明，一来淘宝已经掌控了局面，不再依赖百度或是任何一家搜索引擎。没有搜索引擎，淘宝仍然玩得转。二来，说明，百度确确实实是一个潜在的劲敌，否则犯着不淘宝做任何动作。</strong></p>
 </blockquote>
 <p>当然，我的观点是，淘宝应该封百度。淘宝绝不可以坐待对手长大。就算今天，明天，后天百度都还在为淘宝带来流量，可是一旦百度C2C长大，百度搜索迟早会把用户导向他自己的C2C,与其这样，不如早点丢掉那点流量。没有了百度导入的流量，顶多再花点钱做线下推广和品牌建设。商场上只有胜负，没有宽容和仁慈。坐等对手长大，才是真正的蠢货。 淘宝封百度，我以为这样是对的，这样才有魄力。有人说这对淘宝而言是一场豪赌。而实际上，百度宣布进军C2C的时候，就已经挑起了一场大赌。实际上在线购物的市场，还远远没有被开发，市场还大有空间。今后几年，我们一定能看到其他的打擂者。 没有百度，也会千度万度们来抢淘宝的蛋糕。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/690/">
-                  <h3 class="post-title">
-                    传闻之由:
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
           </div>
-
         </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/690/">
+              <h3 class="post-title">
+                下一篇：传闻之由:
+              </h3>
+            </a>
+          </div>
+          
       </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -134,8 +140,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Bug,又见Bug... | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="最近老遇到稀希事儿：我是不是可以买彩票去了呢? 1.这一阵遇到的第一个Bug: svn的bug 2.第二个:mysql客户端中,不能按上下箭头来得到历史命令，相反，一有向上箭头mysql client就crash掉 。 3.也是mysql:..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Bug,又见Bug...</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-07-11</span>
+            
+          </div>
+          <div class="post-content">
+            <p>最近老遇到稀希事儿：我是不是可以买彩票去了呢? 1.这一阵遇到的第一个Bug: <a href="http://www.162cm.com/archives/417.html">svn的bug</a> 2.第二个:mysql客户端中,不能按上下箭头来得到历史命令，相反，一有向上箭头mysql client就crash掉 。 3.也是mysql:某一空表插入数据时 mysql 报错：lost connection.后来运维查了一下，是GLIBC的一个 Bug造成的。 4.Ruby的:open-uri库无法解析形如&quot;http://www.sohu.com&quot;这样的域名，报错为：路径为空,改 为&quot;http://www.sohu.com/&quot;，再运行就Ok.但是http://www.sohu.com应该算是一个合法的URL吧? 5.andot的:PHP-RPC的3.0 beta5给在注释中给了一个例子,是这样的： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>b</mi><mi>j</mi><mo>−</mo><mo>&gt;</mo><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo><mi>a</mi><mi>r</mi><mi>r</mi><mi>a</mi><mi>y</mi><mo>(</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo>)</mo><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">但</mi><mi mathvariant="normal">是</mi><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">声</mi><mi mathvariant="normal">明</mi><mi mathvariant="normal">是</mi><mo>:</mo><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">obj-&gt;invoke(&quot;add&quot;,array(2,3)); 但是invoke方法的声明是: function invoke(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord">&quot;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">但</span><span class="mord cjk_fallback">是</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">声</span><span class="mord cjk_fallback">明</span><span class="mord cjk_fallback">是</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>method,&amp; $args); 第二个参数是传址的。 这个更标准的做法是: $arg=array(2,3); <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>b</mi><mi>j</mi><mo>−</mo><mo>&gt;</mo><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">obj-&gt;invoke(&quot;add&quot;,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord">&quot;</span><span class="mpunct">,</span></span></span></span>arg); 原因是，传地址的参数在很多情况下需要在函数体内被修改,array(2,3)这个是一个常数， $arg=array(2,3)才是一个变量。在php4.2.0以后，传不可修改的常数类给带&amp;的函数，是会直接报Fatal ERROR的。 不过人家只是在注释里这么写，我有点吹毛求疵了。但是很多phper都容易犯将常数传址的这个 错误。包括大师级的，我也见过犯这个错误的。 6.PHPMyadmin也给我带来了一个彩蛋，呵呵。不过重现性较差，难以遇到:在某次操作之后，突然页面全变成了黑方框或问号,再刷也是这样。不过过了10分钟之后再看，就正常了。我只能理解为，数据在网络传输的过程被修改了，应该不算PHPMyadmin的Bug.</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/417/">
+              <h3 class="post-title">
+                下一篇：关于svn的小技巧和一个Bug
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Bug,又见Bug...</h2>
-            <div class="post-date">2007-07-11</div>
-            
-            <div class="post-content" v-pre>
-              <p>最近老遇到稀希事儿：我是不是可以买彩票去了呢? 1.这一阵遇到的第一个Bug: <a href="http://www.162cm.com/archives/417.html">svn的bug</a> 2.第二个:mysql客户端中,不能按上下箭头来得到历史命令，相反，一有向上箭头mysql client就crash掉 。 3.也是mysql:某一空表插入数据时 mysql 报错：lost connection.后来运维查了一下，是GLIBC的一个 Bug造成的。 4.Ruby的:open-uri库无法解析形如&quot;http://www.sohu.com&quot;这样的域名，报错为：路径为空,改 为&quot;http://www.sohu.com/&quot;，再运行就Ok.但是http://www.sohu.com应该算是一个合法的URL吧? 5.andot的:PHP-RPC的3.0 beta5给在注释中给了一个例子,是这样的： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>b</mi><mi>j</mi><mo>−</mo><mo>&gt;</mo><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo><mi>a</mi><mi>r</mi><mi>r</mi><mi>a</mi><mi>y</mi><mo>(</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo>)</mo><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">但</mi><mi mathvariant="normal">是</mi><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mi mathvariant="normal">方</mi><mi mathvariant="normal">法</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">声</mi><mi mathvariant="normal">明</mi><mi mathvariant="normal">是</mi><mo>:</mo><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">obj-&gt;invoke(&quot;add&quot;,array(2,3)); 但是invoke方法的声明是: function invoke(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord">&quot;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">但</span><span class="mord cjk_fallback">是</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">法</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">声</span><span class="mord cjk_fallback">明</span><span class="mord cjk_fallback">是</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>method,&amp; $args); 第二个参数是传址的。 这个更标准的做法是: $arg=array(2,3); <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>b</mi><mi>j</mi><mo>−</mo><mo>&gt;</mo><mi>i</mi><mi>n</mi><mi>v</mi><mi>o</mi><mi>k</mi><mi>e</mi><mo>(</mo><mi mathvariant="normal">&quot;</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">obj-&gt;invoke(&quot;add&quot;,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord">&quot;</span><span class="mpunct">,</span></span></span></span>arg); 原因是，传地址的参数在很多情况下需要在函数体内被修改,array(2,3)这个是一个常数， $arg=array(2,3)才是一个变量。在php4.2.0以后，传不可修改的常数类给带&amp;的函数，是会直接报Fatal ERROR的。 不过人家只是在注释里这么写，我有点吹毛求疵了。但是很多phper都容易犯将常数传址的这个 错误。包括大师级的，我也见过犯这个错误的。 6.PHPMyadmin也给我带来了一个彩蛋，呵呵。不过重现性较差，难以遇到:在某次操作之后，突然页面全变成了黑方框或问号,再刷也是这样。不过过了10分钟之后再看，就正常了。我只能理解为，数据在网络传输的过程被修改了，应该不算PHPMyadmin的Bug.</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/417/">
-                  <h3 class="post-title">
-                    关于svn的小技巧和一个Bug
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

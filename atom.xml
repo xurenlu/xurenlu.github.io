@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://162cm.com</id>
+    <id>http://localhost:4000</id>
     <title>黄滚的Blog</title>
-    <updated>2021-02-27T13:25:17.397Z</updated>
+    <updated>2021-02-27T14:05:43.890Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://162cm.com"/>
-    <link rel="self" href="http://162cm.com/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>相逢的人会再相逢</subtitle>
-    <logo>http://162cm.com/images/avatar.png</logo>
-    <icon>http://162cm.com/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, 黄滚的Blog</rights>
     <entry>
         <title type="html"><![CDATA[再回乡]]></title>
-        <id>http://162cm.com/post/1430/</id>
-        <link href="http://162cm.com/post/1430/">
+        <id>http://localhost:4000/post/1430/</id>
+        <link href="http://localhost:4000/post/1430/">
         </link>
         <updated>2017-04-16T09:51:32.000Z</updated>
         <content type="html"><![CDATA[<p>很多年没有坐过从县城回老家的小巴了，以前回来，都是从高速一路飞奔到离家最近的出口，下了高速片刻功夫就到家。坐在颠簸而嘈杂的小巴上，感觉世界一下子都慢了下来。就那么路过连绵起伏的小山丘，穿过刚刚掉落油菜花吐出油菜荚的田野，沿着小河蜿蜒而上。 饭后来到那条记忆里一直在哗哗响的小河边，春汛带来了满河床的水；庆幸的是，河水依然泛绿，水质尚佳，河里出产肥美的鳜鱼，远近驰名。 我伫立在河边，安静地听河水唱歌。太阳已经越过了小村后的高山，晚霞将半边天映得发红，河岸里长满柳树丛，半截淹在水里。树丛里腾起灰白的水汽，犹如仙境。 就是眼前的这河水，夺走我两个亲人的生命。第一个是我未曾谋面的小姨，在几十年前的农历8月，过来照顾她刚刚生小孩的姐姐，步行了10几里山路，来到河边。艄公索要1毛钱，她没有，选择自行涉水过河，淹死在这世代依赖的河里。第二个，是我的三叔，在河对岸干完农活，河水已经涨了几米深。这个正在筹备婚礼的年轻人，在下游水坝上被发现。 回家的的这一路，遇见很多人，听说很多人的变迁。很多是新闻，但其实又不新鲜。有的人暴富而嗜赌，有的人离婚，有的人自杀，有的人老婆跟人跑了丢下两岁的孩子，有的人年纪轻轻喝了点酒睡上一觉就死去。让人唏嘘，却又不意外。以前小说上才见的各种各样的剧情，就在身边一样样地接连上映。 我默默地拍了一张照片。从此，记忆里的河，将永远地跟随我。不管什么时候，掏出手机，就可以抚摸它。 <img src="http://mmbiz.qpic.cn/mmbiz_jpg/Bdj9m8tjtE8ssTh0UE2UwINYky6GicRr35KtubMQ2LAeCiaLMKv4VkicSAPc9l1S2kPo4BJeWtibEDiaGUDMP3qsiaXQ/640" alt="" loading="lazy"></p>
@@ -21,8 +21,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[写点儿软件给自己用]]></title>
-        <id>http://162cm.com/post/1427/</id>
-        <link href="http://162cm.com/post/1427/">
+        <id>http://localhost:4000/post/1427/</id>
+        <link href="http://localhost:4000/post/1427/">
         </link>
         <updated>2017-04-08T09:50:51.000Z</updated>
         <content type="html"><![CDATA[<p>有好长一段时间，我都有点心有不甘，想折腾点东西。 也有时候，我心想，做为一个搞开发的，应该要完成两个目标，就算是对自己有交待了。一个目标是，写的东西，要让千万的人用。另一个目标是，要自己给自己写点东西用。 万幸的是，因为职业的关系，有幸参与了一个日活跃用户过亿的产品，所以，第一条，算是借着一份工作达到了。而且，还搞了不少有意思的故障。比如，有一次把商品搜索的代表B店的那个小图标的显示条件配置错了，第二天早上被眼尖的评论家们发现了，于是网上出来好多评论，说唉呀这个电商流量要碎片化啊，唉呀这个世道要变天啊。还好平时上班经常刷微博，赶紧改过来了。不过从此，就对电商四大傻有了新的认识。 第二条呢，好长时间一直在努力，不过也就是前几天才刚刚发现，其实我一直在用自己写的东西呢。比如这个,一个用结构化的方式显示json串的小工具,在用工具之前是这样的： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrcr8FHJzU5YSicXDqhBKEDe6d1wPaicbYSvMIv48pow2a2NXwUmfoicMow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 启动工具之后，就可以: <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrA5OqZ5jibUdVbxaxwibSU5tesVNCJjywCANyb8VU3ORRPM9GHc4bSekg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个小工具大大地方便地了我的工作，最近3年来几乎一直在用。 比如这个：做为一个网站开发，天天在开发环境，测试环境，线上环境间切来切去，于是切换host绑定，几乎成为必备功能。于是就有了这么个东东，也是陪了三年了。 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 比如这个文本或照片快速http分享,我还网上照了个绿油油的小图标： <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 这个工具界面也超简单【我一向不爱写界面】： <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 如果有文件要分享，直接往里拖，如果用了系统的截图功能，直接点击输入框，Ctl-V，软件会自己把图片内容发到服务器上，返回截图地址【还会自己把图片地址复制到剪贴板】。 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 再比如这个： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrOEghM4ohib5ZJ6E5QicfeLs7Mw7OMEaBQks3JicFfibm6iaNqiafMT74jw4Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个东西，当然也是我从到处扒拉的代码，从界面到各种特性，都是从各个开源库里拼凑出来的，还起了个名儿叫Nodebook.git;一开始写它是因为网上的Markdown编辑器，都不能很好地嵌入代码【嵌入的代码不能高亮】，所以这也算是程序员定制款吧。嗯，我还曾经很烧包地引入了Jieba这个python的分词库和一个全文检索。 特性有很多自己想要的，比如，自动加载某个目录下所有的markdown文件: <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrehzvUFh29BibvB1BicicUqonF8gUtrruArmicIoQa7kRiaSkcIJuUhyiaHdw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 能够代码高亮： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDry6zgYR6IN3S9icvtic9yljQd0NibWHQ5UBv90ycZovtGCby6J2MvNYLxQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个也曾陪了我好长的时间，直到后来不怎么分享代码类文档了，才不怎么用它。 这么回头一看，我还是很能折腾的，做为一个服务端开发，折腾了这么多界面的东东。虽然，没有其他人用。。。。起码我自己还是忠实用户嘛。</p>
@@ -30,8 +30,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill: Hive 插件]]></title>
-        <id>http://162cm.com/post/1411/</id>
-        <link href="http://162cm.com/post/1411/">
+        <id>http://localhost:4000/post/1411/</id>
+        <link href="http://localhost:4000/post/1411/">
         </link>
         <updated>2017-04-04T08:03:58.000Z</updated>
         <content type="html"><![CDATA[<p>Drill 1.1 及后续的版本支持Hive 1.0;要使用Hive的自定义SerDes或是输入格式、输出格式来访问Hive 的表，所有的Drill节点必须在Drill安装目录的jars/3rdparty 目录下放上Hive的SerDes或是输入格式，输出格式的Jar包。 你可以通过选择WEB办控制台里的&quot;Storage&quot; tab来更新Hive配置。从禁用的手件列表里， 点击&quot;hive&quot;后面的&quot;Update&quot;按钮。Hive默认的插件的配置应当像下面这样：</p>
@@ -62,8 +62,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:HBase 插件]]></title>
-        <id>http://162cm.com/post/1409/</id>
-        <link href="http://162cm.com/post/1409/">
+        <id>http://localhost:4000/post/1409/</id>
+        <link href="http://localhost:4000/post/1409/">
         </link>
         <updated>2017-04-04T08:03:29.000Z</updated>
         <content type="html"><![CDATA[<h1 id="hbase-插件">HBase 插件</h1>
@@ -81,8 +81,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:文件系统插件]]></title>
-        <id>http://162cm.com/post/1407/</id>
-        <link href="http://162cm.com/post/1407/">
+        <id>http://localhost:4000/post/1407/</id>
+        <link href="http://localhost:4000/post/1407/">
         </link>
         <updated>2017-04-04T08:03:07.000Z</updated>
         <content type="html"><![CDATA[<p>你可以配置一个存储插件，来让Drill连接到一个本地文件系统，或是在Hadoop的core-site.xml里注册过的分布式文件系统，像是S3或是HDFS。默认情况下，Drill都提供了一个叫dfs的插件配置，指向了您的本地文件系统。</p>
@@ -157,8 +157,8 @@ SELECT * FROM `donuts.json` WHERE type='frosted'
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:关系数据库查询]]></title>
-        <id>http://162cm.com/post/1405/</id>
-        <link href="http://162cm.com/post/1405/">
+        <id>http://localhost:4000/post/1405/</id>
+        <link href="http://localhost:4000/post/1405/">
         </link>
         <updated>2017-04-04T08:02:43.000Z</updated>
         <content type="html"><![CDATA[<p>Apache Drill支持查询某些RDBMS实例。这使得您能将您的传统数据库连接到你的Drill集群中来，您将能够用一个系统中用同一个视图来处理关系数据库和NO-SQL 数据库。 不管是哪一种源，Drill都支持在系统内和多个系统之间进行Join。这包括在一些关系数据库上进行对像join,where,group 这样的语句的推演。</p>
@@ -255,8 +255,8 @@ SELECT * FROM `donuts.json` WHERE type='frosted'
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:工作空间]]></title>
-        <id>http://162cm.com/post/1403/</id>
-        <link href="http://162cm.com/post/1403/">
+        <id>http://localhost:4000/post/1403/</id>
+        <link href="http://localhost:4000/post/1403/">
         </link>
         <updated>2017-04-04T08:02:13.000Z</updated>
         <content type="html"><![CDATA[<h1 id="工作空间">工作空间</h1>
@@ -318,8 +318,8 @@ SELECT * FROM hive.`default`.customers LIMIT 10;
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:插件的基本配置]]></title>
-        <id>http://162cm.com/post/1401/</id>
-        <link href="http://162cm.com/post/1401/">
+        <id>http://localhost:4000/post/1401/</id>
+        <link href="http://localhost:4000/post/1401/">
         </link>
         <updated>2017-04-04T08:01:45.000Z</updated>
         <content type="html"><![CDATA[<p>当你在一个有多个drill节点的集群中添加或是更新配置的时候，drill会把这个配置变更信息广播到其他的节点，以保持配置的同步。添加，修改配置的时候，并不需要重启任何drillbit节点。</p>
@@ -368,8 +368,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:存储插件的注册]]></title>
-        <id>http://162cm.com/post/1399/</id>
-        <link href="http://162cm.com/post/1399/">
+        <id>http://localhost:4000/post/1399/</id>
+        <link href="http://localhost:4000/post/1399/">
         </link>
         <updated>2017-04-04T08:01:25.000Z</updated>
         <content type="html"><![CDATA[<p>我们可以通过存储插件连接到本地文件系统，Hive,HBase，或是其他的数据源。在Drill的web界面的存储插件配置tab,你可以查看修改这些插件的配置。如果不支持HTTPS（默认就没有），你可以访问HTTP://{IP}:8047/storage 来查看和配置存储插件。可以用IP，也可以用hostname。如果开启了https的支持，你可以通过https://{IP}:8047/storage来访问。 Drill 默认开启了cp,dfs,hbase,hive和mongodb的插件支持。</p>
@@ -392,8 +392,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:连接到数据源]]></title>
-        <id>http://162cm.com/post/1397/</id>
-        <link href="http://162cm.com/post/1397/">
+        <id>http://localhost:4000/post/1397/</id>
+        <link href="http://localhost:4000/post/1397/">
         </link>
         <updated>2017-04-04T08:00:52.000Z</updated>
         <content type="html"><![CDATA[<h1 id="连接到数据源">连接到数据源</h1>
@@ -409,8 +409,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:概要]]></title>
-        <id>http://162cm.com/post/1395/</id>
-        <link href="http://162cm.com/post/1395/">
+        <id>http://localhost:4000/post/1395/</id>
+        <link href="http://localhost:4000/post/1395/">
         </link>
         <updated>2017-04-04T08:00:15.000Z</updated>
         <content type="html"><![CDATA[<h1 id="性能">性能</h1>
@@ -429,8 +429,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:查询的执行]]></title>
-        <id>http://162cm.com/post/1393/</id>
-        <link href="http://162cm.com/post/1393/">
+        <id>http://localhost:4000/post/1393/</id>
+        <link href="http://localhost:4000/post/1393/">
         </link>
         <updated>2017-04-04T07:59:34.000Z</updated>
         <content type="html"><![CDATA[<h1 id="drill-查询的执行">drill 查询的执行</h1>
@@ -445,8 +445,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:核心模块]]></title>
-        <id>http://162cm.com/post/1391/</id>
-        <link href="http://162cm.com/post/1391/">
+        <id>http://localhost:4000/post/1391/</id>
+        <link href="http://localhost:4000/post/1391/">
         </link>
         <updated>2017-04-04T07:58:58.000Z</updated>
         <content type="html"><![CDATA[<h1 id="核心模块">核心模块</h1>
@@ -465,8 +465,8 @@ fieldDelimiter =&gt; ',', extractHeader =&gt; true))
     </entry>
     <entry>
         <title type="html"><![CDATA[Drill:架构总览]]></title>
-        <id>http://162cm.com/post/1389/</id>
-        <link href="http://162cm.com/post/1389/">
+        <id>http://localhost:4000/post/1389/</id>
+        <link href="http://localhost:4000/post/1389/">
         </link>
         <updated>2017-04-04T07:58:36.000Z</updated>
         <content type="html"><![CDATA[<h1 id="architecture-introduction">Architecture Introduction</h1>
@@ -516,8 +516,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[2017，做自己]]></title>
-        <id>http://162cm.com/post/1380/</id>
-        <link href="http://162cm.com/post/1380/">
+        <id>http://localhost:4000/post/1380/</id>
+        <link href="http://localhost:4000/post/1380/">
         </link>
         <updated>2017-01-05T07:38:43.000Z</updated>
         <content type="html"><![CDATA[<p>工作总结写完了，也来一篇无关工作的总结。</p>
@@ -535,8 +535,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[我们这个小公司的技术【二】]]></title>
-        <id>http://162cm.com/post/1382/</id>
-        <link href="http://162cm.com/post/1382/">
+        <id>http://localhost:4000/post/1382/</id>
+        <link href="http://localhost:4000/post/1382/">
         </link>
         <updated>2016-10-19T07:42:16.000Z</updated>
         <content type="html"><![CDATA[<p>上次写了文章，介绍了<a href="http://mp.weixin.qq.com/s?__biz=MzAxNjUwNjQ4MQ==&amp;mid=2649518644&amp;idx=1&amp;sn=8939e5a3ea66f3f1355fb64a738dc7bc&amp;scene=21#wechat_redirect">我们这个公司的的小小的技术团队</a>。后来觉得，还是没写透，做为一个技术主管，得想办法看得更长远，看五年，十年以后，所以，做为一个整理思路的机会，所以我还是想再写写我们的畅想，给大家讲清楚我们想做什么。 做为一个互联网家装平台，我们存在的价值，就是找到有装修需求的客户，帮他们解决好装修问题。装修的坑很多，人们的满意度很低，我们对外的宣称是，我们要改变家装行业的现状。这句话是个病句，改变什么现状？是不是有点感觉没说完？肯定是的。那是因为，在内部，我们说的是，我们要改变家装行业的黑暗现状。 我们未来10年要做的事情很明确：<em>我们要找到家装客户，并帮他们解决装修难题。</em> 那为什么是我们来做？为什么我们可以做得比其他公司更好？因为，在所有的行业，所有的生意里面，能做到最好的，无非就是一个点，那就是，效率最高。怎么衡量效率最高？很简单，谁的成本低，谁的效率就最高。而我们这个团队，可以利用互联网工具和平台，将成本降到最低。 因此，我们持续要做的事情，就很明确，不停地降低成本。家装企业的成本有三块，采购成本，管理成本，获客成本。在这三个点上，互联网技术都是能有帮助并且是最有效的。根据这个思路，我把技术上的工作，整理成了这三个方向：信息化，移动化，数据化。 为什这么说？这几块成本里面，管理成本主要依赖的是我们使用互联网工具来降低，只有实现了装修的标准化，信息化，才可以相比其他家装企业管理成本更低。获客成本，更是大面积依赖互联网渠道来降低，互联网的媒体渠道将成本最有受众的媒体，互联网的app将吸引最多的眼球，也只有互联网手段的营销，才能最大程度地降低获取客户的成本。采购成本，也是非常依赖我们和上游供货商的一体化系统。这个系统顺畅起来，采购的运营成本就会不断地降低。 那问题来了，技术上，我们具体做哪些事情？ 我还是分成信息化，移动化， 数据化三个方向来说。 <strong>信息化方面，我们技术上做这些工作：</strong></p>
@@ -561,8 +561,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[不将就,做自己]]></title>
-        <id>http://162cm.com/post/1378/</id>
-        <link href="http://162cm.com/post/1378/">
+        <id>http://localhost:4000/post/1378/</id>
+        <link href="http://localhost:4000/post/1378/">
         </link>
         <updated>2016-10-16T07:38:06.000Z</updated>
         <content type="html"><![CDATA[<p>二哥开始谈人生了，于是，我也想写点儿。 二哥说，不努力一下，你都不知道，什么叫绝望。 我其实不绝望。我只是恐惧。 豆瓣上有个群，群里的主旨是“父母皆祸害”。他们说，父母对自己这么严厉，只是因为他们自己错过了很多东西，于是把这些期望强加在自己身上。他们上山下乡，错过了大学，于是要求子女一定要上大学。他们工作中不如意，于是期望子女找一个他们期望中的工作。他们对另一半不满意，于是老早就开始担心子女的恋爱问题。 我的恐惧，是，我是不是也会变成那样的父母？因为我觉得，我也有很多的遗憾，我不知道我会不会把这些遗憾强加给elsa小公举。 我的恐惧，更是源于，我们是活成了大家所认为你应该活成的那样，还是活出了你自己？ 所以，我非常在意，让她尽情表达自己。 elsa非常反感弹钢琴，每天练琴总是竭尽其能，找各种借口。我渴了，我先喝个水。我先上个厕所。唉呀我想起来忘记给小狗喂食了。。。。让人抓狂，有时我也在想，强迫她练琴是不是只是因为自己小时候条件太差了，现在有条件在家练琴了就一定要强迫她？后来我决定，别的班都不报了，但是钢琴是她自己选的，自己哭着闹着要报的，那就坚持下去吧。但是别的什么培训班，就不给她报了，正常上课就好。 elsa很爱幻想。很小的时候去动物园玩，在路上就给我编长长的大象从坏鳄鱼嘴里拯救小水牛的故事。在她的世界观里，她的爸爸是一个伟大的国王，同时也是一个聪明的电脑科学家。而她，则是这个王国理所当然的王位继承人。她说等她12岁的时候，她就会有魔法。她路过园林，看到工人拿一把长长的剪刀卡擦卡擦把小黄杨剪的齐齐整整，跟我说，爸爸你是国王，能不能让他们爱惜植物，能不能不要把植物的头都剪掉？她走过马路边搬动垃圾桶的老人，跟我说，爸爸你能不能告诉他们的老板，不要让老人做这么费力的工作，他们是老人不能做这么费力的工作？ 小学老师在微信里批评，说，你们家小迷糊爱幻想，过于沉浸在自己的世界里，希望家长能做正确的引导。 我想，怎么引导？告诉她她的老爸不过是个苦逼套页面的码农买不起市区的学区房上不了好的学校只好读个农村学校？告诉她她以后得经过残酷又无趣的竟争才能上个大学混一份不死不活的工作？ 没法告诉。我能做的是让她有个欢快的童年。她喜欢自己编长长的故事，故事逻辑也不对，那她编故事讲给我听我不说哪里是错的好了。她画了不老师要求的画，线条不对颜色不对，但是就一次画七八张每一张都还带需要我帮她标几个字来提示情节，我就当看连环画好了。 小孩子，还不能尽情做自己吗？ 我都想尽情做自己。喜欢的事，就去做。在乎别人的看法干什么? 有的小孩子不能做自己，是因为没条件。可是我们是成年人啊。我们可以选择做自己。不喜欢的事情，不用将就。 有个朋友，每天在单位都呆着难受。各种排挤打压，我说，既然难受，那就闪人呗。你看我，收入比你高多了，不爽了，不想再套网页了，就闪了。她说，我父母不让，她们觉得这里稳定。我无语。您都30了。。。。还需要再做小学生听爸爸妈妈的话吗？ 我们是成年人，最大的好处不是可以主张自己吗？</p>
@@ -570,8 +570,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[关于月饼]]></title>
-        <id>http://162cm.com/post/1376/</id>
-        <link href="http://162cm.com/post/1376/">
+        <id>http://localhost:4000/post/1376/</id>
+        <link href="http://localhost:4000/post/1376/">
         </link>
         <updated>2016-09-14T07:37:42.000Z</updated>
         <content type="html"><![CDATA[<p>1。用代码刷月饼这事，不对。阿里在入职时候是会专门做类似的培训的，每年还会做一次廉政考试，没考过的，主管和人事会不停催促。不可能说还有员工不知道用代码刷月饼这是高压线。除开不当得利，还有诚信原则，安全和保密原则等等，都是不能碰的。只要沾上了，处理结果大家都知道，不开也得脱层皮。 安全部门在这方面责任更大，因为很多类似事件中，安全部门充当了执法部门的角色。知法犯法，执法犯法，都应当罪加一等。 2。有必要处理这么严吗？我不能说能非常确定，但是我可以肯定的是，其一，阿里的很多小二，掌握着可怕的权力，几乎轻轻松松松决定一个店铺的存亡。橱窗展示给你拿下来，或者某个业务不跟你合作了，一些公司就会就此没落。其二，即便是严厉处理，依然挡不住各种利用职权谋谋私利的事情发生。每隔一阵，内网就会爆出谁谁因为不当得利或是泄密等事情被辞退的，辞退后没收全部期权的也有。 3。阴谋论没意思。有意见说，这是源于政治斗争啊，因为得罪了hr什么的。这种论点非常傻逼。第一，阿里招一个人非常难，经常有人头指标招一年也没候选人的情况，hr就算是有权开除员工，也不会大到一次开除一批，更不可能是闪电走人这种。再说一次出现多个员工因为廉政原因被辞退，基本宣告从好几个级别的领导严重管理失职，即便有人说要存心把谁弄走，也不会想要搭上自己的职业生命。 4。管理上能做这种决定的，很难得。因为几个月饼，闪电辞退，怎么都是会惹上争议的。但是这种事儿在阿里不稀奇。培训中千百次讲过是高压线的事情，处理起来不难。如果因为畏惧外界言论，不敢做正确的决定，和稀泥，搞中庸，是没有办法带好公司的。 5。可惜不可惜？可惜。招一个人也很难。设身处地想，谁都有家有室。你愿意让员工中秋节前两天回家对家人说，自己因为几个月饼就丢了工作？可惜也没有办法。当事人自己也知道这是错了，也承认错了。所有阿里员工都知道这种事基本等于在阿里的职业生涯到头了，没啥好热议的。 6.有人说处罚过重，会导致这几名员工的职业遭到打击。然而你们看网上的招聘广告，显然不会。不同公司不同的做法。某个知名外企的员工来阿里特不习惯，因为在I公司吃吃饭洗洗脚再拿去公司报销，太正常不过了。阿里在乎的廉政，一般公司不在乎。 7 很多人觉得阿里HR很二逼。我不能用二逼这个词，但我认同HR在某些事情上专业度不够，从我对些HR的判断上说，我认为是敬业程度不够。有的人觉得阿里和蚂蚁金服公司层面在某些事情上做得不对，我也认同。比如春节期间支付宝集五福，今年的改版，等等。但是一码事是一码事，别的事情上HR不对 或是公司不对，不影响月饼事件的性质。评论里说到开除可能导致员工生活困难，这事也不影响。员工困难有救助渠道，以前有离职员工大病的，也有救助过。 8. 利益相关：前阿里员工。 ======== 无耻的广告分隔线====== 我们招人中，PHP开发及测试岗，另外php开发实习生也招（其他语言java,golang等也可谈，其他语言过来要求后期能带起一个部门）。层级不限，待遇不输BAT，欢迎咨询~ 邮箱: 55547082@qq.com</p>
@@ -579,8 +579,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[滚哥互联网家装乱弹之一]]></title>
-        <id>http://162cm.com/post/1374/</id>
-        <link href="http://162cm.com/post/1374/">
+        <id>http://localhost:4000/post/1374/</id>
+        <link href="http://localhost:4000/post/1374/">
         </link>
         <updated>2016-09-12T07:35:47.000Z</updated>
         <content type="html"><![CDATA[<p>说起互联网公司的时候,我们会想起什么? 最近这一阵随着ERP系统的上线,我的工作重心开始从ERP的开发和流程梳理,转向到ERP的执行上来.然而执行起来却不是那么如愿,于是晚上躺床上开始琢磨着一些相关对策,最后忽然惊觉已然是凌晨三点,于是干脆起床,把思路整理整理,正好下周去做个分享,拿这个整理文稿做为提纲也挺好. 今年算是第一次从互联网公司,彻底转换了行业,来到一个相对之前的行当来说是low爆了的行业,是的,我转行做装修了.进入这个行业之前,我对自己说的也很明确,要把公司改造成一家互联网的装修公司,虽然公司之前的业务来源也主要是网上,但是,我认为也就是会发邮件,有个网站,能在百度放放广告而已,远远不能称之为互联网装修公司. 我翻来覆去地想,我之前呆的公司,做为很长一段时间内中国互联网市值最高的公司,总结起来,究竟有哪些过人之处,和我现在的公司相比,抛开行业的因素,主要的差别在哪里? 我想了想,这几天的第一个感受,就是,互联网公司的响应速度,相比传统公司非常快.在前东家做事的时候,向某个哪怕是不认识的同事提一个协助请求,经常是马上就响应了,对方放下电话就把事儿给办了.而现在呢?难得一见这种场景.这个我也理解,因为协作的人员,大都有繁重的业务任务,财务的同学有一大堆的报表要做,设计的同学有一大堆的图要画…都是心急火燎的任务,赶时间得很,这时候接到一个同事(很可能还不认识)的请求,又没有上头老板的招乎,谁会在乎呢?9年前在某个国企性质的公司时,更糟糕呢,你要是直接联系一个不认识的同事做点啥,很可能人家会这样回复你,这个事啊,你不应该直接联系我,我是汇报给那个谁谁谁的,你要有活儿给我的话需要通过谁谁谁来安排,然后你去联系他说的那个谁谁谁时,他要是脾气好会说你让你领导找一下我,脾气不好的话很可能就说了,你谁啊,什么级别啊,就来找我?说得你一肚子气还没处撒. 好了,扯远了,总得来说,传统行业相比互联网公司,响应速度是慢多了.这类常见的解决办法,也很容易想到,要么,你去请示足够大的老板,专门批示一下要对方协助你来办这个事,要么,你去拿一个title,比如,老板现在任命你是内审组长,声明所有跟某某事相关的事情,相关人等必须无条件配合. 但是这样一来,这事儿就low了不是.这次我也可以这么做,但是这样治标不治本了不是.我开始思考,表面上看起来,互联网公司只是”速度更快”,而实际背后的根源,有两个. 第一个根源,是,两种公司都有一种树状结构一和种网状结构.但是新生代的互联网公司,网状结构的属性远比传统公司的网状结构的要强一些.这里树状结构指的,在内部协作时,传统公司的两个员工A和B之间,协作往往是从A传递到A的上司,再到上司的上司,再到B的上司,再到B之间这样一种结构.如果A和B不幸在两个完全不同的事业部,那可能这个层级传递会非常深,从A到A的上司,再到上司的上司,再到上司的上司的上司.....最后到总公司总裁,再到B的事业部总经理,B的总监,B的部门经理,B的小组长...这么一层层传过去.而网状结构,则是指员工之间直接的协作,不经过这种上溯到老板的传递.经常出现的的是A发现需要B的协作,找到B,B发现同时还需要C的协作,C发现还需要D,然后ABCD坐在一起开个会,协商一下,就把事情做掉了.越是依赖树状结构的公司,竟争力越差,行动速度也越慢. 这种差异,再探讨一下,是一种文化的差异,这种文化差异,既包括了互联网时代平等意识的加强,也包括了沟通意识和沟通巧能的强化.层级意识,长官意识相对不再那么重要,只要是为公司做事,得到对方的配合,是理所当然的事情,若非必要,一般不需要走上层路线去解决.沟通的意识更强烈,沟通技巧更好,使员工相对而言更愿意通过自身之间的沟通去推动问题的解决,而非搬出老板来当救兵让老板来解决问题. 第二个根源,是不同的公司价值观驱动的程度不一样.其实传统公司也是有价值观的,但是价值观是不是虚幻,是不是歪掉了,是不是很好地执行了,就不好说了.很多传统公司,尤其是国有企业,张贴的标识一看就让人想吐,你就会知道这个公司的效率高不了,比如”为中国的xxx事业奉献青春”,”少想公司为你做了什么,多想你为公司做了什么”,”今天不努力工作,明天努力找工作”….还有一些国企公司老板开会就谈价值观,但是你真问他,价值观是什么,能不能简短地用一句话描述时,他还真答上不来,反正平时也没有人敢这么考他,这种,压敢也就没价值观,只要在要开人的时候,才在原因上写上”不符合公司的价值观”,究竟是哪条不符合都不带写的.而在互联网公司呢,往往把价值观做为重要事务来对待,公司有专门的战略部门来制定企业文化和价值观,新人培训有专门的课程来讲述,业绩考评和晋升面试也会有相应的考评环节,价值观明确而又能得以执行.在之前某个外企,HR在入职面试的时候总是拿一个案例来讲,有个销售部的小伙,非常地二愣子,拿单子并不差,然而经常犯愣,好几次把副总裁拦在路上要求在客户的合同上签字了好寄给客户,就算副总要去赶飞机也没放过.然而副总不开心是不开心,事儿还得办,没办法不签,因为价值观写了,”客户第一”.客户要的东西,当然要第一时间办了.副总的面子,那是其次.</p>
@@ -588,8 +588,8 @@ Drill is also useful for short, interactive ad-hoc queries on large-scale data s
     </entry>
     <entry>
         <title type="html"><![CDATA[我们这个小公司的技术]]></title>
-        <id>http://162cm.com/post/1372/</id>
-        <link href="http://162cm.com/post/1372/">
+        <id>http://localhost:4000/post/1372/</id>
+        <link href="http://localhost:4000/post/1372/">
         </link>
         <updated>2016-09-12T07:35:17.000Z</updated>
         <content type="html"><![CDATA[<p>1. 公司简介 我们是一家互联网装修公司,成立于2012年,目前主要有建材团购,装修设计,整体装修,透明施工四块业务,发展良好,到目前有60人,分为装修顾问,设计师,项目经理,财务,商家服务,技术等部门.整体上还是一家刚刚起步的公司,目前在用的整个ERP系统正在进行重构开发,主要的开发语言是PHP; 目前我们的开发同学刚刚才3个人,都是85前的老家伙,全部是全栈开发,服务端移动端都写. 2. PHP 端 先声明一下,我们服务端直接从PHP7起步了...丢掉历史包袱了.... 老的订单系统,基于一个叫Cubox的框架,这个框架是原来的开发工程师自行研发的.这次重构时,我选 择了Laravel来做为基础框架.旧有的框架,倒不是说有哪些地方架构设计不好,功能不够用,但是有三个最显著的地方明显制约了后续的发展:第一个,是原作者的文档明显比Laravel的文档差远了,很多地方无从查阅,完全要完整地看代码再去揣摩用法是不合适的;第二个,是Laravel的粉丝显然更多了,新招进来的人很可能已经能熟练地基于Laravel来开发了;第三个,则是这次我们直接可以以php7做为运行环境,原有的框架也没有很好的利用php5.4以上的新版本的各种特性. 既然选择了Laravel,也就离不开composer了;composer是PHP世界里的包管理工具.我强烈要求用composer,是想有意识地训练大家优先从packgist.com上寻找现成的代码包,而不是所有的底层包都自己吭哧吭哧写.在我看来,这是php开发者的臭毛病之一,什么都觉得自己实现一个也挺好的. 用了composer,我们内部的一些公共代码,也就琢磨着放到composer仓库里去,当然不能放到公开的packgist上去,于是我们使用satis 搭建了一套私有的仓库. 3. 前端 在前端,我很激进地选用了react.选用react有两个方面的考虑,一是装修业务相当复杂,内部相当多的流程,表单,很多输入输出是可以抽象复用的;使用React组件,大大地提高了js代码的可复用性,有效避免了js代码满天飞的情况.React 的数据是单向流动的,因此我写了个极其简单的EventEmitter来做事件的订阅管理;在路由方面,也没有选用主流的react-route之类的,而是自行实现了一个简单的. 在进行Js代码的package时,用的是browserify;而构建则用到了gulp;css方面,使用了less. 另外,在后端的布局上,我是直接从wrapbootstrap.com上买了一套模板来投放使用,也就不需要设计了.对的,我们没有全职的设计师,后端页面全部是bootstrap走起,前台网站则是有个朋友的设计公司帮做. 4. 其他 搜索上,我们是采用了elasticsearch,直接同步mysql的binlog里的消息,目前进索引的有一个内部用的员工信息,还有业务相关的商家,商品,订单,客户信息,房屋信息,小区信息等,目前性能上毫无压力,毕竟我们是low爆了的装修工,客单价是15万了,哪天要是有性能压力了 那市值也就很可观了不是. 我们的全部业务运行在阿里云的ECS上,业务数据存储在阿里云的RDS上,cdn用了七牛. 版本管理采用git,并使用gogs搭建了一套git系统. 使用了apidocjs来扫描PHP代码的注释,生成HTTP API的文档.(生成的文档还是蛮清晰的...要鼓励肯写文档的年轻小伙儿比如像我这样的是不是?) 5. 广告插播时间 最后的最后,我们还在招人,PHP方向.没啥别的吸引力,嗯,要说也有点,就是钱不算多,</p>

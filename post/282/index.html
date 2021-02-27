@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>如何打造一个您自己的输入法.......... | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="今天在公司实在弄得郁闷了，下了一个输入法，可是也很郁闷，因为那个输入法说的是超级牛叉，可是带流氓软件，俺就我喜欢了。 狠狠之余，想，俺也是一个编程人员啊，俺咱个，就不能自己写一个输入法呢？ 于是乎，马上行动，到网上找相关资料，呵，网上资料还..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">如何打造一个您自己的输入法..........</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-10-14</span>
+            
+          </div>
+          <div class="post-content">
+            <p>今天在公司实在弄得郁闷了，下了一个输入法，可是也很郁闷，因为那个输入法说的是超级牛叉，可是带流氓软件，俺就我喜欢了。 狠狠之余，想，俺也是一个编程人员啊，俺咱个，就不能自己写一个输入法呢？ 于是乎，马上行动，到网上找相关资料，呵，网上资料还真我少，不过可惜的是，没有那么让人满意的。 就在俺一米六二大侠要放弃的时候，忽然眼前一亮，看到了一个东西：输入法生成器。这是一个什么东东？难不成是一个可以做我自己的输入法的东东？一米六二在心里想。赶紧去看看去。不过快要上班了，一米大侠只好再等到下班再说。 下班回家，马上迫不及待地打开电脑，看一下这是一个虾米东东。经过一米大侠灰常灰常辛苦地工作，终于知道是怎么回事了。首先要弄一个词库。这个很easy的说啦。一米大侠马上去网上屁颠屁颠地去下了一个。哈，一个三M的大文件，这个词库这下够大了吧。哈哈。 按照说明一看，不对啊，人家要的是汉字在前，编码在后，要按： 阿a 啊a 这样的顺序去排序。可是俺下的是编码在前，汉字在后的，这可不行。得写个程序去换。用什么呢？perl是一个很不错的选择的啊，可是俺没有。VB俺也是相当地熟练啊，可是俺又已经抛弃了这个老朋友。那。。。。　OK,用PHP。俺一米大侠不是一向自称PHP高手吗。好办！ 然后又鼓岛了好一阵子（此处略去N多文，总之是用来形容俺做的灰常灰常的辛苦的），俺把这个词库文件整理成了汉字在前编码在后一行行分开的格式了。 现在可以了吧？ 一米大侠抱着灰常灰常激动的心，那是何等激动的心情啦，简直就是去见网友MM的那种激动啊（流口水中。。。），打开C:Program FilesWindows NTAccessoriesimegen.exe，然后打开俺刚才整理好的文件，咦，提示俺没有TEXT字段？ 噢，回头看了看教程，文件应该是这样的TXT文件： [Description] Name=一米六二输入法 MaxCodes=12 MaxElement=1 UsedCodes=abcdefghijklmnopqrstuvwxyz WildChar=? NumRules=3 [Rule] ca4=p10+p20+p30+p40 ce2=p10+p20 ce3=p10+p20+p30 [Text] 工a 式aa 工aaa 工aaaa 工期aaad 黄花菜aaae .... 偶的文件中没有前面的[Description]和后面的[Text]。。。偶马上就加上了。 再打开。。。。 哗，生成了，可是没有提示俺录入了多少个记录啊？再看生成的MB文件，哇靠，居然只有1K，肯定有古怪！俺上琢磨啊，下琢磨啊，还是没有琢磨出来。只好打开网上教程给的文件，这一打开不要紧，俺的眼神老是偷偷看人家MM，是早已经火眼金睛了，一下就发现，俺这文件是GB2312编码的，人家是Unicode的! OK，Now these is the Problem.俺马上用Editplus来转码，就是打开，然后另存为... 存的时候选一下编码为Unicode. 再用Imegen打开，这下就识别了信息，在嘎吱嘎吱地读了.... 俺心里可高兴了.. 不过没多久，又提示我:0X75*******内存不可读.然后程序就挂了。这个警告俺是常见，VC程序老见到，一般是写程序时用错指针了才会出来。可这imeGen是MS的作品啊，不会这和弱智的！ 偶是相当地泄气，后果那是相当地严重。不行，俺可不能就这么投降。 偶先弄一个只有一个字的字库，试试看，可以，生成了输入法。 再加了几行，也可以。这时的输入法虽然也叫一米六牌，可是只有几个字，还是让人不满意的。 于是这次有加了好几百行，也行。 于是几百行几百行地加，终于被偶加到67576行的时候，发现问题了。 哈哈，65576,好像这个数字俺深有印象呢。好像是C语言中整型的边界啊。 那这俺没法子了，人家输入法编辑器最多只能容忍你的词库有这么条记录了。 俺又想了想，还是不爽。俺可以构造一个最精洁的词库啊。于是，去Google一下。 功夫不负有心人，Google没让我们风流倜傥的玉树临风的一米六二失望，没多久就down了三个词库，都很小，加起来刚5万多条记录，比较合适。一个是拼音词库，一个是五笔词库，一个是输英文打汉字的词库。俺马上把这三个文件用php处理了一下，粘到了一起，排序，再生成，哈，It's Wonderful! 这个输入法，那是灰常灰常地酷啊，您要想打出&quot;文件&quot;两个字，可以输入wenjian,也可以输入&quot;file&quot;直接通过英文得到中文，也可以用五笔，打yygy出&quot;文&quot;字，打wrh出“件”字。 唯独不爽的是，毕竟不是自己编程处理的，所以窗口处理这个没法子插手，不然，嘿嘿......</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/281/">
+              <h3 class="post-title">
+                下一篇：俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">如何打造一个您自己的输入法..........</h2>
-            <div class="post-date">2006-10-14</div>
-            
-            <div class="post-content" v-pre>
-              <p>今天在公司实在弄得郁闷了，下了一个输入法，可是也很郁闷，因为那个输入法说的是超级牛叉，可是带流氓软件，俺就我喜欢了。 狠狠之余，想，俺也是一个编程人员啊，俺咱个，就不能自己写一个输入法呢？ 于是乎，马上行动，到网上找相关资料，呵，网上资料还真我少，不过可惜的是，没有那么让人满意的。 就在俺一米六二大侠要放弃的时候，忽然眼前一亮，看到了一个东西：输入法生成器。这是一个什么东东？难不成是一个可以做我自己的输入法的东东？一米六二在心里想。赶紧去看看去。不过快要上班了，一米大侠只好再等到下班再说。 下班回家，马上迫不及待地打开电脑，看一下这是一个虾米东东。经过一米大侠灰常灰常辛苦地工作，终于知道是怎么回事了。首先要弄一个词库。这个很easy的说啦。一米大侠马上去网上屁颠屁颠地去下了一个。哈，一个三M的大文件，这个词库这下够大了吧。哈哈。 按照说明一看，不对啊，人家要的是汉字在前，编码在后，要按： 阿a 啊a 这样的顺序去排序。可是俺下的是编码在前，汉字在后的，这可不行。得写个程序去换。用什么呢？perl是一个很不错的选择的啊，可是俺没有。VB俺也是相当地熟练啊，可是俺又已经抛弃了这个老朋友。那。。。。　OK,用PHP。俺一米大侠不是一向自称PHP高手吗。好办！ 然后又鼓岛了好一阵子（此处略去N多文，总之是用来形容俺做的灰常灰常的辛苦的），俺把这个词库文件整理成了汉字在前编码在后一行行分开的格式了。 现在可以了吧？ 一米大侠抱着灰常灰常激动的心，那是何等激动的心情啦，简直就是去见网友MM的那种激动啊（流口水中。。。），打开C:Program FilesWindows NTAccessoriesimegen.exe，然后打开俺刚才整理好的文件，咦，提示俺没有TEXT字段？ 噢，回头看了看教程，文件应该是这样的TXT文件： [Description] Name=一米六二输入法 MaxCodes=12 MaxElement=1 UsedCodes=abcdefghijklmnopqrstuvwxyz WildChar=? NumRules=3 [Rule] ca4=p10+p20+p30+p40 ce2=p10+p20 ce3=p10+p20+p30 [Text] 工a 式aa 工aaa 工aaaa 工期aaad 黄花菜aaae .... 偶的文件中没有前面的[Description]和后面的[Text]。。。偶马上就加上了。 再打开。。。。 哗，生成了，可是没有提示俺录入了多少个记录啊？再看生成的MB文件，哇靠，居然只有1K，肯定有古怪！俺上琢磨啊，下琢磨啊，还是没有琢磨出来。只好打开网上教程给的文件，这一打开不要紧，俺的眼神老是偷偷看人家MM，是早已经火眼金睛了，一下就发现，俺这文件是GB2312编码的，人家是Unicode的! OK，Now these is the Problem.俺马上用Editplus来转码，就是打开，然后另存为... 存的时候选一下编码为Unicode. 再用Imegen打开，这下就识别了信息，在嘎吱嘎吱地读了.... 俺心里可高兴了.. 不过没多久，又提示我:0X75*******内存不可读.然后程序就挂了。这个警告俺是常见，VC程序老见到，一般是写程序时用错指针了才会出来。可这imeGen是MS的作品啊，不会这和弱智的！ 偶是相当地泄气，后果那是相当地严重。不行，俺可不能就这么投降。 偶先弄一个只有一个字的字库，试试看，可以，生成了输入法。 再加了几行，也可以。这时的输入法虽然也叫一米六牌，可是只有几个字，还是让人不满意的。 于是这次有加了好几百行，也行。 于是几百行几百行地加，终于被偶加到67576行的时候，发现问题了。 哈哈，65576,好像这个数字俺深有印象呢。好像是C语言中整型的边界啊。 那这俺没法子了，人家输入法编辑器最多只能容忍你的词库有这么条记录了。 俺又想了想，还是不爽。俺可以构造一个最精洁的词库啊。于是，去Google一下。 功夫不负有心人，Google没让我们风流倜傥的玉树临风的一米六二失望，没多久就down了三个词库，都很小，加起来刚5万多条记录，比较合适。一个是拼音词库，一个是五笔词库，一个是输英文打汉字的词库。俺马上把这三个文件用php处理了一下，粘到了一起，排序，再生成，哈，It's Wonderful! 这个输入法，那是灰常灰常地酷啊，您要想打出&quot;文件&quot;两个字，可以输入wenjian,也可以输入&quot;file&quot;直接通过英文得到中文，也可以用五笔，打yygy出&quot;文&quot;字，打wrh出“件”字。 唯独不爽的是，毕竟不是自己编程处理的，所以窗口处理这个没法子插手，不然，嘿嘿......</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/281/">
-                  <h3 class="post-title">
-                    俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

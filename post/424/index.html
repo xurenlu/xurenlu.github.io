@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>累坏了 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="从上周三开始到周五,每天都流一次鼻血。总是加班到最后头越来越疼，每天晚上都会流鼻血。早上十点前后,会拉一次肚子，这个已经持续半个月了。 周四是晚上八点半离开单位，周五是到七点二十就流鼻血了，只好回家。 想想这个把月来,一直被头疼、闹肚子折磨..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">累坏了</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-07-14</span>
+            
+          </div>
+          <div class="post-content">
+            <p>从上周三开始到周五,每天都流一次鼻血。总是加班到最后头越来越疼，每天晚上都会流鼻血。早上十点前后,会拉一次肚子，这个已经持续半个月了。 周四是晚上八点半离开单位，周五是到七点二十就流鼻血了，只好回家。 想想这个把月来,一直被头疼、闹肚子折磨着。最近几天更是越来越厉害了，看来是前一阵太累了。这几个月一直没发钱，幸好老婆找到工作后的第一个月的工资已经发下来了，所以我终于不用担心吃饭问题了。也许下周就能发了，等发了钱，去医院好好查查，全身上下咱查个遍。。。。 昨天老于到央视来开会，碰到他了，原来说好请他吃饭，今天终于有时间请他去搓了一顿，好不容易逮着他到北京来一次。老于同志的<a href="http://www.tuniu.com/">途牛网</a>近来发展势头不错，这次他就是过来处理北京开分公司的事的。老于同志不仅事业顺心，爱情也进展不错，居然能找到一位做Linux C++的漂亮MM做GF...于是乎今天吃完饭大家一起去避风塘打牌，老于和我对家，覃总小两口儿对家，我沾老于的光，两人牌运不错，一路狂胜。 玩了一整天，到晚上总算觉得好一点儿了。。早上还无精打彩的呢。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/423/">
+              <h3 class="post-title">
+                下一篇：教你戴套儿操GFW
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">累坏了</h2>
-            <div class="post-date">2007-07-14</div>
-            
-            <div class="post-content" v-pre>
-              <p>从上周三开始到周五,每天都流一次鼻血。总是加班到最后头越来越疼，每天晚上都会流鼻血。早上十点前后,会拉一次肚子，这个已经持续半个月了。 周四是晚上八点半离开单位，周五是到七点二十就流鼻血了，只好回家。 想想这个把月来,一直被头疼、闹肚子折磨着。最近几天更是越来越厉害了，看来是前一阵太累了。这几个月一直没发钱，幸好老婆找到工作后的第一个月的工资已经发下来了，所以我终于不用担心吃饭问题了。也许下周就能发了，等发了钱，去医院好好查查，全身上下咱查个遍。。。。 昨天老于到央视来开会，碰到他了，原来说好请他吃饭，今天终于有时间请他去搓了一顿，好不容易逮着他到北京来一次。老于同志的<a href="http://www.tuniu.com/">途牛网</a>近来发展势头不错，这次他就是过来处理北京开分公司的事的。老于同志不仅事业顺心，爱情也进展不错，居然能找到一位做Linux C++的漂亮MM做GF...于是乎今天吃完饭大家一起去避风塘打牌，老于和我对家，覃总小两口儿对家，我沾老于的光，两人牌运不错，一路狂胜。 玩了一整天，到晚上总算觉得好一点儿了。。早上还无精打彩的呢。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/423/">
-                  <h3 class="post-title">
-                    教你戴套儿操GFW
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

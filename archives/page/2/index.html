@@ -1,520 +1,557 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
-<title>文章归档 | 黄滚的Blog</title>
+<title>黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
+        <div class="content-container">
+          
           
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2010</h2>
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1243/">
-                      <h2 class="post-title">
-                        关于创业，杂感
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1237/">
-                      <h2 class="post-title">
-                        支持中文的sphinder 修改版
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1231/">
-                      <h2 class="post-title">
-                        TT的作者出新作品鸟:kyoto tycoon
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1229/">
-                      <h2 class="post-title">
-                        phppod终止更新和技术支持
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1220/">
-                      <h2 class="post-title">
-                        php工程师前端入门
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1216/">
-                      <h2 class="post-title">
-                        我可以为什么样的代码编辑器付费(判断是不是好的代码编辑器的标准)
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1211/">
-                      <h2 class="post-title">
-                        跟面试、职场相关的杂七杂八的
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1206/">
-                      <h2 class="post-title">
-                        web开发大花园开张
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1204/">
-                      <h2 class="post-title">
-                        nginx在fastcgi模块中转发真实的后端IP
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1182/">
-                      <h2 class="post-title">
-                        我倒腾过的小项目
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1177/">
-                      <h2 class="post-title">
-                        新博开张
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1174/">
-                      <h2 class="post-title">
-                        PHP中的一些language construct
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1170/">
-                      <h2 class="post-title">
-                        稍显寒酸的一个PHP框架:supermin
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1163/">
-                      <h2 class="post-title">
-                        rails 每周乱弹:session有效期
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1156/">
-                      <h2 class="post-title">
-                        rails 每周乱弹:用ckeditor为表单添加所见即所得功能
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1129/">
-                      <h2 class="post-title">
-                        rails 每周乱弹:解决RMagick版本问题
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1148/">
-                      <h2 class="post-title">
-                        检测文本正文是否包含有特定词的PHP扩展
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1131/">
-                      <h2 class="post-title">
-                        CloudAPI 远程接口服务使用图文教程
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1122/">
-                      <h2 class="post-title">
-                        关于新闻网页正文抽取的一些思路
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1117/">
-                      <h2 class="post-title">
-                        新闻站抓取神器:正文抽取接口
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1112/">
-                      <h2 class="post-title">
-                        寻找网页制作兼职人员
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1099/">
-                      <h2 class="post-title">
-                        [译文]Xapian 1.0索引/查询时的term处理方式
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1097/">
-                      <h2 class="post-title">
-                        Xapian的查询分析器
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1088/">
-                      <h2 class="post-title">
-                        译文:Xapian搜索结果的排序
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1084/">
-                      <h2 class="post-title">
-                        中国雅虎招聘:PHP工程师,测试工程师,无线开发工程师
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1075/">
-                      <h2 class="post-title">
-                        Xapian 术语表
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1071/">
-                      <h2 class="post-title">
-                        招聘:平台开发工程师 Platform Developer
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1065/">
-                      <h2 class="post-title">
-                        Xapian搜索体系结构
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1193/">
-                      <h2 class="post-title">
-                        胡言乱语
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1194/">
-                      <h2 class="post-title">
-                        从春天到夏天——然然成长记
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1062/">
-                      <h2 class="post-title">
-                        redis 运维实际经验纪录之一
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1054/">
-                      <h2 class="post-title">
-                        用PHP和xapian构建全文检索[转]
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1049/">
-                      <h2 class="post-title">
-                        tokyo cabinet的替代产品:kyoto cabinet
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1047/">
-                      <h2 class="post-title">
-                        cloudapi.info 预谋提供的下一个云接口:垃圾评论判别
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1042/">
-                      <h2 class="post-title">
-                        基于cloudapi.info的wordpress 相关文章插件
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1039/">
-                      <h2 class="post-title">
-                        phppod已经更新,请使用老版程序有问题的用户升级
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1032/">
-                      <h2 class="post-title">
-                        宝宝出生了,八卦一下,记录一个.
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1026/">
-                      <h2 class="post-title">
-                        cloudapi 悄然上线,欢迎各方人士拍砖
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1018/">
-                      <h2 class="post-title">
-                        为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="http://162cm.com/post/1016/">
-                      <h2 class="post-title">
-                        手头有PHP的职位一大堆,人才大把大把地来吧
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-
-          <div class="pagination-container">
+<div class="archives-container">
   
-    <a href="http://162cm.com/archives/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
-  
-  
-    <a href="http://162cm.com/archives/page/3/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+    <h2 class="year">2010</h2>
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1243/">
+            <h2 class="post-title">
+              关于创业，杂感
+              <small>2010-11-06</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1237/">
+            <h2 class="post-title">
+              支持中文的sphinder 修改版
+              <small>2010-10-28</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1231/">
+            <h2 class="post-title">
+              TT的作者出新作品鸟:kyoto tycoon
+              <small>2010-10-26</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1229/">
+            <h2 class="post-title">
+              phppod终止更新和技术支持
+              <small>2010-10-24</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1220/">
+            <h2 class="post-title">
+              php工程师前端入门
+              <small>2010-10-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1216/">
+            <h2 class="post-title">
+              我可以为什么样的代码编辑器付费(判断是不是好的代码编辑器的标准)
+              <small>2010-10-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1211/">
+            <h2 class="post-title">
+              跟面试、职场相关的杂七杂八的
+              <small>2010-09-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1206/">
+            <h2 class="post-title">
+              web开发大花园开张
+              <small>2010-09-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1204/">
+            <h2 class="post-title">
+              nginx在fastcgi模块中转发真实的后端IP
+              <small>2010-08-28</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1182/">
+            <h2 class="post-title">
+              我倒腾过的小项目
+              <small>2010-08-25</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1177/">
+            <h2 class="post-title">
+              新博开张
+              <small>2010-08-23</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1174/">
+            <h2 class="post-title">
+              PHP中的一些language construct
+              <small>2010-08-22</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1170/">
+            <h2 class="post-title">
+              稍显寒酸的一个PHP框架:supermin
+              <small>2010-08-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1163/">
+            <h2 class="post-title">
+              rails 每周乱弹:session有效期
+              <small>2010-08-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1156/">
+            <h2 class="post-title">
+              rails 每周乱弹:用ckeditor为表单添加所见即所得功能
+              <small>2010-07-25</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1129/">
+            <h2 class="post-title">
+              rails 每周乱弹:解决RMagick版本问题
+              <small>2010-07-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1148/">
+            <h2 class="post-title">
+              检测文本正文是否包含有特定词的PHP扩展
+              <small>2010-07-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1131/">
+            <h2 class="post-title">
+              CloudAPI 远程接口服务使用图文教程
+              <small>2010-07-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1122/">
+            <h2 class="post-title">
+              关于新闻网页正文抽取的一些思路
+              <small>2010-07-06</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1117/">
+            <h2 class="post-title">
+              新闻站抓取神器:正文抽取接口
+              <small>2010-07-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1112/">
+            <h2 class="post-title">
+              寻找网页制作兼职人员
+              <small>2010-06-23</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1099/">
+            <h2 class="post-title">
+              [译文]Xapian 1.0索引/查询时的term处理方式
+              <small>2010-06-11</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1097/">
+            <h2 class="post-title">
+              Xapian的查询分析器
+              <small>2010-06-10</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1088/">
+            <h2 class="post-title">
+              译文:Xapian搜索结果的排序
+              <small>2010-06-09</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1084/">
+            <h2 class="post-title">
+              中国雅虎招聘:PHP工程师,测试工程师,无线开发工程师
+              <small>2010-06-09</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1075/">
+            <h2 class="post-title">
+              Xapian 术语表
+              <small>2010-06-05</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1071/">
+            <h2 class="post-title">
+              招聘:平台开发工程师 Platform Developer
+              <small>2010-06-03</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1065/">
+            <h2 class="post-title">
+              Xapian搜索体系结构
+              <small>2010-06-01</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1193/">
+            <h2 class="post-title">
+              胡言乱语
+              <small>2010-05-27</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1194/">
+            <h2 class="post-title">
+              从春天到夏天——然然成长记
+              <small>2010-05-26</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1062/">
+            <h2 class="post-title">
+              redis 运维实际经验纪录之一
+              <small>2010-05-25</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1054/">
+            <h2 class="post-title">
+              用PHP和xapian构建全文检索[转]
+              <small>2010-04-18</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1049/">
+            <h2 class="post-title">
+              tokyo cabinet的替代产品:kyoto cabinet
+              <small>2010-04-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1047/">
+            <h2 class="post-title">
+              cloudapi.info 预谋提供的下一个云接口:垃圾评论判别
+              <small>2010-04-08</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1042/">
+            <h2 class="post-title">
+              基于cloudapi.info的wordpress 相关文章插件
+              <small>2010-04-04</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1039/">
+            <h2 class="post-title">
+              phppod已经更新,请使用老版程序有问题的用户升级
+              <small>2010-03-31</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1032/">
+            <h2 class="post-title">
+              宝宝出生了,八卦一下,记录一个.
+              <small>2010-03-24</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1026/">
+            <h2 class="post-title">
+              cloudapi 悄然上线,欢迎各方人士拍砖
+              <small>2010-03-15</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1018/">
+            <h2 class="post-title">
+              为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]
+              <small>2010-03-13</small>
+            </h2>
+          </a>
+        </article>
+      
+    
+      
+        <article class="post">
+          <a href="http://localhost:4000/post/1016/">
+            <h2 class="post-title">
+              手头有PHP的职位一大堆,人才大把大把地来吧
+              <small>2010-03-07</small>
+            </h2>
+          </a>
+        </article>
+      
+    
   
 </div>
 
+
         </div>
+
+        <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+</div>
+
+
       </div>
-    </div>
+      <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -528,7 +565,6 @@ var app = new Vue({
 
 
 
-
-
+    </div>
   </body>
 </html>

@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>极度缺钱中... | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="虽然公司发了我的第一个月的那点可怜的钱了,不过等我还出去后又穷了... 照这么算下去，我其实到年底也存不下一点钱。我还是会很穷。。。 我从老大zhuaizhuai那里学到了一点东西。就是什么东西哪怕可能无法实现，也要敢想。 所以，我现在缺钱..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">极度缺钱中...</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-11-03</span>
+            
+          </div>
+          <div class="post-content">
+            <p>虽然公司发了我的第一个月的那点可怜的钱了,不过等我还出去后又穷了... 照这么算下去，我其实到年底也存不下一点钱。我还是会很穷。。。 我从老大zhuaizhuai那里学到了一点东西。就是什么东西哪怕可能无法实现，也要敢想。 所以，我现在缺钱，我也要想办法解决。 1.跟家里人沟通一下，该拿的钱推迟一下再拿出来。 2.跟老大商量一下，借个电脑用用。没有一台自己的notebook，很头疼。两台台式机的程序同步很麻烦，更加上公司网络也不行，ftp老中断。 3.写一份加薪申请。我本有机公拿80元的薪水，可是找了一份50元的工作，做的却是30元的事情。公司不缺钱，而我也不只值这么点钱，所以，就应当理直气壮地提出来，不是什么大不了的事。公司应该需要的是我做更多事情，帮公司获取更利润，而不是我少拿点儿薪水，帮公司省点儿钱。要省工资的话，可以去招一帮民工，一天50块钱就够了。如果公司实在认为给我这么多值，那我应该去更能发挥我价值的地方。 4. 搬家。找一个更近的地方。虽然房租会贵一些，但是每天省下两个小时报时间，也是一笔不小的财富。 5.周末去做兼职。(顺便广告，接手php小项目，或培训等。100元/小时或500元/天起。天指8小时,不加班)</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/305/">
+              <h3 class="post-title">
+                下一篇：给XOOPS加一个Hack,以增加某些AJAX应用支持...
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">极度缺钱中...</h2>
-            <div class="post-date">2006-11-03</div>
-            
-            <div class="post-content" v-pre>
-              <p>虽然公司发了我的第一个月的那点可怜的钱了,不过等我还出去后又穷了... 照这么算下去，我其实到年底也存不下一点钱。我还是会很穷。。。 我从老大zhuaizhuai那里学到了一点东西。就是什么东西哪怕可能无法实现，也要敢想。 所以，我现在缺钱，我也要想办法解决。 1.跟家里人沟通一下，该拿的钱推迟一下再拿出来。 2.跟老大商量一下，借个电脑用用。没有一台自己的notebook，很头疼。两台台式机的程序同步很麻烦，更加上公司网络也不行，ftp老中断。 3.写一份加薪申请。我本有机公拿80元的薪水，可是找了一份50元的工作，做的却是30元的事情。公司不缺钱，而我也不只值这么点钱，所以，就应当理直气壮地提出来，不是什么大不了的事。公司应该需要的是我做更多事情，帮公司获取更利润，而不是我少拿点儿薪水，帮公司省点儿钱。要省工资的话，可以去招一帮民工，一天50块钱就够了。如果公司实在认为给我这么多值，那我应该去更能发挥我价值的地方。 4. 搬家。找一个更近的地方。虽然房租会贵一些，但是每天省下两个小时报时间，也是一笔不小的财富。 5.周末去做兼职。(顺便广告，接手php小项目，或培训等。100元/小时或500元/天起。天指8小时,不加班)</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/305/">
-                  <h3 class="post-title">
-                    给XOOPS加一个Hack,以增加某些AJAX应用支持...
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

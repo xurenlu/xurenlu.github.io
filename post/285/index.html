@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>哦，在武汉的日子.... | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="虽说才从华工出来不到两年，但怎么觉着离武汉越来越远了。 觉着远，是因为这两年来我的足迹到过太多地方，基本湖北每一个地级市我都去过了，去年下半年到四川过了几个月不见天日的生活，今年又远到北京，虽然武汉是那么熟悉，但我偶而路过，竟已经无处落脚了..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">哦，在武汉的日子....</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2006-10-18</span>
+            
+          </div>
+          <div class="post-content">
+            <p>虽说才从华工出来不到两年，但怎么觉着离武汉越来越远了。 觉着远，是因为这两年来我的足迹到过太多地方，基本湖北每一个地级市我都去过了，去年下半年到四川过了几个月不见天日的生活，今年又远到北京，虽然武汉是那么熟悉，但我偶而路过，竟已经无处落脚了，只得去住宾馆了。 刚刚是看了aw这家伙的blog,才想起来的，我老跑题。武汉作为我上大学的地方，留给我最多的记忆，却是对创业的尝试。虽说在汉上了四年大学，可回想起来，大一我是认认真真上课了，还混了奖学金，不过大二我开始迷上电脑，四处参加活动（当然得感谢一下，不然我还是个超内向，不肯说话的呆朩头），大三在图书馆泡了一年，这一年我挂了n多科，差点留级，大四老老实实重修，然后给导师打了一年工。不过那些可笑的尝试，却留在记忆中抹之不去。 曾经傻不拉及的穿着一套可笑的西装出去拉赞助，然后被人客客气气地赶出来。 曾经在太阳底下去发家教宣传单，白干半个月一分钱没拿到。 曾经写40页的商业计划书出去，结果人家只肯给1500,我还得意地拿了这还没到手的1500块钱，去和另一个校园网站谈网站合并（真可笑，不过在学校里确实没钱，1500啊，当时是一大笔了），然后非典了，人家公司老板还惦记着跟我继续合作呢，结果学校已经关起来了，不让一个人出校门. ....奶奶的，又跑题了... 本来是要庆贺一下的，明天可以拿到工资卡了，呵呵。刚才在aw'blog上看到这小子借钱，做师兄的帮不上大忙，我这儿也借了一千多了，先给他捐两百块，也不要他还了，交个朋友。 项目做的不顺，人手奇缺，我的脑子一片乱，好几天没顺畅地写代码了，着急。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/284/">
+              <h3 class="post-title">
+                下一篇：跳槽 跳槽... 生活/$%^&amp;@#幸福....
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">哦，在武汉的日子....</h2>
-            <div class="post-date">2006-10-18</div>
-            
-            <div class="post-content" v-pre>
-              <p>虽说才从华工出来不到两年，但怎么觉着离武汉越来越远了。 觉着远，是因为这两年来我的足迹到过太多地方，基本湖北每一个地级市我都去过了，去年下半年到四川过了几个月不见天日的生活，今年又远到北京，虽然武汉是那么熟悉，但我偶而路过，竟已经无处落脚了，只得去住宾馆了。 刚刚是看了aw这家伙的blog,才想起来的，我老跑题。武汉作为我上大学的地方，留给我最多的记忆，却是对创业的尝试。虽说在汉上了四年大学，可回想起来，大一我是认认真真上课了，还混了奖学金，不过大二我开始迷上电脑，四处参加活动（当然得感谢一下，不然我还是个超内向，不肯说话的呆朩头），大三在图书馆泡了一年，这一年我挂了n多科，差点留级，大四老老实实重修，然后给导师打了一年工。不过那些可笑的尝试，却留在记忆中抹之不去。 曾经傻不拉及的穿着一套可笑的西装出去拉赞助，然后被人客客气气地赶出来。 曾经在太阳底下去发家教宣传单，白干半个月一分钱没拿到。 曾经写40页的商业计划书出去，结果人家只肯给1500,我还得意地拿了这还没到手的1500块钱，去和另一个校园网站谈网站合并（真可笑，不过在学校里确实没钱，1500啊，当时是一大笔了），然后非典了，人家公司老板还惦记着跟我继续合作呢，结果学校已经关起来了，不让一个人出校门. ....奶奶的，又跑题了... 本来是要庆贺一下的，明天可以拿到工资卡了，呵呵。刚才在aw'blog上看到这小子借钱，做师兄的帮不上大忙，我这儿也借了一千多了，先给他捐两百块，也不要他还了，交个朋友。 项目做的不顺，人手奇缺，我的脑子一片乱，好几天没顺畅地写代码了，着急。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/284/">
-                  <h3 class="post-title">
-                    跳槽 跳槽... 生活/$%^&amp;@#幸福....
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 

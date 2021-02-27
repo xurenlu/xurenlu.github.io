@@ -1,126 +1,132 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>Fedora Core 7.0(moonshine)+Beryl 的3D桌面 | 黄滚的Blog</title>
+<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614432313040">
-<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="谢谢几位朋友的提醒：Fedora 系统从第7版开始改称&quot;fedora 7&quot;....不再沿用&quot;fedora core n&quot;这种名称。 昨天微软的朋友过来展示了silverlight和WPF开发出来的一些..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://162cm.com">
-        <img src="http://162cm.com/images/avatar.png?v=1614432313040" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://localhost:4000">
+        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://localhost:4000">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
+          <a href="/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Fedora Core 7.0(moonshine)+Beryl 的3D桌面</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2007-08-11</span>
+            
+          </div>
+          <div class="post-content">
+            <p>谢谢几位朋友的提醒：Fedora 系统从第7版开始改称&quot;fedora 7&quot;....不再沿用&quot;fedora core n&quot;这种名称。 昨天微软的朋友过来展示了silverlight和WPF开发出来的一些应用。 心里痒痒，于是回了家就拿自己的LINUX看能不能整出点彩来。 结果我终于发现在装了半年的beryl上带的3D效果。原来这效果一直就有，只是我没有试到这个快捷键而已。 看图:<a href="http://www.162cm.com/wp-content/uploads/2007/08/screenshot.png" title="beryl 3D桌面"><img src="http://www.162cm.com/wp-content/uploads/2007/08/screenshot.thumbnail.png" alt="beryl 3D桌面" loading="lazy">注意这个上面的一圈圈的是我打开的雨点效果。</a> 实际上这个3D效果就是炫而已，并不能提高工作效率。我主要就是用shell多一点,最初用konsole,在gnome下有眯慢,后来改用Terminal, 还不错，关键是字体整得很 漂亮，我喜欢调到18px的字体，满屏花花绿绿的，VIM给php,ruby,python,shell都能加亮关键字，我用着很爽。</p>
+
+          </div>
+        </div>
+
         
+          <div class="next-post">
+            <a class="purple-link" href="http://localhost:4000/post/442/">
+              <h3 class="post-title">
+                下一篇：博客男女-让机器猜猜您是男是女
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">相逢的人会再相逢</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      相逢的人会再相逢
-    </div>
-    <div class="site-footer">
-      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Fedora Core 7.0(moonshine)+Beryl 的3D桌面</h2>
-            <div class="post-date">2007-08-11</div>
-            
-            <div class="post-content" v-pre>
-              <p>谢谢几位朋友的提醒：Fedora 系统从第7版开始改称&quot;fedora 7&quot;....不再沿用&quot;fedora core n&quot;这种名称。 昨天微软的朋友过来展示了silverlight和WPF开发出来的一些应用。 心里痒痒，于是回了家就拿自己的LINUX看能不能整出点彩来。 结果我终于发现在装了半年的beryl上带的3D效果。原来这效果一直就有，只是我没有试到这个快捷键而已。 看图:<a href="http://www.162cm.com/wp-content/uploads/2007/08/screenshot.png" title="beryl 3D桌面"><img src="http://www.162cm.com/wp-content/uploads/2007/08/screenshot.thumbnail.png" alt="beryl 3D桌面" loading="lazy">注意这个上面的一圈圈的是我打开的雨点效果。</a> 实际上这个3D效果就是炫而已，并不能提高工作效率。我主要就是用shell多一点,最初用konsole,在gnome下有眯慢,后来改用Terminal, 还不错，关键是字体整得很 漂亮，我喜欢调到18px的字体，满屏花花绿绿的，VIM给php,ruby,python,shell都能加亮关键字，我用着很爽。</p>
-
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="http://162cm.com/post/442/">
-                  <h3 class="post-title">
-                    博客男女-让机器猜猜您是男是女
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -130,8 +136,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 
