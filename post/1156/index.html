@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>rails 每周乱弹:用ckeditor为表单添加所见即所得功能 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="我最近在搞codeany.com,用的rails开发,其中一些地方需要用到所见即所得编辑器,不想自己写了,上网搜了搜,找到了一个叫做ckeditor的rails插件,主页是:http://github.com/galetahub/rails..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">rails 每周乱弹:用ckeditor为表单添加所见即所得功能</h2>
+            <div class="post-date">2010-07-25</div>
+            
+            <div class="post-content" v-pre>
+              <p>我最近在搞<a href="http://codeany.com/">codeany.com</a>,用的rails开发,其中一些地方需要用到所见即所得编辑器,不想自己写了,上网搜了搜,找到了一个叫做ckeditor的rails插件,主页是:<a href="http://github.com/galetahub/rails-ckeditor">http://github.com/galetahub/rails-ckeditor</a>; 安装方法: ./script/plugin install git://github.com/galetahub/rails-ckeditor.git 或者用是 ./script/plugin install http://github.com/galetahub/rails-ckeditor.git git协议能快一点点;这种安装需要你有git;另外你下载下来安装,下载地址是:<a href="http://github.com/galetahub/rails-ckeditor/tarball/master">http://github.com/galetahub/rails-ckeditor/tarball/master</a>. 安装好以后设置数据库和配置文件; rake ckeditor:install rake ckeditor:config 现在就好了,使用很简单,比如以前的代码是: &lt;%form_for(....) do |f|%&gt; &lt;%=f.text_area :content,:rows=&gt;5,:cols=&gt;60%&gt; ...&lt;%end%&gt; &lt;%form_for(....) do |f|%&gt; &lt;%= f.cktext_area :content, :swf_params=&gt;{:assetable_type=&gt;'User', :assetable_id=&gt;session[:uid]} %&gt; ...&lt;%end%&gt; 并在页头加上: &lt;%= javascript_include_tag :ckeditor %&gt; 即可;ckeditor和jquery等良好共存,并无问题. 下面说一下文件上传: ckeditor上是带有上传图片并插入到所见即所得编辑器中去的功能,我是用的paperclip来实现,ckeditor对这个有支持,启用很简单,从ckeditor的示例目录中将几个model文件拷过来: cp vendor/plugins/rails-ckeditor/examples/models/paperclip/* app/models/ 这会拷贝这几个文件: asset.rb attachment_file.rb picture.rb 并在数据库中创建assets表: CREATE TABLE `assets` ( `id` int(11) NOT NULL AUTO_INCREMENT, `data_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL, `data_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL, `data_file_size` int(11) DEFAULT NULL, `assetable_id` int(11) DEFAULT NULL, `assetable_type` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL, `type` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL, `user_id` int(11) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL, PRIMARY KEY (`id`), KEY `ndx_type_assetable` (`assetable_id`,`assetable_type`,`type`), KEY `fk_assets` (`assetable_id`,`assetable_type`), KEY `fk_user` (`user_id`) ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci 即可了. 这个也可以上ckeditor的主页去看,ckeditor的主页写得很全面了,少部分地方不够细致,需要摸索一下.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1129/">
+                  <h3 class="post-title">
+                    rails 每周乱弹:解决RMagick版本问题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

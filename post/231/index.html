@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>在白云发表的  用　borland c++ build ,做成isapi | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="用　borland c++ build ,做成isapi 偶懂一点点　不过　如果要我做的话　　做一个
+留言本页也要一个月　　而且薪水要求估计也没有人能承受　
+所以如果不是有特别要求的话　建议不要用C++啦。你可以尝试做一下：
+打开Borla..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">在白云发表的  用　borland c++ build ,做成isapi</h2>
+            <div class="post-date">2004-10-11</div>
+            
+            <div class="post-content" v-pre>
+              <p>用　borland c++ build ,做成isapi 偶懂一点点　不过　如果要我做的话　　做一个<br>
+留言本页也要一个月　　而且薪水要求估计也没有人能承受　<br>
+所以如果不是有特别要求的话　建议不要用C++啦。你可以尝试做一下：<br>
+打开Borland c++ builder,建立一个project,选择web application (名字大概差不多是这个，我机器上没有装，安装比较麻烦　),E文好的话　知道是选择web类应用的就行了，然后有四个选项，代表了isapi的不同的工作方式　，不用管他，就选择默认的即可（或者你改一下试试看）<br>
+然后建立工程，在属性的actions 里新建一个action，然后随便在Path里随便填一个名字（要求最初好是英文字母组成　估计填错了系统会提示的）　然后给他的html属性写上一段　HTML，然后编译.<br>
+将得到的dll文件拷贝到iis的虚拟目录中，给这个目录赋以执行权限，然后在浏览器输入类这样的路径 http://localhost/dll/myfirst.dll/path<br>
+dll 是iis的有执行权限的虚拟目录<br>
+myfirst.dll 是dll文件的名字<br>
+path是前面path的属性。<br>
+一个action都有一个path属性的，不写path属性只有dll的路径是无法执行的<br>
+一个dll文件基本上就相当于一个网站,每一个action都相当于你asp网站中的一个asp文件.<br>
+好了暂时写这么多<br>
+已经很久没有做这个了<br>
+难度比较大　资料比较难找　国内做这个的也不多，个人感觉也没有什么必要.文章只是凭记忆写的，可能很多错误，比如那些属性的名字，我晚上装一个borland C++ 了验证一下　再来修改</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/232/">
+                  <h3 class="post-title">
+                    今天丁辉住院了,白云的rxiao 给主页提了意见.
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

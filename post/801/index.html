@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>前面的兄弟用PDO时给我留的Mysql陷阱.... | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="好吧。害死我了。直接上代码: select count(*) as count from event_shop where ownerid in ('15071'); +-------+ | count | +-------+ | 1 | ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">前面的兄弟用PDO时给我留的Mysql陷阱....</h2>
+            <div class="post-date">2009-01-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>好吧。害死我了。直接上代码: select count(*) as count from event_shop where ownerid in ('15071'); +-------+ | count | +-------+ | 1 | +-------+ 1 row in set (0.00 sec) mysql&gt; select count(*) as count from event_shop where ownerid in ('15070'); +-------+ | count | +-------+ | 270 | +-------+ 1 row in set (0.00 sec) mysql&gt; select count(*) as count from event_shop where ownerid in ('15071,15070'); +-------+ | count | +-------+ | 1 | +-------+ 1 row in set (0.01 sec) select count(*) as count from event_shop where ownerid in ('15070,15071'); +-------+ | count | +-------+ | 270 | +-------+ 1 row in set (0.01 sec) 好吧。这个sql怎么来的呢?我跟到了前任同学留下的代码（当然，这个代码转手了四次，也不知道是不是他写的...) $sql='select * from event_shop where ownerid in (?) '; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: param\̲[̲\] = implode(&#039;,…'>param\[\] = implode(&#039;,&#039;,</span>friend_list); $st = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>b</mi><mi>h</mi><mo>−</mo><mo>&gt;</mo><mi>p</mi><mi>r</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">dbh-&gt;prepare(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">b</span><span class="mord mathdefault">h</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>sql); $res = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mi>e</mi><mi>x</mi><mi>e</mi><mi>c</mi><mi>u</mi><mi>t</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">st-&gt;execute(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>param); 当QA给我报Bug的时候，我一直以为QA的帐号有问题呢。最后发现竟然有这个问题.... 他爷爷的，我原来的代码不肯用PDO,安全部门审一次代码就提醒我一次,搞得我很郁闷。可是用了PDO更郁闷啊。不过现在看来，我还是要坚持不用PDO。就算用，也自己写每一行SQL.能自动凑SQL语句的msp啥的，效率上看简直是一个笑话。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/798/">
+                  <h3 class="post-title">
+                    都病了
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

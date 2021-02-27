@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>PHP中的一些language construct | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="先来段定义:
+
+A language construct is a syntactically allowable part of a program that may be formed from one or more lexical ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PHP中的一些language construct</h2>
+            <div class="post-date">2010-08-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>先来段定义:</p>
+<blockquote>
+<p>A language construct is a syntactically allowable part of a program that may be formed from one or more lexical tokens in accordance with the rules of a programming language. The term Language Constructs is often used as a synonym for control structure, and should not be confused with a function.</p>
+</blockquote>
+<p>PHP中的language construct: <strong>include, require,isset, print, echo, array , list,empty</strong> include和require 比较常见,例如这一段:这里有三个文章件,b.php包含了c.php和d.php #b.php: #c.php: #d.php 运行一下b.php:</p>
+<blockquote>
+<p>file c.php string(8) &quot;return c&quot; file d.php string(8) &quot;return d&quot;</p>
+</blockquote>
+<p>证明include 和require都是有返回值的.但是从语法上看,include,require都不是函数写法. Array不是函数,这就比较好理解了,你见过哪个函数用function(&quot;var1&quot;=&gt;&quot;var2&quot;)这种写法的? 值的注意的是,empty也不是函数,看这么一段代码: some_var); var_dump(empty($myobject-&gt;some_var)); 运行它,得到结果:</p>
+<blockquote>
+<p>string(17) &quot;value of some_var&quot; bool(true)</p>
+</blockquote>
+<p>看到了吗,虽然你能取到myobject-&gt;some_var这个值,但是用empty来判断时,却判断为空.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1170/">
+                  <h3 class="post-title">
+                    稍显寒酸的一个PHP框架:supermin
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

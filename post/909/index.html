@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>REPLACE INTO 为什么返回&#34;2 rows affected&#34; | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="表的结构: desc urls; +-------+---------------------+------+-----+---------+-------+ | Field | Type | Null | Key | Default | ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">REPLACE INTO 为什么返回&#34;2 rows affected&#34;</h2>
+            <div class="post-date">2009-06-29</div>
+            
+            <div class="post-content" v-pre>
+              <p>表的结构: desc urls; +-------+---------------------+------+-----+---------+-------+ | Field | Type | Null | Key | Default | Extra | +-------+---------------------+------+-----+---------+-------+ | id | bigint(16) unsigned | NO | PRI | NULL | | | url | varchar(255) | NO | | NULL | | | md516 | varchar(32) | NO | UNI | | | +-------+---------------------+------+-----+---------+-------+ 3 rows in set (0.01 sec) 原有数据: +----+-----------------------+------------------+ | id | url | md516 | +----+-----------------------+------------------+ | 0 | http://www.162cm.com/ | 49f6f2aaa26c124a | +----+-----------------------+------------------+ 1 row in set (0.00 sec) 执行的语句: REPLACE INTO urls (`url`,`md516`,`id`) VALUES ('http://www.162cm.com/','49f6f2aaa26c124a',0); 而执行这条语句的返回是: Query OK, 2 rows affected (0.00 sec) 为啥呢....看起来数据啥也没变，不是吗? 看文档:<a href="http://au2.php.net/mysql_affected_rows">http://au2.php.net/mysql_affected_rows</a>:</p>
+<blockquote>
+<p>Returns the number of affected rows on success, and -1 if the last query failed. If the last query was a DELETE query with no WHERE clause, all of the records will have been deleted from the table but this function will return zero with MySQL versions prior to 4.1.2. When using UPDATE, MySQL will not update columns where the new value is the same as the old value. This creates the possibility that mysql_affected_rows() may not actually equal the number of rows matched, only the number of rows that were literally affected by the query. The REPLACE statement first deletes the record with the same primary key and then inserts the new record. This function returns the number of deleted records plus the number of inserted records.</p>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/906/">
+                  <h3 class="post-title">
+                    我的vimrc 文件
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

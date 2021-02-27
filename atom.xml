@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://162cm.com</id>
+    <title>Gridea</title>
+    <updated>2021-02-27T13:13:30.255Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="http://162cm.com"/>
+    <link rel="self" href="http://162cm.com/atom.xml"/>
+    <subtitle>相逢的人会再相逢</subtitle>
+    <logo>http://162cm.com/images/avatar.png</logo>
+    <icon>http://162cm.com/favicon.ico</icon>
+    <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[再回乡]]></title>
+        <id>http://162cm.com/post/1430/</id>
+        <link href="http://162cm.com/post/1430/">
+        </link>
+        <updated>2017-04-16T09:51:32.000Z</updated>
+        <content type="html"><![CDATA[<p>很多年没有坐过从县城回老家的小巴了，以前回来，都是从高速一路飞奔到离家最近的出口，下了高速片刻功夫就到家。坐在颠簸而嘈杂的小巴上，感觉世界一下子都慢了下来。就那么路过连绵起伏的小山丘，穿过刚刚掉落油菜花吐出油菜荚的田野，沿着小河蜿蜒而上。 饭后来到那条记忆里一直在哗哗响的小河边，春汛带来了满河床的水；庆幸的是，河水依然泛绿，水质尚佳，河里出产肥美的鳜鱼，远近驰名。 我伫立在河边，安静地听河水唱歌。太阳已经越过了小村后的高山，晚霞将半边天映得发红，河岸里长满柳树丛，半截淹在水里。树丛里腾起灰白的水汽，犹如仙境。 就是眼前的这河水，夺走我两个亲人的生命。第一个是我未曾谋面的小姨，在几十年前的农历8月，过来照顾她刚刚生小孩的姐姐，步行了10几里山路，来到河边。艄公索要1毛钱，她没有，选择自行涉水过河，淹死在这世代依赖的河里。第二个，是我的三叔，在河对岸干完农活，河水已经涨了几米深。这个正在筹备婚礼的年轻人，在下游水坝上被发现。 回家的的这一路，遇见很多人，听说很多人的变迁。很多是新闻，但其实又不新鲜。有的人暴富而嗜赌，有的人离婚，有的人自杀，有的人老婆跟人跑了丢下两岁的孩子，有的人年纪轻轻喝了点酒睡上一觉就死去。让人唏嘘，却又不意外。以前小说上才见的各种各样的剧情，就在身边一样样地接连上映。 我默默地拍了一张照片。从此，记忆里的河，将永远地跟随我。不管什么时候，掏出手机，就可以抚摸它。 <img src="http://mmbiz.qpic.cn/mmbiz_jpg/Bdj9m8tjtE8ssTh0UE2UwINYky6GicRr35KtubMQ2LAeCiaLMKv4VkicSAPc9l1S2kPo4BJeWtibEDiaGUDMP3qsiaXQ/640" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[写点儿软件给自己用]]></title>
+        <id>http://162cm.com/post/1427/</id>
+        <link href="http://162cm.com/post/1427/">
+        </link>
+        <updated>2017-04-08T09:50:51.000Z</updated>
+        <content type="html"><![CDATA[<p>有好长一段时间，我都有点心有不甘，想折腾点东西。 也有时候，我心想，做为一个搞开发的，应该要完成两个目标，就算是对自己有交待了。一个目标是，写的东西，要让千万的人用。另一个目标是，要自己给自己写点东西用。 万幸的是，因为职业的关系，有幸参与了一个日活跃用户过亿的产品，所以，第一条，算是借着一份工作达到了。而且，还搞了不少有意思的故障。比如，有一次把商品搜索的代表B店的那个小图标的显示条件配置错了，第二天早上被眼尖的评论家们发现了，于是网上出来好多评论，说唉呀这个电商流量要碎片化啊，唉呀这个世道要变天啊。还好平时上班经常刷微博，赶紧改过来了。不过从此，就对电商四大傻有了新的认识。 第二条呢，好长时间一直在努力，不过也就是前几天才刚刚发现，其实我一直在用自己写的东西呢。比如这个,一个用结构化的方式显示json串的小工具,在用工具之前是这样的： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrcr8FHJzU5YSicXDqhBKEDe6d1wPaicbYSvMIv48pow2a2NXwUmfoicMow/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 启动工具之后，就可以: <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrA5OqZ5jibUdVbxaxwibSU5tesVNCJjywCANyb8VU3ORRPM9GHc4bSekg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个小工具大大地方便地了我的工作，最近3年来几乎一直在用。 比如这个：做为一个网站开发，天天在开发环境，测试环境，线上环境间切来切去，于是切换host绑定，几乎成为必备功能。于是就有了这么个东东，也是陪了三年了。 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 比如这个文本或照片快速http分享,我还网上照了个绿油油的小图标： <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 这个工具界面也超简单【我一向不爱写界面】： <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 如果有文件要分享，直接往里拖，如果用了系统的截图功能，直接点击输入框，Ctl-V，软件会自己把图片内容发到服务器上，返回截图地址【还会自己把图片地址复制到剪贴板】。 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJDQzA1MTVGNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJDQzA1MTYwNkE2MjExRTRBRjEzODVCM0Q0NEVFMjFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkNDMDUxNUQ2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkNDMDUxNUU2QTYyMTFFNEFGMTM4NUIzRDQ0RUUyMUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6p+a6fAAAAD0lEQVR42mJ89/Y1QIABAAWXAsgVS/hWAAAAAElFTkSuQmCC" alt="" loading="lazy"> 再比如这个： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrOEghM4ohib5ZJ6E5QicfeLs7Mw7OMEaBQks3JicFfibm6iaNqiafMT74jw4Q/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个东西，当然也是我从到处扒拉的代码，从界面到各种特性，都是从各个开源库里拼凑出来的，还起了个名儿叫Nodebook.git;一开始写它是因为网上的Markdown编辑器，都不能很好地嵌入代码【嵌入的代码不能高亮】，所以这也算是程序员定制款吧。嗯，我还曾经很烧包地引入了Jieba这个python的分词库和一个全文检索。 特性有很多自己想要的，比如，自动加载某个目录下所有的markdown文件: <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDrehzvUFh29BibvB1BicicUqonF8gUtrruArmicIoQa7kRiaSkcIJuUhyiaHdw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 能够代码高亮： <img src="http://mmbiz.qpic.cn/mmbiz_png/Bdj9m8tjtEicLOLbmA45aibEOm4xibJRpDry6zgYR6IN3S9icvtic9yljQd0NibWHQ5UBv90ycZovtGCby6J2MvNYLxQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="" loading="lazy"> 这个也曾陪了我好长的时间，直到后来不怎么分享代码类文档了，才不怎么用它。 这么回头一看，我还是很能折腾的，做为一个服务端开发，折腾了这么多界面的东东。虽然，没有其他人用。。。。起码我自己还是忠实用户嘛。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill: Hive 插件]]></title>
+        <id>http://162cm.com/post/1411/</id>
+        <link href="http://162cm.com/post/1411/">
+        </link>
+        <updated>2017-04-04T08:03:58.000Z</updated>
+        <content type="html"><![CDATA[<p>Drill 1.1 及后续的版本支持Hive 1.0;要使用Hive的自定义SerDes或是输入格式、输出格式来访问Hive 的表，所有的Drill节点必须在Drill安装目录的jars/3rdparty 目录下放上Hive的SerDes或是输入格式，输出格式的Jar包。 你可以通过选择WEB办控制台里的&quot;Storage&quot; tab来更新Hive配置。从禁用的手件列表里， 点击&quot;hive&quot;后面的&quot;Update&quot;按钮。Hive默认的插件的配置应当像下面这样：</p>
+<pre><code>{
+      &quot;type&quot;: &quot;hive&quot;,
+      &quot;enabled&quot;: false,
+      &quot;configProps&quot;: {
+        &quot;hive.metastore.uris&quot;: &quot;&quot;,
+        &quot;javax.jdo.option.ConnectionURL&quot;: &quot;jdbc:derby:;databaseName=../sample-data/drill_hive_db;create=true&quot;,
+        &quot;hive.metastore.warehouse.dir&quot;: &quot;/tmp/drill_hive_wh&quot;,
+        &quot;fs.default.name&quot;: &quot;file:///&quot;,
+        &quot;hive.metastore.sasl.enabled&quot;: &quot;false&quot;
+      }
+    }
+</code></pre>
+<h2 id="drill连接到hive的远程元数据">Drill连接到Hive的远程元数据</h2>
+<p>Hive的元数据是在Hive之外做为一个独立服务存的的。Drill可以能冠军Thrift来访问元数据。元数据和Hive数据库是通过JDBC来交互的。 按照这一章后面的步骤来将Drill指向到Hive的元数据服务的地址。在Hive 插件的配置中，设定Connection参数，来给Drill提供一个connection。在这里，如果你并不是通过HBaseStorageHandler来查询Hive 表的，你就已经完成配置了；如果你通过HBaseStorageHandler来查询Hive表，你需要配置Zookeeper quorum 和port这两个属性，因为HBaseStorageHandler需要这两个参数。Drill也使用这些参数来发现HBase 服务。如果你使用HBase 插件，请在Hive插插和HBase 插件里使用相同的Zookeeper quorum 和port 参数（如果你想要Hive 查询访问和HBase一样的源的话）。 <strong>注意，请确认你在注册Hive的元数据的时候，Hive元数据服务已经跑起来了。</strong></p>
+<h3 id="hive-远程元数据配置">Hive 远程元数据配置</h3>
+<p>要连接Drill到一个Hive 远程元数据：</p>
+<ol>
+<li>在hive.metastore.uris配置项里指定的系统上执行这个命令:</li>
+</ol>
+<p><code>hive --service metastore</code></p>
+<ol>
+<li>在Drill的Web控制台上，点选 &quot;Storage&quot; 标签页。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:HBase 插件]]></title>
+        <id>http://162cm.com/post/1409/</id>
+        <link href="http://162cm.com/post/1409/">
+        </link>
+        <updated>2017-04-04T08:03:29.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="hbase-插件">HBase 插件</h1>
+<p>当使用HBase 插件连接Drill到一个HBase数据源时，你需要指定Zookeeper。Drill支持HBase 版本0.98。 要查看或修改HBase的插件配置，请使用Drill的WEB控制台。在Web控制台，选择Storage tab,点击hbase插件后面的&quot;update&quot;按钮。下面的例子演示了如何定制HBase插件:</p>
+<pre><code> {
+          &quot;type&quot;: &quot;hbase&quot;,
+          &quot;config&quot;: {
+            &quot;hbase.zookeeper.quorum&quot;: &quot;10.10.100.62,10.10.10.52,10.10.10.53&quot;,
+            &quot;hbase.zookeeper.property.clientPort&quot;: &quot;2181&quot;
+          },
+          &quot;size.calculator.enabled&quot;: false,
+          &quot;enabled&quot;: true
+        }</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:文件系统插件]]></title>
+        <id>http://162cm.com/post/1407/</id>
+        <link href="http://162cm.com/post/1407/">
+        </link>
+        <updated>2017-04-04T08:03:07.000Z</updated>
+        <content type="html"><![CDATA[<p>你可以配置一个存储插件，来让Drill连接到一个本地文件系统，或是在Hadoop的core-site.xml里注册过的分布式文件系统，像是S3或是HDFS。默认情况下，Drill都提供了一个叫dfs的插件配置，指向了您的本地文件系统。</p>
+<h2 id="连接drill到一个文件系统">连接Drill到一个文件系统</h2>
+<p>在一个Drill集群中，您一般不会查询一个本地文件系统，而是将文件放在分布式文件系统中。当前阶段，您连接到多个Drill终端时，为了得到一致的，完整的查询结果，通常都需要一个分布式的文件系统 ，这个可能是通过将文件拷贝到所有的节点来模拟，或是使用NFS，也或者是使用Amazon的弹性云系统。 您 要在插件的工作空间中配置connection 属性，这样Drill才能连接到分布式文件系统；例如，下面的配置可以让Drill从一个客户端连接到HDFS集群:</p>
+<pre><code>&quot;connection&quot;: &quot;hdfs://&lt;IP Address&gt;:&lt;Port&gt;/&quot;
+</code></pre>
+<p>在集群中，要从一台机器查询HDFS上的文件，你只需要简单地将dfs插件中的connection属性中的&quot;file:///&quot;改成&quot;hdfs://&quot;就行了。 要修改dfs插件的配置来指向不同的本地或分布式文件系统，像下面这样使用connection属性就好了</p>
+<ul>
+<li>
+<p>本地文件系统的例子:</p>
+<p>{<br>
+&quot;type&quot;: &quot;file&quot;,<br>
+&quot;enabled&quot;: true,<br>
+&quot;connection&quot;: &quot;file:///&quot;,<br>
+&quot;workspaces&quot;: {<br>
+&quot;root&quot;: {<br>
+&quot;location&quot;: &quot;/user/max/donuts&quot;,<br>
+&quot;writable&quot;: false,<br>
+&quot;defaultInputFormat&quot;: null<br>
+}<br>
+},<br>
+&quot;formats&quot; : {<br>
+&quot;json&quot; : {<br>
+&quot;type&quot; : &quot;json&quot;<br>
+}<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>分布式文件系统的例子:</p>
+<pre><code>{
+    &quot;type&quot; : &quot;file&quot;,
+    &quot;enabled&quot; : true,
+    &quot;connection&quot; : &quot;hdfs://10.10.30.156:8020/&quot;,
+    &quot;workspaces&quot; : {
+      &quot;root&quot; : {
+        &quot;location&quot; : &quot;/user/root/drill&quot;,
+        &quot;writable&quot; : true,
+        &quot;defaultInputFormat&quot; : null
+      }
+    },
+    &quot;formats&quot; : {
+      &quot;json&quot; : {
+        &quot;type&quot; : &quot;json&quot;
+      }
+    }
+  }
+</code></pre>
+<p>要连接到Hadoop的文件系统，你要将name node的IP和端口写在配置中。</p>
+<h2 id="甜甜圈例子">甜甜圈例子</h2>
+<p>下面的例子展示了一个file类型的插件，还带有一个叫json_files的工作空间。这个配置将Drill指向到了本机的/users/max/drill/json/目录（dfs)。</p>
+<pre><code>{
+  &quot;type&quot; : &quot;file&quot;,
+  &quot;enabled&quot; : true,
+  &quot;connection&quot; : &quot;file:///&quot;,
+  &quot;workspaces&quot; : {
+    &quot;json_files&quot; : {
+      &quot;location&quot; : &quot;/users/max/drill/json/&quot;,
+      &quot;writable&quot; : false,
+      &quot;defaultInputFormat&quot; : json
+   } 
+},
+</code></pre>
+<p>配置里的&quot;connection&quot;选项是&quot;file:///&quot;,将Drill连接到了本地的文件系统 。 要查询示例的json_files工作空间里的文件，你可以使用USE指令来告诉Drill使用json_files工作空间，这个工作空间是指定在dfs插件里的。</p>
+<pre><code>USE dfs.json_files;
+SELECT * FROM `donuts.json` WHERE type='frosted'
+</code></pre>
+<p>如果json_files 工作空间不存在，查询就需要像下面这样指定完整的路径:</p>
+<pre><code>SELECT * FROM dfs.`/users/max/drill/json/donuts.json` WHERE type='frosted';</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:关系数据库查询]]></title>
+        <id>http://162cm.com/post/1405/</id>
+        <link href="http://162cm.com/post/1405/">
+        </link>
+        <updated>2017-04-04T08:02:43.000Z</updated>
+        <content type="html"><![CDATA[<p>Apache Drill支持查询某些RDBMS实例。这使得您能将您的传统数据库连接到你的Drill集群中来，您将能够用一个系统中用同一个视图来处理关系数据库和NO-SQL 数据库。 不管是哪一种源，Drill都支持在系统内和多个系统之间进行Join。这包括在一些关系数据库上进行对像join,where,group 这样的语句的推演。</p>
+<h2 id="使用关系数据库插件">使用关系数据库插件</h2>
+<p>Drill设计生来就可以和提供了JDBC 驱动的关系数据库一起工作。Drill在Postgres,MySQL,Oracle, MSSQL和Apache Derby 上进行了活跃的测试。针对每一个系统，你都只需要三个基础的步骤来进行启动：</p>
+<ul>
+<li>安装Drill,如果您还没有安装的话；</li>
+<li>把该数据库的JDBC驱动拷贝到jars/3rdparty 目录下（每个节点都需要这么做）</li>
+<li>通过WEB UI给Drill添加新插件的配置。Oracle,SQL Server,Mysql和Postgres的例子马上给出。</li>
+</ul>
+<h2 id="示例和mysql-一起工作">示例：和MySQL 一起工作</h2>
+<p>Drill使用您从WEB UI或是REST API设定的插件配置，通过JDBC 驱动来和MySQL 通信。 <strong>在您配置插件之前，请确保Mysql 的服务已经启来了，并且jar文件已经拷贝在指定目录了。</strong> ### 配置JDBC插件的方法:</p>
+<ul>
+<li>
+<p>启动Drill ;</p>
+</li>
+<li>
+<p>打开Drill WEB控制台；</p>
+</li>
+<li>
+<p>在Storage Tab页，在&quot;New Storage Plugin&quot;区域键入一个名字，例如:<code>myplugin</code>。Drill里面注册的每一个插件都需要一个唯一的名字，名字是大小写敏感的。</p>
+</li>
+<li>
+<p>点击“Create&quot;。</p>
+</li>
+<li>
+<p>在配置区域，像下面这样，用JSON格式来设置属性。请做必要的修改，以匹配你自己的实际环境。</p>
+<p>{<br>
+&quot;type&quot;: &quot;jdbc&quot;,<br>
+&quot;driver&quot;: &quot;com.mysql.jdbc.Driver&quot;,<br>
+&quot;url&quot;: &quot;jdbc:mysql://localhost:3306&quot;,<br>
+&quot;username&quot;: &quot;root&quot;,<br>
+&quot;password&quot;: &quot;mypassword&quot;,<br>
+&quot;enabled&quot;: true<br>
+}</p>
+</li>
+<li>
+<p>点击&quot;Create&quot;。</p>
+</li>
+</ul>
+<p>你可以使用performance_schema数据库来访问随着Mysql安装的performance_schema数据库。请在Where子句里，用小圆点连接插件配置，数据库，表名这种语法；就像下面给出来的一样:</p>
+<pre><code>0: jdbc:drill:zk=local&gt; select * from myplugin.performance_schema.accounts;
+  +--------+------------+----------------------+--------------------+
+  |  USER  |    HOST    | CURRENT_CONNECTIONS  | TOTAL_CONNECTIONS  |
+  +--------+------------+----------------------+--------------------+
+  | null   | null       | 18                   | 20                 |
+  | jdoe   | localhost  | 0                    | 813                |
+  | root   | localhost  | 3                    | 5                  |
+  +--------+------------+----------------------+--------------------+
+  3 rows selected (0.171 seconds)
+</code></pre>
+<h2 id="oracle-配置示例">Oracle 配置示例</h2>
+<p>下载并将ojdbc7.12.1.0.2.jar 安装到您 的每个Drill节点上:</p>
+<pre><code>{
+  type: &quot;jdbc&quot;,
+  enabled: true,
+  driver: &quot;oracle.jdbc.OracleDriver&quot;,
+  url:&quot;jdbc:oracle:thin:user/password@1.2.3.4:1521/ORCL&quot;
+}
+</code></pre>
+<h2 id="sql-server的示例配置">SQL Server的示例配置</h2>
+<p>对于SQL Server,Drill已经测试过微软的 sqljdbc41.4.2.6420.100.jar 驱动。将这个文件拷贝到所有的Drill节点上。 <strong>您需要在JDBC的连接字符串中提供数据库的名字，以帮助Drill识别MSSQL 协议。</strong></p>
+<pre><code>{
+  type: &quot;jdbc&quot;,
+  enabled: true,
+  driver: &quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot;,
+  url:&quot;jdbc:sqlserver://1.2.3.4:1433;databaseName=mydatabase&quot;,
+  username:&quot;user&quot;,
+  password:&quot;password&quot;
+}
+</code></pre>
+<h2 id="mysql-的配置示例">MySQL 的配置示例</h2>
+<p>对于MySQL,Drill已经在 mysql-connector-java-5.1.37-bin.jar 这个驱动上测试过。把它拷贝到所有的Drill节点上。</p>
+<pre><code>{
+  type: &quot;jdbc&quot;,
+  enabled: true,
+  driver: &quot;com.mysql.jdbc.Driver&quot;,
+  url:&quot;jdbc:mysql://1.2.3.4&quot;,
+  username:&quot;user&quot;,
+  password:&quot;password&quot;
+}
+</code></pre>
+<h2 id="postgres-配置示例">Postgres 配置示例</h2>
+<p>对于Postgres,Drill测试过 9.1-901-1.jdbc4 驱动（近期的版本应该都可以）；拷贝这个jar到所有的Drill节点上。</p>
+<pre><code>{
+  type: &quot;jdbc&quot;,
+  enabled: true,
+  driver: &quot;org.postgresql.Driver&quot;,
+  url:&quot;jdbc:postgresql://1.2.3.4/mydatabase&quot;,
+  username:&quot;user&quot;,
+  password:&quot;password&quot;
+}</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:工作空间]]></title>
+        <id>http://162cm.com/post/1403/</id>
+        <link href="http://162cm.com/post/1403/">
+        </link>
+        <updated>2017-04-04T08:02:13.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="工作空间">工作空间</h1>
+<p>你可以在存储插件的配置项里，配置多个工作空间。工作空间定义了本地或是分布式文件系统里的子目录下的文件。当你查询时，Drill会在所有的工作空间里搜寻以便加载到数据。一个隐式声明的默认的工作空间，“dfs.default&quot;,指向了本地的根文件系统。 下面这个&quot;dfs&quot;的插件的配置展示了定义工作空间的例子:</p>
+<pre><code>{
+     &quot;type&quot;: &quot;file&quot;,
+     &quot;enabled&quot;: true,
+     &quot;connection&quot;: &quot;file:///&quot;,
+     &quot;workspaces&quot;: {
+       &quot;root&quot;: {
+         &quot;location&quot;: &quot;/&quot;,
+         &quot;writable&quot;: false,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;tmp&quot;: {
+         &quot;location&quot;: &quot;/tmp&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;emp&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/emp&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;donuts&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/donuts&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;sales&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/sales&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       }
+     },
+</code></pre>
+<p>将子目录定义为工作空间，可以使查询简化，这对于重复查询同一个文件相当有用。当你在工作空间的location域配置了一个个长长的路径名，在查询的时候，你不需要输入这个长长的路径名，只需要输工作空间名和小圆点就行了:</p>
+<pre><code>&lt;workspace name&gt;.`&lt;location&gt;`
+</code></pre>
+<p>\<location>是子目录的名字。 如果你查询的数据源，是你并没有设置成默认schema的插件的，需要把插件的名字带上。（这里假设你没有使用USE plugin.workspace 语句来连接到指定的存储插件）：</p>
+<pre><code>&lt;plugin&gt;.&lt;workspace name&gt;.`&lt;location&gt;`
+</code></pre>
+<h2 id="覆盖-dsfdefault-选项">覆盖 dsf.default 选项</h2>
+<p>在有些场景下，比如用户没有读根目录的权限的情况下，你需要覆盖掉dfs.default这个隐藏选项。你需要把下面这么一个叫default的workspace 添加到dfs插件的配置里。</p>
+<pre><code>&quot;default&quot;: {
+  &quot;location&quot;: &quot;&lt;/directory/path&gt;&quot;,
+  &quot;writable&quot;: true,
+  &quot;defaultInputFormat&quot;: null
+}
+</code></pre>
+<h2 id="无工作空间的hive-和hbase">无工作空间的Hive 和HBase</h2>
+<p>你是无法在Apache Drill安装的HBase和Hive 插件选项里配置工作空间的，虽然它们看起来也是按工作空间工作的。每个Hive插件的配置都包含了一个叫default的工作空间，这个工作空间指向了hive的元数据。当你查询Hive的default 工作空间时，你可以在查询语句里忽略工作空间的名字：</p>
+<pre><code>SELECT * FROM hive.customers LIMIT 10;
+SELECT * FROM hive.`default`.customers LIMIT 10;
+</code></pre>
+<p><strong>提示: Default 是一个关键词，关键词用作表名，字段名等标识符时，需要用反引号括起来。</strong> 因为HBase插件完全不适用工作空间，你可以简单地使用这样的查询:</p>
+<pre><code>SELECT * FROM hbase.customers LIMIT 10;</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:插件的基本配置]]></title>
+        <id>http://162cm.com/post/1401/</id>
+        <link href="http://162cm.com/post/1401/">
+        </link>
+        <updated>2017-04-04T08:01:45.000Z</updated>
+        <content type="html"><![CDATA[<p>当你在一个有多个drill节点的集群中添加或是更新配置的时候，drill会把这个配置变更信息广播到其他的节点，以保持配置的同步。添加，修改配置的时候，并不需要重启任何drillbit节点。</p>
+<h1 id="使用drill的web控制台">使用Drill的WEB控制台</h1>
+<p>你可以通过Drill web控制台来修改，添加插件配置。要启动Web console,你需要将Drill shell跑起来。 要创建一个新配置，您需要：</p>
+<ol>
+<li>启动Drill shell[此处应有传送门]</li>
+<li>启动Drill WEB 控制台。[此处应有传送门]</li>
+<li>进到插件tab,输入一个新插件的名字，每个名字都是<strong>一个新的存储插件</strong>。每个插件的配置都需要有一个全局唯一的名字，名字是区分大小写的。</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://drill.apache.org/docs/img/storage_plugin_config.png" alt="" loading="lazy"></figure>
+<ol>
+<li>点击&quot;create&quot;</li>
+<li>在配置界面，尽可能地从已经有的配置中拷贝再修改JSON配置，这样可以降低json语法错误的风险，在做一些定制修改时，请参照下一章节的存储插件属性表。</li>
+<li>点击&quot;Create&quot;。（译注：原文是&quot;create&quot;,但我认为是笔误，应当是“Update&quot;)。</li>
+</ol>
+<h2 id="存储插件的属性配置">存储插件的属性配置</h2>
+<p>下图解释了一个典型的dfs的存储插件的各个key的含义。 <img src="https://drill.apache.org/docs/img/connect-plugin.png" alt="" loading="lazy"></p>
+<h2 id="属性和概念清单">属性和概念清单</h2>
+<p>| 属性 | 示例 | 是否必须 | 说明 | |---|---|---|---|---|　 | &quot;type&quot; | &quot;file&quot; &quot;hbase&quot; &quot;hive&quot; &quot;mongo&quot; | yes | 必须是一种合法的存储插件的名字 | | &quot;enabled&quot; | true false | yes | 插件的状态 | | “connection&quot; | &quot;classpath:///&quot; &quot;file:///&quot; &quot;mongodb://localhost:27017/&quot; &quot;hdfs://&quot; | 依赖于各种具体的实现 | 分布式文件系统的类型，比如HDFS,Amazon S3,或是你本地的文件系统，以及路径名 | | ”workspace&quot; | null &quot;logs&quot; | no | 一个或多个唯一的命名空间的名字。如果一个名字被使用了多次，只有最后一次是有效的 | | &quot;workspaces&quot;...&quot;location&quot; | &quot;location&quot;:&quot;/Users/john/mydata/&quot; &quot;location&quot;:&quot;/tmp/&quot; | no | 文件系统上的一个完整路径 | | &quot;workspaces&quot;...&quot;writable&quot; | true false | no | 如果定义了多次，只有最后一次有效 | | &quot;workspaces&quot;...&quot;defaultInputFormat&quot; | null &quot;parquet&quot; &quot;csv&quot; json&quot; | no &quot; 读文件的格式，不考虑扩展名。默认是“Parquet&quot; | | &quot;formats&quot; | &quot;csv&quot; &quot;psv&quot; &quot;tsv&quot; &quot;parquet&quot; &quot;json&quot; &quot;avro&quot; &quot;maprdb&quot; &quot;sequencefile&quot; | yes | 读取时合法的文件格式。Drill会检测一些文件的格式，其他的需要配置。maprdb的支持是在mapr-drill安装包里提供的 | | ”formats&quot;...&quot;type&quot; | &quot;text&quot;,&quot;parquet&quot;,&quot;json&quot;,&quot;maprdb&quot;,&quot;avro&quot;,&quot;sequencefile&quot; | yes | 文件格式的类型。你可以把两种格式的,csv ,psv 都定义成“text&quot;类型，但是是不同的分隔符。| | formats... extensions | [&quot;csv&quot;] | format-dependent | drill能够读取的文件名扩展。| | formats... delimiter | &quot;\t&quot; &quot;,&quot; | format-dependent | 一个或多个字符的序列，用以在文本文件（例如csv)中做记录的分隔。对于不可见的字符，可以用4位的十六进制（\xXXXX）来指代。| | formats...quote | &quot;&quot;&quot; | no | 文本文件中，开始或结束一个值用的一个字符 | | formats...escape | &quot;`&quot; | no | a single character that escapes a quotation mark inside a value | | formats ... comment | &quot;#&quot; | no | 在文本文件中开启一个注释行 | | formats skipFirstLine | true | no | 在读取文本文件时，包含还是忽略文件头。设置成true,可以避免把文件头当成数据读入 | | formats extractHeader | true | no | 设置成true,可以把文件头读进来做为列名。在extractHeader=false时，请确保skipFirstLine没有设置成true。 |</p>
+<h2 id="使用格式相关属性">使用格式相关属性</h2>
+<p>你要在存储插件的配置的formats区域设置格式相关的属性，比如skipFirstLine。当设置了text类型的属性时，你需要把sys.options中的exec.storage.enable_new_text_reader 设置成 <em>true</em> ;更多信息，请参照“Text files:CSV,TSV,PSV&quot;章节。</p>
+<h2 id="在表参数中使用格式相关属性">在表参数中使用格式相关属性</h2>
+<p>从Drill 1.4起，你可以在每一个query中设置格式相关的属性了。To pass parameters to the format plugin ,use the table function syntax:</p>
+<pre><code>    select a,b from table({table function name }(parameters));
+</code></pre>
+<p>例如:</p>
+<pre><code>    select a, b from table(dfs.`path/to/data.csv`(type =&gt; 'text',
+fieldDelimiter =&gt; ',', extractHeader =&gt; true))
+</code></pre>
+<h2 id="大小敏感">大小敏感</h2>
+<p>在前面提到过，工作空间和存储插件的名字，都是大小写敏感的。 【后面废话太多了 我懒得翻译了。。。】</p>
+<h1 id="存储插件的rest-api">存储插件的REST API</h1>
+<p>如果你需要添加一份存储插件的配置，同时又不想使用WEB 浏览器，你可以使用Drill REST API来完成。使用POST方式来请求，并传递 两个属性进来:</p>
+<ul>
+<li><strong>name</strong> 存储插件的名字</li>
+<li><strong>config</strong> 在Web界面里要设置的那个配置</li>
+</ul>
+<p>比如，下面这个命令就创建了一个叫myplugin的插件，这个插件读取根文件系统上一个未知类型的文件。</p>
+<pre><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;name&quot;:&quot;myplugin&quot;, &quot;config&quot;: {&quot;type&quot;: &quot;file&quot;, &quot;enabled&quot;: false, &quot;connection&quot;: &quot;file:///&quot;, &quot;workspaces&quot;: { &quot;root&quot;: { &quot;location&quot;: &quot;/&quot;, &quot;writable&quot;: false, &quot;defaultInputFormat&quot;: null}}, &quot;formats&quot;: null}}' http://localhost:8047/storage/myplugin.json
+</code></pre>
+<p>这里我们假设https未被启用。</p>
+<h1 id="存储插件的启动引导">存储插件的启动引导</h1>
+<p>在分布式的环境下，要通过程序自动化的方式添加存储插件，最推荐的方式是走REST API。另外还有一种方式 ，就是初始化引导方式 ，具体来说，就是在启动drill的时候，创建一个 bootstrap-storage-plugins.json 文件，放在classpath下。当Drill启动的时候，这个文件就会被加载。 当前用引导方式来添加存储插件的配置时，只有集群中的第一个Drillbit在第一次启动的时候才会生效。这个配置存储在ZooKeeper里，因此就再也不会去读那个 bootstrap-storage-plugins.json 文件了。 当集群起来以后，你就只能通过WEB控制台，或是REST API来添加存储插件的配置了。当然你也可以通过直接把那个插件的json文件上传到zookeeper的安装目录下的/drill路径下来修改Zookeeper里的节点，或者，如果不需要再维护相应的属性，直接删除/drill目录就好了。 如果你通过bootstrap-storage-plugins.json文件加载了一个Hbase 的配置，但是HBase并没有安装，在执行查询的时候可能会觉察到一个延时。你可以在HBase的Config 区块内设置HBase 的客户端超时和重试相关的设定。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:存储插件的注册]]></title>
+        <id>http://162cm.com/post/1399/</id>
+        <link href="http://162cm.com/post/1399/">
+        </link>
+        <updated>2017-04-04T08:01:25.000Z</updated>
+        <content type="html"><![CDATA[<p>我们可以通过存储插件连接到本地文件系统，Hive,HBase，或是其他的数据源。在Drill的web界面的存储插件配置tab,你可以查看修改这些插件的配置。如果不支持HTTPS（默认就没有），你可以访问HTTP://{IP}:8047/storage 来查看和配置存储插件。可以用IP，也可以用hostname。如果开启了https的支持，你可以通过https://{IP}:8047/storage来访问。 Drill 默认开启了cp,dfs,hbase,hive和mongodb的插件支持。</p>
+<ol>
+<li><strong>cp</strong> 指向Drill Classpath里的jar包文件，例如你可以查询employee.json文件。</li>
+<li><strong>DFS</strong> 指向本地文件系统，你也可以修改这个插件指向任何分布式文件系统，比如hadoop或是amazon的S3文件系统。</li>
+<li><strong>hbase</strong> 提供到HBase的连接 。</li>
+<li><strong>Hive</strong> 为Drill提供了访问Hive文件的元数据抽象的集成，也提供了一些库来访问SerDe和UDF.</li>
+<li><strong>mongo</strong> 提供到mongodb的访问。</li>
+</ol>
+<p>在Drill沙箱里，dfs插件为你提供了连接到一个预先定义好的hadoop环境的能力。如果你自己在本地跑一下drill,那么dfs是访问你本地文件系统的根目录。</p>
+<h2 id="注册一个存储插件的配置">注册一个存储插件的配置</h2>
+<p>你只需要输入插件名字，点击&quot;CREATE&quot;,提供一个json格式的配置，再点击&quot;UPDATE&quot;,就可以注册一个新的插件配置。。 ##　存储插件的配置的持久化 在嵌入式执行的时候，Drill将配置保存在一个临时目录， 在分布式模式下运行时，drill将配置放在zookeeper中。例如，在Mac OSX下，Drill将配置保存在<code>/tmp/drill/sys.storage_plugins</code>文件中。当你重启电脑的时候，这个临时目录会被清空。当你将drill运行在嵌入模式下时，你可以将<code>sys.store.provider.local.path</code> 配置项添加到drill-override.conf文件里，就像下面这样：</p>
+<pre><code> drill.exec: {
+    cluster-id: &quot;drillbits1&quot;,
+    zk.connect: &quot;localhost:2181&quot;,
+    sys.store.provider.local.path=&quot;/mypath&quot;
+ }</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Drill:连接到数据源]]></title>
+        <id>http://162cm.com/post/1397/</id>
+        <link href="http://162cm.com/post/1397/">
+        </link>
+        <updated>2017-04-04T08:00:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="连接到数据源">连接到数据源</h1>
+<p>存储插件是Drill中，连接到数据源的模块。一个存储插件通常会优化Drill查询的执行，提供数据的定位，命名空间下的配置和读数据要用到的格式。Drill已经内置了一些存储插件，你只需要根据你的环境配置一下就可以使用了。借助存储插件，你可以连接到各种数据源，像数据库，本地或是分布式的文件，或是Hive数据库。 你可以修改一个存储插件的默认配置X，并给一个新的唯一的名字&quot;Y&quot;。这个新的文档就会把Y当成一个完全不同的插件，虽然它本身只是原有插件重新配置了一下。当你执行一个drill查询的时候，Drill通过以下几种方式得到存储插件的配置：</p>
+<ol>
+<li>Query中的FROM语句指定要使用的插件。</li>
+<li>在执行Query之前执行USE命令；</li>
+<li>你还可以启动Drill的时候指令存储插件。</li>
+</ol>
+<h2 id="存储插件的内部">存储插件的内部</h2>
+<p>下图描述了位于Drill和数据源中间的存储插件层： <img src="https://drill.apache.org/docs/img/storageplugin.png" alt="存储插件层" loading="lazy"> 除了前面进到的这些功能，存储插件层还提供了扫描，写数据的功能，并能够将来自navive层的一些能力，比如动作推断，jon,SQL 等等知会到执行引擎。</p>
+]]></content>
+    </entry>
+</feed>

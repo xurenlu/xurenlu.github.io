@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java和网站访问量 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+
+
+今天学了一天的java.总算写socket类自己写了一个能够初步实现urlconnect类和url类的功能了。顺便做了一个功能，就是能够自己定义在发送http传送请求时的User-Agent字段和referer字段了，呵呵，可能大家联..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java和网站访问量</h2>
+            <div class="post-date">2005-12-27</div>
+            
+            <div class="post-content" v-pre>
+              <ol>
+<li></li>
+</ol>
+<p>今天学了一天的java.总算写socket类自己写了一个能够初步实现urlconnect类和url类的功能了。顺便做了一个功能，就是能够自己定义在发送http传送请求时的User-Agent字段和referer字段了，呵呵，可能大家联想到前面的bt小偷程序后都知道我想干什么了。不过光这个还不够。如果服务器总端存有访问referer页时的sessionID和cookies值，就需要我能够继续完成cookie功能了。继续努力呵！<br>
+2.  想起大学里的臭事:每次总有几门课不喜欢，就干脆不上，上也不带课本。没想到有一天老师居然当场布置作业，然后走来走去地看。我当然是在后面睡觉了，还有另外几个人和我一样。结果可想而知，老师走过来时，看到我在睡觉，就把我叫起来，问我作业做得怎么样了。天哪，我还没有带课本来，什么都没有拿，就这样”轻装上阵”来上课。于是最后的结果是，经过老师的大力宣传，我在整个年级都出名了。<br>
+3. 今天去blog上看了看，有人留言说问我去不去北京，我很想去，可是寒毅不愿意我去。看来blog确实是一个不错的交流工具，可以用它来记日记外，还可以用来找工作。<br>
+4. 昨天的访问量不知怎么就成690IP了，这个网站我也没有什么精力去管它，从开始的15IP很快升到了700多IP,但后来就又回到400IP了，不知道昨天怎么突然涨了一倍。<br>
+5. asp版的CMS很快要完工了，最后早点完成，做个终结算了,对得起朋友,拿得出手就行。我不想花太多的时间去搞它。毕竟asp已经有些力不从心了，尤其是在.net,php,jsp的夹攻下，以后我做网站打算用PHP来做，起码Apache的设置对我来说要简单得多，我可不想花太多的时间去想如何用IIS的那些乱七乱八糟组件。<br>
+6.     今天打算把resin集成到apache里去，发现这样做以后apache装载了resin运行起来慢多了，明显得感觉得出来，不用也罢，以后学java只学application,不学web service也罢，学一个swing也很爽的说(顺便说句，以前不知道swing可以做这么漂亮的window,button.简直和mac有得一比。)</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/68/">
+                  <h3 class="post-title">
+                    公布已经做好的一个spider，要程序的q我.
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

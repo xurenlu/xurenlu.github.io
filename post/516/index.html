@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>我错了,不玩了,向feedsky道歉 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="呵呵，刚刚以为发现了feedsky如何统计订阅数的秘密,后来再仔细一琢磨，发现其实feedsky除开这样以外，也没有别的办法。 feedsky不可能去反ping所有发这样的报头的IP去验证是否真的来自zhuaxia,来自google fee..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">我错了,不玩了,向feedsky道歉</h2>
+            <div class="post-date">2007-10-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>呵呵，刚刚以为<a href="http://www.162cm.com/archives/515.html">发现了feedsky如何统计订阅数的秘密</a>,后来再仔细一琢磨，发现其实feedsky除开这样以外，也没有别的办法。 feedsky不可能去反ping所有发这样的报头的IP去验证是否真的来自zhuaxia,来自google feed fetcher,费时，也不合理。因为也有一种可能，某些提供像zhuaxia一样的服务的网站并没有为每台抓取服务器弄一个子域名，也许就是一个裸IP.反ping,也不一定能得到正确结果. 所以，是我错了 下午向一位MM在feedsky工作的朋友说了，并把相关代码发给了他。 当缺少一种精准的公平的时候，我不应该去嘲笑一个不是太公平的尺子。我向feedsky道个歉,我不该在他们搞活动的时候跑来搅局。 自己加了个脚本，会在一天的最后一分钟再去feedsky跑一次,报告我的种子阅读数是负1000. 不知道管用不? <a href="http://cbc.feedsky.com/2007/rank1.php">看了一下排名，有更疯狂作弊的.</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/515/">
+                  <h3 class="post-title">
+                    欺诈，又是欺诈
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>这样也可以戏弄&#34;博邻&#34; | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Hoo,发现一个小漏洞: 在博邻(http://www.365bloglink.com/)首页上搜&quot;互联网，请记住我&quot;,然后结果页中是没有结果的。但是有备选项,我选中&quot;搜标题&quot;,再点搜索,就有结果了。..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">这样也可以戏弄&#34;博邻&#34;</h2>
+            <div class="post-date">2007-10-11</div>
+            
+            <div class="post-content" v-pre>
+              <p>Hoo,发现一个小漏洞: 在博邻(http://www.365bloglink.com/)首页上搜&quot;互联网，请记住我&quot;,然后结果页中是没有结果的。但是有备选项,我选中&quot;搜标题&quot;,再点搜索,就有结果了。然后发现这里的投票是可以重复投票的（点推荐后刷新一次又可以推荐,估计是没有在数据库中记IP)。哈哈，于是我查看源代码，发现“推荐&quot;二字的链接是javascript的，于是复制这一段: javascript:votePost('sa9Yfdjno', 'divsa9YfdjnoVote'); 就在这个页面中粘贴到浏览器地址栏中，按回车就发现票数变了。再按回车，再变。一直刷到50票。不过博邻的排名没啥意思，没有成就感。 hoo,漏洞无处不在了。365bloglink还是比较知名的站了，也有js漏洞。 上次live.com邮箱被抢注，也是同样的漏洞。 看来我以后也得记住 ,客户端的js是不可相信的!</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/495/">
+                  <h3 class="post-title">
+                    今天很开心
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

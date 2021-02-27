@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Xapian的查询分析器 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="英文地址:http://xapian.org/docs/queryparser.html
+Xapian::QueryParser的语法
+本文档介绍了Xapian::QueryParser类支持的查询语法.这套语法设计得跟其他基于Web的搜索..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Xapian的查询分析器</h2>
+            <div class="post-date">2010-06-10</div>
+            
+            <div class="post-content" v-pre>
+              <p>英文地址:<a href="http://xapian.org/docs/queryparser.html">http://xapian.org/docs/queryparser.html</a></p>
+<h1 id="xapianqueryparser的语法">Xapian::QueryParser的语法</h1>
+<p>本文档介绍了Xapian::QueryParser类支持的查询语法.这套语法设计得跟其他基于Web的搜索引擎的语法类似，这样用户就会很熟悉,不用从头学习一个全新的语法。</p>
+<h2 id="操作符">操作符</h2>
+<h3 id="and">AND</h3>
+<p><em>Expression</em> AND <em>expression</em> 匹配两个条件都符合的文档.</p>
+<h3 id="or">OR</h3>
+<p><em>Expression</em> AND <em>expression</em> 匹配符合两个条件中任何一个的文档.</p>
+<h3 id="not">NOT</h3>
+<p>expression NOT expression 匹配那些只匹配第一个条件的文档.这个也可以写成expression AND NOT expression.如果您设置了FLAG_PURE_NOT，那么 NOT expression 就匹配了所有不符合这个表达式的文档</p>
+<h3 id="xor">XOR</h3>
+<p>expression XOR expression 匹配那些符合两个条件中的一个的文档;但是不能两个都符合.XOR可能有点不好理解。</p>
+<h3 id="带括号的表达式">带括号的表达式</h3>
+<p>你可以括号来调整布尔运算符的优先级.在one OR two AND three这个查询中,AND优先,这跟one OR (two AND three)是一样的.你可以用(one OR two) AND three来改变优先级 。</p>
+<h3 id="和-">+和 -</h3>
+<p>一组带+和-符号的term,会匹配所有带+的term,但是不匹配带-的term。而不带有+或-的term则影响搜索结果中文档的排名.你也可以给短语和括号表达式加上+或-符号</p>
+<h3 id="near">NEAR</h3>
+<p>one NEAR two NEAR three匹配那些各个term间的距离在10以内的文档.你也可以通过NEAR/n这种方法把默认的10这个值设置为其他的值,如one NEAR/6 two.</p>
+<h3 id="adj">ADJ</h3>
+<p>ADJ像NEAR ，但只匹配的文字以相同的顺序出现的文档。因此， one ADJ two ADJ three匹配那些包含了这几个term词并且term间的距离在10以内的文档.您也可以通过_ADJ/n_语法来修改这个默认的阈值,例如:one ADJ/6 two.</p>
+<h3 id="短语搜索">短语搜索</h3>
+<p>用一对由双引号包起来的短语来搜索时,结果是精确匹配 这个短语的文档.带连字符的语语也作为短语处理,像邮箱和文件名称等 (比如. /etc/passwd 或是 president@whitehouse.gov).</p>
+<h3 id="搜索相关的域">搜索相关的域</h3>
+<p>如果数据库索引时已经为一些域设置了前缀，你可以设置一个域-前缀的Map，这样用户可以搜定搜索某些特定字段。例如author:dickens title:shop就可以搜索作者是狄更斯,名字包含&quot;shop&quot;的书。您也可以为双引号括起来一个短语指定前缀,例如(author:&quot;charles dickens&quot; ）,或是为括号内的表达式指定前缀:（例如title:(mice men) ）。</p>
+<h3 id="搜索固有名词">搜索固有名词</h3>
+<p>如何你搜一个首字母大写的词,它搜索时将不做词干原.</p>
+<h3 id="区间搜索">区间搜索</h3>
+<p>The QueryParser <a href="http://xapian.org/docs/valueranges.html">can be configured to support range-searching</a> using document values. 这种范围搜索的语法是_start_ .. <em>end</em> -例如， 01/03/2007..04/04/2007 ， $10..100 ， 5..10kg 。</p>
+<h3 id="同义词">同义词</h3>
+<p>QueryParser可以配置来支持同义词，它可以明确指定（使用语法~ <em>term</em> ）或隐式（为所有term使用同义司,或是某些特别指出的一组term)。</p>
+<h3 id="通配符">通配符</h3>
+<p>QueryParser支持在结尾使用一个'*'通配符的操作，wildc*将匹配wildcard, wildcarded, wildcards, wildcat, wildcats, etc等.此功能默认禁用. 在调用Xapian::QueryParser::parse_query( <em>query_string</em> , <em>flags</em> )函数时通过传递Xapian::QueryParser::FLAG_WILDCARD给flags参数就可以启用它.使用QueryParser::set_database( <em>database</em> )来告诉QueryParser用哪个数据库来扩展通配符.</p>
+<h3 id="query-片断的匹配">query 片断的匹配</h3>
+<p>查询分析器(Query Parser)支持搜索只输入了片断的查询.计划实现的是这样一种&quot;增量搜索&quot;的系统,这种系统里,不等用户输完查询条件就可以显示一些查询结果.例如,在一个系统中,用户每输入一个字符,系统就输出新的搜索结果(也可能是另一种情况,如用户每停顿一小会就输出新的搜索结果,或其他情况).这种搜索有一个毛病就是,通过搜查询条件的一个片断,得到的结果跟实际想要的可能完全没有语义上的联系.比如,想搜dynamic cat,可能返回的是dynamic categorisation的结果.这种情况下每输入一个字符搜索结果 都会快速地变化.如果将输入部分的视为包含一个隐含的尾部通配符,它会匹配所有以已输入字符结开头的词,这样我们可以得到更平滑变动的搜索结果----每当新字符键入时,搜索结果都会更接近我们想要的主题. 一个简单有效的办法就是开启通配符选荐,并在查询字符串的尾部加上&quot;*&quot;字符串. 不过这会跟那些以标点结束或其他一些字符结束的的搜索搅不清.此功能默认情况下是禁用. Xapian::QueryParser::parse_query( <em>query_string</em> , <em>flags</em> )函数时通过传递Xapian::QueryParser::FLAG_PARTIAL给flags参数就可以启用它.使用QueryParser::set_database( <em>database</em> )来告诉QueryParser用哪个数据库来扩展通配符.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1088/">
+                  <h3 class="post-title">
+                    译文:Xapian搜索结果的排序
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

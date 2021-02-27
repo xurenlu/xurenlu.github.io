@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Drill:核心模块 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="核心模块
+下图描述了一个drillbit里的各个组件  下面列出drillbit里的关键组件：
+RPC endpoint
+Drill开发了一种基于Probobuf的损耗非常低的RPC通信协议来跟客户端打交道。另外，客户端程序也可以使用C++..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill:核心模块</h2>
+            <div class="post-date">2017-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="核心模块">核心模块</h1>
+<p>下图描述了一个drillbit里的各个组件 <img src="https://drill.apache.org/docs/img/DrillbitModules.png" alt="https://drill.apache.org/docs/img/DrillbitModules.png" loading="lazy"> 下面列出drillbit里的关键组件：</p>
+<h2 id="rpc-endpoint">RPC endpoint</h2>
+<p>Drill开发了一种基于Probobuf的损耗非常低的RPC通信协议来跟客户端打交道。另外，客户端程序也可以使用C++或是JAVA api层来跟Drill交互。客户端可以直接指定跟哪些Drillbit节点打交道，也可以在提交查询前通过zookeeper服务来获取一定数量的drillbit节点信息。 我们推荐客户端总是通过zookeeper，以隔离集群管理的复杂性，不用关心像添加或是删除节点等等。</p>
+<h2 id="sql解析器">SQL解析器</h2>
+<p>Drill 使用<a href="https://calcite.incubator.apache.org/">calcite</a> 这个开源的SQL解析框架来解析接收到的SQL查询。这个解析组件的输出是一个人类语言无法描述，但是机器易于理解的逻辑计划,这个逻辑计划能够刚好描述这个sql查询。 ##　Storage plugin interface: Drill为好几种不同的数据源充当上面的查询层的角色。Drill里的存储层插件就描述了Drill怎样和这些数据源交互的抽象。存储插件给Drill提供以下信息:</p>
+<ol>
+<li>在数据源里能得到的元数据；</li>
+<li>Drill读写数据源的接口;</li>
+<li>数据的位置 ，以及一系列优化规则，这些优化规则能够让在特定的数据源上的drill规则执行的更高效；</li>
+</ol>
+<p>在Hadoop的场景下，Drill是在提供了存储插件来处理分布式的文件和HBase.Drill也通过提供存储插件来集成了Hive的支持。 当用户通过Drill来查询文件或是HBase,他们可以直接执行，如果Hive有定义元数据的话，也可以通过Hive来执行。Drill集成Hive仅仅是为了元数据，Drill处理任何请求的时候都不执行Hive的查询执行引擎。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1389/">
+                  <h3 class="post-title">
+                    Drill:架构总览
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

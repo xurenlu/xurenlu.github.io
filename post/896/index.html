@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>缓慢的drop table 操作 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="原文地址:http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/ 大家都知道,Ext3并不是最有效的文件系统，例如，删除文件会非常缓慢(那真是一个痛苦的过程，不是吗老兄..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">缓慢的drop table 操作</h2>
+            <div class="post-date">2009-06-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>原文地址:<a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/" title="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/">http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/</a> 大家都知道,Ext3并不是最有效的文件系统，例如，删除文件会非常缓慢(那真是一个痛苦的过程，不是吗老兄?)，造成大量的随机I / O。然而事实上,有时候它比你想象的更能影响MySQL的性能。那么，什么时候会发生，又为什么会发生呢? 当您运行<code>DROP TABLE</code>时,会有好几件事情需要去做:对表进行write lock,这样它不会被其他线程使用;存储引擎删除数据文件;当然,最后MySQL会删除表定义文件（.frm文件）。这还不是所有的事，还有另外一件事需要去做：</p>
+<p><a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/#">代码:</a></p>
+<ol>
+<li>
+<p>VOID(pthread_mutex_lock(&amp;LOCK_open));</p>
+</li>
+<li>
+<p>error= mysql_rm_table_part2(thd, tables, if_exists, drop_temporary, 0, 0);</p>
+</li>
+<li>
+<p>pthread_mutex_unlock(&amp;LOCK_open);</p>
+</li>
+</ol>
+<p>这整段删除表操作的代码都被<code>LOCK_open</code>互斥信号量所包围。这个互斥信号量在MySQL中不少地方都用到过,但主要是表在开启或关闭的时候。这意味着，当<code>LOCK_open</code>锁定时，没有查询语句可以执行，因为他们阻止任何访问。 这就解释了在ext3文件系统上删除10GB的文件何时成为了痛苦的等待的开始。删除10GB的文件将持续一段时间，如果这是一个MySQL表,这段时间mutex里将会一直存在,而这个互斥会拖延所有查询。</p>
+<p><a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/#">纯文字</a></p>
+<p>代码：</p>
+<ol>
+<li>
+<p>+-----+------+-----------+------+---------+------+ ----------------+--------------------------------- ---------------+</p>
+</li>
+<li>
+<p>| Id | User | Host | db | Command | Time | State | Info |</p>
+</li>
+<li>
+<p>+-----+------+-----------+------+---------+------+ ----------------+--------------------------------- ---------------+</p>
+</li>
+<li>
+<p>| 1 | root | localhost | test | Query | 7 | NULL | drop table large_table |</p>
+</li>
+<li>
+<p>| 329 | root | localhost | test | Query | 7 | Opening tables | select sql_no_cache * from other_table limit 1 |</p>
+</li>
+<li>
+<p>+-----+------+-----------+------+---------+------+ ----------------+--------------------------------- ---------------+</p>
+</li>
+</ol>
+<p>我尝试了一些替代的办法，让MySQL来在<code>DROP TABLE</code>时删除小文件，以尽量减少影响，如：</p>
+<ul>
+<li>TRUNCATE TABLE large_table; ALTER TABLE large_table ENGINE=…; DROP TABLE large_table;</li>
+<li>TRUNCATE TABLE large_table; OPTIMIZE TABLE large_table; DROP TABLE large_table;</li>
+</ul>
+<p>不幸的是，原来所有管理指令：<code>ALTER TABLE</code> &lt;ALTER <code>ALTER TABLE</code>或<code>OPTIMIZE TABLE</code>实际都一样，或是在旧的表文件删除时使用了其他的LOCK_open互斥信号锁。</p>
+<p><a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/#">纯文字</a></p>
+<p>代码：</p>
+<ol>
+<li>
+<p>| 3 | root | localhost | test | Query | 7 | rename result table | ALTER TABLE large_table ENGINE=MyISAM |</p>
+</li>
+<li>
+<p>| 679 | root | localhost | test | Query | 6 | Opening tables | select * from other_table limit 1 |</p>
+</li>
+</ol>
+<p>唯一的选择似乎就只能是改变文件系统了。例如,换成处理文件删除更有效的XFS文件系统。 <strong>EXT3</strong></p>
+<p><a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/#">纯文字</a></p>
+<p>代码：</p>
+<ol>
+<li>
+<p>mysql&gt; drop table large_table;</p>
+</li>
+<li>
+<p>Query OK, 0 rows affected (7.44 sec)</p>
+</li>
+</ol>
+<p><strong>的xfs</strong></p>
+<p><a href="http://www.mysqlperformanceblog.com/2009/06/16/slow-drop-table/#">纯文字</a></p>
+<p>代码：</p>
+<ol>
+<li>
+<p>mysql&gt; drop table large_table;</p>
+</li>
+<li>
+<p>Query OK, 0 rows affected (0.29 sec)</p>
+</li>
+</ol>
+<p>一个MySQL的内部操作可能更好一点:可以通过先重命名对应的数据文件，再在没有互斥信号锁的情况下删除物理文件。但是事实上可能没有那么简单,因为实际的删除操作是由存储引擎来完成的，因此不是MySQL的代码能控制的。 这肯定不是一个共同的情况，但是有时候(虽然我们极其不愿)确实可能会让任何人头痛（例如,删除一个老的不再使用的表） 。 这里绍明同学说应该翻译成:这不是一个常见的情况，但是它可能会在最不期望出现的时候成为一个问题（例如　删除没有使用的旧表）．</p>
+<hr>
+<p><strong>后附:</strong> 一个评论回复说:</p>
+<blockquote>
+<p>从一个完全不同的领域的解决办法。 mythtv （电视记录系统）开发者们在ext3系统上删除大型文件时，通过“缓慢删除”功能取得更好的效果。一般来说，电视录音大概1 - 12GB每小时，所以一部电影可以20 + GB大小的文件。如果没有该功能，删除文件操作将锁定ext3整个系统约20-30秒。 “慢删除”只是在后台执行将文件中的块清空的操作。</p>
+</blockquote>
+<p>另一个评论说:</p>
+<blockquote>
+<p>我应该指出，这并不只适用于MyISAM表，对于InnoDB表，在innodb_file_per_table模式下也一样。 我最近刚跟客户做了个spoke,他们几乎无法删掉一个400G的表，因为这个操作阻塞了很长时间。。</p>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/887/">
+                  <h3 class="post-title">
+                    好色的程序员：怎么加上彩色显示
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

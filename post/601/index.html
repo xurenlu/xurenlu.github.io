@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>ies4linux-2.99.0安装问题 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="IEs4linux是一个可以在linux/unix下安装IE的软件，最近新升级到了2.99.0,推出的新特性包括图形界面安装,安装IE7这两个深受大家喜爱的！ 但是经过我测试，还是有一点小问题: 1.图形界面在中途退出问题.可能是跟个别系统..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">ies4linux-2.99.0安装问题</h2>
+            <div class="post-date">2008-03-02</div>
+            
+            <div class="post-content" v-pre>
+              <p>IEs4linux是一个可以在linux/unix下安装IE的软件，最近新升级到了2.99.0,推出的新特性包括图形界面安装,安装IE7这两个深受大家喜爱的！ 但是经过我测试，还是有一点小问题: 1.图形界面在中途退出问题.可能是跟个别系统有关.我简单地用./ies4linux --no-gui关闭了图形界面功能。网上有这种办法:</p>
+<blockquote>
+<p>1. 編輯「ies4linux-latest/lib/messages.txt」檔案，將 1x 行的「tw . zhtw TW」改成「zh tw zhtw TW」。 2. 編輯「ies4linux-latest/lib/functions.sh」，將 9x 行的「pid=(wget ...)」改成「pid=(LANG=C wget ...) 」。</p>
+</blockquote>
+<p>2.启动后的IE无法显示菜单栏文字。网上说这是跟系统的皮肤有冲突,解决办法如下: cd ~/ies4linux/ie6 cp user.reg ~/user.reg.old gedit user.reg 在编辑器中将[Control Panel\Colors] 及其下的所有条目全部删除。 下面是删除部分: [Control Panel\Colors] 1200623437 &quot;ActiveBorder&quot;=&quot;228 228 228&quot; &quot;ActiveTitle&quot;=hex(1): &quot;AppWorkSpace&quot;=hex(1): &quot;Background&quot;=&quot;0 0 0&quot; &quot;ButtonAlternateFace&quot;=hex(1): &quot;ButtonDkShadow&quot;=hex(1): &quot;ButtonFace&quot;=&quot;228 228 228&quot; &quot;ButtonHilight&quot;=hex(1): &quot;ButtonLight&quot;=&quot;228 228 228&quot; &quot;ButtonShadow&quot;=hex(1): &quot;ButtonText&quot;=hex(1): &quot;GradientActiveTitle&quot;=hex(1): &quot;GradientInactiveTitle&quot;=hex(1): &quot;GrayText&quot;=hex(1): &quot;Hilight&quot;=hex(1): &quot;HilightText&quot;=hex(1): &quot;HotTrackingColor&quot;=hex(1): &quot;InactiveBorder&quot;=&quot;228 228 228&quot; &quot;InactiveTitle&quot;=hex(1): &quot;InactiveTitleText&quot;=hex(1): &quot;InfoText&quot;=hex(1): &quot;InfoWindow&quot;=hex(1): &quot;Menu&quot;=&quot;228 228 228&quot; &quot;MenuBar&quot;=hex(1): &quot;MenuHilight&quot;=hex(1): &quot;MenuText&quot;=hex(1): &quot;Scrollbar&quot;=hex(1): &quot;TitleText&quot;=hex(1): &quot;Window&quot;=hex(1): &quot;WindowFrame&quot;=hex(1): &quot;WindowText&quot;=hex(1): 我照做之后，确实ie6的菜单栏就能出来了。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/600/">
+                  <h3 class="post-title">
+                    求职贴(代友求职,批发...)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

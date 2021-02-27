@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>google的缠劲儿与广告代码 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="今天意外收到google的信:原来我之前放过google的广告,后来发现收入实在太少,开始一天能增加1美元,后来月来越少,一天才2毛钱,估计要n久才能达到100美元,所以干脆就不做了,没有想到google居然注意到了我这么10天来没有放广告..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">google的缠劲儿与广告代码</h2>
+            <div class="post-date">2005-06-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>今天意外收到google的信:原来我之前放过google的广告,后来发现收入实在太少,开始一天能增加1美元,后来月来越少,一天才2毛钱,估计要n久才能达到100美元,所以干脆就不做了,没有想到google居然注意到了我这么10天来没有放广告,发信给我说,我们发现你最近把google广告撤换下来了,是不是需要什么帮助?<br>
+于是干脆又放置上去,顺便研究了以下google调用广告的方式:<br>
+url=http://www.ansys.org.cn/bbs/<br>
+client=ca-pub-6130488140035937<br>
+adU=www.mbrm.com&amp;adT=Add-in+Software&amp;<br>
+adU=PriceGrabber.com&amp;adT=Ansys<br>
+adU=www.cuylaerts.net&amp;adT=Analysis+for+Windows<br>
+adU=www.fesawin.com&amp;adT=Finite+Element+Analysis<br>
+exp=Ads+by+Goooooooogle&amp;done=1<br>
+其中,adu是广告词买家,而adt则是他们购买的广告词.<br>
+至于exp不知道是什么东西,胆识既然他的值是Ads by Goooooooogle,应该也起不到多大的作用.<br>
+url这个简单,就是调用广告的页面.而最值得研究的就是client域了.他的值是:ca-pub-6130488140035937,似乎这个值应到记录客户端的IP地址,这样以防止作弊.但是这个东西是在放置广告代码的时候就设定了的:在放置广告的javascript代码中有一段:<br>
+google_ad_client = “pub-6130488140035937″;<br>
+这又如何解释了?<br>
+后来,我觉得它应当是我在登录google adsence进行管理时候的ip地址或者一个什么用来判断的比如cookie,或者sessionID.我更倾向于他是一个IP地址,或者是我的账号名称.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/109/">
+                  <h3 class="post-title">
+                    联想传奇
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

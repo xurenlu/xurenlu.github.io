@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Tokyo Tyrant:Tokyo Cabinet的网络接口 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="前面一篇介绍了Tokyo Cabinet,一个DBM. 作者在写完Tokyo Cabinet之后，立马又写了一个应用:Tokyo Tyrant. 这个东东被定义为:一个网络存储，读取接口。网络时代，加上这么一个功能，马上就可以冠上分布式的标..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Tokyo Tyrant:Tokyo Cabinet的网络接口</h2>
+            <div class="post-date">2008-08-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>前面一篇介绍了<a href="http://www.162cm.com/archives/681.html">Tokyo Cabinet,一个DBM.</a> 作者在写完Tokyo Cabinet之后，立马又写了一个应用:Tokyo Tyrant. 这个东东被定义为:一个网络存储，读取接口。网络时代，加上这么一个功能，马上就可以冠上分布式的标签了。 Tokyo Tyrant基于Tokyo Cabinet实现，提供了HTTP协议和memcache 协议的读取／写入等接口。这不仅仅是贴上了分布式的标签而已：有了http协议，在大公司复杂网络中部署时很多事情简单多了，因为http端口一般不需要专门申请路由了,而其他端口上部署应用时，要走一堆流程。而memcache协议则解决了很多人尝试用memcache来存储东西时无法持久存储的问题。有了这两个接口，应用Tokyo Tyrant时，你都不需要调API,php中用来连Memcached的代码直接使用就行。 <a href="http://blog.s135.com/read.php/362.htm">张宴同学写得比较详细，更实用</a>.请移步研究。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/681/">
+                  <h3 class="post-title">
+                    Tokyo Cabinet:另一个DBM实现
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>如何用php和AJAX来创建mailing List （译文，勿转载。） | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Use AJAX and PHP to Build your Mailing List By Aarron Walter November 1st 2006 Reader Rating: Not rated yet 一个设计优雅，内容充实的..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">如何用php和AJAX来创建mailing List （译文，勿转载。）</h2>
+            <div class="post-date">2006-11-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>Use AJAX and PHP to Build your Mailing List By Aarron Walter November 1st 2006 Reader Rating: Not rated yet 一个设计优雅，内容充实的网站，没有用户的参与，也是没有生命力的。选择邮件列表作为你的用户与网站之前交互的工具，是一个不错的选择。如果访问者喜欢并且相信您的网站，他们会很信任地把他们的邮件地址告诉佻，毕竟，他们也希望能够 得关于新产品，文章或其他有关信息的通知。这是一个在您的访问者之间建立关系网的不错的方法，并且还能让他一次又一次地访问您的网站，成为您网站的回头客。 在这篇文章中，我们将会用AJAX来接受用户提交的邮件订阅地址，这样就不用刷新页面。用这样一种方法，您的提交过程序会轻松许多。同时，我们的AJAX的提交表格也能接纳那些并不使用支持AJAX技术的浏览器的用户. 这篇文章假定您的mailing list 是储存在Mysql数据库中的。但是只要加上合适的代码，文章中的代码就能很好地适合您自己的应用。 在开始之前，请<a href="http://www.sitepoint.com/examples/mailinglist/code-archive.zip">下载</a>代码，看 一看我们要在这篇教程中讲的程序。</p>
+<h3 id="概要">[概要]</h3>
+<p>(奶奶的，这个不好翻译，原文是The Big Picture) 我们的mailing list 登记过程有三个要素： 在php脚本中的一段HTML 表单代码，用来接受用户的邮件地址. 一段javascript代码，监听用户提交表单的事件，并调用AJAX过程，发送Email地址。 一个简单的PHP代码，以接受邮件地址。他会检查邮件地址是否出错，并储存到Mysql数据库中。一个告诉用户操作是成功还是失败的信息会返回给HTML页。 我们同时需要保证登记过程对所有用户是正常可用的，因此写了一个php储存的过程，这样那些浏览器不支持Javascript的用户也能正常使用。 为了简化我们的AJAX编程，我们将用一个通用的javascript库(Prototype)来监听表单提交事件，并处理Ajax消息。如果您是一个Prototype的初学者，建议您看看Dan Webb的文章 <a href="http://www.sitepoint.com/article/painless-javascript-prototype">Painless JavaScript Using Prototype</a> and <a href="http://www.sitepoint.com/article/javascript-library">The JavaScript Library World Cup</a>.</p>
+<h3 id="表单提交过程">表单提交过程</h3>
+<p>我们的第一步是建立表单以接受邮件地址。然后我们调用javascript来发送消息。这就是表单代码：Join our mailing list! 表单是相当地简单。我们只弄了一个text类型的输入框，用来接受用户的邮件地址，然后放了一个submit按钮，用来激发Ajax事件。表单的ID必须确定，因为要靠它来激活javascript对提交事件的监听。 注意表单文字中有一个PHP函数:storeAddress.这是我们实现登记过程的可用性的核心。当这个页面第一次载入时，storeAddress返回一个空格，这样整段文字显示空。稍后，当Ajax过程被用户的提交事件激发后，Javascript会往这一段中加入消息，以让用户知道我们做了什么事。另外，如果用户客户端并没有开启对javascript的支持，那这个页面会被再次调入。这会导致storeAddress被再次调用。这一次，会显示一段消息。 在页面的头部，我们需要用<script> 标记链入Prototype库.我们也需要链入mailingList.js，这样代码将会是这样了: 这种架构的优雅之处就在于，不同的功能之间完全分开了，使得开发和维护更方便了。</p>
+<h3 id="用ajax来发送邮件地址">用AJAX来发送邮件地址</h3>
+<p>在js目录中，除开progotype.js文件之外，另外一个是mailinglist.js.这个文件是特别征对我们的html页面的AJAX应用的。这个文件的第一个应用就是往表单中添加一个事件监听器，由这个事件监听器来调用AJAX过程。当然，我们不能直接这么干，得等页面加载完成之后。而页面加载完成这个事件是是window这个对象的load事件来通知的。 为了添加这个事件监听器，我们需要用到Prototype的一个叫observe的很方便的方法。我们首先添加页面的load的事件的监听。 在这个监听器中，我们可以为表单的提交事件也加上我们的监听器 // Attach handler to window load event Event.observe(window, 'load', init, false); function init() { // Attach handler to form's submit event Event.observe('addressForm', 'submit', storeAddress); } 注意，当表单被提交时，监听器会调用一个叫storeAddress的Javascript方法。这个方法包含了一个到PHP脚本的Ajax调用。脚本是这样的: function storeAddress(e) { // Update user interface <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mo>(</mo><mo mathvariant="normal">′</mo></msup><mi>r</mi><mi>e</mi><mi>s</mi><mi>p</mi><mi>o</mi><mi>n</mi><mi>s</mi><msup><mi>e</mi><mo mathvariant="normal">′</mo></msup><mo>)</mo><mi mathvariant="normal">.</mi><mi>i</mi><mi>n</mi><mi>n</mi><mi>e</mi><mi>r</mi><mi>H</mi><mi>T</mi><mi>M</mi><mi>L</mi><msup><mo>=</mo><mo mathvariant="normal">′</mo></msup><mi>A</mi><mi>d</mi><mi>d</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>m</mi><mi>a</mi><mi>i</mi><mi>l</mi><mi>a</mi><mi>d</mi><mi>d</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msup><mi mathvariant="normal">.</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">;</mo><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mi>P</mi><mi>r</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>a</mi><mi>n</mi><mi>d</mi><mi>s</mi><mi>e</mi><mi>n</mi><mi>d</mi><mi>A</mi><mi>J</mi><mi>A</mi><mi>X</mi><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>s</mi><mi>t</mi><mi>v</mi><mi>a</mi><mi>r</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>s</mi><msup><mo>=</mo><mo mathvariant="normal">′</mo></msup><mi>a</mi><mi>d</mi><mi>d</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>s</mi><msup><mo>=</mo><mo mathvariant="normal">′</mo></msup><mo>+</mo><mi>e</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>p</mi><mi>e</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">(&#x27;response&#x27;).innerHTML = &#x27;Adding email address...&#x27;; // Prepare query string and send AJAX request var pars = &#x27;address=&#x27; + escape(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mopen"><span class="mopen">(</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">=</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord">.</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">/</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">=</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">=</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mopen">(</span></span></span></span>F('address')); var myAjax = new Ajax.Updater('response', 'ajaxServer.php', {method: 'get', parameters: pars}); // Stop form from submitting when JavaScript is enabled Event.stop(e); } 这个方法（函数）是非常简单的。它先显示&quot;Adding email address...&quot;以告知用户我们在做什么。接着，我们收集表单的信息，以便于发送AJAX请求。注意我们通过一个叫$F的函数来访问文本框的内容。这个函数接受的参数是HTML元素的ID,返回这个元素的值。我们使用javascript的escape函数来将用户的输入换成Unicode格式。这样，要发送给PHP script的url就已经准备好了。 接下来，就是最重要的部分了:Ajax.Updater对象的创建。当我们创建好Ajax.Updater对象时，我们把这些参数传给他: 我们希望在它的里面显示服务器端返回的内容的那个元素的ID php 脚本的地址 您希望发送给服务器端的内容，以及发送方法。（POST还是GET） Ajax.Updater会发送邮件地址，然后会很老实地等着服务器端的返回。当它收到回信儿，它就会在&quot;Adding email address...&quot; 那个地方显示出来。最后，我们调用 Event.stop(Prototype上提供的另一个方法)来停止表音的提交过程。（事实上，这个表单还正在往服务器上提交数据呢。）</p>
+<h3 id="设置mailinglist数据库">设置Mailinglist数据库</h3>
+<p>在我们写任任PHP脚本之前，我们需要一个地方来储存他们。这段sql脚本会创建一个叫mailinglist的表。 CREATE TABLE `mailinglist` ( `id` INT NOT NULL AUTO_INCREMENT , `email` TEXT NOT NULL , PRIMARY KEY ( `id` ) ); 后面的老子懒得翻了，老外的技术也就这德性。后面的会php的都会。没技术含量。需要的，自个儿下代码慢慢看吧。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/298/">
+                  <h3 class="post-title">
+                    道可道，非常道---PHP模板技术
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Drill:文件系统插件 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="你可以配置一个存储插件，来让Drill连接到一个本地文件系统，或是在Hadoop的core-site.xml里注册过的分布式文件系统，像是S3或是HDFS。默认情况下，Drill都提供了一个叫dfs的插件配置，指向了您的本地文件系统。
+连接..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill:文件系统插件</h2>
+            <div class="post-date">2017-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>你可以配置一个存储插件，来让Drill连接到一个本地文件系统，或是在Hadoop的core-site.xml里注册过的分布式文件系统，像是S3或是HDFS。默认情况下，Drill都提供了一个叫dfs的插件配置，指向了您的本地文件系统。</p>
+<h2 id="连接drill到一个文件系统">连接Drill到一个文件系统</h2>
+<p>在一个Drill集群中，您一般不会查询一个本地文件系统，而是将文件放在分布式文件系统中。当前阶段，您连接到多个Drill终端时，为了得到一致的，完整的查询结果，通常都需要一个分布式的文件系统 ，这个可能是通过将文件拷贝到所有的节点来模拟，或是使用NFS，也或者是使用Amazon的弹性云系统。 您 要在插件的工作空间中配置connection 属性，这样Drill才能连接到分布式文件系统；例如，下面的配置可以让Drill从一个客户端连接到HDFS集群:</p>
+<pre><code>&quot;connection&quot;: &quot;hdfs://&lt;IP Address&gt;:&lt;Port&gt;/&quot;
+</code></pre>
+<p>在集群中，要从一台机器查询HDFS上的文件，你只需要简单地将dfs插件中的connection属性中的&quot;file:///&quot;改成&quot;hdfs://&quot;就行了。 要修改dfs插件的配置来指向不同的本地或分布式文件系统，像下面这样使用connection属性就好了</p>
+<ul>
+<li>
+<p>本地文件系统的例子:</p>
+<p>{<br>
+&quot;type&quot;: &quot;file&quot;,<br>
+&quot;enabled&quot;: true,<br>
+&quot;connection&quot;: &quot;file:///&quot;,<br>
+&quot;workspaces&quot;: {<br>
+&quot;root&quot;: {<br>
+&quot;location&quot;: &quot;/user/max/donuts&quot;,<br>
+&quot;writable&quot;: false,<br>
+&quot;defaultInputFormat&quot;: null<br>
+}<br>
+},<br>
+&quot;formats&quot; : {<br>
+&quot;json&quot; : {<br>
+&quot;type&quot; : &quot;json&quot;<br>
+}<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>分布式文件系统的例子:</p>
+<pre><code>{
+    &quot;type&quot; : &quot;file&quot;,
+    &quot;enabled&quot; : true,
+    &quot;connection&quot; : &quot;hdfs://10.10.30.156:8020/&quot;,
+    &quot;workspaces&quot; : {
+      &quot;root&quot; : {
+        &quot;location&quot; : &quot;/user/root/drill&quot;,
+        &quot;writable&quot; : true,
+        &quot;defaultInputFormat&quot; : null
+      }
+    },
+    &quot;formats&quot; : {
+      &quot;json&quot; : {
+        &quot;type&quot; : &quot;json&quot;
+      }
+    }
+  }
+</code></pre>
+<p>要连接到Hadoop的文件系统，你要将name node的IP和端口写在配置中。</p>
+<h2 id="甜甜圈例子">甜甜圈例子</h2>
+<p>下面的例子展示了一个file类型的插件，还带有一个叫json_files的工作空间。这个配置将Drill指向到了本机的/users/max/drill/json/目录（dfs)。</p>
+<pre><code>{
+  &quot;type&quot; : &quot;file&quot;,
+  &quot;enabled&quot; : true,
+  &quot;connection&quot; : &quot;file:///&quot;,
+  &quot;workspaces&quot; : {
+    &quot;json_files&quot; : {
+      &quot;location&quot; : &quot;/users/max/drill/json/&quot;,
+      &quot;writable&quot; : false,
+      &quot;defaultInputFormat&quot; : json
+   } 
+},
+</code></pre>
+<p>配置里的&quot;connection&quot;选项是&quot;file:///&quot;,将Drill连接到了本地的文件系统 。 要查询示例的json_files工作空间里的文件，你可以使用USE指令来告诉Drill使用json_files工作空间，这个工作空间是指定在dfs插件里的。</p>
+<pre><code>USE dfs.json_files;
+SELECT * FROM `donuts.json` WHERE type='frosted'
+</code></pre>
+<p>如果json_files 工作空间不存在，查询就需要像下面这样指定完整的路径:</p>
+<pre><code>SELECT * FROM dfs.`/users/max/drill/json/donuts.json` WHERE type='frosted';</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1405/">
+                  <h3 class="post-title">
+                    Drill:关系数据库查询
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

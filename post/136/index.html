@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>绘制椭圆（坐标系的作用很大.） | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="用坐标系操作来绘制圆：
+命令流:
+CSWPLA,11,1,0.5,1
+/PREP7
+K,1,-5
+K,2,5
+L,1,2
+CSYS,0
+LSYMM,Y,1,,,,0,0
+lglue,all
+al,1,3
+详细解释:
+查阅帮助得知:
+1.CS..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">绘制椭圆（坐标系的作用很大.）</h2>
+            <div class="post-date">2005-05-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>用坐标系操作来绘制圆：</p>
+<p>命令流:</p>
+<p>CSWPLA,11,1,0.5,1<br>
+/PREP7<br>
+K,1,-5<br>
+K,2,5<br>
+L,1,2<br>
+CSYS,0<br>
+LSYMM,Y,1,,,,0,0<br>
+lglue,all<br>
+al,1,3</p>
+<p>详细解释:</p>
+<p>查阅帮助得知:</p>
+<p>1.CSWPLA：<br>
+[color=Green]/*<br>
+CSWPLA, KCN, KCS, PAR1, PAR2</p>
+<p>Defines a local coordinate system at the origin of the working plane.</p>
+<p>KCN<br>
+Arbitrary reference number assigned to this coordinate system. Must be greater than 10. A coordinate system previously defined with this number will be redefined.</p>
+<p>KCS<br>
+Coordinate system type:</p>
+<p>0 or CART —<br>
+Cartesian</p>
+<p>1 or CYLIN —<br>
+Cylindrical (circular or elliptical)</p>
+<p>2 or SPHE —<br>
+Spherical (or spheroidal)</p>
+<p>3 or TORO —<br>
+Toroidal</p>
+<p>PAR1<br>
+Used for elliptical, spheroidal, or toroidal systems. If KCS = 1 or 2, PAR1 is the ratio of the ellipse Y-axis radius to X-axis radius (defaults to 1.0 (circle)). If KCS = 3, PAR1 is the major radius of the torus.</p>
+<p>PAR2<br>
+Used for spheroidal systems. If KCS = 2, PAR2 = ratio of ellipse Z-axis radius to X-axis radius (defaults to 1.0 (circle)).</p>
+<p>*/[/color] 可以知道第一句是定义了一个圆柱坐标系<br>
+第三四句就创建了椭圆的两个端点.<br>
+第五句创建连接两个点构成一条线（因为是圆柱坐标系，所以绘制的线不是直线了：）<br>
+csys，0切换到整体坐标系.<br>
+最后”LSYMM,Y,1,,,,0,0″一句进行对称绘制.<br>
+然后lglue,all把两条线连接起来，最后一句绘制椭圆面.<br>
+这个里面比较难以理解的是用l,1,2命令连接两点得到的不是直线而是曲线.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/137/">
+                  <h3 class="post-title">
+                    伯仁因我而死 ，我因什么而死?
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

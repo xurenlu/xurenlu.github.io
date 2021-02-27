@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>常用于web spider中URL排重的Bloom Filter算法学习... | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Bloom Filters是一种效率较高的内存索引算法，它本身具有矛盾性：一方面能快速测试目标成员是否存在，另一方面又不可避免的具有假命中率。如下文档仅供参考。
+
+loom Filter 数据结构广泛地应用于网络技术中，它是由 Burton..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">常用于web spider中URL排重的Bloom Filter算法学习...</h2>
+            <div class="post-date">2008-12-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>Bloom Filters是一种效率较高的内存索引算法，它本身具有矛盾性：一方面能快速测试目标成员是否存在，另一方面又不可避免的具有假命中率。如下文档仅供参考。</p>
+<blockquote>
+<p>loom Filter 数据结构广泛地应用于网络技术中，它是由 Burton Bloom 在 1970 年提出来的。 它的优点是可以有效地节省空间，缺点是不能做到精确无误，不过这个看似很郁闷的缺点却可以使用调节参数的方法有效控制， 也可以通过不同的应用手段来避免差错。Bloom Filter 数据结构有很多应用，将在下一篇文章里叙述， 而这篇文章将简要叙述这个算法的原理和分析。</p>
+</blockquote>
+<p>假设有这样一种场景: 王老师在上课。老师一个学生也不认识，只有一张小卡片可以记8行数据。 学生家长会来询问，自己的孩子上学了没有. 王老师就想了这样一个办法：他在纸上记录上： 高的： 瘦的: 长得黑的: 男孩: 穿校服了 头发染黄了 双眼皮 ... 一共记8个特征。每来一个学生，他就记录随意选学生的三个特征，比如王宝强来了， 王宝强同学有三个特点：男的，黑，双眼皮。王老师就在这三项后打勾了。 到下课前，王老师的本上，除开头发长的以外，其他都打勾了。 来了一个家长，他给王老师描述的是，高高的，瘦瘦的女孩儿，穿着校服。呵呵，王老师觉得嗯，可能来了。 嗯，又来了一个家长，他问王老师：我的儿子长得高高，染的黄头发，他来上课没有？ 王老师一看：哟，头发染黄了的还没有勾上呢，说明一个染头发的都没见到。那这孩子肯定没上课了.... ...嗯 这差不多就是Bloom filter算法的幼教版。。。。 再上数字版: 我们先搞8个格子来做辅助演算。格子可以置为1.（打勾啦...) 然后我们有三个独立的hash函数，每个函数接受一个数为输入，他的输出值是1~8,决定了把哪个格式里置1。 初始状态是这样的: ------------------------------------ init: 0 0 0 0 0 0 0 0 现在我们往记录中增加一个数:这个数用三个独立hash函数计算一下： func1: 0 1 (hash出来是第2位是1) func2: 0 0 1 (第3位是1) func3: 0 0 0 0 0 1 (哈希出来第6位是1) 好，置1完了之后是这样的: 0 1 1 0 0 1 0 0 再增加一个数，3个hash函数的结果是: func1: 1 func2: 0 0 0 0 1 0 0 0 func3: 1 好，现在状态结果是: 1 1 1 0 1 1 0 0 再加一个数: func1: 0 0 0 1 func2: 0 0 0 0 0 0 0 1 func3: 0 0 0 0 0 1 0 0 当前状态结果: 1 1 1 1 1 1 0 1 此如来查询数a是否在集合中: 将a 用三个函数Hash: func1: 0 0 1 ... func2: 1 0 0 ... func3: 0 0 0 1 ... 三个函数分别在第3位，第1位，第4位为1.而状态结果数中第1,3,4们已经是1了。说明有可能这个数a已经存起来了。 再查b这个数是不是已经存起来了: 将b用三个函数做哈希: func1: 0 1 0 ... func2: 0 0 0 0 0 0 1 ...(第七位是1) func3: 0 0 1 ... 好了，现在，这个数分别是第2位，第7位，第3位是1.我们看看，结果数中，第7位还没入置为1。如果这个数已经记录下来了，那第7位肯定已经置成1了。所以，我们敢肯定，数b肯定还没有记录下来。 ...嗯，不知道我理解的对不对... 参考文献: <a href="http://blog.csdn.net/jiaomeng/archive/2007/01/27/1495500.aspx">http://blog.csdn.net/jiaomeng/archive/2007/01/27/1495500.aspx</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/756/">
+                  <h3 class="post-title">
+                    小钱包网站虚拟团队招募中
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Drill: Hive 插件 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Drill 1.1 及后续的版本支持Hive 1.0;要使用Hive的自定义SerDes或是输入格式、输出格式来访问Hive 的表，所有的Drill节点必须在Drill安装目录的jars/3rdparty 目录下放上Hive的SerDes或..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill: Hive 插件</h2>
+            <div class="post-date">2017-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>Drill 1.1 及后续的版本支持Hive 1.0;要使用Hive的自定义SerDes或是输入格式、输出格式来访问Hive 的表，所有的Drill节点必须在Drill安装目录的jars/3rdparty 目录下放上Hive的SerDes或是输入格式，输出格式的Jar包。 你可以通过选择WEB办控制台里的&quot;Storage&quot; tab来更新Hive配置。从禁用的手件列表里， 点击&quot;hive&quot;后面的&quot;Update&quot;按钮。Hive默认的插件的配置应当像下面这样：</p>
+<pre><code>{
+      &quot;type&quot;: &quot;hive&quot;,
+      &quot;enabled&quot;: false,
+      &quot;configProps&quot;: {
+        &quot;hive.metastore.uris&quot;: &quot;&quot;,
+        &quot;javax.jdo.option.ConnectionURL&quot;: &quot;jdbc:derby:;databaseName=../sample-data/drill_hive_db;create=true&quot;,
+        &quot;hive.metastore.warehouse.dir&quot;: &quot;/tmp/drill_hive_wh&quot;,
+        &quot;fs.default.name&quot;: &quot;file:///&quot;,
+        &quot;hive.metastore.sasl.enabled&quot;: &quot;false&quot;
+      }
+    }
+</code></pre>
+<h2 id="drill连接到hive的远程元数据">Drill连接到Hive的远程元数据</h2>
+<p>Hive的元数据是在Hive之外做为一个独立服务存的的。Drill可以能冠军Thrift来访问元数据。元数据和Hive数据库是通过JDBC来交互的。 按照这一章后面的步骤来将Drill指向到Hive的元数据服务的地址。在Hive 插件的配置中，设定Connection参数，来给Drill提供一个connection。在这里，如果你并不是通过HBaseStorageHandler来查询Hive 表的，你就已经完成配置了；如果你通过HBaseStorageHandler来查询Hive表，你需要配置Zookeeper quorum 和port这两个属性，因为HBaseStorageHandler需要这两个参数。Drill也使用这些参数来发现HBase 服务。如果你使用HBase 插件，请在Hive插插和HBase 插件里使用相同的Zookeeper quorum 和port 参数（如果你想要Hive 查询访问和HBase一样的源的话）。 <strong>注意，请确认你在注册Hive的元数据的时候，Hive元数据服务已经跑起来了。</strong></p>
+<h3 id="hive-远程元数据配置">Hive 远程元数据配置</h3>
+<p>要连接Drill到一个Hive 远程元数据：</p>
+<ol>
+<li>在hive.metastore.uris配置项里指定的系统上执行这个命令:</li>
+</ol>
+<p><code>hive --service metastore</code></p>
+<ol>
+<li>在Drill的Web控制台上，点选 &quot;Storage&quot; 标签页。</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1409/">
+                  <h3 class="post-title">
+                    Drill:HBase 插件
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

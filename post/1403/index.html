@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Drill:工作空间 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="工作空间
+你可以在存储插件的配置项里，配置多个工作空间。工作空间定义了本地或是分布式文件系统里的子目录下的文件。当你查询时，Drill会在所有的工作空间里搜寻以便加载到数据。一个隐式声明的默认的工作空间，“dfs.default&quot;..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill:工作空间</h2>
+            <div class="post-date">2017-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="工作空间">工作空间</h1>
+<p>你可以在存储插件的配置项里，配置多个工作空间。工作空间定义了本地或是分布式文件系统里的子目录下的文件。当你查询时，Drill会在所有的工作空间里搜寻以便加载到数据。一个隐式声明的默认的工作空间，“dfs.default&quot;,指向了本地的根文件系统。 下面这个&quot;dfs&quot;的插件的配置展示了定义工作空间的例子:</p>
+<pre><code>{
+     &quot;type&quot;: &quot;file&quot;,
+     &quot;enabled&quot;: true,
+     &quot;connection&quot;: &quot;file:///&quot;,
+     &quot;workspaces&quot;: {
+       &quot;root&quot;: {
+         &quot;location&quot;: &quot;/&quot;,
+         &quot;writable&quot;: false,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;tmp&quot;: {
+         &quot;location&quot;: &quot;/tmp&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;emp&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/emp&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;donuts&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/donuts&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       },
+       &quot;sales&quot;: {
+         &quot;location&quot;: &quot;/Users/user1/sales&quot;,
+         &quot;writable&quot;: true,
+         &quot;defaultInputFormat&quot;: null
+       }
+     },
+</code></pre>
+<p>将子目录定义为工作空间，可以使查询简化，这对于重复查询同一个文件相当有用。当你在工作空间的location域配置了一个个长长的路径名，在查询的时候，你不需要输入这个长长的路径名，只需要输工作空间名和小圆点就行了:</p>
+<pre><code>&lt;workspace name&gt;.`&lt;location&gt;`
+</code></pre>
+<p>\<location>是子目录的名字。 如果你查询的数据源，是你并没有设置成默认schema的插件的，需要把插件的名字带上。（这里假设你没有使用USE plugin.workspace 语句来连接到指定的存储插件）：</p>
+<pre><code>&lt;plugin&gt;.&lt;workspace name&gt;.`&lt;location&gt;`
+</code></pre>
+<h2 id="覆盖-dsfdefault-选项">覆盖 dsf.default 选项</h2>
+<p>在有些场景下，比如用户没有读根目录的权限的情况下，你需要覆盖掉dfs.default这个隐藏选项。你需要把下面这么一个叫default的workspace 添加到dfs插件的配置里。</p>
+<pre><code>&quot;default&quot;: {
+  &quot;location&quot;: &quot;&lt;/directory/path&gt;&quot;,
+  &quot;writable&quot;: true,
+  &quot;defaultInputFormat&quot;: null
+}
+</code></pre>
+<h2 id="无工作空间的hive-和hbase">无工作空间的Hive 和HBase</h2>
+<p>你是无法在Apache Drill安装的HBase和Hive 插件选项里配置工作空间的，虽然它们看起来也是按工作空间工作的。每个Hive插件的配置都包含了一个叫default的工作空间，这个工作空间指向了hive的元数据。当你查询Hive的default 工作空间时，你可以在查询语句里忽略工作空间的名字：</p>
+<pre><code>SELECT * FROM hive.customers LIMIT 10;
+SELECT * FROM hive.`default`.customers LIMIT 10;
+</code></pre>
+<p><strong>提示: Default 是一个关键词，关键词用作表名，字段名等标识符时，需要用反引号括起来。</strong> 因为HBase插件完全不适用工作空间，你可以简单地使用这样的查询:</p>
+<pre><code>SELECT * FROM hbase.customers LIMIT 10;</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1401/">
+                  <h3 class="post-title">
+                    Drill:插件的基本配置
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

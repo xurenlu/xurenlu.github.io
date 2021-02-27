@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>N早以前写的asp代码，曾广为流传的 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="就是adodb.strem那段流传最广，很神奇呢。我那么辛苦写了个模板类，居然只有几个台湾人用，怪。 &lt;% ’************************************************************* ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">N早以前写的asp代码，曾广为流传的</h2>
+            <div class="post-date">2007-05-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>就是adodb.strem那段流传最广，很神奇呢。我那么辛苦写了个模板类，居然只有几个台湾人用，怪。 &lt;% ’************************************************************* ’转发时请保留此声明信息,这段声明不并会影响你的速度! ’************************************************************* ’************************************************************* ’@author: 面条 ’@realname: 徐仁禄 ’@email: xurenlu@sohu.com ’@QQ: 55547082 ’@Homepage: http://www.ksdn.net ’@版权申明: ’ 非盈利性质团体或者个人可以免费使用. ’************************************************************* ’ 我敢担保 本程序由本人独立完成 ，没有参考他人的任何程序(参考了本人自己的php版本的template，不过那个也是本人独立完成的 .)同时本人声明 本class的所有示例版权均为本人所有，任何人或者单位实体不得随意更改 ’ 本template可免费用于： ’ 1.个人的非商业性质应用。 ’ 2.公益性质团体，如红十字会，孤儿院等等 ’ ’具体使用方法请看example.asp文件. ’ ’adSaveCreateOverWrite class template dim adSaveCreateOverWrite dim adSaveCreateNotExist public starttag public endtag public filename dim key_arr() dim val_arr() public content public total public contenta() public BlockContent ’ 块的内容(解析后的) public block_begin_delim public block_end_delim public block_begin_word public block_END_word public block_null sub Class_Initialize()’ 类的初始化 redim key_arr(0) redim val_arr(0) redim contenta(0) adSaveCreateOverWrite=2 adSaveCreateNotExist=1 starttag=&quot;{&quot; endtag=&quot;}&quot; total=0 block_begin_word=&quot;BEGIN&quot; block_end_word=&quot;END&quot; block_begin_delim=&quot;&quot; block_null=&quot; &quot; ’ begin　和end之间用空格隔开 end sub sub echo (a) response.write a end sub function readfile(filepath) dim stm2 on error resume next set stm2 =server.createobject(&quot;ADODB.Stream&quot;) stm2.Charset = &quot;gb2312&quot; stm2.Open stm2.LoadFromFile filepath readfile = stm2.ReadText end function function writefile(filepath,str)’ 写入文件的函数 dim stm on error resume next Set stm = server.createobject(&quot;ADODB.Stream&quot;) stm.Charset = &quot;gb2312&quot; stm.Open stm.WriteText str stm.SaveToFile filepath, adSaveCreateOverWrite end function function SetFile(file)’ 设置文件，读取文件内容 filename=file content=readfile(file) end function function inarray(val,arr)’val是否在数组arr中 dim tmp,i,rr,re,pt,tt for i =0 to ubound(arr) if arr(i)=val then inarray=i exit function end if next inarray=-1 ’不在数组中. end function function listarray(arr,str) dim tmp,i,rr,re,pt,tt str=&quot; &quot; &amp; str for i=0 to ubound(arr) echo str &amp; i &amp; &quot;:&quot; &amp; arr(i) &amp; vbcrlf next end function function NewKey(key,val) ’添加新的键值. dim tmp,i,rr,re,pt,tt,pos i=total pos=inarray(key,key_arr) if pos=-1 then ’//如果这个键值不存在. redim Preserve key_arr(i) redim Preserve val_arr(i) ’echo &quot;key_arr(&quot; &amp; i &amp; &quot;)=&quot; &amp; key &amp; vbcrlf key_arr(i)=key val_arr(i)=val total=total+1 else key_arr(pos)=key val_arr(pos)=val end if end function function resetKeys()’ 初始化键名数组 redim key_arr(0) redim val_arr(0) total=0 end function function getTextContent(Tcontent) dim tmp,i,rr,re,pt,tt ’ 得到把某一个文本段的{}内容替换后的块. tmp=Tcontent for i=0 to total -1 tmp=replace(tmp &amp; &quot;&quot;,starttag &amp; key_arr(i) &amp; endtag, val_arr(i)&amp; &quot;&quot; ) ’ 替换各个键值. next ’ 替换{***}类似的东西。 ’ 目前暂时先放一放把。 ’’ ’’ set re=new RegExp re.Global=True re.Ignorecase=True pt=&quot;{([a-zA-Z0-9_]{0,100})}&quot; re.Pattern=pt set tt=re.Execute(tmp) for i= 0 to tt.count -1 tmp=replace(tmp &amp; &quot; &quot;, tt.item(i) &amp; &quot;&quot; ,&quot;&quot;) next set re=nothing set tt=nothing ’’ ’’ getTextContent=tmp end function function getText() dim tmp,i,rr,re,pt,tt ’ 得到把某一个文本段的{}内容替换后的块. tmp=content for i=0 to total -1 tmp=replace(tmp &amp; &quot;&quot;,starttag &amp; key_arr(i) &amp; endtag &amp; &quot;&quot;, val_arr(i) &amp; &quot;&quot; ) ’ 替换各个键值. next ’ 替换{***}类似的东西。 ’ 目前暂时先放一放把。 ’’ ’’ set re=new RegExp ’ 这里是模式匹配的应用 有正规表达式应用高手的指导一下! re.Global=True re.Ignorecase=True pt=&quot;{([a-zA-Z0-9_]{0,100})}&quot; re.Pattern=pt set tt=re.Execute(tmp) for i= 0 to tt.count -1 tmp=replace(tmp &amp; &quot;&quot;, tt.item(i) &amp; &quot;&quot;,&quot;&quot;) next set re=nothing set tt=nothing ’’ ’’ getText=tmp content=tmp end function function getBlockContent(block)’ 得到模板内容中某一个块的内容 dim i,pos1,pos2,firststr,secondstr,tempstr firstStr=&quot;&quot; secondStr=&quot;&quot; pos1=instr(content,firststr) pos2=instr(content,secondstr) if (pos2-pos1)&lt;=0 then else tempstr=mid(content,pos1,pos2-pos1) tempstr=replace(tempstr,firststr,&quot;&quot;) tempstr=replace(tempstr,secondstr,&quot;&quot;) ’response.write replace(tmpstr,&quot;&lt;--&quot;,&quot;&quot;) end if ’response.end getBlockContent=tempstr ’ 返回该字符串. end function sub tofile(file)’ 输出到某个文件 dim tmp tmp=gettext() writefile file,content’ 输出到文件 end sub function ParseBlock(block) ’ 到到某一个块的解析后的内容. dim b,tmp dim firststr,secondstr,tempstr b=GetBlockContent(block) ’得到某一个块解析前的内容 tmp=getTextContent(b)’得到这个块解析后的内容. BlockContent=BlockContent &amp; tmp ’ 保存起来拉 哈哈。这样就实现了重复显示某一个块. firstStr=&quot;&quot; secondStr=&quot;&quot; tmp=replace(tmp,firststr,&quot;&quot;) tmp=replace(tmp,secondstr,&quot;&quot;) ParseBlock=tmp end function function replaceBlock(block)’ 把解析了几次的块的内容给替换解析了. dim con,tmp dim firststr,secondstr,tempstr con=GetBlockContent(block) ’得到这个块解析前的内容. tmp=replace(content &amp; &quot;&quot;,con &amp; &quot;&quot;,Blockcontent &amp; &quot;&quot;) blockcontent=&quot;&quot; firstStr=&quot;&quot; secondStr=&quot;&quot; tmp=replace(tmp,firststr,&quot;&quot;) tmp=replace(tmp,secondstr,&quot;&quot;) content=tmp end function function replaceBlockforNUll(block)’ 把解析了几次的块的内容给替换解析了. dim tmp,con con=GetBlockContent(block) ’得到这个块解析前的内容. tmp=replace(content &amp; &quot;&quot;,con &amp; &quot;&quot;,&quot;&quot;) blockcontent=&quot;&quot; content=tmp end function function replaceBlockfor(block,deStr)’ 把解析了几次的块的内容给替换解析了. dim tmp,con con=GetBlockContent(block) ’得到这个块解析前的内容. tmp=replace(content &amp; &quot;&quot;,con &amp; &quot;&quot;,Dstr) blockcontent=&quot;&quot; content=tmp end function end class %&gt; 2、数据库结果集合操作类 程序代码 程序代码 &lt;% ’************************************************************* ’转发时请保留此声明信息,这段声明不并会影响你的速度! ’************************************************************* ’************************************************************* ’@author: 面条 ’@realname: 徐仁禄 ’@email: xurenlu@sohu.com ’@QQ: 55547082 ’@Homepage: http://www.ksdn.net ’@版权申明: ’ 非盈利性质团体或者个人可以免费使用. ’************************************************************* ’************************************************************* ’************************************************************* ’************************************************************* class Rsclass private iRs private isql private iconn private closeConn private openConn ’************************************************************* ’ 进行初始化，建立iconn和irs对象. ’************************************************************* Private Sub Class_initialize() set iconn=server.createobject(&quot;adodb.connection&quot;) set irs=server.createobject(&quot;adodb.recordset&quot;) End Sub public sub connect(connstr) err.clear on error resume next iconn.open connstr if err.number&lt;&gt;0 then response.write &quot;数据联接出错了.&quot; end sub public property let conn(connection) set iconn=connection ’通过外界传入一个数据库联接. end property Private Sub Class_Terminate() on error resume next irs.close iconn.close set iconn=nothing set irs=nothing End Sub ’************************************************************* ’ 内容:实现统计功能,一般用select count(*) from table where id&gt;54类似的sql语句. ’************************************************************* public function getCountBysql(sql) on error resume next dim count count=iconn.execute(sql)(0) getCountBysql=count iconn.close end function ’************************************************************* public function deleteBySql(sql) err.clear on error resume next iconn.execute(sql) if err.errcode&lt;&gt;0 then deleteBysql=false exit function end if deleteBySql=true end function ’************************************************************* public function deleteByid(table,column,value) err.clear on error resume next iconn.execute(&quot;delete from &quot;&amp;table &amp; &quot; where &quot;&amp;column &amp; &quot;=’&quot;&amp;value &amp; &quot;’&quot;) if err.errcode&lt;&gt;0 then deleteByid=false exit function end if deleteByid=true end function ’************************************************************* ’ 返回一个词典，用这个词典来装载要添加的对象. public function getdict() set getdict=server.createobject(&quot;scripting.dictionary&quot;) end function ’************************************************************* ’ 增加新的记录. public function add(obj,table) dim item isql=&quot;select * from &quot; &amp; table response.write isql iRs.open isql,iconn,1,3 irs.addnew for each item in obj irs(item)=obj(item) next irs.update irs.close end function ’************************************************************* ’ 得到查询得返回值 public function getquery(sql) iRs.open sql,iconn,1,1 if irs.eof and irs.bof then getquery=null else set getquery=irs end if end function public function getqueryPage(sql,pageNum,PageSize) on error resume next iRs.pageSize=pageSize iRs.open sql,iconn,1,1 iRs.AbsolutePage=pageNum if irs.eof and irs.bof then getqueryPage=null else set getqueryPage=irs end if response.write &quot;&quot;&amp; err.number &amp; err.description &amp;&quot;&quot; end function ’************************************************************* ’ 让结果集移动到第n页. public function setPage(pageNum,PageSize) on error resume next iRs.moveFirst iRs.move((pageNum-1)*PageSize) end function end class ’************************************************************* 用法示例: dim cstr dim path path=server.mappath(&quot;2data.mdb&quot;) cstr= &quot;DBQ=&quot;+path+&quot;;DefaultDir=;DRIVER={ Microsoft Access Driver (*.mdb)};&quot; dim rec set rec=new RsClass rec.connect(cstr) response.write &quot;************************&quot; set tt=rec.getqueryPage(&quot;select top 8 * from help&quot;,2,4) response.write tt.recordcount &amp; &quot;<br>
+&quot; do while not tt.eof response.write tt(0) &amp;&quot;<br>
+&quot; tt.movenext loop tt.movefirst tt.close %&gt; 数据库操作类 程序代码 程序代码 &lt;% ’──────────────────────────────── ’功能说明：db类是实现数据库连接的类，里面留有数据库连接字符串接口 ’包括模块：无，一般都是被其他模块包括 ’调用方法：1、如果使用原有数据库连接，则不用更改数据库连接字符串ConnStr ’ 具体操作为：Set DBC=New DataBaseClass ’ DBC.ConnStr=&quot;其他连接字符串&quot; ’ 2、方法使用：Set Conn=DBC.OpenConnection()得到一个连接对象 ’──────────────────────────────── Class dbclass ’──────────────────────────────── ’定义变量 Private IConnStr ’──────────────────────────────── ’ ConnStr属性 Public Property Let ConnStr(Val) IConnStr = Val End Property ’──────────────────────────────── ’ ConnStr属性 Public Property Get ConnStr() ConnStr = IConnStr End Property ’──────────────────────────────── ’ 类初始化 Private Sub Class_initialize() End Sub ’──────────────────────────────── ’ 类注销 Private Sub Class_Terminate() ConnStr = Null End Sub ’──────────────────────────────── ’ 建立一个连接 Public Function OpenConnection() Dim TempConn ’On Error Resume Next Set TempConn = Server.CreateObject(&quot;ADODB.Connection&quot;) TempConn.Open ConnStr Set OpenConnection = TempConn Set TempConn = Nothing if Err.Number &lt;&gt; 0 then Response.Write (&quot;alert(’[系统错误]nn数据库连接错误！请检查系统参数设置&gt;&gt;站点常量设置,或者 /inc/const.asp文件!’);&quot;) Response.End end if End Function End Class %&gt; 基于adodb.stream的文件操作类 程序代码 程序代码 &lt;% ’************************************************************* ’转发时请保留此声明信息,这段声明不并会影响你的速度! ’************************************************************* ’************************************************************* ’@author: 面条 ’@realname: 徐仁禄 ’@email: xurenlu@sohu.com ’@QQ: 55547082 ’@Homepage: http://www.ksdn.net ’@版权申明: ’ 非盈利性质团体或者个人可以免费使用. ’************************************************************* ’************************************************************* ’ 类名称： files ’ 类功能: 实现文件读写功能，利用adodb.stream实现,在不支持fso的主机上也可以读写文件. ’************************************************************* class files private adSaveCreateOverWrite ’创建文件的时候可以覆盖已经存在的文件. private adSaveCreateNotExist ’保存文件的时候如果文件不存在，可以创建文件. ’************************************************************* ’ 事件名称： Class_Initialize() ’ 事件发生条件： 类创建时候产生该事件 ’ 事件内容: 给私有变量赋值 ’ 事件传入参数: 无 ’************************************************************* sub Class_Initialize() adSaveCreateOverWrite =2 adSaveCreateNotExist = 1 end sub ’************************************************************* ’ 函数名称: function readfile(filepath) ’ 函数内容: 读出文件 ’ 传入参数: filepath:要读的文件的绝对路径 ’ 返回参数: 要读的文件的内容. ’************************************************************* function readfile(filepath) on error resume next dim stm2 set stm2 =server.createobject(&quot;ADODB.Stream&quot;) stm2.Charset = &quot;gb2312&quot; stm2.Open stm2.LoadFromFile filepath readfile = stm2.ReadText end function ’************************************************************* ’ 函数名称: function writefile(filepath,str) ’ 函数内容: 写入文件 ’ 传入参数: filepath:要读的文件的绝对路径 ’ str: 要写入的内容 ’ 返回参数: 无返回 ’************************************************************* function writefile(filepath,str) on error resume next Set stm = server.createobject(&quot;ADODB.Stream&quot;) stm.Charset = &quot;gb2312&quot; stm.Open stm.WriteText str stm.SaveToFile filepath, adSaveCreateOverWrite end function ’************************************************************* ’ 函数名称: function copy(filepath_s,filepath_d) ’ 函数内容: 读出文件 ’ 传入参数: filepath_d:目的文件的绝对路径 ’ filepath_s:源文件路径 ’************************************************************* function copy(filepath_s,filepath_d) on error resume next dim stm2 set stm2 =server.createobject(&quot;ADODB.Stream&quot;) stm2.Charset = &quot;gb2312&quot; stm2.Open stm2.LoadFromFile filepath_s stm2.SaveToFile filepath_d, adSaveCreateOverWrite end function end class %&gt;</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/407/">
+                  <h3 class="post-title">
+                    回到Windows的怀抱
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

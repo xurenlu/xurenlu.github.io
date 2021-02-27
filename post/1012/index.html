@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>懒人连ssh不输密码若干大法 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="作为一名系统管理员，经常需要在各种机器中倒腾来倒腾去的。嗯，做为一个超级大懒人，我想了不少办法来一步步简化连接方法。请一条条看，瘟到死插屁用户请绕行。 Section one:从终端复制字符串到剪贴板的工具:xclip 这个只针对linux..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">懒人连ssh不输密码若干大法</h2>
+            <div class="post-date">2010-03-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>作为一名系统管理员，经常需要在各种机器中倒腾来倒腾去的。嗯，做为一个超级大懒人，我想了不少办法来一步步简化连接方法。请一条条看，瘟到死插屁用户请绕行。 Section one:从终端复制字符串到剪贴板的工具:xclip 这个只针对linux/unix等X用户有效。我在bash_profile中写了这么一行: alias pw=’echo PASSWORD|xclip’ 然后在要输入密码之前，先在终端中输命令pw,这个密码就存在粘贴板里了。然后接下来，你就粘贴就行了，简单地Shift+Insert键搞定。我最喜欢用的就是这个。嗯，简单实用。不用写啥代码。 Section Two:Expect Expect是一个perl工具，根据你事先设定好规则响应服务器端的某个输入。Yahoo的机器上有一个工具叫dist_install,每次操作至少要输3次密码，另一个yinst，也经常要输5次左右的密码，我就常常用这个来解压。不过这个要写脚本。 网上有现成的脚本可用，比如这里: http://blog.chinaunix.net/u/21908/showart_1178288.html Section Three: sshpass:一个简单的能用参数方式指定密码的ssh 连接工具 这个工具的使用方法有两种: A: 设置SSHPASS环境变量，比如在bashrc/bash_profile中写上 export SSHPASS=’********’ 接下来用sshpass -e ssh some.host.yahoo.com [some commands] 就可以了。 B: 直接用-p参数指定密码:sshpass -p ****** ssh some.host.yahoo.com [some comands] 哦，忘了说了，这个sshpass是一个开源的工具，放在sourceforge上了，http://sshpass.sourceforge.net/；但是这个程序有问题，就是那个著名的第一次问题,第一次连接一个主机时会询问你是否要将这个host加入known_hosts;原来的程序会直接退出，我做了修改，改动后的版本在这里:http://github.com/xurenlu/sshpass 安装，很简单，用tar -xzf sshpass-1.0.4.tar.gz将之解压，然后cd sshpass-1.0.4,再配置一下:./configure,最后make &amp;&amp; sudo make install就行了。 推荐用我维护的版本，嗯，原来程序除开key问题外还有个缓冲区过小的问题，我把它从40改到1024了。另外，程序代码非常不雅，从排版到命名都相当不规范。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1010/">
+                  <h3 class="post-title">
+                    对TokyoTyrant的一个简单的patch,以支持列出所有的Key
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

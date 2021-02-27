@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>做前端工程师的一点儿总结 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="HTML基本知识
+1.何为DTD?HTML 和XHTML的区别
+2.块级元素和块内元素的区别:
+Block-level
+address | blockquote | body | dd | div | dl | dt | fieldset ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">做前端工程师的一点儿总结</h2>
+            <div class="post-date">2009-02-18</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="html基本知识">HTML基本知识</h1>
+<p>1.何为DTD?HTML 和XHTML的区别<br>
+2.块级元素和块内元素的区别:</p>
+<h3 id="block-level">Block-level</h3>
+<p>address | blockquote | body | dd | div | dl | dt | fieldset | form | frame | frameset | h1 | h2 | h3 | h4 | h5 | h6 | noframes | ol | p | ul | center | dir | hr | menu | pre | del | ins | form | table | noscript</p>
+<h3 id="inline-level">Inline-level</h3>
+<p>a | abbr | acronym | b | bdo | big | br | cite | code | dfn | em | i | img | input | kbd | label | q | samp | select | small | span | strong | sub | sup | textarea | tt | var</p>
+<h1 id="css基础知识">CSS基础知识</h1>
+<h2 id="选择器">选择器</h2>
+<p>类型选择器<br>
+后代选择器<br>
+ID选择器<br>
+类选择器<br>
+伪类<br>
+通用选择器</p>
+<h2 id="优先级">优先级</h2>
+<figure data-type="image" tabindex="1"><img src="http://www.162cm.com/wp-content/uploads/2009/02/css.png" alt="css" title="css" loading="lazy"></figure>
+<h2 id="跨浏览器策略">跨浏览器策略</h2>
+<p>#demo{<br>
+    background:red;/*for firefox*/<br>
+    border:2px solid black ;/*for firefox*/<br>
+    *background:blue;/*for ie7*/<br>
+    *border:2px solid green; /*for ie7*/<br>
+    _background:green;/*for ie6*/<br>
+    _border:2px solid red; /*for ie6*/<br>
+}<br>
+注：*是针对ie的（包括ie6和ie7）；’_’是专门针对ie6的。<br>
+顺序是:先firefox,再IE7,再IE6</p>
+<h1 id="css相关的要点">CSS相关的要点</h1>
+<p>1.CSS的DTD引发的怪异模式，标准模式，近标准模式。<br>
+2.CSS的盒模型的不同。（在怪异模式下的不同)<br>
+3.浮动方式.<br>
+4.定位方式(普通定位，流式定位，相对定位，绝对定位）<br>
+5.在某些标记(UL/li)的默认样式上的不同.</p>
+<h1 id="页面在ie和css下展现不同时如何解决">页面在IE和CSS下展现不同时如何解决</h1>
+<p>1.检查是否因为缺乏DTD而触发了怪异模式<br>
+2.检查是否没有清理IE或firefox的默认样式。<br>
+3.是否因为某个标记未关闭或嵌套不正确而引引浏览器自动修正脚本。不同的浏览器修正方式不同。(实在不行了就用webdeveloper插件的verify功能到w3.org上去确证)</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/830/">
+                  <h3 class="post-title">
+                    继续扯蛋之六
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

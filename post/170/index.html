@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>baidu的排名顺序 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="做了一些试验，baidu的排名顺序大致有以下的规则：
+1、知名站点
+2、联盟成员
+3、非商业站点
+4、页面的更新时间
+分析：
+1、搜索程序是怎么确定一个网站是不是知名站点呢？我想大概和以下几个因素有关：
+（A）站点的收录数量
+（B）站点的外..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">baidu的排名顺序</h2>
+            <div class="post-date">2005-04-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>做了一些试验，baidu的排名顺序大致有以下的规则：</p>
+<p>1、知名站点<br>
+2、联盟成员<br>
+3、非商业站点<br>
+4、页面的更新时间</p>
+<p>分析：</p>
+<p>1、搜索程序是怎么确定一个网站是不是知名站点呢？我想大概和以下几个因素有关：</p>
+<p>（A）站点的收录数量<br>
+（B）站点的外部链接 （也就是baidu所谓的web超链分析法）<br>
+（C）站点的访问量 （这一点有争议，业界一般认为排名和网站的流量无关）</p>
+<p>2、成员站点的解释（主要指baidu的一些合作伙伴，tom、qq之类的，然后就是搜索联盟，一些盗用baidu数据库的程序也会沾光，比如网人的程序，以及playcomputer 这个著名的作弊站点。</p>
+<p>3、似乎因为竞价排名的问题，baidu对商业站点很不友好</p>
+<p>4、页面更新时间，baidu很在意这个，也是，搜索引擎不可能把一个几月前的页面排在很靠前的位置，呵呵</p>
+<p>结束语：国内搞搜索引擎优化的人，都是搞google排名，google优化，呵呵，没人敢做baidu的优化排名，因为baidu的人工干预性很强，机器再怎么厉害还是有规则的，而人的思维是没有规则的。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/171/">
+                  <h3 class="post-title">
+                    记几件事把
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

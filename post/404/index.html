@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Apache的Mod_rewrite的配置学习笔记 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="modrewrite配置文档学习笔记:
+1.环境变量:
+例子:
+
+SCRIPT\_NAME=/sw/lib/w3s/tree/global/u/rse/.www/index.html
+SCRIPT\_FILENAME=/u/rse/.www..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Apache的Mod_rewrite的配置学习笔记</h2>
+            <div class="post-date">2007-04-29</div>
+            
+            <div class="post-content" v-pre>
+              <p>modrewrite配置文档学习笔记:</p>
+<p>1.环境变量:</p>
+<pre><code>例子:
+
+SCRIPT\_NAME=/sw/lib/w3s/tree/global/u/rse/.www/index.html
+SCRIPT\_FILENAME=/u/rse/.www/index.html
+SCRIPT\_URL=/u/rse/
+SCRIPT\_URI=http://en1.engelschall.com/u/rse/
+</code></pre>
+<p>2:RewriteBase<br>
+描述：设定基于目录的重写规则的Base url.<br>
+Syntax:	RewriteBase URL-path<br>
+Context:	directory, .htaccess<br>
+Override:	FileInfo<br>
+Status:	Extension<br>
+Module:	mod_rewrite<br>
+这个一般不太需要管它.<br>
+3.RewriteCond<br>
+用法:	RewriteCond Teststring Pattern<br>
+这里是Teststring里用到的一些内置变量.<br>
+HTTP headers:	connection &amp; request:<br>
+HTTP_USER_AGENT<br>
+HTTP_REFERER<br>
+HTTP_COOKIE<br>
+HTTP_FORWARDED<br>
+HTTP_HOST<br>
+HTTP_PROXY_CONNECTION<br>
+HTTP_ACCEPT<br>
+REMOTE_ADDR<br>
+REMOTE_HOST<br>
+REMOTE_PORT<br>
+REMOTE_USER<br>
+REMOTE_IDENT<br>
+REQUEST_METHOD<br>
+SCRIPT_FILENAME<br>
+PATH_INFO<br>
+QUERY_STRING<br>
+AUTH_TYPE</p>
+<pre><code>DOCUMENT\_ROOT
+SERVER\_ADMIN
+SERVER\_NAME
+SERVER\_ADDR
+SERVER\_PORT
+SERVER\_PROTOCOL
+SERVER\_SOFTWARE
+TIME\_YEAR
+TIME\_MON
+TIME\_DAY
+TIME\_HOUR
+TIME\_MIN
+TIME\_SEC
+TIME\_WDAY
+TIME
+API\_VERSION
+THE\_REQUEST
+REQUEST\_URI
+REQUEST\_FILENAME
+IS\_SUBREQ
+HTTPS
+
+
+#你可以在规则前加&quot;!&quot;取反.
+#这是一些常见的特殊的规则。你可以使用他们来取代一些表达式:
+
+\* 'CondPattern' (lexicographically follows)
+\* '=CondPattern' (lexicographically equal)
+\* '-d' (is directory)  测试是否是目录.
+\* '-f' (is regular file) 测试是否是常规文件.
+\* '-s' (is regular file, with size)
+\* '-l' (is symbolic link)
+\* '-F' (is existing file, via subrequest)
+\* '-U' (is existing URL, via subrequest)
+
+你可以为规则后设置\[flags\]选项作为第三个参数.常见的有:
+You can also set special flags for CondPattern by appending \[flags\]  as the third argument to the RewriteCond  directive, where flags is a comma-separated list of any of the following flags:
+
+# 'nocase|NC' (no case)
+# 'ornext|OR' (or next condition)
+例如:
+RewriteCond %{REMOTE\_HOST}  ^host1.\*  \[OR\]
+RewriteCond %{REMOTE\_HOST}  ^host2.\*  \[OR\]
+RewriteCond %{REMOTE\_HOST}  ^host3.\*
+RewriteRule ...some special stuff for any of these hosts...
+
+如下例:
+RewriteCond  %{HTTP\_USER\_AGENT}  ^Mozilla.\*
+RewriteRule  ^/$                 /homepage.max.html  \[L\]
+
+RewriteCond  %{HTTP\_USER\_AGENT}  ^Lynx.\*
+RewriteRule  ^/$                 /homepage.min.html  \[L\]
+
+RewriteRule  ^/$                 /homepage.std.html  \[L\]
+用Mozilla类的浏览器访问时会带你到homepage.max.html,这里支持所有特性。用Lynx来浏览时，带你到纯文本页(homepage.min.html),默认情况下会访问一个叫homepage.std.html的页.
+</code></pre>
+<p>4.RewriteEngine:<br>
+使用:<br>
+RewriteEngine On|Off<br>
+如果存在.htaccess的文件，应当显式地指明RewriteEngine On.<br>
+因为默认情况下.htaccess的RewriteEngine项是Off的。因此如果想用.htaccess来设置rewrite,文件头一行一般都需要RewriteEngine On</p>
+<p>5.RewriteLock:<br>
+供rewrite-mapping程序同步使用的锁文件。<br>
+使用:<br>
+RewriteLock file-path</p>
+<p>6.RewriteLog:<br>
+设定日志文件.如果不是以&quot;/&quot;开头，则是指相对ServerRoot的相对路径.<br>
+使用:<br>
+RewriteLog	file-path</p>
+<p>7.RewriteLogLevel:<br>
+设定日志记录级别。<br>
+使用:<br>
+RewriteLogLevel level<br>
+默认:</p>
+<p>8.RewriteMap:<br>
+使用Mapping.<br>
+它的上下文是Server config 和Virtual host<br>
+使用:<br>
+RewriteMap Mapname MapType:Mapsource<br>
+例如:<br>
+在httpd.conf中配置:<br>
+#RewriteMap exampleMap txt:/path/to/file/map.txt<br>
+#RewriteRule ^/ex/(.*)	${exampleMap:$1}<br>
+而map文件的格式有这个几个:<br>
+1.txt类型的map文件:<br>
+#Standard Plain	 txt:<br>
+#map.txt<br>
+#maptype:txt<br>
+Ralf.S.Engelschall    rse   # Bastard Operator From Hell<br>
+Mr.Joe.Average        joe   # Mr. Average</p>
+<pre><code>2.Randomized Plain Text
+	#maptyp:rnd
+	static	www1|www2|www3|www4
+	dynamic	www5|www6
+
+	配置:
+	RewriteMap servers	rnd:/path/to/mapfile/map.txt
+	RewriteRule ^/(.\*.(png|gif|jpg)) http://${servers:static}/$1	\[NC,P,L\]
+	RewriteRule ^/(.\*)	http://${servers:dynamic}/$1	\[P,L\]
+
+3.dbm
+	这里提供了一个txt2dmb程序。
+	!/path/to/bin/perl
+	##
+	##  txt2dbm -- convert txt map to dbm format
+	##
+
+	use NDBM\_File;
+	use Fcntl;
+
+	($txtmap, $dbmmap) = @ARGV;
+
+	open(TXT, &quot;&lt;$txtmap&quot;) or die &quot;Couldn't open $txtmap!n&quot;;
+	tie (%DB, 'NDBM\_File', $dbmmap,O\_RDWR|O\_TRUNC|O\_CREAT, 0644)
+	  or die &quot;Couldn't create $dbmmap!n&quot;;
+
+	while () {
+	  next if (/^s\*#/ or /^s\*$/);
+	  $DB{$1} = $2 if (/^s\*(S+)s+(S+)/);
+	}
+
+	untie %DB;
+	close(TXT);
+
+	用法:
+	$ txt2dbm map.txt map.db
+
+4.内置函数:
+	map:int map-source:internal apache functions
+	functions有:toupper,tolower,escape,unescape
+
+5.外部程序:
+	maptyp:prg map source:外部程序的路径.
+	示例:
+	#!/usr/bin/perl
+	$| = 1;
+	while () {
+		# ...put here any transformations or lookups...
+		print $\_;
+	}
+</code></pre>
+<p>9.RewriteOptions<br>
+用法:<br>
+RewriteOptions rewriteoptions<br>
+default	:<br>
+rewriteoptions	maxRedirects=10<br>
+上下文:<br>
+server config,virtual host,.htaccess directory<br>
+rewriteoptions可以是下面两个值:<br>
+inherit:从上一级配置继承.<br>
+MaxRedirects=num(10,15,,,,,等等)</p>
+<p>10.RewriteRule:<br>
+这是mod_rewrite中用得最多的语句了(&quot;the real rewriting workhorse&quot;);<br>
+用法:<br>
+RewriteRule pattern Substitution [Flags]</p>
+<pre><code>Quantifiers:
+  ?           0 or 1 occurrences of the preceding text
+  \*           0 or N occurrences of the preceding text (N &gt; 0)
+  +           1 or N occurrences of the preceding text (N &gt; 1)
+
+Grouping:
+  (text)      Grouping of text
+			  (used either to set the borders of an alternative as above, or
+			  to make backreferences, where the Nth group can
+			  be referred to on the RHS of a RewriteRule as $N)
+
+Anchors:
+  ^           Start-of-line anchor
+  $           End-of-line anchor
+
+Escaping:
+  char       escape the given char
+			  (for instance, to specify the chars &quot;.\[\]()&quot; etc.)
+
+一些技巧:
+</code></pre>
+<ol>
+<li>back-references ($N) to the RewriteRule pattern</li>
+<li>back-references (%N) to the last matched RewriteCond pattern</li>
+<li>server-variables as in rule condition test-strings (%{VARNAME})</li>
+<li>mapping-function calls (${mapname:key|default})</li>
+</ol>
+<pre><code>关于Flags:
+# 'chain|C' (chained with next rule)
+# 'cookie|CO=NAME:VAL:domain\[:lifetime\[:path\]\]' (set cookie)
+# 'env|E=VAR:VAL' (set environment variable)
+# 'forbidden|F' (force URL to be forbidden)
+# 'gone|G' (force URL to be gone)
+# 'last|L' (last rule)
+# 'next|N' (next round)
+# 'nocase|NC' (no case)
+# 'noescape|NE' (no URI escaping of output)
+例如:
+RewriteRule /foo/(.\*) /bar?arg=P1%3d$1 \[R,NE\]
+这将会将'/foo/zed' 转向到'/bar?arg=p1=zed'
+# 'nosubreq|NS' ( not for internal sub-requests)
+# 'proxy|P' (force proxy)
+
+Note: mod\_proxy must be enabled in order to use this flag.
+# 'passthrough|PT' (pass through to next handler)
+(例如:
+RewriteRule ^/abc(.\*) /def$1 \[PT\]
+Alias /def /ghi
+
+# 'qsappend|QSA' (query string append)
+# 'redirect|R \[=code\]' (force redirect)
+# 'skip|S=num' (skip next rule(s))
+# 'type|T=MIME-type' (force MIME type)</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/403/">
+                  <h3 class="post-title">
+                    我的先见
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

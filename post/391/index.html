@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Fedora core 6 下AfterStep 的中文环境的设置 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="AfterStep首页上对AfterStep的介绍:
+AfterStep is a window manager for the Unix X Window System. Originally based
+on the look and ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Fedora core 6 下AfterStep 的中文环境的设置</h2>
+            <div class="post-date">2007-03-11</div>
+            
+            <div class="post-content" v-pre>
+              <p>AfterStep首页上对AfterStep的介绍:<br>
+AfterStep is a window manager for the Unix X Window System. Originally based<br>
+on the look and feel of the NeXTStep interface, it provides end users with a<br>
+consistent, clean, and elegant desktop. The goal of AfterStep development is<br>
+to provide for flexibility of desktop configuration, improving aestetics, and<br>
+efficient use of system resources.<br>
+Some of the distinguishing features of AfterStep compared to other window<br>
+managers are its low usage of resources, stability and configurability.<br>
+简而言之，就是说,AfterStep是一个Unix的X<br>
+窗口系统下的窗口管理器。最初是从NeXTStep的界面下发展起来的。AfterStep的目标就是提供一个稳定的，易配置的，不太占系统资源的桌面系统。（可笑，这玩意儿一点儿也不好配置：我插嘴的)<br>
+我左猜右找，终于搞定如何弄出一个中文的AfterStep了。<br>
+1.第一步：得把中文菜单都调出来。其实很简单，把系统设置的字体设为中文字体就行了。<br>
+我是这么改的:把</p>
+<p>/usr/local/share/afterstep/looks下的look.QNX文件中的含有Font<br>
+***.ttf-**的字体改了，我把字体都改成了sthei.ttf.<br>
+2.在桌面click,选Desktop<br>
+Setup-&gt;Look-&gt;选QNX，然后重启桌面。Okay，再在桌面上点，菜单也变成中文的了。<br>
+3.改输入法。老外们不用输入法，咱还要用。我比较懒。我找到了切换输入法的文件:</p>
+<p>/etc/X11/xinit/xinitrc.d/xinput.sh</p>
+<p>把这一切加到了<sub>/.xinitrc中。我的</sub>/.xinitrc文件的内容就是:</p>
+<p>/etc/X11/xinit/xinitrc.d/xinput.sh<br>
+exec afterstep</p>
+<p>Okay,现在重启x,就能输中文了。<br>
+不过话说回来，霍炬介绍的这个东西还真是不错。因为在网上搜了一下，还真找不到几个人用。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/390/">
+                  <h3 class="post-title">
+                    visual Basic的一段程序，用来整人也挺爽的
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

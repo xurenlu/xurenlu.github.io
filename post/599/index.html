@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>用Mono来在Linux下玩.Net开发初探一 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Mono是这样一个Project:
+
+Mono provides the necessary software to develop and run .NET client and server applications on Linux,..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">用Mono来在Linux下玩.Net开发初探一</h2>
+            <div class="post-date">2008-02-23</div>
+            
+            <div class="post-content" v-pre>
+              <p>Mono是这样一个Project:</p>
+<blockquote>
+<p>Mono provides the necessary software to develop and run .NET client and server applications on Linux, Solaris, Mac OS X, Windows, and Unix. Sponsored by Novell (http://www.novell.com), the Mono open source project has an active and enthusiastic contributing community and is positioned to become the leading choice for development of Linux applications.</p>
+</blockquote>
+<p>翻译过来是:</p>
+<blockquote>
+<p>Mono为在linux/Solaris,Mac OS X,和Windows下开发和运行.NET客户端和服务程序提供了必要的软件支持。这个Mono 开源项目由Novell发起,拥有一批积极并且热心的开发者社区，希望能成为Linux 程序开发的首选。</p>
+</blockquote>
+<p>第一步:安装Mono.我的pc是Fedora ,因此是yum install Mono, 如果在debian/ubuntu系列，应该用apt-get . 如果您没有类似在线包安装工具，那么您需要到http://www.go-mono.com/mono-downloads/download.html去下载并手动安装。 第二步:开始写了... #cd Program/Mono/ #vim hello.cs hello.cs的内容如下: class Hello{ static void Main(){ System.Console.Write(&quot;Hello Worldn&quot;); } } 第三步:编译: mcs hello.cs 第四步：试运行： #mono hello.exe Hello world # 这个hello.exe您看到了，是以exe为后缀的。没错儿！它可以直接运行在Windows下！</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/598/">
+                  <h3 class="post-title">
+                    64位机器上修复libx264错误
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

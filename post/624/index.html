@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>AutoMake 学习笔记－－－使用过程 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="过程记录： 1.autoscan 2.修改configure.scan，重命名为configure.in,编辑Ｍａｋｅｆｉｌｅ.ａｍ 3.运行aclocal 4.autoconf 5.automake --add-missing 6.好了，..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">AutoMake 学习笔记－－－使用过程</h2>
+            <div class="post-date">2008-04-18</div>
+            
+            <div class="post-content" v-pre>
+              <p>过程记录： 1.autoscan 2.修改configure.scan，重命名为configure.in,编辑Ｍａｋｅｆｉｌｅ.ａｍ 3.运行aclocal 4.autoconf 5.automake --add-missing 6.好了，你可以configure &amp;&amp;　ｍａｋｅ　&amp;&amp;　ｍａｋｅ　ｉｎｓｔａｌｌ了。 实例记录: 1. mkdir h2 2.cd h2 3. vim h2.c,内容如下: #include int main() { printf(&quot;hi, This is jerry&quot;); return 0; } 4.运行autoscan，将生成autoscan.log和configure.scan 5.将configure.scan命名为configure.in，并修改:我这里内容如下: # -*- Autoconf -*- # Process this file with autoconf to produce a configure script. AC_PREREQ(2.61) AC_INIT(h2, 1.0,xurenlu@gmail.com) AC_CONFIG_SRCDIR([h2.c]) AC_CONFIG_HEADER([config.h]) AM_INIT_AUTOMAKE(h2,1.0) # Checks for programs. AC_PROG_CC # Checks for libraries. # Checks for header files. # Checks for typedefs, structures, and compiler characteristics. # Checks for library functions. AC_CONFIG_FILES(Makefile) AC_OUTPUT 与autoscan生成的文件相比，我加了这两行: AM_INIT_AUTOMAKE(h2,1.0) AC_CONFIG_FILES(Makefile) 同时改了这样几行: AC_INIT(h2, 1.0,xurenlu@gmail.com) 现在我们编辑Makefile.am: 内容如下: AUTOMAKE_OPTIONS=foreign bin_PROGRAMS=h2 h2_SOURCES=h2.c 接下来运行aclocal 此时会生成aclocal.m4和autom4te.cache。 我们运行:autoconf生成configure文件. 再运行autohead 生成config.h.in 最后运行automake --add-missing 就能得到Makefile.in了 有了这个，就可以configure了。 在网上搜到这样一个图: <a href="http://www.162cm.com/wp-content/uploads/2008/04/image002.gif" title="image002.gif"><img src="http://www.162cm.com/wp-content/uploads/2008/04/image002.gif" alt="image002.gif" loading="lazy"></a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/623/">
+                  <h3 class="post-title">
+                    景爷的脚崴了
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

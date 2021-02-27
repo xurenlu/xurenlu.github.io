@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>nginx mail模块的学习 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="相对HTTP模块，mail模块要简单的多，我决定从这里入手，改造一个基于nginx的memcache代理模块，并在这个模块的基础上也实现upstream,再做数据的分布，后端挂tokyotyrant做的key-value存储。于是先学学ma..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">nginx mail模块的学习</h2>
+            <div class="post-date">2010-03-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>相对HTTP模块，mail模块要简单的多，我决定从这里入手，改造一个基于nginx的memcache代理模块，并在这个模块的基础上也实现upstream,再做数据的分布，后端挂tokyotyrant做的key-value存储。于是先学学mail模块。 mail模块跟其他模块也差不多，初始化是在src/ngx/ngx_mail.c里；也是先设置对配置文件的解析: 遇到mail指令(mail指令是MAIN_CONF|CONF_BLOCK),则调用ngx_mem_block函数. ngx_mem_block函数做了什么? 1.挂载type是NGX_MAIL_MODULE的模块;(同时给这些模块排了序号),NGX_MAIL_MODULE类型的模块也做了排序. 2.接下来依次为各个模块创建一个mail_conf,和srv_conf,loc_conf； 注:ngx_mail_core_module看来是是最重要的mail类模块了。 3.解析mail{}里的内容 ,并依次调用各模块的init_main_conf和merge_srv_conf来初始化MAIN_CONF和SERVER_CONF内容。 4.把模块ngx_mail_core_module中定义的端口号加入要监听的端口列表:调用ngx_mail_optimize_servers函数; ngx_mail_optimize_servers做了什么? 1.对所有要监听的地址和端口排个序，如果某个地址是*:80这样的监听所有IP的，就放到列表的最后，同时会忽略其他端口的监听（这不是废话么…) 2.建立建听。设置回调函数是ngx_mail_init_connection.该函数定义在:src/mail/ngx_mail_handler.c ngx_mail_init_connection做了什么? 建session和log对象。 调ngx_mail_init_session函数建立会话(session)对象。 ngx_mail_init_session函数干了些啥? 1.取出协议的种类; 2.设置该连接的写回调是ngx_mail_send; 3.调用指定协议的init_session函数来执行真正的会话初始化; 以smtp协议为例，查看init_session做了什么? 1.如果resolver为空,则用ngx_mail_smtp_greeting函数直接输出欢迎信息。 2.如果不是互联网联接(应该就是本地socket连接了),也直接用ngx_mail_smtp_greeting函数直接打欢迎信息。 3.解析客户端地址: 设置解析成功的的回调函数为ngx_mail_smtp_resolve_addr_handler,开始解析客户端IP. ngx_mail_smtp_resolve_addr_handler干啥了? 1.如果解析成功： a:记录host信息; b;设置读事件的回调函数为:ngx_mail_smtp_resolve_name 如果解析成功，最终还是调用ngx_mail_smtp_greeting函数打出欢迎信息; 2.如果解打失败，直接用ngx_mail_smtp_greeting函数打出欢迎信息。 ngx_mail_smtp_resolve_name干啥了? …我还没看. ngx_mail_smtp_greeting干啥了? 1.日志记录中写上“我们欢迎来自****的朋友”….哈哈。我瞎扯的。代码中有类似动作，日志中见不到。 2.设置读取事件超时 3.处理读事件。如果失败（没有收到信息，调用ngx_mail_close_connection断开链接。 4.设置读事件回调为ngx_mail_smtp_init_protocol; 5.设置要输出的东西为greeting信息，然后写往客户端。 ngx_mail_smtp_init_protocol干什么? 1.如果已经超时，关掉它！ 2.创建好会话的buffer; 3.设置状态为ngx_smtp_start; 4.设置读取回调为ngx_mail_smtp_auth_state; 调用ngx_mail_smtp_auth来启动用户校验。 ngx_mail_smtp_auth做些啥? 1.如果已经超时，函数返回。 2。如果写缓冲中还有数据，函数返回。 3。读入一段;读入失败的话函数返回; 4. 对读到的命令做处理，用smtp_parse_command解析命令:接下来就是状态机处理了,喔喔喔喔…..</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1012/">
+                  <h3 class="post-title">
+                    懒人连ssh不输密码若干大法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

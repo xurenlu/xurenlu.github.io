@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>面条的计划 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="看来ansys开发者的发展已经有一段时间处于一个停顿时期了
+面条正在开发下一个版本的管理系统:
+预计的这个系统还是更多的关注它的易用性、可移植性，速度，以及搜索引擎的优化。
+因此还是不倾向实用js，还是使用html生成。
+同时系统更基于对象..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">面条的计划</h2>
+            <div class="post-date">2005-04-10</div>
+            
+            <div class="post-content" v-pre>
+              <p>看来ansys开发者的发展已经有一段时间处于一个停顿时期了<br>
+面条正在开发下一个版本的管理系统:<br>
+预计的这个系统还是更多的关注它的易用性、可移植性，速度，以及搜索引擎的优化。<br>
+因此还是不倾向实用js，还是使用html生成。<br>
+同时系统更基于对象来开发，基于user、articles类，category类，manage类.<br>
+这个系统将支持trackback,rss.能够实现Blog的不分功能，支持WYSIWYG 编辑器<br>
+文件上传，验证码等等功能。<br>
+在预防攻击方面，面条将会提供数据表前缀功能，以使得许多利用数据表辞典来进行sql　injection攻击的工具失效.</p>
+<p>这个系统开发出来并投入使用以后，面条将会提供原有的以及这次的系统的修改版本来给大家使用，并且提供专门的网站建设和推广网站讨论区来使得本系统的壮大能够得到用户得广泛支持。</p>
+<p>在团队上，面条将考虑吸取新人来参与网站的经营，同时在外承接网站建设类似项目<br>
+新加入的成员将会得到面条的以下支持:<br>
+1.面条的技术支持和指导<br>
+2.勤奋的成员将会给予一定的资金报酬<br>
+3.优秀的成员将会得到网站运营收入的一定分成!<br>
+4.每月评选最佳成员，在网站上广而告之.</p>
+<p>面条计划建立的网站:<br>
+1.ansys开发者<br>
+2.太阳雨小说网<br>
+3.太阳雨网络应用支持网站<br>
+4.新新窄告网站</p>
+<p>面条计划涉足的领域<br>
+1.机械制造业信息化<br>
+2.网络应用软件行业<br>
+3.网络出版、宣传媒体行业<br>
+4.网络广告行业</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/164/">
+                  <h3 class="post-title">
+                    在白云上的发帖
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

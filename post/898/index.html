@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>怎样用一行脚本美化/etc/my.cnf文件 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="原文地址:http://www.mysqlperformanceblog.com/2009/06/15/how-to-pretty-print-mycnf-with-a-one-liner/ 当我在一台服务器上转悠时，我会经常想看看/etc..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">怎样用一行脚本美化/etc/my.cnf文件</h2>
+            <div class="post-date">2009-06-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>原文地址:<a href="http://www.mysqlperformanceblog.com/2009/06/15/how-to-pretty-print-mycnf-with-a-one-liner/">http://www.mysqlperformanceblog.com/2009/06/15/how-to-pretty-print-mycnf-with-a-one-liner/</a> 当我在一台服务器上转悠时，我会经常想看看/etc/my.cnf文件格式，当然是想看格化美观，没有注释的。这样的一行Perl就能将美化输出文件： 1.perl -ne 'm/<sup>([</sup>#][^s=]+)s*(=.*|)/ &amp;&amp; printf(&quot;%-35s%sn&quot;, $1, $2)' /etc/my.cnf 2.[client] 3.port = 3306 4.socket = /var/run/mysqld/mysqld.sock 5.[ mysqld_safe ] 6.socket = /var/run/mysqld/mysqld.sock 7.nice = 0 8.[ mysqld ] 9.user = mysql 10.pid-file = /var/run/mysqld/mysqld.pid 11.socket = /var/run/mysqld/mysqld.sock 12.port = 3306 13.....</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/896/">
+                  <h3 class="post-title">
+                    缓慢的drop table 操作
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

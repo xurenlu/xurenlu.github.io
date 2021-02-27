@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>phpfox全攻略 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="phpfox是国外的一款社区软件，具有论坛，博客，相册，音乐，投票，问答，视频等功能，基于php,mysql.安装需要gd库的支持。 我拿到程序后修改的第一步: 1.修改用户接口部分。 phpfox是典型的单入口型程序和类MVC架构。具体怎..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">phpfox全攻略</h2>
+            <div class="post-date">2007-08-13</div>
+            
+            <div class="post-content" v-pre>
+              <p>phpfox是国外的一款社区软件，具有论坛，博客，相册，音乐，投票，问答，视频等功能，基于php,mysql.安装需要gd库的支持。 我拿到程序后修改的第一步: 1.修改用户接口部分。 phpfox是典型的单入口型程序和类MVC架构。具体怎么改我不加描述了，只提一下，因为phpfox把对几乎所有路径的访问全部rewrite到了index.php，所以要在.htaccess文件中加上这样的两行: Rewritecond %{REQUEST_FILENAME} !-f Rewritecond %{REQUEST_FILENAME} !-d 一共要加两次（针对1.5,1.6这两个版本)。如果没有启用rewrite,就没有这会事。用户分别是{PREFIX}_user表，如果自行进行数据整合，操作这个表就可以了。 2.汉字在显示时有问题，需要看以下这些模板：</p>
+<blockquote>
+<p>design/./templates/default/_modules/Menu/TabbedMenu.html design/./templates/default/_modules/Listing/ListingCreate.html design/./templates/default/_modules/Listing/ListingCreate.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Account/ProfileSettings.html design/./templates/default/_modules/Ads/AdsList.html design/./templates/default/_modules/Event/Calendar.html design/./templates/default/_modules/Event/AddForm.html design/./templates/default/_modules/Event/AddForm.html design/./templates/default/_modules/Event/AddForm.html design/./templates/default/_modules/Event/AddForm.html design/./templates/default/_modules/Event/AddForm.html design/./templates/default/_modules/Event/FeaturedEvents.html design/./templates/default/_modules/Event/FeaturedEvents.html design/./templates/default/_modules/Event/EventView.html design/./templates/default/_modules/Event/EditForm.html design/./templates/default/_modules/Event/EditForm.html design/./templates/default/_modules/Event/EditForm.html design/./templates/default/_modules/Event/EditForm.html design/./templates/default/_modules/Event/EditForm.html design/./templates/default/_modules/Video/Main.html design/./templates/default/_modules/Video/AjaxBox.html design/./templates/default/_modules/Video/ModifyCategories.html design/./templates/default/_modules/Video/ApproveVideos.html design/./templates/default/_modules/Video/AjaxLatest.html design/./templates/default/_modules/Video/Categories.html design/./templates/default/_modules/Video/Browse.html design/./templates/default/_modules/Video/View.html design/./templates/default/_modules/Blog/NewBlogs.html design/./templates/default/_modules/Blog/MemberBlogs.html design/./templates/default/_modules/Blog/AddBlog.html design/./templates/default/_modules/Blog/MyPageBlogs.html design/./templates/default/_modules/Blog/MyPageBlogView.html design/./templates/default/_modules/Blog/BlogList.html design/./templates/default/_modules/Blog/BlogList.html design/./templates/default/_modules/Blog/BlogList.html design/./templates/default/_modules/Blog/BlogList.html design/./templates/default/_modules/Blog/EditBlog.html design/./templates/default/_modules/Blog/EditBlog.html design/./templates/default/_modules/Blog/View.html design/./templates/default/_modules/Blog/View.html design/./templates/default/_modules/Groups/GroupForumPosts.html design/./templates/default/_modules/Groups/NewGroups.html design/./templates/default/_modules/Groups/GroupDetails.html design/./templates/default/_modules/Shoutbox/Box.html design/./templates/default/admin/language/options.html design/./templates/default/admin/language/options.html design/./templates/default/admin/language/options.html design/./templates/default/admin/language/missing-options.html design/./templates/default/admin/language/add-phrase.html design/./templates/default/admin/language/add-phrase.html design/./templates/default/admin/language/phrases.html design/./templates/default/admin/language/phrases.html design/./templates/default/admin/language/phrases.html design/./templates/default/admin/language/add-option.html design/./templates/default/admin/language/missing.html</p>
+</blockquote>
+<p>里面会有&lt;{$title|escape}&gt;这样的句子。将&quot;|escape&quot;删掉即可修正汉字bug. 3.敏感词过滤：phpfox为了扩展性，是在显示时过滤的，没有这个必要。我们把显示层的过小滤去掉，然后在index.php的第一行就加上过滤（如果有post数据，将之过滤）。这样将过滤机制更改之后，CPU又节省不少。 4.未登陆用户cache层。对于未登陆用户，没必要时时都是显示最新的。又是在index.php的第一行加上过滤：如果用户未登陆且无post数据，则显示cache层的静态文件。有1%的机率更新cache. 优化之前:</p>
+<blockquote>
+<p>Document Path: / Document Length: 23960 bytes Concurrency Level: 1 Time taken for tests: 2.740130 seconds Complete requests: 30 Failed requests: 0 Write errors: 0 Total transferred: 733950 bytes HTML transferred: 718800 bytes Requests per second: 10.95 [#/sec] (mean) Time per request: 91.338 [ms] (mean) Time per request: 91.338 [ms] (mean, ac</p>
+</blockquote>
+<p>优化之后:</p>
+<blockquote>
+<p>Server Software: Apache/2.2.4 Server Hostname: ***.com Server Port: 80 Document Path: / Document Length: 23960 bytes Concurrency Level: 1 Time taken for tests: 0.32685 seconds Complete requests: 30 Failed requests: 0 Write errors: 0 Total transferred: 730560 bytes HTML transferred: 718800 bytes Requests per second: 917.85 [#/sec] (mean) Time per request: 1.090 [ms] (mean) Time per request: 1.090 [ms] (mean, across all concurrent requests) Transfer rate: 21814.29 [Kbytes/sec] received Connection Times (ms) min mean[+/-sd] median max Connect: 0 0 0.0 0 0 Processing: 0 0 1.0 1 1 Waiting: 0 0 0.3 0 1 Total: 0 0 1.0 1 1</p>
+</blockquote>
+<p>又节约了不少资源。 4。数据库结构修改： a.<a href="http://10.200.4.242/pa/tbl_properties_structure.php?db=phpfox&amp;table=phpfox_online_session&amp;token=f72eb4f06c035089953cb1076174c571">phpfox_online_session</a>,phpfox_online,<a href="http://10.200.4.242/pa/tbl_properties_structure.php?db=phpfox&amp;table=phpfox_site_session&amp;token=f72eb4f06c035089953cb1076174c571">phpfox_site_session</a>的数据都不需要永久保存。直接改成内存表。 由于内存表不支持txt类型，因此将tinytxt,text类型的字段均改为varchar字段。 现在做的改动有: phpfox_online: user( tinytext) 改为:user(varchar(32) page (tinytext )改为page(varchar(100) ip(tinytext)改为(varchar(16) ) phpfox_site_session: browser:改为varcahr(64) host:改为varchar(32) page:改为varchar(64) referer:改为varchar(64). 这个改过之后我试了一下，有些字段长度还可以进一步改小，这样才能将session数据都做成内存表，速度又可以大上一层楼。 b.<a href="http://10.200.4.242/pa/tbl_properties_structure.php?db=phpfox&amp;table=flashchat_templates&amp;token=f72eb4f06c035089953cb1076174c571">flashchat_templates</a> 这个表非常搞笑，有2万条记录，好像是在&quot;CAN I FUCK YOU&quot;和&quot;<srai>DO YOU WANT TO HAVE SEX</srai>&quot;类似的句子之间做替换。基本没用（尤其是对中文).依我的看法如果这个表能导致瓶颈，就清空掉好了。 c.<a href="http://10.200.4.242/pa/tbl_properties_structure.php?db=phpfox&amp;table=flashchat_patterns&amp;token=f72eb4f06c035089953cb1076174c571">flashchat_patterns</a> 这个表巨大无比，有15万条记录。主要是英文。如果可以的话，可以给他瘦身一下。 d.mysql的连接方式为mysql_connect,这个可以修改为mysql_pconnect。视具体情况。 e.许多表没有加索引，最搞的是论坛的topic表没有给group_id这个字段加索引。真是让人郁闷。注意把数据库结构整个看一遍，挨个把屁股擦干净。 5.去掉title中的标识:</p>
+<blockquote>
+<p>修改include/modules/Site/classes/PhpFox_ComponentSiteTitle.class.php 中，将第200行的: 198 if (App::removeBrand()) 199 { 200 // <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 39: … phpFoX)&#039;; 201 }̲ 改掉就行了。（提醒大家，ph…'>sTitle .= &#039; (Powered by phpFoX)&#039;; 201 } 改掉就行了。（提醒大家，phpfox不允许未付费用户去这个标识。去这个标识需要另付费75</span>.</p>
+</blockquote>
+<p>好啦，现在他可以支撑1000人在线了(其实我还加装了php-apc,这个东东把php编译结果缓存起来,另外把图片等静态文件进行了分流)。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/443/">
+                  <h3 class="post-title">
+                    Fedora Core 7.0(moonshine)+Beryl 的3D桌面
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

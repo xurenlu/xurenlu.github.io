@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Drill:插件的基本配置 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="当你在一个有多个drill节点的集群中添加或是更新配置的时候，drill会把这个配置变更信息广播到其他的节点，以保持配置的同步。添加，修改配置的时候，并不需要重启任何drillbit节点。
+使用Drill的WEB控制台
+你可以通过Drill..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill:插件的基本配置</h2>
+            <div class="post-date">2017-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>当你在一个有多个drill节点的集群中添加或是更新配置的时候，drill会把这个配置变更信息广播到其他的节点，以保持配置的同步。添加，修改配置的时候，并不需要重启任何drillbit节点。</p>
+<h1 id="使用drill的web控制台">使用Drill的WEB控制台</h1>
+<p>你可以通过Drill web控制台来修改，添加插件配置。要启动Web console,你需要将Drill shell跑起来。 要创建一个新配置，您需要：</p>
+<ol>
+<li>启动Drill shell[此处应有传送门]</li>
+<li>启动Drill WEB 控制台。[此处应有传送门]</li>
+<li>进到插件tab,输入一个新插件的名字，每个名字都是<strong>一个新的存储插件</strong>。每个插件的配置都需要有一个全局唯一的名字，名字是区分大小写的。</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://drill.apache.org/docs/img/storage_plugin_config.png" alt="" loading="lazy"></figure>
+<ol>
+<li>点击&quot;create&quot;</li>
+<li>在配置界面，尽可能地从已经有的配置中拷贝再修改JSON配置，这样可以降低json语法错误的风险，在做一些定制修改时，请参照下一章节的存储插件属性表。</li>
+<li>点击&quot;Create&quot;。（译注：原文是&quot;create&quot;,但我认为是笔误，应当是“Update&quot;)。</li>
+</ol>
+<h2 id="存储插件的属性配置">存储插件的属性配置</h2>
+<p>下图解释了一个典型的dfs的存储插件的各个key的含义。 <img src="https://drill.apache.org/docs/img/connect-plugin.png" alt="" loading="lazy"></p>
+<h2 id="属性和概念清单">属性和概念清单</h2>
+<p>| 属性 | 示例 | 是否必须 | 说明 | |---|---|---|---|---|　 | &quot;type&quot; | &quot;file&quot; &quot;hbase&quot; &quot;hive&quot; &quot;mongo&quot; | yes | 必须是一种合法的存储插件的名字 | | &quot;enabled&quot; | true false | yes | 插件的状态 | | “connection&quot; | &quot;classpath:///&quot; &quot;file:///&quot; &quot;mongodb://localhost:27017/&quot; &quot;hdfs://&quot; | 依赖于各种具体的实现 | 分布式文件系统的类型，比如HDFS,Amazon S3,或是你本地的文件系统，以及路径名 | | ”workspace&quot; | null &quot;logs&quot; | no | 一个或多个唯一的命名空间的名字。如果一个名字被使用了多次，只有最后一次是有效的 | | &quot;workspaces&quot;...&quot;location&quot; | &quot;location&quot;:&quot;/Users/john/mydata/&quot; &quot;location&quot;:&quot;/tmp/&quot; | no | 文件系统上的一个完整路径 | | &quot;workspaces&quot;...&quot;writable&quot; | true false | no | 如果定义了多次，只有最后一次有效 | | &quot;workspaces&quot;...&quot;defaultInputFormat&quot; | null &quot;parquet&quot; &quot;csv&quot; json&quot; | no &quot; 读文件的格式，不考虑扩展名。默认是“Parquet&quot; | | &quot;formats&quot; | &quot;csv&quot; &quot;psv&quot; &quot;tsv&quot; &quot;parquet&quot; &quot;json&quot; &quot;avro&quot; &quot;maprdb&quot; &quot;sequencefile&quot; | yes | 读取时合法的文件格式。Drill会检测一些文件的格式，其他的需要配置。maprdb的支持是在mapr-drill安装包里提供的 | | ”formats&quot;...&quot;type&quot; | &quot;text&quot;,&quot;parquet&quot;,&quot;json&quot;,&quot;maprdb&quot;,&quot;avro&quot;,&quot;sequencefile&quot; | yes | 文件格式的类型。你可以把两种格式的,csv ,psv 都定义成“text&quot;类型，但是是不同的分隔符。| | formats... extensions | [&quot;csv&quot;] | format-dependent | drill能够读取的文件名扩展。| | formats... delimiter | &quot;\t&quot; &quot;,&quot; | format-dependent | 一个或多个字符的序列，用以在文本文件（例如csv)中做记录的分隔。对于不可见的字符，可以用4位的十六进制（\xXXXX）来指代。| | formats...quote | &quot;&quot;&quot; | no | 文本文件中，开始或结束一个值用的一个字符 | | formats...escape | &quot;`&quot; | no | a single character that escapes a quotation mark inside a value | | formats ... comment | &quot;#&quot; | no | 在文本文件中开启一个注释行 | | formats skipFirstLine | true | no | 在读取文本文件时，包含还是忽略文件头。设置成true,可以避免把文件头当成数据读入 | | formats extractHeader | true | no | 设置成true,可以把文件头读进来做为列名。在extractHeader=false时，请确保skipFirstLine没有设置成true。 |</p>
+<h2 id="使用格式相关属性">使用格式相关属性</h2>
+<p>你要在存储插件的配置的formats区域设置格式相关的属性，比如skipFirstLine。当设置了text类型的属性时，你需要把sys.options中的exec.storage.enable_new_text_reader 设置成 <em>true</em> ;更多信息，请参照“Text files:CSV,TSV,PSV&quot;章节。</p>
+<h2 id="在表参数中使用格式相关属性">在表参数中使用格式相关属性</h2>
+<p>从Drill 1.4起，你可以在每一个query中设置格式相关的属性了。To pass parameters to the format plugin ,use the table function syntax:</p>
+<pre><code>    select a,b from table({table function name }(parameters));
+</code></pre>
+<p>例如:</p>
+<pre><code>    select a, b from table(dfs.`path/to/data.csv`(type =&gt; 'text',
+fieldDelimiter =&gt; ',', extractHeader =&gt; true))
+</code></pre>
+<h2 id="大小敏感">大小敏感</h2>
+<p>在前面提到过，工作空间和存储插件的名字，都是大小写敏感的。 【后面废话太多了 我懒得翻译了。。。】</p>
+<h1 id="存储插件的rest-api">存储插件的REST API</h1>
+<p>如果你需要添加一份存储插件的配置，同时又不想使用WEB 浏览器，你可以使用Drill REST API来完成。使用POST方式来请求，并传递 两个属性进来:</p>
+<ul>
+<li><strong>name</strong> 存储插件的名字</li>
+<li><strong>config</strong> 在Web界面里要设置的那个配置</li>
+</ul>
+<p>比如，下面这个命令就创建了一个叫myplugin的插件，这个插件读取根文件系统上一个未知类型的文件。</p>
+<pre><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;name&quot;:&quot;myplugin&quot;, &quot;config&quot;: {&quot;type&quot;: &quot;file&quot;, &quot;enabled&quot;: false, &quot;connection&quot;: &quot;file:///&quot;, &quot;workspaces&quot;: { &quot;root&quot;: { &quot;location&quot;: &quot;/&quot;, &quot;writable&quot;: false, &quot;defaultInputFormat&quot;: null}}, &quot;formats&quot;: null}}' http://localhost:8047/storage/myplugin.json
+</code></pre>
+<p>这里我们假设https未被启用。</p>
+<h1 id="存储插件的启动引导">存储插件的启动引导</h1>
+<p>在分布式的环境下，要通过程序自动化的方式添加存储插件，最推荐的方式是走REST API。另外还有一种方式 ，就是初始化引导方式 ，具体来说，就是在启动drill的时候，创建一个 bootstrap-storage-plugins.json 文件，放在classpath下。当Drill启动的时候，这个文件就会被加载。 当前用引导方式来添加存储插件的配置时，只有集群中的第一个Drillbit在第一次启动的时候才会生效。这个配置存储在ZooKeeper里，因此就再也不会去读那个 bootstrap-storage-plugins.json 文件了。 当集群起来以后，你就只能通过WEB控制台，或是REST API来添加存储插件的配置了。当然你也可以通过直接把那个插件的json文件上传到zookeeper的安装目录下的/drill路径下来修改Zookeeper里的节点，或者，如果不需要再维护相应的属性，直接删除/drill目录就好了。 如果你通过bootstrap-storage-plugins.json文件加载了一个Hbase 的配置，但是HBase并没有安装，在执行查询的时候可能会觉察到一个延时。你可以在HBase的Config 区块内设置HBase 的客户端超时和重试相关的设定。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1399/">
+                  <h3 class="post-title">
+                    Drill:存储插件的注册
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

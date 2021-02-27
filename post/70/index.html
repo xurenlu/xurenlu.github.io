@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>发布我的bbs 挺简单的. | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="下载地址:http://www.ansys.org.cn/blog/uploadfile/pub.rar
+后台登陆:
+/bbs/admin1983/log.asp
+用户名:admin
+密码:admin888
+功能比较简单。
+特色:
+1.是U..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">发布我的bbs 挺简单的.</h2>
+            <div class="post-date">2005-12-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>下载地址:<img src="http://www.162cm.com/wp-admin/editor/images/file.gif" alt="" loading="lazy"><a href="http://www.ansys.org.cn/blog/uploadfile/pub.rar">http://www.ansys.org.cn/blog/uploadfile/pub.rar</a><br>
+后台登陆:<br>
+/bbs/admin1983/log.asp<br>
+用户名:admin<br>
+密码:admin888<br>
+功能比较简单。<br>
+特色:<br>
+1.是UTF-8编码的，能够在英文版的操作系统上运行，没有乱码。<br>
+2.基于模板类。换肤功能。<br>
+3.尽量用成熟的模块，比如fckeditor等类。<br>
+4.www.ansys.org.cn/bbs 已经采用了这个版本，所有一定会有更新和改进版本出现。接受任何人的咨询并给出相应解决方法(现在本人并没有做商业版本，有足够的精力)。请关注<a href="http://www.ansys.org.cn/blog">www.ansys.org.cn/blog</a>  会有新的版本发布。<br>
+开发者:面条<br>
+qq:55547082<br>
+mail:xurenlu@126.com</p>
+<p>开发历史:<br>
+18:32 2005-12-17<br>
+ 重新开放缓存功能。<br>
+13:58 2005-12-15<br>
+ 发现有时无法更新显示的原因是ansys_lib.asp里还是使用了缓存.已经改正<br>
+12:13 2005-12-11<br>
+ 发现admin目录下没有转成unicode编码，就转了过来。<br>
+2005.12.8<br>
+ 引入了FCKEditor类。<br>
+2005.12.12.3<br>
+ 写了个links Check tools.经过测试，当前论坛共有1833个链接。并且发现了一个错误：访问ansys_user.asp时会出现500内部错误。<br>
+ 该错误已经修正。<br>
+2005.12.1<br>
+ 添加了察看用户信息模块.<br>
+ 11.30的bug可能是因为：删除贴子后重置了缓存对象的创建时间（精确到秒），但当你马就点击时，这个时间不未变，解决方案：把缓存对象的创建时间设置为前一秒，而不是现在.<br>
+2005.11.30<br>
+ 将默认编码改为utf-8.<br>
+ 增加了搜索功能<br>
+ !!!!目前有一个bug无法解决.就是删除一个贴子后，点击反馈单的确定后无法显示内容，必须刷新一次。<br>
+ 正式改名为ver1.0<br>
+2005.11.29<br>
+ 将图片移到了模板目录。<br>
+ 修正了用户改变了登陆状态后用户信息无法更改的bug.<br>
+ 用application 来记录最后发贴时间，以达到及时修改缓存的目的。<br>
+ 改正了不同的用户登陆后会看到相同的内容的问题。<br>
+2005.11.28<br>
+ 修正了登陆用户无法察看用户消息的bug.<br>
+ 增加了一套模板。 <br>
+2005.11.26<br>
+ 修正了所有页面title显示为“无标题文档“的疏忽。<br>
+ 增加了常数里的keywords,description域，实现了随时更换meta的功能。<br>
+2005.11.25<br>
+ 修正了asp乱码的问题。<br>
+ 自行开发的新版论坛上线运行。<br>
+2005.11.20<br>
+ 论坛的第一个版本完成.<br>
+2005.11.17<br>
+ 论坛被黑，开始重写论坛。<br>
+2005.6 <br>
+ 完成安装程序模块的制作。<br>
+2005.4.20<br>
+ 论坛上线运行。<br>
+2005.3　<br>
+ 第一个最初的文章系统成形。<br>
+ 网站系统上线运行。<br>
+2004.9-2005.2<br>
+      完成最初的asp Class .<br>
+ 可以实现文件上传，模板操作类，文件操作类等。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/71/">
+                  <h3 class="post-title">
+                    又遇到一位高人
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

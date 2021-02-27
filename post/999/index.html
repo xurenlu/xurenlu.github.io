@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>PHP版的slow-query | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="slowphp是由本人开发的一个简单的PHP扩展。目的在于记录web server上执行时间过长的php脚本。用法和mysql上的slow query极为相似。 代码地址:http://github.com/xurenlu/slowphp/..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PHP版的slow-query</h2>
+            <div class="post-date">2009-11-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>slowphp是由本人开发的一个简单的PHP扩展。目的在于记录web server上执行时间过长的php脚本。用法和mysql上的slow query极为相似。 代码地址:<a href="http://github.com/xurenlu/slowphp/">http://github.com/xurenlu/slowphp/</a>.本周内即可完成全部功能。 版本: 1.0 示例:在php.ini中加入: extension=slowphp.so [slowphp] slowphp.long_query_time=3 slowphp.long_query_log=&quot;/var/log/php_long_query.log&quot; 然后重启yapache,运行一段时间后即可查看/var/log/php_long_query.php中记录下了慢脚本的启动时间，消耗时间和脚本路径。 下一步功能: 为了方便调试，下一步将在ini中多加这样两项配置: slowphp.long_query_log_probability=0.0001 slowphp.long_query_lock_file=&quot;/tmp/open_long_query&quot; 功能分别为: 1.有0.0001的概率记录当前脚本执行时间。 2.有/tmp/open_long_query文件存在时才记录脚本运行文件。 这样一来能极大地方便线上脚本运行效率的监控。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/991/">
+                  <h3 class="post-title">
+                    小技术团队的成长
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

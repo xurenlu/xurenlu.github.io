@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>公布已经做好的一个spider，要程序的q我. | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="系统说明
+该系统是一个能够在网上抓取BT数据并维护的爬虫程序。这个爬虫做这样一个事情。自动访问internet,并得到torrent链接，下载它们，供用户访问。同时得到mp3,exe的链接，让用户下载(这是盗链);包括这样几个部分:全站资源..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">公布已经做好的一个spider，要程序的q我.</h2>
+            <div class="post-date">2005-12-25</div>
+            
+            <div class="post-content" v-pre>
+              <p>系统说明<br>
+该系统是一个能够在网上抓取BT数据并维护的爬虫程序。这个爬虫做这样一个事情。自动访问internet,并得到torrent链接，下载它们，供用户访问。同时得到mp3,exe的链接，让用户下载(这是盗链);包括这样几个部分:全站资源抓取程序(解析script版,VB 写成)，全站资源抓取程序(忽略script版，不解析javascript 和vbscript ,加快速度)， web界面的task管理器，search engine web interface.BT文件小偷程序。<br>
+整个系统可以都在windows server系列上运行。也就是说，你只要有一台PC就可以跑起来了。<br>
+想做一个bt站，但又没有初始的访问量，这是最好的一个得到种子的方法。<br>
+安装步骤:<br>
+1. 安装spider:setup.exe .<br>
+2. 新建search数据库,新建数据用户search,密码search,给这个用户访问search数据库的权限。(附加data目录下的sql server数据文件。)<br>
+3. 设置web目录为http://localhost的根目录。<br>
+4. 运行spider程序就可以了.<br>
+5. 运行java 版本的spider可以得抓取web 数据。<br>
+6. 本程序正在开发中，更多信息请到http://www.ansys.org.cn/blog查询.<br>
+系统运行平台(均为unicode 版本)<br>
+数据库平台:<br>
+Microsoft windows server 2003 standard Edition/2000 server<br>
+Microsoft Sqlserver 7.0/2000<br>
+Web服务器平台:<br>
+Microsoft windows server 2003 standard Edition<br>
+Microsoft IIS 6.0<br>
+Spider 运行平台:<br>
+Microsoft windows任一平台(2000,nt,xp,2003)<br>
+系统开发平台:<br>
+Microsoft server 2003 standard edition<br>
+Microsoft Visual Basic 6.0<br>
+Microsoft sqlserver 2000<br>
+Microsoft IIS 6.0<br>
+Java2 Standard Edition 1.42</p>
+<p>spider 说明<br>
+功能说明:通过内置的简单的浏览器访页面，并解析其中的链接，最后用探测器得到链接的属性(分别有bt,emule,其他p2p,mp3,ftp,swf,图片等),加入到数据库中去。<br>
+一个java写成的多线程的抓取程序会读出torrent种子文件存到服务器上,并提供给用户下载。<br>
+Spider能够自己在完成任务以后主动申请新任务。<br>
+Spider能够访服务器，通过下载固定页面来获得进一步的指令。<br>
+忽略弹出窗口的javascript vbscript.<br>
+遇到javascript vbscript错误自动跳过。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/69/">
+                  <h3 class="post-title">
+                    不过如此的歪酷
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

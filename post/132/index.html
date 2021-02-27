@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Ansys 计算估计相关内容. | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="A.估计求解时间:
+ansys可以根据计算机的性能估计求解是加尼，一般步骤如下:
+1.使用rspeed命令获得计算机性能:
+命令:rspeed,mips,smflop,vmflop
+GUI: Main Menu-&gt;Run Time S..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Ansys 计算估计相关内容.</h2>
+            <div class="post-date">2005-05-06</div>
+            
+            <div class="post-content" v-pre>
+              <p>A.估计求解时间:<br>
+ansys可以根据计算机的性能估计求解是加尼，一般步骤如下:<br>
+1.使用rspeed命令获得计算机性能:<br>
+命令:rspeed,mips,smflop,vmflop<br>
+GUI: Main Menu-&gt;Run Time Stats-&gt; System Settings</p>
+<p>2:使用RITER命令得到分析的迭带次数:<br>
+命令:RITER,NITER<br>
+GUI: Main Menu-&gt;Run-Time Stats-&gt;Iter Settings</p>
+<p>3.获得求解时间估计值:<br>
+命令: RTIMST<br>
+GUI: Main Menu-&gt; Run-Time Stats-&gt; Individual Stats</p>
+<p>B 估计生成文件大小:<br>
+使用RFilSZ可以对文件大小进行估计，包括的文件类型有:.esav,.emat,.erot,.tri,.full,.rst,.rth,.rmg,.rfl;</p>
+<p>C.估计内存要求:<br>
+命令:RWFRNT;<br>
+D 给出模型单元信息<br>
+命令:RSTAT<br>
+E 给出内存统计量<br>
+命令:RMEMRY<br>
+GUI:main menu-&gt;run-time stats -&gt;individual stats<br>
+F 给出模型所有统计信息:<br>
+命令:RALL;<br>
+GUI: Main Menu-&gt; Run-Time Stats-&gt; All Statistics.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/133/">
+                  <h3 class="post-title">
+                    今日计划:
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

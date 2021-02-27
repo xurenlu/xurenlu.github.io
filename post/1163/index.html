@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>rails 每周乱弹:session有效期 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="默认情况下,Rails是将session信息存放在Cookie中的,但是这个Cookie的过期设置是默认的,浏览器一关闭就自动过期了.我想设置了长时间记住用户,比如,一个月内不需要再次登陆,需要这么做: 1.将Rails升级到新版,2.3...." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">rails 每周乱弹:session有效期</h2>
+            <div class="post-date">2010-08-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>默认情况下,Rails是将session信息存放在Cookie中的,但是这个Cookie的过期设置是默认的,浏览器一关闭就自动过期了.我想设置了长时间记住用户,比如,一个月内不需要再次登陆,需要这么做: 1.将Rails升级到新版,2.3.*,我的是2.3.8了;注意这是必须的,因为我之前也是按照一些资料的说明做了第二步,但是不管用,后来发现是rails的版本问题; 2.在config/environment.rb里添加: config.action_controller.session = { :session_key =&gt; '_good_session', :secret=&gt; '97feddf5fdsfdsfdsfdsfdsfds8bc7d78848a4bd45fe787340466c9598e61dc943d5a8dfb57030094160f52f04d335f4f96641dc9145fa7d57dcgg8673r2iofiewpdjdspiuewpwiudspoewioewpiewpwew', :expire_after =&gt; 86400*30 } 我添加了:expire_after这一行,这一行即指明了过期时间; 另外,在新版rails中:session_key这个名称变成了:key,需要注意. Rails升级很快,而且经常不向下兼容,这一点让人比较郁闷.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/1156/">
+                  <h3 class="post-title">
+                    rails 每周乱弹:用ckeditor为表单添加所见即所得功能
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cake的安装 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="section 1 介绍: 前面您已经了解了Cakephp的结构和cakephp的库的作用了，或者您跳过了，直接来到了这一部分，因为您不关心那些，只想早点开始。不管怎么说，您现在要开始动手了。 这一章要介绍在服务器上您必须安装什么，配置您的..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cake的安装</h2>
+            <div class="post-date">2006-11-02</div>
+            
+            <div class="post-content" v-pre>
+              <p>section 1 介绍: 前面您已经了解了Cakephp的结构和cakephp的库的作用了，或者您跳过了，直接来到了这一部分，因为您不关心那些，只想早点开始。不管怎么说，您现在要开始动手了。 这一章要介绍在服务器上您必须安装什么，配置您的服务器的不同方法，下载和安装Cakphp,开始Cakephp的第一个页面，以及某些东西并没有按照设想正确运行时的修正技巧。 section 2 需求： 要安装Cakephp,您必须要一台拥有Cakephp的需要的各种库、程序： 服务器需求: 这里就是一台服务器能正确运行Cakephp的要求:</p>
+<ul>
+<li>一个HTTP server(比如 Apache) ,要能支持以下功能:Session,Mod_rewrite(不是完全必备的,但是最好有).</li>
+<li>PHP4.3.2或更高版本。当然，Cakephp不管是在PHP4上还是在PHP5上都能运行得很好。</li>
+<li>一个数据库引擎（现在，我们已经支持Mysql,PostgreSQL,并且兼容ADODB).</li>
+</ul>
+<p>section 3 安装 Cakephp a:得到最新的发行版 有几种方法可以得到CakePHP的一份安装的拷贝:从cakeforge上得到一个稳定版本，或一个nightly版本，或者从SVN找一个刚出锅的。 要下一个稳定版，可以到http://cakeoforge.net/projects/cakephp/来查找。 要找一个最新版本，可以从http://cakephp.org/downloads/idnex/nightly.这些一般是比较稳定的，并且包含有稳定版中修复了的Bug. 如果您要从我们的SVN库中找一个最新版的，请使用您的SVN客户端，连接到https://svn.cakephp.org/repo/trunk/cake/并选择下载您想要的版本。 解压: 现在您已经下到了最新的版本，那就把这个压缩包放到您的web服务器的根目录。现在把它解压它。现在可以两种装法，一种是DEVELOPMENT式的，可以在一个域下查看许多cake程序。另一个就是发布版的，一个域名下只能装一个cake程序。 安装: 注意:/app/tmp必须有写权限。(linux/unix下用chmod 777) development安装: 要装一个development的环境，我们可以装cake安装成这样一种目录结构:</p>
+<p>/wwwroot<br>
+/cake<br>
+/app<br>
+/cake<br>
+/vendors<br>
+.htaccess<br>
+index.php</p>
+<p>在这种安装中，wwwroot目录是您的根目录，因此您的URL应该是这样的: www.example.com/cake/controllerName/actionName/param1/param2 Production 式安装: 要建立一个production式的安装，您需要有改变您的web服务器的DocumentRoot的权限。这样，整个域就成了一个Cake应用程序。 production式安装成这样一种结构:</p>
+<p>../path_to_cake_install<br>
+/app<br>
+/config<br>
+/controllers<br>
+/models<br>
+/plugins<br>
+/tmp<br>
+/vendors<br>
+/views<br>
+/webroot &lt;-- This should be your new DocumentRoot<br>
+.htaccess<br>
+index.php<br>
+/cake<br>
+/vendors<br>
+.htaccess<br>
+index.php</p>
+<p>建议您的httpd.conf改一下: DocumentRoot /path_to_cake/app/webroot 在这种情况下webroot目录就是根目录了，这样您的地址看起来是这样的: http://www.example.com/controllerName/actionName/param1/param2 高级安装:可选的安装选项 当您希望将Cake的那些目录放在磁盘上的不同的地方时，这里给出了一些案例。之所以有这个需要，是因为您可能是使用了一些受限的虚拟主机，或是您希望您的不同的应用能够共享一个cake库。 一个Cake程序有三个重要部分:</p>
+<ul>
+<li>核心的库文件--一般在/cake</li>
+<li>您的程序文件（比如controllers,models,layouts或views）,一般在/app目录下。</li>
+<li>您的应用程序的根目录.（比如，图片，js文件，css文件）--一般在/app/webroot目录下。</li>
+</ul>
+<p>这其中任何一个都可以放在您文件系统中的任何地方，不过Webroot需要您的webserver做相应配置。您可以把webroot移出app目录，当然您需要告诉cake您把它移到哪儿了。 要配置Cake，您可以更改/app/webroot/index.php文件。这里有三个常数您需要编辑一下:ROOT,APP_DIR,CAKE_CORE_INCLUDE_PATH.</p>
+<ul>
+<li>ROOT:需要设置成包含有app目录的那个目录。</li>
+<li>APP_DIR:需要设置成您的app目录</li>
+<li>CAKE_CORE_INCLUDE_PATH 需要设置成您的cake的内核库文件的路径。</li>
+</ul>
+<p>app/webroot/index.php (partial, comments removed) if (!defined('ROOT')) { define('ROOT', dirname(dirname(dirname(__FILE__)))); } if (!defined('APP_DIR')) { define ('APP_DIR', basename(dirname(dirname(__FILE__)))); } if (!defined('CAKE_CORE_INCLUDE_PATH')) { define('CAKE_CORE_INCLUDE_PATH', ROOT); } 未完---待续...</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/302/">
+                  <h3 class="post-title">
+                    CakePHP：基本知识..
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

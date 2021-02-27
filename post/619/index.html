@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Ror 版博客即将到来 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="经过好几个周末的准备，Ror 版的博客即将到来了 要换掉Wordpress，其实没有什么理由。只是，我天生是小白鼠的命。rails升级到2.0后，实在忍不住，就自己做了一个博客。 当然，wordpress也有不少不对我胃口的地方:
+
+
+皮肤..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Ror 版博客即将到来</h2>
+            <div class="post-date">2008-04-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>经过好几个周末的准备，Ror 版的博客即将到来了 要换掉Wordpress，其实没有什么理由。只是，我天生是小白鼠的命。rails升级到2.0后，实在忍不住，就自己做了一个博客。 当然，wordpress也有不少不对我胃口的地方:</p>
+<blockquote>
+<ol>
+<li>皮肤系统太复杂。虽然我推荐用php本身做模板引擎，但我不喜欢这种模板方式，对UI/UE工程师来说太难了。这次我自己照着mozilla addons社区的样子自己做了皮肤。以后自己给自己做皮肤。新的博客程序，很容易制做新皮肤。</li>
+<li>event based的插件方式很酷，可以说是插件成就了wordpress,但是，wordpress的代码太混乱了，结构化太差</li>
+<li>js基于prototype,而有些插件又是jquery的。现在我最拿手的是YUI,另外比较顺手的一个是mootools,mozilla和UWA都在用的一个js library.这次的程序，我也会混用几种引擎，但主要以mootools为主。</li>
+<li>文件上传，管理部分不太符合我的胃口。我要一个像册，还要一个作品下载模块。新的程序要内置文件上传和管理部分</li>
+<li>wordpress用的人太多了，针对wordpress的spam程序太多了，防不胜防。但是现在的wordpress是我自己写的评论部分，spam少了很多.垃圾评论是新版博客程序一个重要考虑因素。如果可能，加入垃圾评论学习机制。</li>
+<li>写的程序demo类的东西比较多,新程序要能有较好的支持。</li>
+<li>....对，除了上面的，还有重的特性:支持RestAPI,包含一个Ruby写的客户端，这样可以在终端中用vim写博客，然后发布。</li>
+</ol>
+</blockquote>
+<p>嘿嘿。最最最重要的是,以后我的方向是前端工程师了....呼呼。。。不知PHP程序员能不能成为一个牛B设计师呢?</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/618/">
+                  <h3 class="post-title">
+                    Feedsky的愚人节
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

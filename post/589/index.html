@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>继续与垃圾评论发送机们斗智斗勇 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="呵呵。 最初一版改进时，加上了这样两个条件判断： 1.当内容包含一个以上的链接时，记为“不安全”的评论。 2.当内容全英文时，记为“不安全”的评论。 不安全的评论将不直接入库，而是显示在一张表单中，这样，如果确实是人类，都知道再点击一次就可..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">继续与垃圾评论发送机们斗智斗勇</h2>
+            <div class="post-date">2008-01-06</div>
+            
+            <div class="post-content" v-pre>
+              <p>呵呵。 最初一版改进时，加上了这样两个条件判断： 1.当内容包含一个以上的链接时，记为“不安全”的评论。 2.当内容全英文时，记为“不安全”的评论。 不安全的评论将不直接入库，而是显示在一张表单中，这样，如果确实是人类，都知道再点击一次就可以继续发布。 但是这个程序只让我安静了两个月，又发现了很智能的程序：他们发现这个新的表单后会继续&quot;点击&quot;提交评论。 于是今天我再次更改代码，在表单中“嵌入”新东西：var date=new Date();var value=date.getFullYear()+&quot;-&quot;+(date.getMonth()+1)+&quot;-&quot;+ (date.getDate()); document.getElementById(&quot;spam-div&quot;).innerHTML= '<input name="hdcode" value="'+value+'" >'; 嘿嘿，这两段代码，给这些spam程序两个陷阱。这些spam程序现在很智能，能够自动搜寻表单，自动填充内容。但是如果不是在浏览器环境下，js和css没有被解释，它们还是会上当的。人类是看不见这两个框的，而程序会自做聪明地往mail这一项里填值。嘿嘿，看看这个加上后效果怎么样！</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/587/">
+                  <h3 class="post-title">
+                    又是一年，写在2008
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Cake PHP 简介（译文。。勿转载） | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="为什么选用它（cakephp）?
+令人兴奋的特性
+
+
+Model,View,Controller 架构。
+
+
+View Helpers for AJAX, Javascript, HTML Forms and more
+
+
+内建的检查认证支..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Cake PHP 简介（译文。。勿转载）</h2>
+            <div class="post-date">2006-10-21</div>
+            
+            <div class="post-content" v-pre>
+              <h4 id="为什么选用它cakephp">为什么选用它（cakephp）?</h4>
+<h4 id="令人兴奋的特性">令人兴奋的特性</h4>
+<ol>
+<li>
+<p>Model,View,Controller 架构。</p>
+</li>
+<li>
+<p>View Helpers for AJAX, Javascript, HTML Forms and more</p>
+</li>
+<li>
+<p>内建的检查认证支持(原文:Built-in Validation)</p>
+</li>
+<li>
+<p>程序自举。。</p>
+</li>
+<li>
+<p>程序代码自动生成..(原文:Application and CRUD code generation via Bake )</p>
+</li>
+<li>
+<p>权限控制。。</p>
+</li>
+<li>
+<p>数据清理。。</p>
+</li>
+<li>
+<p>安全，会话，请求处理组件...</p>
+</li>
+<li>
+<p>灵活的view层缓存...</p>
+</li>
+<li>
+<p>其他特性...</p>
+</li>
+<li>
+<p>活跃的，友好的社区支持---您只需要加入我们的IRC聊天频道，看一下都是谁在哪儿！我们非常乐意为您效劳。</p>
+</li>
+<li>
+<p>宽松的许可制度－－－cake是基于MIT 条款发布的.</p>
+</li>
+<li>
+<p>Clean　IP(实在不懂IP是指什么...也许是指绝对核心的开发人员) 每一行代码都是由Cakephp的开发队伍编写的..</p>
+</li>
+<li>
+<p>相当简单---正如您知道的，它叫小甜饼,美味可口。</p>
+</li>
+<li>
+<p>快速开发---从来没有这么过快过...(您可以看zZine的文章..)</p>
+</li>
+<li>
+<p>良好的实用性--Cake 易于理解，并且，和其他特性相比，在安全认证和会话管理中实现了工业级的高标准。(原文:Best Practices - Cake is easy to understand and sets the industry standard in security authentication, and session handling, among other features. )</p>
+</li>
+<li>
+<p>基于对象的---不管您是富有经验的OOP老手，还是一个OOP入门者，您都都会用的得心应手。</p>
+</li>
+<li>
+<p>不需要配置--您只需要装上数据库，然后等着这美妙的一切吧。</p>
+</li>
+</ol>
+<h4 id="噢天哪看看人们怎么说cake">噢，天哪，看看人们怎么说Cake?</h4>
+<ol>
+<li>Cake　简直救了我的命。-sdevore</li>
+<li>Cake developers are smart cookies. — sunsetfind.</li>
+<li>我喜欢Cake — rpeterson</li>
+<li>一旦您拥有了Cake,就不想失去它了... — j_king</li>
+<li>我们需要一个文档，来教我们如何用Cake来做任何事情. — Jonathan Snook</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/287/">
+                  <h3 class="post-title">
+                    PHP读取BT文件的代码之改进版
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

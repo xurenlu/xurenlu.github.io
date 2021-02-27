@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>推荐一个相当不错的分词程序 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="推荐一个相当不错的分词程序:nlpbamboo,这个好像就是起源于雅虎中国。 [准确地说，它不只是一个中文分词安案。]
+
+bamboo是一个中文语言处理系统。目前包括中文分词和词性标注部分。 1. Bamboo项目是一个基于机器学习技术的中..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">推荐一个相当不错的分词程序</h2>
+            <div class="post-date">2009-04-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>推荐一个相当不错的分词程序:nlpbamboo,这个好像就是起源于雅虎中国。 [准确地说，它不只是一个中文分词安案。]</p>
+<blockquote>
+<p>bamboo是一个中文语言处理系统。目前包括中文分词和词性标注部分。 1. Bamboo项目是一个基于机器学习技术的中文自然语言处理平台。 2. Bamboo项目的主要目标： * 中文分词 * 词性标注 * 命名实体识别 * 主题词抽取 bamboo提供了C,PHP,PostgreSQL的编程接口。 详情请参考: * ApplicationInterface * InstallPHPExtension * TSearch2</p>
+</blockquote>
+<p>这个项目托管在google code上，链接:<a href="http://code.google.com/p/nlpbamboo/">http://code.google.com/p/nlpbamboo/</a>. 之前这个程序需要跑n久才能从一大堆文本中训练一个可用的索引来。现在好了，有位热心兄弟训练了一个库，放出来提供下载了。我试了试，效果不错: 人名和地名啥的都能识别，一些专业名词也能识别了:</p>
+<blockquote>
+<p>你认识王大刚吗? 你 认识 王大刚 吗 ? 我出生于湖北省宜昌市的一个小山村 我 出生 于 湖北省 宜昌市 的 一个 小 山村 需要 依法 到 朝阳区 工商局 去 注册</p>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/856/">
+                  <h3 class="post-title">
+                    更改字符集设置[译文]
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

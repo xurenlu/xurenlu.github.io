@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>让Wordpress的管理登陆更快！ | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="让Wordpress的管理登陆更快！ 各位wordpress的用户们，你们有没有注意到wordpress进入管理界面的时候特别慢，而有时又很正常呢？ 实际表现是这样的，如果您是当天第一次登陆，就会很慢，如果是过几分钟后再登陆，就很快了。为什..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">让Wordpress的管理登陆更快！</h2>
+            <div class="post-date">2006-12-21</div>
+            
+            <div class="post-content" v-pre>
+              <p>让Wordpress的管理登陆更快！ 各位wordpress的用户们，你们有没有注意到wordpress进入管理界面的时候特别慢，而有时又很正常呢？ 实际表现是这样的，如果您是当天第一次登陆，就会很慢，如果是过几分钟后再登陆，就很快了。为什么呢？ 因为在控制面板界面，wordpress要用一个叫magpierss的工具去抓它自己网站上的关于wordpress的新闻。这需要很长一段时间。而这个工具会事先检查，如果在４个小时内已经读过wordpress的新闻了，就会从本地缓存中读，不去远程抓取。这就是为什么登陆一次后退出再登陆又很快的原因。 知道这个后我们动手来改: 把wp-admin/index.php打开，把所有有fetch_rss那一行改成$rss=&quot;&quot;;这样就不会去抓新闻了。速度就会快很多。 我是把fetch_rss后面的地址改为我自己的feed:http://blog.deskor.com/feed,这样默认显示我自己的最新文章（服务器本地抓自己的内容是很快的）。是不是酷多了？</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/334/">
+                  <h3 class="post-title">
+                    好大一[陀]公益广告
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>txtdb2.0的新功能 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.能够实现其它数据库的功能：比如创建，删除，修改数据库（表）
+，查询记录（2.0版本的查询中使用了快速查找）,修改记录，删除记录等等功能。
+用access可以完成的网站，用txtdb也可以完成.
+2.2.0版本比1.0相比，增加了如下功能..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">txtdb2.0的新功能</h2>
+            <div class="post-date">2004-10-20</div>
+            
+            <div class="post-content" v-pre>
+              <p>1.能够实现其它数据库的功能：比如创建，删除，修改数据库（表）</p>
+<p>，查询记录（2.0版本的查询中使用了快速查找）,修改记录，删除记录等等功能。<br>
+用access可以完成的网站，用txtdb也可以完成.</p>
+<p>2.2.0版本比1.0相比，增加了如下功能：</p>
+<p>数据表数据存储类型可以选择为巨型表和微型表（所谓巨型和微型是针对单个记<br>
+录而言。）巨型表的每一个记录都存储在一个单独的文件中,微型表所有的数据都存<br>
+储在一个数据文件中.</p>
+<p>数据查询中，增加了”不等于“这一比较方式。</p>
+<p>数据查询为fastsearch引擎.(或者称作二分法查询)</p>
+<p>数据列自动判断是否为数字类型。（目前数据字段的类型主要为字符串和数字两<br>
+种。没有自动增长数字类型或者双精度，单精度等等数据类型.这一问题将在下一版<br>
+本里解决.）</p>
+<p>2.0修改的bug:</p>
+<p>修改了当仅仅有一个记录的时候，删除这个记录后系统给出的当前行数目不是”<br>
+0″ 而是”&quot;的bug.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/227/">
+                  <h3 class="post-title">
+                    AspTxtDb ver2.0 函数列表之三
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

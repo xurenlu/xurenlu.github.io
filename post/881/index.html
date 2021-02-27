@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>hyer开发笔记之:HTMLParser不支持中文问题 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="在开发hyer的过程中，我发现beautifulsoup解析中文网页总是有问题。于是乎，我决定用tidy来在beautifulsoup之前做一个fix.没想到tidy的python极其不雅,首先tidy的强大在python版的uTidyli..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">hyer开发笔记之:HTMLParser不支持中文问题</h2>
+            <div class="post-date">2009-06-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>在开发<a href="http://www.162cm.com/archives/703.html" title="hyer">hyer</a>的过程中，我发现<a href="http://www.crummy.com/software/BeautifulSoup/">beautifulsoup</a>解析中文网页总是有问题。于是乎，我决定用tidy来在beautifulsoup之前做一个fix.没想到tidy的python极其不雅,首先tidy的强大在python版的<a href="http://utidylib.berlios.de/">uTidylib</a>也完全感觉不到了，而且安装的时候时候还有错误。 等tidy问题终于修正之后，发现大量的网页已经能用美味的汤[beautifulsoup]来解决了,但是仍然有一部分网页 不行。 最终经过跟踪发现是在这里:(/usr/lib/python2.6/HTMLParser.py): <coolcode> attrfind = re.compile( r's*([a-zA-Z_][-.:a-zA-Z_0-9]*)(s*=s*' r'('[<sup>']*'|&quot;[</sup>&quot;]*&quot;|[-a-zA-Z0-9./,:;+*%?!&amp;$()_#=~@]*))?') </coolcode> 正则表达式的第二行在遇到形如 <coolcode> alt=我是中国人 height=60 src='images/go.gif'&gt; </coolcode> 这样内容为中文不加引号的属性时无法处理。于是稍做修改(我是个大老粗,改得很偷懒,但是好像很管用) <coolcode> attrfind = re.compile( r's*([a-zA-Z_][-.:a-zA-Z_0-9]*)(s*=s*' r'('[<sup>']*'|&quot;[</sup>&quot;]*&quot;|[<sup>s</sup>'^&quot;]*))?') </coolcode> 就能解析中文属性了。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/875/">
+                  <h3 class="post-title">
+                    动态域名方案之:phppod
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

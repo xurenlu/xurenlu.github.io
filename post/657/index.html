@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>社区全文检索引擎Hyper Estraier 学习笔记[2] | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="hyperestraier是在前文已经介绍过一的一个开源搜索引擎程序。 分词:采用N-gram,char_category等来分词，良好地支持中文等东亚文字。 分词程序在:estraier.c中 est_break_text est_bre..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">社区全文检索引擎Hyper Estraier 学习笔记[2]</h2>
+            <div class="post-date">2008-06-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>hyperestraier是在前文已经介绍过一的一个<a href="http://www.162cm.com/archives/426.html">开源搜索引擎程</a>序。 分词:采用N-gram,char_category等来分词，良好地支持中文等东亚文字。 分词程序在:estraier.c中 est_break_text est_break_text_perfng est_break_text_chrcat 等分法。 相关的函数有 276 static int est_char_category(int c); 277 static int est_char_category_perfng(int c); 278 static int est_char_category_chrcat(int c); 等 分词默认采用est_break_text 当创建数据库时采用 estcmd create dbname -apn 时，采用est_break_text_perfng来分词 当创建数据库时是用 estcmd create dbname -acc 时，用est_break_text_chrcat来分词 采用est_break_text来分词时，结果这样样的: 今天 天突 突然 然想 想起 起霍 霍炬 炬曾 曾告 告诉 诉过 过我 我的 的一 一个 个日 日本 本人 人开 开发 发的 的全 全文 文检 检索 索引 引擎 擎, , 于是 是找 找他 他问 问了 了, 是双字连着的分词法，这样会占用多至少一倍的检索空间，同时精确度差一点（但是精确度比按字分词好一点)。<br>
+系列文章: <a href="http://www.162cm.com/archives/426.html">社区全文检索引擎Hyper Estraier 学习笔记[1]</a><br>
+<a href="http://www.162cm.com/archives/657.html">社区全文检索引擎Hyper Estraier 学习笔记[2]</a><br>
+<a href="http://www.162cm.com/archives/658.html">社区全文检索引擎Hyper Estraier 学习笔记[3]</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/656/">
+                  <h3 class="post-title">
+                    Spread 简介(试译)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>继续用Poderosa 来连SSH(字体切换与宏设计) | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://162cm.com/favicon.ico?v=1614431270006">
+<link rel="stylesheet" href="http://162cm.com/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="poderosa是一个日本人开发的连接ssh的客户端,功能上类似与SecureCRT,比Putty要强大,能够直接连接本地的cygwin.前文已经讲过. poderosa使用C#.net写就,需要.Net 2.0框架.这导致不方便的是,如果..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://162cm.com">
+        <img src="http://162cm.com/images/avatar.png?v=1614431270006" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://162cm.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">继续用Poderosa 来连SSH(字体切换与宏设计)</h2>
+            <div class="post-date">2007-11-20</div>
+            
+            <div class="post-content" v-pre>
+              <p>poderosa是一个日本人开发的连接ssh的客户端,功能上类似与SecureCRT,比Putty要强大,能够直接连接本地的cygwin.<a href="http://www.162cm.com/archives/523.html">前文</a>已经讲过. poderosa使用C#.net写就,需要.Net 2.0框架.这导致不方便的是,如果你的电脑上没有安装.net 2的框架,装了poderosa也无法启动,但是也有个好处是,字体渲染效果好多了.我就是欣赏它这一点.但是,这个字体效果仍然比不上Fedora linux下的终端字体效果. 这周poderosab出了点小状况:有些汉字显示不出来,我也是突然之间才想起来是客户端软件的问题,开始以为是我的.bash_profile没设置好呢. 后来猜测可能是字体损坏了,于是想用微软雅黑字体去替换.找到了车东的文章:<a href="http://www.chedong.com/blog/archives/001297.html">微软雅黑字体包替换XP的宋体（附下载） (车东[Blog^2])</a>很快将整个操作系统的字体切换了过来. 重启之后,字体漂亮多了,不用设置,poderosa下默认的字体就很漂亮了(微软雅黑嘛,不是盖的),但是我还想解决另一个问题:自动输密码.因为在QA 的MM那里,用SecureCRT时,他的keymap功能确实非常爽.只要按下事先设定好的Ctrl+shift+P,就相当于输入了密码.在yahoo的服务器上什么都要输密码时,这个非常重要. 后来我这样解决了: 1.进入C:/Program Files/Poderosa/macrosample这个目录(你的poderosa的安装目录),新建pw.js,内容如下: import Poderosa.Macro; import System.IO; var env = new Environment(); pw(); function pw() { var con = env.Connections.ActiveConnection; if(con==null) { env.Util.MessageBox(&quot;This macro requires an established connection to shell.&quot;); return; } con.TransmitLn(&quot;123456789&quot;); } 2. 点&quot;tool&quot;=&gt;&quot;marco&quot;=&gt;&quot;Configure Environment&quot;,进入宏管理页. <a href="http://www.162cm.com/wp-content/uploads/2007/11/20071120223742046.jpg" title="菜单"><img src="http://www.162cm.com/wp-content/uploads/2007/11/20071120223742046.jpg" alt="菜单" loading="lazy"></a> 3.点右边的New: <a href="http://www.162cm.com/wp-content/uploads/2007/11/20071120223657890.jpg" title="20071120223657890.jpg"><img src="http://www.162cm.com/wp-content/uploads/2007/11/20071120223657890.jpg" alt="20071120223657890.jpg" loading="lazy"></a> 4.加载你刚才定义的pw.js,并设置快捷键.我设的的Ctrl+shift+P. <a href="http://www.162cm.com/wp-content/uploads/2007/11/20071120223712015.jpg" title="20071120223712015.jpg"><img src="http://www.162cm.com/wp-content/uploads/2007/11/20071120223712015.jpg" alt="20071120223712015.jpg" loading="lazy"></a> 5.现在回到终端shell,你可以按下Ctrl+shift+P看看,是不是把密码敲进来了?嘻嘻.我设的的123456789,不要忘了改成你自己的密码! <a href="http://hi.baidu.com/heiyeluren/">黑夜路人同学</a>一直鼓动我加入他的SecureCRT阵营.不过我终于在开源,免费软件中找到了跟secureCRT相当的软件.嘿嘿! PS:今天发现一个很好用的文本编辑器,叫Notepad2,看清了后面有个2哟,虽然名称很二,功能却不二!只有一个文件,很小巧,原版好像就几百K,却支持十几种编程语言的语言高亮,并且,他默认就有什么行号显示什么的功能,在功能取舍上,比Emeditor更实用,且是内置的,不像其他软件需要用宏来实现.最重要的,对中文支持非常好!</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://162cm.com/post/547/">
+                  <h3 class="post-title">
+                    雅虎NCP与个人主页有什么不同(非官方答案)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
