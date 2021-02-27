@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>IT世界网CEO秦刚：门外汉玩转IT专业网站 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="他曾经在广州睡过街头进过收容所；他曾经是最大中文IT网站的元老；他在获取投资短短两个月后，成功组建自己的团队，实现了网站上线；短短3个月后，权威机构ALEXA数据 显示，其网站世界排名最高达到275名，国内IT网站排名前5名，而刚上线时它的..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">IT世界网CEO秦刚：门外汉玩转IT专业网站</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-27</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">IT世界网CEO秦刚：门外汉玩转IT专业网站</h2>
+            <div class="post-date">2005-03-27</div>
             
-          </div>
-          <div class="post-content">
-            <p>他曾经在广州睡过街头进过收容所；他曾经是最大中文IT网站的元老；他在获取投资短短两个月后，成功组建自己的团队，实现了网站上线；短短3个月后，权威机构ALEXA数据 显示，其网站世界排名最高达到275名，国内IT网站排名前5名，而刚上线时它的位置是6万多名。</p>
+            <div class="post-content" v-pre>
+              <p>他曾经在广州睡过街头进过收容所；他曾经是最大中文IT网站的元老；他在获取投资短短两个月后，成功组建自己的团队，实现了网站上线；短短3个月后，权威机构ALEXA数据 显示，其网站世界排名最高达到275名，国内IT网站排名前5名，而刚上线时它的位置是6万多名。</p>
 <p>这就是IT.COM.CN(IT世界网)CEO秦刚的经历，这些经历发生在短短的6年中。</p>
 <p>看过秦刚简历的人都会感到一点惊讶，一个毕业于南航管理专业的高才生，怎么会”触电”玩起了IT呢？而更令人惊讶的是，他不做则已，一做让专业人士也刮目相看。</p>
 <p>“门外汉”六年质变</p>
@@ -113,45 +121,31 @@
 <p>1998年7月至1999年5月，就职www.it30.net，分别担任编辑和总编职务。1年时间内把IT30网站做成当时国内最好的硬件网站。</p>
 <p>1999年6月至2004年4月，就职www.pconline.com.cn，担任编辑、硬件栏目主编、网站总编、太平洋电脑集团市场总监等职务。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/181/">
+                  <h3 class="post-title">
+                    地方性行业网站的发展前景
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/181/">
-              <h3 class="post-title">
-                下一篇：地方性行业网站的发展前景
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -161,6 +155,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

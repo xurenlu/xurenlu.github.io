@@ -1,406 +1,397 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
+    
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/206/">
-        <h2 class="post-title">决定不回家了:::::</h2>
-      </a>
-      <div class="post-abstract">
+      
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-03-23</span>
+      
         
-      </div>
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/207/">
-        <h2 class="post-title">感觉自己英语是应该好好学习了那?:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-03-23</span>
-        
-      </div>
+    <div class="site-description">
+      相逢的人会再相逢
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/208/">
-        <h2 class="post-title">今天毕业设计终于看倒一点希望了:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-03-23</span>
-        
-      </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/209/">
-        <h2 class="post-title">到底富人拥有什么特殊技能是那些天天省吃俭用、日日勤奋工作的上班族所欠缺的呢？富人何以能在一</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-01-28</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/210/">
-        <h2 class="post-title">毕业设计已经进行了一个阶段了我要不要回家呢</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-01-28</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/211/">
-        <h2 class="post-title">慧聪是如何开展网络营销的:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-01-13</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/212/">
-        <h2 class="post-title">好累啊。:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2005-01-09</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/213/">
-        <h2 class="post-title">82岁杨振宁要娶28岁硕士生:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-12-26</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/214/">
-        <h2 class="post-title">人成长中必须知道的20个故事-与大家共勉:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-12-15</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/215/">
-        <h2 class="post-title">找工作真是累阿，心里没有底</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-12-07</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/216/">
-        <h2 class="post-title">马家爵赋:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-12-02</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/217/">
-        <h2 class="post-title">不知道如何办阿::::::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-28</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/218/">
-        <h2 class="post-title">做一个个人主页把,hoo:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-28</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/219/">
-        <h2 class="post-title">今天去网上终于找到了asp调试老是仅仅显示500错误的问题了</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-10</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/220/">
-        <h2 class="post-title">陈天桥：告诉你一个真实的首富</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-02</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/221/">
-        <h2 class="post-title">其实，Google没什么了不起！ 转</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-02</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/222/">
-        <h2 class="post-title">InSphere与发掘弱链接:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-02</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/223/">
-        <h2 class="post-title">什么是好的程序员？ 摘自rxiao.com</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-11-01</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/224/">
-        <h2 class="post-title">数据库设计指南:::::</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-10-30</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/225/">
-        <h2 class="post-title">heh我的模板被引用了，第一次哦</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2004-10-25</span>
-        
-      </div>
-    </div>
-    
-  </section>
+  </div>
+</div>
 
 
-<div class="pagination-container">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/206/">
+                  <h2 class="post-title">决定不回家了:::::</h2>
+                </a>
+                <div class="post-date">
+                  2005-03-23
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/207/">
+                  <h2 class="post-title">感觉自己英语是应该好好学习了那?:::::</h2>
+                </a>
+                <div class="post-date">
+                  2005-03-23
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/208/">
+                  <h2 class="post-title">今天毕业设计终于看倒一点希望了:::::</h2>
+                </a>
+                <div class="post-date">
+                  2005-03-23
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/209/">
+                  <h2 class="post-title">到底富人拥有什么特殊技能是那些天天省吃俭用、日日勤奋工作的上班族所欠缺的呢？富人何以能在一</h2>
+                </a>
+                <div class="post-date">
+                  2005-01-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/210/">
+                  <h2 class="post-title">毕业设计已经进行了一个阶段了我要不要回家呢</h2>
+                </a>
+                <div class="post-date">
+                  2005-01-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/211/">
+                  <h2 class="post-title">慧聪是如何开展网络营销的:::::</h2>
+                </a>
+                <div class="post-date">
+                  2005-01-13
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/212/">
+                  <h2 class="post-title">好累啊。:::::</h2>
+                </a>
+                <div class="post-date">
+                  2005-01-09
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/213/">
+                  <h2 class="post-title">82岁杨振宁要娶28岁硕士生:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-12-26
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/214/">
+                  <h2 class="post-title">人成长中必须知道的20个故事-与大家共勉:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-12-15
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/215/">
+                  <h2 class="post-title">找工作真是累阿，心里没有底</h2>
+                </a>
+                <div class="post-date">
+                  2004-12-07
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/216/">
+                  <h2 class="post-title">马家爵赋:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-12-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/217/">
+                  <h2 class="post-title">不知道如何办阿::::::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/218/">
+                  <h2 class="post-title">做一个个人主页把,hoo:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/219/">
+                  <h2 class="post-title">今天去网上终于找到了asp调试老是仅仅显示500错误的问题了</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-10
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/220/">
+                  <h2 class="post-title">陈天桥：告诉你一个真实的首富</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/221/">
+                  <h2 class="post-title">其实，Google没什么了不起！ 转</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/222/">
+                  <h2 class="post-title">InSphere与发掘弱链接:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/223/">
+                  <h2 class="post-title">什么是好的程序员？ 摘自rxiao.com</h2>
+                </a>
+                <div class="post-date">
+                  2004-11-01
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/224/">
+                  <h2 class="post-title">数据库设计指南:::::</h2>
+                </a>
+                <div class="post-date">
+                  2004-10-30
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/225/">
+                  <h2 class="post-title">heh我的模板被引用了，第一次哦</h2>
+                </a>
+                <div class="post-date">
+                  2004-10-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
   
     <a href="http://localhost:4000/page/34/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
@@ -409,32 +400,14 @@
   
 </div>
 
-
+        </div>
       </div>
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -444,6 +417,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

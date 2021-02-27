@@ -1,92 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>人成长中必须知道的20个故事-与大家共勉::::: | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1、断箭 不相信自己的意志，永远也做不成将军。
+春秋战国时代，一位父亲和他的儿子出征打战。父亲已做了将军，儿子还只是马前卒。又一阵号角吹响，战鼓雷鸣了，父亲庄严地托起一个箭囊，其中插着一只箭。父亲郑重对儿子说：“这是家袭宝箭，配带身边，力量..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">人成长中必须知道的20个故事-与大家共勉:::::</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2004-12-15</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">人成长中必须知道的20个故事-与大家共勉:::::</h2>
+            <div class="post-date">2004-12-15</div>
             
-          </div>
-          <div class="post-content">
-            <p>1、断箭 不相信自己的意志，永远也做不成将军。</p>
+            <div class="post-content" v-pre>
+              <p>1、断箭 不相信自己的意志，永远也做不成将军。</p>
 <p>春秋战国时代，一位父亲和他的儿子出征打战。父亲已做了将军，儿子还只是马前卒。又一阵号角吹响，战鼓雷鸣了，父亲庄严地托起一个箭囊，其中插着一只箭。父亲郑重对儿子说：“这是家袭宝箭，配带身边，力量无穷，但千万不可抽出来。”</p>
 <p>那是一个极其精美的箭囊，厚牛皮打制，镶着幽幽泛光的铜边儿，再看露出的箭尾。一眼便能认定用上等的孔雀羽毛制作。儿子喜上<br>
 眉梢，贪婪地推想箭杆、箭头的模样，耳旁仿佛嗖嗖地箭声掠过，敌方的主帅应声折马而毙。</p>
@@ -151,45 +160,31 @@
 <p>9、心中的顽石 阻碍我们去发现、去创造的，仅仅是我们心理上的障碍和思想中的顽石。</p>
 <p>从前有一户人家的菜园摆着一颗大</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/215/">
+                  <h3 class="post-title">
+                    找工作真是累阿，心里没有底
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/215/">
-              <h3 class="post-title">
-                下一篇：找工作真是累阿，心里没有底
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -199,6 +194,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

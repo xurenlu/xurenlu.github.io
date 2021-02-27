@@ -1,406 +1,397 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
+    
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/297/">
-        <h2 class="post-title">替女友感谢一些曾经关注过帮忙过的朋友</h2>
-      </a>
-      <div class="post-abstract">
+      
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-25</span>
+      
         
-      </div>
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/296/">
-        <h2 class="post-title">又要做擦屁股的事</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-25</span>
-        
-      </div>
+    <div class="site-description">
+      相逢的人会再相逢
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/295/">
-        <h2 class="post-title">Cakephp在Windows Server上无法用mod_rewrite的问题</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-24</span>
-        
-      </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/293/">
-        <h2 class="post-title">燥动...</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-23</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/292/">
-        <h2 class="post-title">家家有本难念的经啊</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-21</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/291/">
-        <h2 class="post-title">CakePHP入门...译文，请勿转载.</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-21</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/290/">
-        <h2 class="post-title">cakePHP手册（译文，勿转载）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-21</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/288/">
-        <h2 class="post-title">Cake PHP 简介（译文。。勿转载）</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-21</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/287/">
-        <h2 class="post-title">PHP读取BT文件的代码之改进版</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-21</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/286/">
-        <h2 class="post-title">一段读取BT Torrent文件的代码。。。。请勿转载</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-19</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/285/">
-        <h2 class="post-title">哦，在武汉的日子....</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-18</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/284/">
-        <h2 class="post-title">跳槽 跳槽... 生活/$%^&amp;@#幸福....</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-16</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/283/">
-        <h2 class="post-title">select id,title from ** 与select * from **的速度测试。</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-16</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/282/">
-        <h2 class="post-title">如何打造一个您自己的输入法..........</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-14</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/281/">
-        <h2 class="post-title">俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-12</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/280/">
-        <h2 class="post-title">一个测试PHP效率的代码，检测Single Quote,Double Quote,HereDoc的效率</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-11</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/275/">
-        <h2 class="post-title">wordpress的deskor_mywords插件</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-08</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/274/">
-        <h2 class="post-title">一个显示最新评论的wordpress插件</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-06</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/273/">
-        <h2 class="post-title">通过XOOPS模块整合Mu.wordpress的完整方案(一)</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-06</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/272/">
-        <h2 class="post-title">WP的多用户版本mu.wordpress与XOOPS的整合...</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-05</span>
-        
-      </div>
-    </div>
-    
-  </section>
+  </div>
+</div>
 
 
-<div class="pagination-container">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/297/">
+                  <h2 class="post-title">替女友感谢一些曾经关注过帮忙过的朋友</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/296/">
+                  <h2 class="post-title">又要做擦屁股的事</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/295/">
+                  <h2 class="post-title">Cakephp在Windows Server上无法用mod_rewrite的问题</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-24
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/293/">
+                  <h2 class="post-title">燥动...</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-23
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/292/">
+                  <h2 class="post-title">家家有本难念的经啊</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-21
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/291/">
+                  <h2 class="post-title">CakePHP入门...译文，请勿转载.</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-21
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/290/">
+                  <h2 class="post-title">cakePHP手册（译文，勿转载）</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-21
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/288/">
+                  <h2 class="post-title">Cake PHP 简介（译文。。勿转载）</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-21
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/287/">
+                  <h2 class="post-title">PHP读取BT文件的代码之改进版</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-21
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/286/">
+                  <h2 class="post-title">一段读取BT Torrent文件的代码。。。。请勿转载</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-19
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/285/">
+                  <h2 class="post-title">哦，在武汉的日子....</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-18
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/284/">
+                  <h2 class="post-title">跳槽 跳槽... 生活/$%^&amp;@#幸福....</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-16
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/283/">
+                  <h2 class="post-title">select id,title from ** 与select * from **的速度测试。</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-16
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/282/">
+                  <h2 class="post-title">如何打造一个您自己的输入法..........</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-14
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/281/">
+                  <h2 class="post-title">俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-12
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/280/">
+                  <h2 class="post-title">一个测试PHP效率的代码，检测Single Quote,Double Quote,HereDoc的效率</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/275/">
+                  <h2 class="post-title">wordpress的deskor_mywords插件</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-08
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/274/">
+                  <h2 class="post-title">一个显示最新评论的wordpress插件</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-06
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/273/">
+                  <h2 class="post-title">通过XOOPS模块整合Mu.wordpress的完整方案(一)</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-06
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/272/">
+                  <h2 class="post-title">WP的多用户版本mu.wordpress与XOOPS的整合...</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-05
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
   
     <a href="http://localhost:4000/page/22/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
@@ -409,32 +400,14 @@
   
 </div>
 
-
+        </div>
       </div>
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -444,6 +417,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

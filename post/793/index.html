@@ -1,133 +1,127 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>从吃饭到做爱?----饭岛爱其人 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="昨天平安夜，一个日本女人死了。 今天一上午，我老是听到有人在议论，饭岛爱死了。 饭岛爱是谁呢？都怪我平时看片时不爱学习，从来没有记住演员的名字。看来从看片也能看出人的性格啊，像我这种一看就是不善跟人打交道的，一部电影看完，完全不会想着去记一..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">从吃饭到做爱?----饭岛爱其人</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-12-26</span>
-            
-          </div>
-          <div class="post-content">
-            <p>昨天平安夜，一个日本女人死了。 今天一上午，我老是听到有人在议论，饭岛爱死了。 饭岛爱是谁呢？都怪我平时看片时不爱学习，从来没有记住演员的名字。看来从看片也能看出人的性格啊，像我这种一看就是不善跟人打交道的，一部电影看完，完全不会想着去记一个人的名字。景爷就不一样，据说（其实这是我亲眼见识过的)景爷出演一个小品，需要说一大串日本小电影女演员的名字，景爷从不背剧本，一上来就哗啦哗啦说一大串，而且更神的是，每次都不带重复的。 嗯，还是回来说饭岛爱。 饭MM上google一抓一大把:<a href="http://www.google.cn/search?q=%E9%A5%AD%E5%B2%9B%E7%88%B1&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:zh-CN:official&amp;client=firefox-a">google上搜饭岛爱</a>. 百度上搜搜: <a href="http://www.baidu.com/s?wd=%B7%B9%B5%BA%B0%AE">也一大把饭岛爱</a>。 百度上还有个<a href="http://baike.baidu.com/view/53288.htm">百科</a>:<img src="http://imgsrc.baidu.com/baike/abpic/item/b258f5c449f4a9b48326ac75.jpg" alt="" title="饭岛爱" loading="lazy"> Tom有个专题页:<a href="http://ent.tom.com/Archive/2002/2/19-77887.html">饭岛爱的tom专题</a><br>
-新浪也不落后:<a href="http://ent.sina.com.cn/s/j/f/fandai.html">新浪的饭岛爱专题页</a>。 嗯,搜狐也不甘居人后啊:<a href="http://yule.sohu.com/52/44/column213164452.shtml">搜狐的饭岛爱专题</a>。 再找找。嗯，人民网也有一篇新闻,不过做为人民网，实在不好和众门户一起挣，所以起名为<a href="http://ent.people.com.cn/GB/8222/42055/141875/8580398.html">饭岛爱基本资料</a>。 真是不容易啊。看看人家怎么评论的:知名女星,AV一姐...名星就是不一样啊，某报的编辑在发布新闻时用的词儿: <a href="http://cache.baidu.com/c?m=9d78d513d9d431aa4f9d9f690c66c0161e43f0102bd6a0020fd6843be4701c011969b9fd61600705a0d8612244ea5e5c9dae6127645d76e4c096c35dddccc375709f274321409b4110d11cee910d71dc209258e3b81991b9f02f93a9cf828208159d0f436d87848858021ec86ffb033194fcdf17&amp;p=8b2a971b86cc43e00781c62657&amp;user=baidu">昨日是西方圣诞节前的平安夜，在这万家团圆之时，娱乐圈却传来一个让人唏嘘的噩耗：日本知名女星饭岛爱在家中自杀身亡。</a>嗯，果然是很有感情啊。 草莓果果评论: 众多男人进入了她的身体，却从未触及她的灵魂。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/789/">
-              <h3 class="post-title">
-                下一篇：继续扯蛋(之四)
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">从吃饭到做爱?----饭岛爱其人</h2>
+            <div class="post-date">2008-12-26</div>
+            
+            <div class="post-content" v-pre>
+              <p>昨天平安夜，一个日本女人死了。 今天一上午，我老是听到有人在议论，饭岛爱死了。 饭岛爱是谁呢？都怪我平时看片时不爱学习，从来没有记住演员的名字。看来从看片也能看出人的性格啊，像我这种一看就是不善跟人打交道的，一部电影看完，完全不会想着去记一个人的名字。景爷就不一样，据说（其实这是我亲眼见识过的)景爷出演一个小品，需要说一大串日本小电影女演员的名字，景爷从不背剧本，一上来就哗啦哗啦说一大串，而且更神的是，每次都不带重复的。 嗯，还是回来说饭岛爱。 饭MM上google一抓一大把:<a href="http://www.google.cn/search?q=%E9%A5%AD%E5%B2%9B%E7%88%B1&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:zh-CN:official&amp;client=firefox-a">google上搜饭岛爱</a>. 百度上搜搜: <a href="http://www.baidu.com/s?wd=%B7%B9%B5%BA%B0%AE">也一大把饭岛爱</a>。 百度上还有个<a href="http://baike.baidu.com/view/53288.htm">百科</a>:<img src="http://imgsrc.baidu.com/baike/abpic/item/b258f5c449f4a9b48326ac75.jpg" alt="" title="饭岛爱" loading="lazy"> Tom有个专题页:<a href="http://ent.tom.com/Archive/2002/2/19-77887.html">饭岛爱的tom专题</a><br>
+新浪也不落后:<a href="http://ent.sina.com.cn/s/j/f/fandai.html">新浪的饭岛爱专题页</a>。 嗯,搜狐也不甘居人后啊:<a href="http://yule.sohu.com/52/44/column213164452.shtml">搜狐的饭岛爱专题</a>。 再找找。嗯，人民网也有一篇新闻,不过做为人民网，实在不好和众门户一起挣，所以起名为<a href="http://ent.people.com.cn/GB/8222/42055/141875/8580398.html">饭岛爱基本资料</a>。 真是不容易啊。看看人家怎么评论的:知名女星,AV一姐...名星就是不一样啊，某报的编辑在发布新闻时用的词儿: <a href="http://cache.baidu.com/c?m=9d78d513d9d431aa4f9d9f690c66c0161e43f0102bd6a0020fd6843be4701c011969b9fd61600705a0d8612244ea5e5c9dae6127645d76e4c096c35dddccc375709f274321409b4110d11cee910d71dc209258e3b81991b9f02f93a9cf828208159d0f436d87848858021ec86ffb033194fcdf17&amp;p=8b2a971b86cc43e00781c62657&amp;user=baidu">昨日是西方圣诞节前的平安夜，在这万家团圆之时，娱乐圈却传来一个让人唏嘘的噩耗：日本知名女星饭岛爱在家中自杀身亡。</a>嗯，果然是很有感情啊。 草莓果果评论: 众多男人进入了她的身体，却从未触及她的灵魂。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/789/">
+                  <h3 class="post-title">
+                    继续扯蛋(之四)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -137,6 +131,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

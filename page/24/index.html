@@ -1,406 +1,397 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
+    
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/271/">
-        <h2 class="post-title">一个产生SQL的类</h2>
-      </a>
-      <div class="post-abstract">
+      
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-05</span>
+      
         
-      </div>
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/267/">
-        <h2 class="post-title">翻唱的挪威的森林..</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-05</span>
-        
-      </div>
+    <div class="site-description">
+      相逢的人会再相逢
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/263/">
-        <h2 class="post-title">越来越发现新聚好玩</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/262/">
-        <h2 class="post-title">SiteLite畅想</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/261/">
-        <h2 class="post-title">一件事会变糟糕，那就一定会变糟糕!</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/260/">
-        <h2 class="post-title">2.0时代的推广思路</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/259/">
-        <h2 class="post-title">管理理念总结</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/258/">
-        <h2 class="post-title">什么样的Ajax框架是一个好框架?</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/256/">
-        <h2 class="post-title">第八章:仇怨</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/255/">
-        <h2 class="post-title">第七章:恩人</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/253/">
-        <h2 class="post-title">第六章:死里逃生</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/251/">
-        <h2 class="post-title">第五章:大伯家的生活</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/250/">
-        <h2 class="post-title">第四章:顺子的支书大叔</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/249/">
-        <h2 class="post-title">第三章:过继风波</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/248/">
-        <h2 class="post-title">顺子他娘[2]</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/247/">
-        <h2 class="post-title">顺子成长记[1]</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/246/">
-        <h2 class="post-title">幸福，辞职</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-10-04</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/270/">
-        <h2 class="post-title">穷人的日子</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-09-08</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1306/">
-        <h2 class="post-title">为政府喊冤</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-06-19</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1305/">
-        <h2 class="post-title">介绍一下我的超强的邻居们</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2006-06-18</span>
-        
-      </div>
-    </div>
-    
-  </section>
+  </div>
+</div>
 
 
-<div class="pagination-container">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/271/">
+                  <h2 class="post-title">一个产生SQL的类</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-05
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/267/">
+                  <h2 class="post-title">翻唱的挪威的森林..</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-05
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/263/">
+                  <h2 class="post-title">越来越发现新聚好玩</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/262/">
+                  <h2 class="post-title">SiteLite畅想</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/261/">
+                  <h2 class="post-title">一件事会变糟糕，那就一定会变糟糕!</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/260/">
+                  <h2 class="post-title">2.0时代的推广思路</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/259/">
+                  <h2 class="post-title">管理理念总结</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/258/">
+                  <h2 class="post-title">什么样的Ajax框架是一个好框架?</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/256/">
+                  <h2 class="post-title">第八章:仇怨</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/255/">
+                  <h2 class="post-title">第七章:恩人</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/253/">
+                  <h2 class="post-title">第六章:死里逃生</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/251/">
+                  <h2 class="post-title">第五章:大伯家的生活</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/250/">
+                  <h2 class="post-title">第四章:顺子的支书大叔</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/249/">
+                  <h2 class="post-title">第三章:过继风波</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/248/">
+                  <h2 class="post-title">顺子他娘[2]</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/247/">
+                  <h2 class="post-title">顺子成长记[1]</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/246/">
+                  <h2 class="post-title">幸福，辞职</h2>
+                </a>
+                <div class="post-date">
+                  2006-10-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/270/">
+                  <h2 class="post-title">穷人的日子</h2>
+                </a>
+                <div class="post-date">
+                  2006-09-08
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1306/">
+                  <h2 class="post-title">为政府喊冤</h2>
+                </a>
+                <div class="post-date">
+                  2006-06-19
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1305/">
+                  <h2 class="post-title">介绍一下我的超强的邻居们</h2>
+                </a>
+                <div class="post-date">
+                  2006-06-18
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
   
     <a href="http://localhost:4000/page/23/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
@@ -409,32 +400,14 @@
   
 </div>
 
-
+        </div>
       </div>
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -444,6 +417,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

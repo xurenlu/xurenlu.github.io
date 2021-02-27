@@ -1,406 +1,397 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
+    
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
+      
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1243/">
-        <h2 class="post-title">关于创业，杂感</h2>
-      </a>
-      <div class="post-abstract">
+      
         
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-11-06</span>
+      
         
-      </div>
+      
+        
+      
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1237/">
-        <h2 class="post-title">支持中文的sphinder 修改版</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-10-28</span>
-        
-      </div>
+    <div class="site-description">
+      相逢的人会再相逢
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1231/">
-        <h2 class="post-title">TT的作者出新作品鸟:kyoto tycoon</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-10-26</span>
-        
-      </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1229/">
-        <h2 class="post-title">phppod终止更新和技术支持</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-10-24</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1220/">
-        <h2 class="post-title">php工程师前端入门</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-10-15</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1216/">
-        <h2 class="post-title">我可以为什么样的代码编辑器付费(判断是不是好的代码编辑器的标准)</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-10-11</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1211/">
-        <h2 class="post-title">跟面试、职场相关的杂七杂八的</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-09-08</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1206/">
-        <h2 class="post-title">web开发大花园开张</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-09-03</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1204/">
-        <h2 class="post-title">nginx在fastcgi模块中转发真实的后端IP</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-28</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1182/">
-        <h2 class="post-title">我倒腾过的小项目</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-25</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1177/">
-        <h2 class="post-title">新博开张</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-23</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1174/">
-        <h2 class="post-title">PHP中的一些language construct</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-22</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1170/">
-        <h2 class="post-title">稍显寒酸的一个PHP框架:supermin</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-15</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1163/">
-        <h2 class="post-title">rails 每周乱弹:session有效期</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-08-01</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1156/">
-        <h2 class="post-title">rails 每周乱弹:用ckeditor为表单添加所见即所得功能</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-25</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1129/">
-        <h2 class="post-title">rails 每周乱弹:解决RMagick版本问题</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-13</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1148/">
-        <h2 class="post-title">检测文本正文是否包含有特定词的PHP扩展</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-11</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1131/">
-        <h2 class="post-title">CloudAPI 远程接口服务使用图文教程</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-11</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1122/">
-        <h2 class="post-title">关于新闻网页正文抽取的一些思路</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-06</span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="http://localhost:4000/post/1117/">
-        <h2 class="post-title">新闻站抓取神器:正文抽取接口</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2010-07-01</span>
-        
-      </div>
-    </div>
-    
-  </section>
+  </div>
+</div>
 
 
-<div class="pagination-container">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1243/">
+                  <h2 class="post-title">关于创业，杂感</h2>
+                </a>
+                <div class="post-date">
+                  2010-11-06
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1237/">
+                  <h2 class="post-title">支持中文的sphinder 修改版</h2>
+                </a>
+                <div class="post-date">
+                  2010-10-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1231/">
+                  <h2 class="post-title">TT的作者出新作品鸟:kyoto tycoon</h2>
+                </a>
+                <div class="post-date">
+                  2010-10-26
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1229/">
+                  <h2 class="post-title">phppod终止更新和技术支持</h2>
+                </a>
+                <div class="post-date">
+                  2010-10-24
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1220/">
+                  <h2 class="post-title">php工程师前端入门</h2>
+                </a>
+                <div class="post-date">
+                  2010-10-15
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1216/">
+                  <h2 class="post-title">我可以为什么样的代码编辑器付费(判断是不是好的代码编辑器的标准)</h2>
+                </a>
+                <div class="post-date">
+                  2010-10-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1211/">
+                  <h2 class="post-title">跟面试、职场相关的杂七杂八的</h2>
+                </a>
+                <div class="post-date">
+                  2010-09-08
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1206/">
+                  <h2 class="post-title">web开发大花园开张</h2>
+                </a>
+                <div class="post-date">
+                  2010-09-03
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1204/">
+                  <h2 class="post-title">nginx在fastcgi模块中转发真实的后端IP</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-28
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1182/">
+                  <h2 class="post-title">我倒腾过的小项目</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1177/">
+                  <h2 class="post-title">新博开张</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-23
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1174/">
+                  <h2 class="post-title">PHP中的一些language construct</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-22
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1170/">
+                  <h2 class="post-title">稍显寒酸的一个PHP框架:supermin</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-15
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1163/">
+                  <h2 class="post-title">rails 每周乱弹:session有效期</h2>
+                </a>
+                <div class="post-date">
+                  2010-08-01
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1156/">
+                  <h2 class="post-title">rails 每周乱弹:用ckeditor为表单添加所见即所得功能</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1129/">
+                  <h2 class="post-title">rails 每周乱弹:解决RMagick版本问题</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-13
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1148/">
+                  <h2 class="post-title">检测文本正文是否包含有特定词的PHP扩展</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1131/">
+                  <h2 class="post-title">CloudAPI 远程接口服务使用图文教程</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1122/">
+                  <h2 class="post-title">关于新闻网页正文抽取的一些思路</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-06
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="http://localhost:4000/post/1117/">
+                  <h2 class="post-title">新闻站抓取神器:正文抽取接口</h2>
+                </a>
+                <div class="post-date">
+                  2010-07-01
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
   
     <a href="http://localhost:4000/page/2/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
@@ -409,32 +400,14 @@
   
 </div>
 
-
+        </div>
       </div>
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -444,6 +417,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Tokyo Cabinet:另一个DBM实现 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="Tokyo Cabinet的作者叫Mikio Hirabayashi.用师兄覃健祥的话说，作者很猛很持久.这不，作者出了一个QDBM(类似gdbm,ndbm,sdbm,mdbm的一个dbm),estraier,Hyperestraier（前..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Tokyo Cabinet:另一个DBM实现</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-08-17</span>
-            
-          </div>
-          <div class="post-content">
-            <p>Tokyo Cabinet的作者叫Mikio Hirabayashi.用师兄覃健祥的话说，作者很猛很持久.这不，作者出了一个QDBM(类似gdbm,ndbm,sdbm,mdbm的一个dbm),estraier,Hyperestraier（前面介绍过，是一个支持中文等东亚文字，可以p2p架构的搜索引擎实现）等一系列c软件，现在又出了一个:Tokyo Cabinet. Tokyo Cabinet: 项目主页:http://tokyocabinet.sourceforge.net/ 简介（翻译成中文了) Tokyo Cabinet 是一个DBM的实现。这里的数据库由一系列key-value对的记录构成。key和value都可以是任意长度的字节序列,既可以是二进制也可以是字符串。这里没有数据类型和数据表的概念。 当做为Hash表数据库使用时，每个key必须是不同的,因此无法存储两个key相同的值。提供了以下访问方法:提供key,value参数来存储，按key删除记录，按key来读取记录，另外，遍历key也被支持，虽然顺序是任意的不能被保证。这些方法跟Unix标准的DBM,例如GDBM,NDBM等等是相同的，但是比它们的性能要好得多（因此可以替代它们) 当按B+树来存储时，拥用相同key的记录也能被存储。像hash表一样的读取，存储，删除函数也都有提供。记录按照用户提供的比较函数来存储。可以采用顺序或倒序的游标来读取每一条记录。依照这个原理，向前的字符串匹配搜索和整数区间搜索也实现了。另外，B＋树的事务也是可用的。 As for database of fixed-length array, records are stored with unique natural numbers. It is impossible to store two or more records with a key overlaps. Moreover, the length of each record is limited by the specified length. Provided operations are the same as ones of hash database. 对于定长的数组，记录按自然数来标记存储。不能存储key相同的两条或更多记录。另外，每条记录的长度受到限 制。读取方法和hash表的一样。 Tokyo Cabinet是用C写的，同时提供c,perl,ruby,java的API。Tokyo Cabinet在提供了POSIX和C99的平台上都可用，它以GNU Lesser Public License协议发布。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/680/">
-              <h3 class="post-title">
-                下一篇：神奇的DRb
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Tokyo Cabinet:另一个DBM实现</h2>
+            <div class="post-date">2008-08-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>Tokyo Cabinet的作者叫Mikio Hirabayashi.用师兄覃健祥的话说，作者很猛很持久.这不，作者出了一个QDBM(类似gdbm,ndbm,sdbm,mdbm的一个dbm),estraier,Hyperestraier（前面介绍过，是一个支持中文等东亚文字，可以p2p架构的搜索引擎实现）等一系列c软件，现在又出了一个:Tokyo Cabinet. Tokyo Cabinet: 项目主页:http://tokyocabinet.sourceforge.net/ 简介（翻译成中文了) Tokyo Cabinet 是一个DBM的实现。这里的数据库由一系列key-value对的记录构成。key和value都可以是任意长度的字节序列,既可以是二进制也可以是字符串。这里没有数据类型和数据表的概念。 当做为Hash表数据库使用时，每个key必须是不同的,因此无法存储两个key相同的值。提供了以下访问方法:提供key,value参数来存储，按key删除记录，按key来读取记录，另外，遍历key也被支持，虽然顺序是任意的不能被保证。这些方法跟Unix标准的DBM,例如GDBM,NDBM等等是相同的，但是比它们的性能要好得多（因此可以替代它们) 当按B+树来存储时，拥用相同key的记录也能被存储。像hash表一样的读取，存储，删除函数也都有提供。记录按照用户提供的比较函数来存储。可以采用顺序或倒序的游标来读取每一条记录。依照这个原理，向前的字符串匹配搜索和整数区间搜索也实现了。另外，B＋树的事务也是可用的。 As for database of fixed-length array, records are stored with unique natural numbers. It is impossible to store two or more records with a key overlaps. Moreover, the length of each record is limited by the specified length. Provided operations are the same as ones of hash database. 对于定长的数组，记录按自然数来标记存储。不能存储key相同的两条或更多记录。另外，每条记录的长度受到限 制。读取方法和hash表的一样。 Tokyo Cabinet是用C写的，同时提供c,perl,ruby,java的API。Tokyo Cabinet在提供了POSIX和C99的平台上都可用，它以GNU Lesser Public License协议发布。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/680/">
+                  <h3 class="post-title">
+                    神奇的DRb
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

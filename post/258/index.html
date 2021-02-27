@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>什么样的Ajax框架是一个好框架? | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="以我的观点，满足这样的要求的Ajax框架，才是好的: 1.跨平台的。只能在IE,或者firefox下运行的框架，不是好平台。当然，也是有限的。毕竟IE5之前的FireFox1.0之间的都没办法。这是一个很底级的要求了。 　2.Ajax对象的..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">什么样的Ajax框架是一个好框架?</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-10-04</span>
-            
-          </div>
-          <div class="post-content">
-            <p>以我的观点，满足这样的要求的Ajax框架，才是好的: 1.跨平台的。只能在IE,或者firefox下运行的框架，不是好平台。当然，也是有限的。毕竟IE5之前的FireFox1.0之间的都没办法。这是一个很底级的要求了。 　2.Ajax对象的合理利用，避免不停地创建XmlHttpRequest对象，造成占用内存越来越大。构造一个对象池，能不新建对像就不新建，不再使用的收回。 3.合理的缓存数据。在做所见即所得的编辑器时，我发现当用户每次点击一个按钮时，都调用了一次Ajax的异步传输。但其实这每次传输的内容都是一样的。应该建立一个缓存机制，像这种就是传一次得到了数据，以后就不用再从服务器上请求数据了。而有一些，比如新闻，则可以给每一个ajxa请求的URL设定一个过期时间，在这个时间内再次访问时，就直接读客户端缓存内容，而不需要去服务器端下载数据。 4.有能解决前进，后退按钮的解决方案。这个抓虾做到了。可以看到，在抓虾中通过点击鼠标来切换频道时,URL地址变了。并且后退和前进按钮生效了。不解决这个问题的Ajax框架就不是一个好框架。 其它还有一些，不过我觉得没有这几个重要了。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/256/">
-              <h3 class="post-title">
-                下一篇：第八章:仇怨
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">什么样的Ajax框架是一个好框架?</h2>
+            <div class="post-date">2006-10-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>以我的观点，满足这样的要求的Ajax框架，才是好的: 1.跨平台的。只能在IE,或者firefox下运行的框架，不是好平台。当然，也是有限的。毕竟IE5之前的FireFox1.0之间的都没办法。这是一个很底级的要求了。 　2.Ajax对象的合理利用，避免不停地创建XmlHttpRequest对象，造成占用内存越来越大。构造一个对象池，能不新建对像就不新建，不再使用的收回。 3.合理的缓存数据。在做所见即所得的编辑器时，我发现当用户每次点击一个按钮时，都调用了一次Ajax的异步传输。但其实这每次传输的内容都是一样的。应该建立一个缓存机制，像这种就是传一次得到了数据，以后就不用再从服务器上请求数据了。而有一些，比如新闻，则可以给每一个ajxa请求的URL设定一个过期时间，在这个时间内再次访问时，就直接读客户端缓存内容，而不需要去服务器端下载数据。 4.有能解决前进，后退按钮的解决方案。这个抓虾做到了。可以看到，在抓虾中通过点击鼠标来切换频道时,URL地址变了。并且后退和前进按钮生效了。不解决这个问题的Ajax框架就不是一个好框架。 其它还有一些，不过我觉得没有这几个重要了。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/256/">
+                  <h3 class="post-title">
+                    第八章:仇怨
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>网站推广方法–资源合作 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="网站之间的资源合作也是互相推广的一种重要方法，其中最简单的合作方式为交换链接。网站其他合作还有内容共享、资源互换、互为推荐等，尽管形式和*作方法各不相同，但是基本思路是一样的，即在自己拥有一定营销资源的情况下通过合作达到共同发展的目的。本节..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">网站推广方法–资源合作</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-24</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">网站推广方法–资源合作</h2>
+            <div class="post-date">2005-03-24</div>
             
-          </div>
-          <div class="post-content">
-            <p>网站之间的资源合作也是互相推广的一种重要方法，其中最简单的合作方式为交换链接。网站其他合作还有内容共享、资源互换、互为推荐等，尽管形式和*作方法各不相同，但是基本思路是一样的，即在自己拥有一定营销资源的情况下通过合作达到共同发展的目的。本节只介绍交换链接方法。</p>
+            <div class="post-content" v-pre>
+              <p>网站之间的资源合作也是互相推广的一种重要方法，其中最简单的合作方式为交换链接。网站其他合作还有内容共享、资源互换、互为推荐等，尽管形式和*作方法各不相同，但是基本思路是一样的，即在自己拥有一定营销资源的情况下通过合作达到共同发展的目的。本节只介绍交换链接方法。</p>
 <p>在”搜索引擎注册”有关内容时，讲到以Google为代表的第二代搜索引擎将其它网站的链接数量也作为决定一个网站排名的一项指标，其实，交换链接本身也是一项常用的网站推广手段，被其它网站链接的机会越多，越有利于推广自己的网站。尤其对于大多数中小网站来说，这种免费的推广手段是一种常用的、而且是有一定效果的方法。</p>
 <p>交换链接或称互惠链接、互换链接、友情链接等，是具有一定互补优势的网站之间的简单合作形式，即分别在自己的网站上放置对方网站的LOGO或网站名称，并设置对方网站的超级链接，使得用户可以从合作网站中发现自己的网站，达到互相推广的目。</p>
 <p>交换链接的作用主要表现在几个方面：获得访问量、增加用户浏览时的印象、在搜索引擎排名中增加优势、通过合作网站的推荐增加访问者的可信度等。不过关于交换链接的效果，业内还有一些不同看法，有人认为网站可以从链接中获得的访问量非常少，也有人认为交换链接不仅可以获得潜在的品牌价值，还可以获得很多直接的访问量。</p>
@@ -109,45 +117,31 @@
 <p>谁也不喜欢自己的网站存在很多无效的链接，但是，实际上很多网站都不同程度地存在这种问题。即使网站内部链接都没有问题，但很难保证链接到外部的也同样没有问题，因为链接网站也许经过改版、关闭等原因，原来的路径已经不再有效，而对于访问者来说，所有的问题都是网站的问题，他们并不去分析是否对方的网站已经关闭或者发生了其它问题。因此，每隔一定周期对网站链接进行系统性的检查是很必要的。</p>
 <p>此外，新网站每天都在不断诞生，交换链接的任务也就没有终了的时候，当然，在很多情况下，都是新网站主动提出合作的请求，对这些网站进行严格的考察，从中选择适合自己的网站，将合作伙伴的队伍不断壮大和丰富，对绝大多数网站来说，都是一笔巨大的财富。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/201/">
+                  <h3 class="post-title">
+                    选择最佳关键词之10个技巧
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/201/">
-              <h3 class="post-title">
-                下一篇：选择最佳关键词之10个技巧
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -157,6 +151,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

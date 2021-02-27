@@ -1,135 +1,132 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Spread 简介(试译) | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="
+项目网站:http://www.spread.org/
+
+Spread 是一个开源工具,它提供高性能的的消息服务,这种服务在局域网和广域网上能有效地避够失效。它在分布式程序中充当一个统一的消息总线的角色,并且提供高调谐的应用级的消息多路播..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Spread 简介(试译)</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-06-19</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Spread 简介(试译)</h2>
+            <div class="post-date">2008-06-19</div>
             
-          </div>
-          <div class="post-content">
-            <blockquote>
+            <div class="post-content" v-pre>
+              <blockquote>
 <p>项目网站:http://www.spread.org/</p>
 </blockquote>
 <p>Spread 是一个开源工具,它提供高性能的的消息服务,这种服务在局域网和广域网上能有效地避够失效。它在分布式程序中充当一个统一的消息总线的角色,并且提供高调谐的应用级的消息多路播送、组通讯、点到点支持。Spread的应用范围既包括高可靠的消息传送，也包括有序消息的传输(有保证). Spread可用在许多需要高可靠性,高性能,以及各种子集和成员之间健壮的消息传播的分布式程序中。这个工具封装了异步网络的复杂性,便于创建可高靠和可扩展性的分布式程序. Spread包含:一些需要被用户程序包含的库文件,一个守护进程(它需要运行在这个一组应用的每台机器上),以及一些工具和演示程序。 <strong>Spread提供的功能和便利有:</strong> 可靠的、可扩展地消息传播和组通讯。 可以简化分布式程序架构的简单而功能强大的API 易于使用,开发和维护 从本地局域网到复杂的广域网的可扩展性 支持有不同数目的成员的上千个组 提供在机器失效、应用崩溃和网络划分、重组时的可靠的消息传送的能力 为消息传送提供了可靠和排序、稳定保证。 重视健壮性和高性能 完全的分布式算法，不会有中央节点失效风险 <strong>为什么使用Spread</strong> * 功能强大而简单的API.只需要六个基本的调用就可以使用Spread了! * Spread做了优先，在本地局域网中可以支撑每秒8000个1Kbytes的消息 * 在网络划分或系统某部分失效时的可靠性和可用性，不管系统是由几台电脑构成的cluster,或是一些cluster,还是分布于广域网的几千台电脑组成的系统。 * 允许系统无缝地增长扩容而不需要改变架构. * Spread允许单播,多播,多组多播,scatter-gather calls,或是多路查询。 * Spread能处理网络和机器的重新划分并且能够安全地重新组合，能通知应用当前的状态. * 跨平台:Spread 支持跨平台的操作:Unix( BSD,Linux,Solaris,Irix,AIX,Mac OS X,etc)和Windows(2000/NT/98/95) * Spread当前有C/C++,C#,Java,Perl,Python和Ruby的编程接口.</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/654/">
+                  <h3 class="post-title">
+                    色色的西红柿
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/654/">
-              <h3 class="post-title">
-                下一篇：色色的西红柿
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -139,6 +136,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>PHP读取BT文件的代码之改进版 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="今天再看了一下bt文件的具体编码方式 ，又改进了一下代码，几乎是重写了，这次能读入所有信息到数组了，并且字典中的数组进行了一些配对。 输出读入的数组。 */ print_r($data); /** @function readbt 读入bt..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">PHP读取BT文件的代码之改进版</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-10-21</span>
-            
-          </div>
-          <div class="post-content">
-            <p>今天再看了一下bt文件的具体编码方式 ，又改进了一下代码，几乎是重写了，这次能读入所有信息到数组了，并且字典中的数组进行了一些配对。 输出读入的数组。 */ print_r($data); /** @function readbt 读入bt文件； @param $fp 文件指针 @param <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \* at position 46: … 一个保存当前元数据集的数组 \̲*̲/ function read…'>nowtype:当然的元数据类型 @return Array 一个保存当前元数据集的数组 \*/ function readBt(</span>fp,$nowtype=&quot;DICT&quot;) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>o</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>w</mi><mi>h</mi><mi>i</mi><mi>l</mi><mi>e</mi><mo>(</mo><mo>!</mo><mi>f</mi><mi>e</mi><mi>o</mi><mi>f</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">nowindex=&quot;&quot;; while(!feof(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&quot;</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mclose">!</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span></span></span></span>fp)) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mo>=</mo><mo>(</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>)</mo><mi>f</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">char=(string)fread(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mopen">(</span></span></span></span>fp,1); /** 其实仔细研究一下，可能这里几个case的摆放位置，比如哪个在前哪个在后，对速度都是有影响的，不过咱们暂时不管它 */ switch($char) { case &quot;1&quot;: case &quot;2&quot;: case &quot;3&quot;: case &quot;4&quot;: case &quot;5&quot;: case &quot;6&quot;: case &quot;7&quot;: case &quot;8&quot;: case &quot;9&quot;: case &quot;0&quot;: { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>o</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mi mathvariant="normal">.</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">nowindex.=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>char; break; } case &quot;:&quot;: { $nowtype=&quot;STRING&quot;; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi>f</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">string=fread(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mopen">(</span></span></span></span>fp,intval($nowindex)); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]='>VARS\[\]=</span>string; $nowindex=&quot;&quot;; $nowtype=&quot;&quot;; break; } case &quot;i&quot;: { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 26: …UMBER&quot;; break; }̲ case &quot;e&quot;: { /\…'>nowtype=&quot;NUMBER&quot;; break; } case &quot;e&quot;: { /\*\* e是一个编码结束的标志，要看当前是何种编码。如果是number,直接保存当前读入的一系统数组；如果是列表（list）或字典(dictionary),则返回数组。 \*/ switch (</span>nowtype) { case &quot;NUMBER&quot;: <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=intval('>VARS\[\]=intval(</span>nowindex); $nowindex=&quot;&quot;; break; case &quot;LIST&quot;: return $VARS; break; case &quot;DICT&quot;: return $VARS; break; } break; } /** 当开始一个列表或字典时，我为了让结果数组更清晰地显示目录关系，使用了递归。也可以不使用递归。 */ case &quot;l&quot;: { $nowtype=&quot;LIST&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=readBt('>VARS\[\]=readBt(</span>fp,$nowtype); break; } case &quot;d&quot;: { $nowtype=&quot;DICT&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=readBt('>VARS\[\]=readBt(</span>fp,$nowtype); break; } } } return <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 7: VARS; }̲ fclose('>VARS; } fclose(</span>fp); ?&gt; 结果还可以用函数再处理一下，不过这个就比较简单了。解析出来后，就能比较容易地读取bt文件并分析当前该种子里的文件名，发布者和节点信息。 大学那会儿特想弄清bt文件的结构，现在知道了，反不想去细了解了。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/286/">
-              <h3 class="post-title">
-                下一篇：一段读取BT Torrent文件的代码。。。。请勿转载
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PHP读取BT文件的代码之改进版</h2>
+            <div class="post-date">2006-10-21</div>
+            
+            <div class="post-content" v-pre>
+              <p>今天再看了一下bt文件的具体编码方式 ，又改进了一下代码，几乎是重写了，这次能读入所有信息到数组了，并且字典中的数组进行了一些配对。 输出读入的数组。 */ print_r($data); /** @function readbt 读入bt文件； @param $fp 文件指针 @param <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \* at position 46: … 一个保存当前元数据集的数组 \̲*̲/ function read…'>nowtype:当然的元数据类型 @return Array 一个保存当前元数据集的数组 \*/ function readBt(</span>fp,$nowtype=&quot;DICT&quot;) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>o</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">&quot;</mi><mo separator="true">;</mo><mi>w</mi><mi>h</mi><mi>i</mi><mi>l</mi><mi>e</mi><mo>(</mo><mo>!</mo><mi>f</mi><mi>e</mi><mi>o</mi><mi>f</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">nowindex=&quot;&quot;; while(!feof(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&quot;</span><span class="mord">&quot;</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mclose">!</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span></span></span></span>fp)) { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mo>=</mo><mo>(</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>)</mo><mi>f</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">char=(string)fread(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mopen">(</span></span></span></span>fp,1); /** 其实仔细研究一下，可能这里几个case的摆放位置，比如哪个在前哪个在后，对速度都是有影响的，不过咱们暂时不管它 */ switch($char) { case &quot;1&quot;: case &quot;2&quot;: case &quot;3&quot;: case &quot;4&quot;: case &quot;5&quot;: case &quot;6&quot;: case &quot;7&quot;: case &quot;8&quot;: case &quot;9&quot;: case &quot;0&quot;: { <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>o</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>x</mi><mi mathvariant="normal">.</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">nowindex.=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>char; break; } case &quot;:&quot;: { $nowtype=&quot;STRING&quot;; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>=</mo><mi>f</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">string=fread(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mopen">(</span></span></span></span>fp,intval($nowindex)); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]='>VARS\[\]=</span>string; $nowindex=&quot;&quot;; $nowtype=&quot;&quot;; break; } case &quot;i&quot;: { <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 26: …UMBER&quot;; break; }̲ case &quot;e&quot;: { /\…'>nowtype=&quot;NUMBER&quot;; break; } case &quot;e&quot;: { /\*\* e是一个编码结束的标志，要看当前是何种编码。如果是number,直接保存当前读入的一系统数组；如果是列表（list）或字典(dictionary),则返回数组。 \*/ switch (</span>nowtype) { case &quot;NUMBER&quot;: <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=intval('>VARS\[\]=intval(</span>nowindex); $nowindex=&quot;&quot;; break; case &quot;LIST&quot;: return $VARS; break; case &quot;DICT&quot;: return $VARS; break; } break; } /** 当开始一个列表或字典时，我为了让结果数组更清晰地显示目录关系，使用了递归。也可以不使用递归。 */ case &quot;l&quot;: { $nowtype=&quot;LIST&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=readBt('>VARS\[\]=readBt(</span>fp,$nowtype); break; } case &quot;d&quot;: { $nowtype=&quot;DICT&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 5: VARS\̲[̲\]=readBt('>VARS\[\]=readBt(</span>fp,$nowtype); break; } } } return <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 7: VARS; }̲ fclose('>VARS; } fclose(</span>fp); ?&gt; 结果还可以用函数再处理一下，不过这个就比较简单了。解析出来后，就能比较容易地读取bt文件并分析当前该种子里的文件名，发布者和节点信息。 大学那会儿特想弄清bt文件的结构，现在知道了，反不想去细了解了。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/286/">
+                  <h3 class="post-title">
+                    一段读取BT Torrent文件的代码。。。。请勿转载
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>经济危机时如何过日子 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1.存钱。分多个银行存。别存外资银行了就。搞点黄金。这东西有用。 2.别买股票。 3.趁现在经济危机还没开始，做好准备工作。 4.别轻易换工作。与朋友们搞好关系。多准备几个备选的职位备选。 5.如果有机会多认识几个猎头，不知道能不能管用~ ..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">经济危机时如何过日子</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-09-18</span>
-            
-          </div>
-          <div class="post-content">
-            <p>1.存钱。分多个银行存。别存外资银行了就。搞点黄金。这东西有用。 2.别买股票。 3.趁现在经济危机还没开始，做好准备工作。 4.别轻易换工作。与朋友们搞好关系。多准备几个备选的职位备选。 5.如果有机会多认识几个猎头，不知道能不能管用~ 6.别贷款买房。别买花钱又多但不是非用不可的东西，比如汽车。 7.如果有可能，跟乡下亲戚搞好关系。 8.毛主席说了，要打持久战~要搞全民运动，要搞运动战。实在不行，回农村去，农村是有广阔的天地的。 9:有人说，某些人啊，在路人看到一堆屎，也要数，&quot;1,2,3...&quot;尽量凑够十堆。我就不往十堆上凑了。我留一个空位。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/697/">
-              <h3 class="post-title">
-                下一篇：七十七年以前的今天
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">经济危机时如何过日子</h2>
+            <div class="post-date">2008-09-18</div>
+            
+            <div class="post-content" v-pre>
+              <p>1.存钱。分多个银行存。别存外资银行了就。搞点黄金。这东西有用。 2.别买股票。 3.趁现在经济危机还没开始，做好准备工作。 4.别轻易换工作。与朋友们搞好关系。多准备几个备选的职位备选。 5.如果有机会多认识几个猎头，不知道能不能管用~ 6.别贷款买房。别买花钱又多但不是非用不可的东西，比如汽车。 7.如果有可能，跟乡下亲戚搞好关系。 8.毛主席说了，要打持久战~要搞全民运动，要搞运动战。实在不行，回农村去，农村是有广阔的天地的。 9:有人说，某些人啊，在路人看到一堆屎，也要数，&quot;1,2,3...&quot;尽量凑够十堆。我就不往十堆上凑了。我留一个空位。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/697/">
+                  <h3 class="post-title">
+                    七十七年以前的今天
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

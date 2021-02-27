@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>cloudapi 悄然上线,欢迎各方人士拍砖 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="2010.3.24 最新消息,小宝宝出生了,为了表示庆祝,cloudapi也上线了,当前位于linode的fremont机房 很抱歉,由于目前网络问题,几个小小的线上设置一直有问题,在此向已经第一时间当小白鼠的各位用户道个歉~ 稍事休整后将..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">cloudapi 悄然上线,欢迎各方人士拍砖</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2010-03-15</span>
-            
-          </div>
-          <div class="post-content">
-            <p><strong>2010.3.24 最新消息,小宝宝出生了,为了表示庆祝,cloudapi也上线了,当前位于linode的fremont机房</strong> 很抱歉,由于目前网络问题,几个小小的线上设置一直有问题,在此向已经第一时间当小白鼠的各位用户道个歉~ 稍事休整后将上次上线.谢谢支持! 最近云计算超级火爆呀,一米六二同学心一痒痒,也弄了一个域名来提供云服务. 本服务基于云上:运行于linode的vps上,达拉斯机房,有兴趣的朋友可以帮我测一下网速. 这个应用的地址是: <a href="http://cloudapi.info/">http://cloudapi.info/</a> 域名还算很好记吧. 计划的目标是: 提供一个简单即用的分词,搜索,以及正文提取,文本智能分类,去重等文本处理的相关API.详情请查阅手册: <a href="http://cloudapi.info/users/apidoc">http://cloudapi.info/users/apidoc</a> 通过phprpc提供的各种语言实现的php serialize函数,为多种语言提供调用. 如果一米六二有钱的话,会搭一套足够大的Key-value对数据库和消息队列以供使用,方便各位编程的同胞实现扩展性. 目前的实现已经能做到记录每一次出错的log.接下来还会对部分接口提供web界面试用(分词,提关键词,提正文之类的接口提供在线试用) 目前找小白鼠中.您的帐号信息一定会被保留,您的其他数据一定不会被保留(<strong>如果保留,纯属意外</strong>),但是测试期间意外发生的几率还是蛮大的~ 同时,我们还在寻找: 1.更多的API提供. 2.计费模式等业务方面的指导(以后会提供收费接口) 3.rails我是前天才开始写,好多隐藏的小技巧不知道,如站点有漏洞什么的就请指出来,不胜感谢 到目前为止,我们还没有丢失数据~ 寻找设计方面的哥们~ 有偿~</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/1018/">
-              <h3 class="post-title">
-                下一篇：为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloudapi 悄然上线,欢迎各方人士拍砖</h2>
+            <div class="post-date">2010-03-15</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>2010.3.24 最新消息,小宝宝出生了,为了表示庆祝,cloudapi也上线了,当前位于linode的fremont机房</strong> 很抱歉,由于目前网络问题,几个小小的线上设置一直有问题,在此向已经第一时间当小白鼠的各位用户道个歉~ 稍事休整后将上次上线.谢谢支持! 最近云计算超级火爆呀,一米六二同学心一痒痒,也弄了一个域名来提供云服务. 本服务基于云上:运行于linode的vps上,达拉斯机房,有兴趣的朋友可以帮我测一下网速. 这个应用的地址是: <a href="http://cloudapi.info/">http://cloudapi.info/</a> 域名还算很好记吧. 计划的目标是: 提供一个简单即用的分词,搜索,以及正文提取,文本智能分类,去重等文本处理的相关API.详情请查阅手册: <a href="http://cloudapi.info/users/apidoc">http://cloudapi.info/users/apidoc</a> 通过phprpc提供的各种语言实现的php serialize函数,为多种语言提供调用. 如果一米六二有钱的话,会搭一套足够大的Key-value对数据库和消息队列以供使用,方便各位编程的同胞实现扩展性. 目前的实现已经能做到记录每一次出错的log.接下来还会对部分接口提供web界面试用(分词,提关键词,提正文之类的接口提供在线试用) 目前找小白鼠中.您的帐号信息一定会被保留,您的其他数据一定不会被保留(<strong>如果保留,纯属意外</strong>),但是测试期间意外发生的几率还是蛮大的~ 同时,我们还在寻找: 1.更多的API提供. 2.计费模式等业务方面的指导(以后会提供收费接口) 3.rails我是前天才开始写,好多隐藏的小技巧不知道,如站点有漏洞什么的就请指出来,不胜感谢 到目前为止,我们还没有丢失数据~ 寻找设计方面的哥们~ 有偿~</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/1018/">
+                  <h3 class="post-title">
+                    为什么我认为每个穷网站开发程序员都应该用Linux[工具篇]
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

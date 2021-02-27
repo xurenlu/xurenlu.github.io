@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很. | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="首先看记时的，我只用了$times这样一个数组，看看人家是这么用的，这就叫差距: class timer { var $_start; var $_current; function timer() { /** 这是记录下开始操作时的时间。..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-10-12</span>
-            
-          </div>
-          <div class="post-content">
-            <p>首先看记时的，我只用了$times这样一个数组，看看人家是这么用的，这就叫差距: class timer { var $_start; var $_current; function timer() { /** 这是记录下开始操作时的时间。 */ $this-&gt;_start = array_sum(explode(' ', microtime())); } function tick() { /** 记下操作结束时间并算出当前耗用的时间。我只用了time函数，人老外用了microtime,并且用了array_sum(explode(' ', microtime()) 这么一个优雅的写法。让人脸红... */ <span class='katex-error' title='ParseError: KaTeX parse error: Double superscript at position 47: …_sum(explode(&#039; &#039;̲, microtime()))…'>this-&gt;\_current = round((array\_sum(explode(&#039; &#039;, microtime()))-</span>this-&gt;_start)*1000, 0); return $this-&gt;_current; } function reset() { $this-&gt;timer(); } } ?&gt; 哈，看出来人家的水平了吧... 我开始测试时也没想到过了客户端浏览器解析HTML时会带来的可用内存容量的变化可能会导致服务器端的速度变化,因此我做了send to buffer下的测试，人家老外就不一样，用了一个超级无比绝*简单的方法解决了:人用了html中的来搞定，把所有输出内容用这个玩意儿包含起来，不就不会让浏览器解析了么？所以以后不要鄙视专写HTML页的人了，人也是相当有用的! 注:我后来也做了测试，结果跟老外的是一样的，俺今天没有泡MM了，看了下代码，还是发现了问题所在了。附：老外测试结果: (但是很奇怪的是，偶的测试中，单引号终于没有双引号快... 个鸟人.我的系统是win2003.偶用Single Quote 来输出带变量替换的字符串到buffer时，用了超长时间，不知道为什么...) <img src="http://i3x171um.com/output_benchmarks/ob.gif" alt="老外的结果... " loading="lazy"></p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/280/">
-              <h3 class="post-title">
-                下一篇：一个测试PHP效率的代码，检测Single Quote,Double Quote,HereDoc的效率
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">俺坚持不转载，所以点评一下..一段测试php的Single quote,double quote,heredoc,(s)printf的速度的代码,牛*的很.</h2>
+            <div class="post-date">2006-10-12</div>
+            
+            <div class="post-content" v-pre>
+              <p>首先看记时的，我只用了$times这样一个数组，看看人家是这么用的，这就叫差距: class timer { var $_start; var $_current; function timer() { /** 这是记录下开始操作时的时间。 */ $this-&gt;_start = array_sum(explode(' ', microtime())); } function tick() { /** 记下操作结束时间并算出当前耗用的时间。我只用了time函数，人老外用了microtime,并且用了array_sum(explode(' ', microtime()) 这么一个优雅的写法。让人脸红... */ <span class='katex-error' title='ParseError: KaTeX parse error: Double superscript at position 47: …_sum(explode(&#039; &#039;̲, microtime()))…'>this-&gt;\_current = round((array\_sum(explode(&#039; &#039;, microtime()))-</span>this-&gt;_start)*1000, 0); return $this-&gt;_current; } function reset() { $this-&gt;timer(); } } ?&gt; 哈，看出来人家的水平了吧... 我开始测试时也没想到过了客户端浏览器解析HTML时会带来的可用内存容量的变化可能会导致服务器端的速度变化,因此我做了send to buffer下的测试，人家老外就不一样，用了一个超级无比绝*简单的方法解决了:人用了html中的来搞定，把所有输出内容用这个玩意儿包含起来，不就不会让浏览器解析了么？所以以后不要鄙视专写HTML页的人了，人也是相当有用的! 注:我后来也做了测试，结果跟老外的是一样的，俺今天没有泡MM了，看了下代码，还是发现了问题所在了。附：老外测试结果: (但是很奇怪的是，偶的测试中，单引号终于没有双引号快... 个鸟人.我的系统是win2003.偶用Single Quote 来输出带变量替换的字符串到buffer时，用了超长时间，不知道为什么...) <img src="http://i3x171um.com/output_benchmarks/ob.gif" alt="老外的结果... " loading="lazy"></p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/280/">
+                  <h3 class="post-title">
+                    一个测试PHP效率的代码，检测Single Quote,Double Quote,HereDoc的效率
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

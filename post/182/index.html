@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>无线游戏是下一座金矿吗？ | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="9月29日，IDC最新研究报告《2004-2008亚太区（日本除外）无线游戏市场分析与预测》中指出，亚太区（日本除外）的无线游戏市场在2003年达2.37亿美元，预计将以40%的复合年均增长率（CADG）成长，至2008年市场规模达13亿美..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">无线游戏是下一座金矿吗？</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-27</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">无线游戏是下一座金矿吗？</h2>
+            <div class="post-date">2005-03-27</div>
             
-          </div>
-          <div class="post-content">
-            <p>9月29日，IDC最新研究报告《2004-2008亚太区（日本除外）无线游戏市场分析与预测》中指出，亚太区（日本除外）的无线游戏市场在2003年达2.37亿美元，预计将以40%的复合年均增长率（CADG）成长，至2008年市场规模达13亿美元。</p>
+            <div class="post-content" v-pre>
+              <p>9月29日，IDC最新研究报告《2004-2008亚太区（日本除外）无线游戏市场分析与预测》中指出，亚太区（日本除外）的无线游戏市场在2003年达2.37亿美元，预计将以40%的复合年均增长率（CADG）成长，至2008年市场规模达13亿美元。</p>
 <p>有人曾经指出，无线游戏业务的利润比手机铃声下载还要丰厚。易观国际近期的统计称，移动通信各细分市场目前的业务功能中，话音、短信、电话簿或记事方面使用的比例最高，对游戏功能的使用甚至也达到了35.7%的比例。</p>
 <p>相形之下，用户对彩信、邮件、MP3等其他增值业务的使用都还没有超过10%。IDC亚太无线研究副总监Davina Yeo指出，铃声和图形下载在市场上成功推出并受到欢迎后，移动运营商非常迫切希望无线游戏能再次重复同样的成功。</p>
 <p>因此，在移动运营商开始快速拓宽无线游戏内容与种类时，他们将在下一年内重新制定市场策略，并将目标锁定更广泛的使用人群。也就是无线游戏完全有可能成为下一座金矿。</p>
@@ -129,45 +137,31 @@
 <p>此外，错综复杂的分销战略，竞争模式的有效标准，多玩家游戏和3D游戏等新平台的建设威胁，对于运营商的生存都是非常关键的。</p>
 <p>金矿就在眼前，但要想取得理想的价值，还要”采”之有道。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/183/">
+                  <h3 class="post-title">
+                    2005 淘宝和易趣谁会挂掉？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/183/">
-              <h3 class="post-title">
-                下一篇：2005 淘宝和易趣谁会挂掉？
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -177,6 +171,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,557 +1,520 @@
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
-<title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
+<title>文章归档 | 黄滚的Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-        <div class="content-container">
-          
-          
-
-<div class="archives-container">
-  
-    <h2 class="year">2008</h2>
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-        <article class="post">
-          <a href="http://localhost:4000/post/703/">
-            <h2 class="post-title">
-              我创建了一个开源项目
-              <small>2008-09-25</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="http://localhost:4000/post/701/">
-            <h2 class="post-title">
-              一米六二菜谱之：醋香红椒
-              <small>2008-09-21</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="http://localhost:4000/post/700/">
-            <h2 class="post-title">
-              资本主义倒牛奶和社会主义倒牛奶之间的区别
-              <small>2008-09-20</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/699/">
-            <h2 class="post-title">
-              把我的本本上的fedora升级了一下
-              <small>2008-09-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/698/">
-            <h2 class="post-title">
-              经济危机时如何过日子
-              <small>2008-09-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/697/">
-            <h2 class="post-title">
-              七十七年以前的今天
-              <small>2008-09-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/695/">
-            <h2 class="post-title">
-              CSS学习之:认识浏览器和标准
-              <small>2008-09-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/694/">
-            <h2 class="post-title">
-              自问自答
-              <small>2008-09-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/693/">
-            <h2 class="post-title">
-              屏蔽百度,淘宝恰恰做对了
-              <small>2008-09-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/690/">
-            <h2 class="post-title">
-              传闻之由:
-              <small>2008-09-09</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/689/">
-            <h2 class="post-title">
-              rm之殇
-              <small>2008-09-03</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/688/">
-            <h2 class="post-title">
-              一周年杯子
-              <small>2008-08-30</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/687/">
-            <h2 class="post-title">
-              高科技手段查黄历
-              <small>2008-08-29</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/685/">
-            <h2 class="post-title">
-              原来我都没有看懂黑客帝国
-              <small>2008-08-24</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/684/">
-            <h2 class="post-title">
-              我又病了
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/683/">
-            <h2 class="post-title">
-              Tokyo Dystopia:基于Tokyo Cabinet的一个全文检索系统
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/682/">
-            <h2 class="post-title">
-              Tokyo Tyrant:Tokyo Cabinet的网络接口
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/681/">
-            <h2 class="post-title">
-              Tokyo Cabinet:另一个DBM实现
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/680/">
-            <h2 class="post-title">
-              神奇的DRb
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/679/">
-            <h2 class="post-title">
-              珍爱生命，远离IT之-IT职业病
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/678/">
-            <h2 class="post-title">
-              珍爱生命，远离IT之-艾滋病
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/677/">
-            <h2 class="post-title">
-              珍爱生命，远离IT之-白血病
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/676/">
-            <h2 class="post-title">
-              珍爱生命 远离IT 之 乙肝
-              <small>2008-08-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/674/">
-            <h2 class="post-title">
-              记忆力严重退化
-              <small>2008-08-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/671/">
-            <h2 class="post-title">
-              视频搜索引擎[搜罗]又上线了
-              <small>2008-08-04</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/670/">
-            <h2 class="post-title">
-              LinuxQQ已发布预览版
-              <small>2008-07-31</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/667/">
-            <h2 class="post-title">
-              Perl常见错误[2]
-              <small>2008-07-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/666/">
-            <h2 class="post-title">
-              Perl常见错误
-              <small>2008-07-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/665/">
-            <h2 class="post-title">
-              如此翻译
-              <small>2008-07-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/663/">
-            <h2 class="post-title">
-              社区全文检索引擎Hyper Estraier 学习笔记[4]
-              <small>2008-07-12</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/662/">
-            <h2 class="post-title">
-              进步健身的水不换？
-              <small>2008-07-10</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/661/">
-            <h2 class="post-title">
-              Linux 声卡设置(喇叭和耳机同时出声的解决)
-              <small>2008-07-08</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/660/">
-            <h2 class="post-title">
-              Spread学习系列[1]-SP_receive函数说明
-              <small>2008-07-05</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/659/">
-            <h2 class="post-title">
-              团购蜂蜜
-              <small>2008-06-23</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/658/">
-            <h2 class="post-title">
-              社区全文检索引擎Hyper Estraier 学习笔记[3]
-              <small>2008-06-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/657/">
-            <h2 class="post-title">
-              社区全文检索引擎Hyper Estraier 学习笔记[2]
-              <small>2008-06-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/656/">
-            <h2 class="post-title">
-              Spread 简介(试译)
-              <small>2008-06-19</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/654/">
-            <h2 class="post-title">
-              色色的西红柿
-              <small>2008-06-15</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/653/">
-            <h2 class="post-title">
-              现实版第六日
-              <small>2008-06-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/652/">
-            <h2 class="post-title">
-              招聘广告，帮忙贴下拉
-              <small>2008-06-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-  
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
 </div>
 
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+
+          <h2 class="archives-title">文章归档</h2>
+          <div class="archives-container">
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2008</h2>
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/703/">
+                      <h2 class="post-title">
+                        我创建了一个开源项目
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/701/">
+                      <h2 class="post-title">
+                        一米六二菜谱之：醋香红椒
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/700/">
+                      <h2 class="post-title">
+                        资本主义倒牛奶和社会主义倒牛奶之间的区别
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/699/">
+                      <h2 class="post-title">
+                        把我的本本上的fedora升级了一下
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/698/">
+                      <h2 class="post-title">
+                        经济危机时如何过日子
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/697/">
+                      <h2 class="post-title">
+                        七十七年以前的今天
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/695/">
+                      <h2 class="post-title">
+                        CSS学习之:认识浏览器和标准
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/694/">
+                      <h2 class="post-title">
+                        自问自答
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/693/">
+                      <h2 class="post-title">
+                        屏蔽百度,淘宝恰恰做对了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/690/">
+                      <h2 class="post-title">
+                        传闻之由:
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/689/">
+                      <h2 class="post-title">
+                        rm之殇
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/688/">
+                      <h2 class="post-title">
+                        一周年杯子
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/687/">
+                      <h2 class="post-title">
+                        高科技手段查黄历
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/685/">
+                      <h2 class="post-title">
+                        原来我都没有看懂黑客帝国
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/684/">
+                      <h2 class="post-title">
+                        我又病了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/683/">
+                      <h2 class="post-title">
+                        Tokyo Dystopia:基于Tokyo Cabinet的一个全文检索系统
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/682/">
+                      <h2 class="post-title">
+                        Tokyo Tyrant:Tokyo Cabinet的网络接口
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/681/">
+                      <h2 class="post-title">
+                        Tokyo Cabinet:另一个DBM实现
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/680/">
+                      <h2 class="post-title">
+                        神奇的DRb
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/679/">
+                      <h2 class="post-title">
+                        珍爱生命，远离IT之-IT职业病
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/678/">
+                      <h2 class="post-title">
+                        珍爱生命，远离IT之-艾滋病
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/677/">
+                      <h2 class="post-title">
+                        珍爱生命，远离IT之-白血病
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/676/">
+                      <h2 class="post-title">
+                        珍爱生命 远离IT 之 乙肝
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/674/">
+                      <h2 class="post-title">
+                        记忆力严重退化
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/671/">
+                      <h2 class="post-title">
+                        视频搜索引擎[搜罗]又上线了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/670/">
+                      <h2 class="post-title">
+                        LinuxQQ已发布预览版
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/667/">
+                      <h2 class="post-title">
+                        Perl常见错误[2]
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/666/">
+                      <h2 class="post-title">
+                        Perl常见错误
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/665/">
+                      <h2 class="post-title">
+                        如此翻译
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/663/">
+                      <h2 class="post-title">
+                        社区全文检索引擎Hyper Estraier 学习笔记[4]
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/662/">
+                      <h2 class="post-title">
+                        进步健身的水不换？
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/661/">
+                      <h2 class="post-title">
+                        Linux 声卡设置(喇叭和耳机同时出声的解决)
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/660/">
+                      <h2 class="post-title">
+                        Spread学习系列[1]-SP_receive函数说明
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/659/">
+                      <h2 class="post-title">
+                        团购蜂蜜
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/658/">
+                      <h2 class="post-title">
+                        社区全文检索引擎Hyper Estraier 学习笔记[3]
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/657/">
+                      <h2 class="post-title">
+                        社区全文检索引擎Hyper Estraier 学习笔记[2]
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/656/">
+                      <h2 class="post-title">
+                        Spread 简介(试译)
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/654/">
+                      <h2 class="post-title">
+                        色色的西红柿
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/653/">
+                      <h2 class="post-title">
+                        现实版第六日
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/652/">
+                      <h2 class="post-title">
+                        招聘广告，帮忙贴下拉
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+            
+          </div>
+
+          <div class="pagination-container">
+  
+    <a href="http://localhost:4000/archives/page/4/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
+  
+  
+    <a href="http://localhost:4000/archives/page/6/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+  
+</div>
 
         </div>
-
-        <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
       </div>
-      <script type="application/javascript">
+    </div>
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -565,6 +528,7 @@ var app = new Vue({
 
 
 
-    </div>
+
+
   </body>
 </html>

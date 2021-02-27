@@ -1,92 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Drill:查询的执行 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="drill 查询的执行
+当您提交Drill查询的时候，客户端或应用程序会把查询以SQL语句的形式发送到Drill集群的一个Drillbit。Drillbit是在每个在线的Drill节点上运行的进程，它负责协调，规划和执行查询，并按照最大限度..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Drill:查询的执行</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2017-04-04</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Drill:查询的执行</h2>
+            <div class="post-date">2017-04-04</div>
             
-          </div>
-          <div class="post-content">
-            <h1 id="drill-查询的执行">drill 查询的执行</h1>
+            <div class="post-content" v-pre>
+              <h1 id="drill-查询的执行">drill 查询的执行</h1>
 <p>当您提交Drill查询的时候，客户端或应用程序会把查询以SQL语句的形式发送到Drill集群的一个Drillbit。Drillbit是在每个在线的Drill节点上运行的进程，它负责协调，规划和执行查询，并按照最大限度地实现数据本地化的原则在集群中分发查询。 下图描述了客户端，应用和drillbit之前的通信： <img src="https://drill.apache.org/docs/img/query-flow-client.png" alt="https://drill.apache.org/docs/img/query-flow-client.png" loading="lazy"> 从客户端或应用端接收查询的那个drillbit会成为这个查询是的“接待员”，会负责驱动整个查询。这个”接待员“drillbit进程中有一个解析器，这个解析器解析这个SQL语句，应用一系列定制的规则，并把特定的SQL操作符翻译成相应的Drill能理解的逻辑操作符。这一系列逻辑操作符形成了一个逻辑计划。这个逻辑计划描述了为了得到查询结果需要做的工作，以及需要的数据源以及要进行的处理。 这个“接待员”drillbit 会将这个逻辑计划发送到一个基于开销核算的优化器，这个优化器会调整SQL操作符的顺序。优化器会应用各种各样的规则来做操作符和函数的对齐操作，并形成一个物理计划。最终就是，优化器将逻辑计划转换成了一个描述这个查询如何工作的物理计划。 <img src="https://drill.apache.org/docs/img/client-phys-plan.png" alt="https://drill.apache.org/docs/img/client-phys-plan.png" loading="lazy"> 一个“parallelizer&quot;会将一条物理计划转换成若干条短语，这些短语我们称之为”一级碎片“和”次级碎片“。 <img src="https://drill.apache.org/docs/img/execution-tree.PNG" alt="https://drill.apache.org/docs/img/execution-tree.PNG" loading="lazy"></p>
 <h1 id="major-fragments">Major Fragments</h1>
 <p>一个”Major Fragments“是这样一个概念，可以说是代表了Dril查询的一个阶段。一个”阶段(phase)“是Drill执行查询时必须执行的一个或多个操作单元。Drill会给每个Major Fragments 分配一个MajorFragmentID. 例如，为了计算两个文件的Hash，Drill可能就会创建两个主要阶段（两个Major fragments）,第一阶段用来扫描文件 ，第二阶段则用来聚合数据。 <img src="https://drill.apache.org/docs/img/ex-operator.png" alt="Major fragments" loading="lazy"> Drill使用”Exchange Operator &quot;来连接不同的Major fragments。一个&quot;exchange&quot;是指的数据的位置移动，或是将物理计划并行化的操作。一个“exchange&quot;包含一个sender一个receiver,这使得数据可以在不同的节点间移动。 你可以在一个物理计划中用这种方式来参与Major fragments：你可以把物理计划导出到一个JSON文件中，手动修改它，并使用SUBMIT PLAN命令将这个json提交回Drill。你也可以在查询分析器中查看这些Major fragments,查询分析器可以通过Drill的WEB终端登入。请查询EXPLAIN和Query Profiles章节来获得更多信息。</p>
@@ -95,45 +104,31 @@
 <h2 id="minor-fragments的执行">Minor Fragments的执行</h2>
 <p>Minor Fragments可以作为叶子fragment，根fragment和中间fragment来运行。一棵执行树只能有一个根fragment.整棵执行树上的协调是通过从根fragment开始的数字来进行的，根节点的数字是0.数据流从叶子fragment到根fragment一个个地往下流。 根fragment运行在“接待员”Drillbit上，他接受查询，从数据表中读取元数据，重写查询，并将查询路由到执行树中的下一层。其他的fragments会成为叶子fragments或是中间fragments。 中间fragment会在数据可用，或是其他fragment将数据喂过来的时候开始执行。它们在数据上执行操作，并把它们往下传。它们也会把聚合过的数据传给根fragment,根fragment又会做进一步的聚合操作或者是把查询结果提供给客户端或是应用程序。 叶子fragment并行地扫表，或者是和存储层打交道，或是是读本地磁盘数据。叶子fragments把中间结果回传给中间fragments,中间fragments会接着在这些中间结果上各种并行操作。 <img src="https://drill.apache.org/docs/img/leaf-frag.png" alt="" loading="lazy"> Drill只会规划那些可以并发执行的fragments的查询，例如，如果一个集群只有20个切片，Drill会在那个Major fragment中规划最多20个minor fragments。Dril会乐观地假定它能并发地执行任务。一个Major fragments中的minor framents由于共同的上游数据依赖，会于同一时间开始执行。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/1391/">
+                  <h3 class="post-title">
+                    Drill:核心模块
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/1391/">
-              <h3 class="post-title">
-                下一篇：Drill:核心模块
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -143,6 +138,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

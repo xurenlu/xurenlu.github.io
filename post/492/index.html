@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>为什么SELECT col1,col2,col3,col4 会比SELECT * 慢? | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="之前做过一个测试: select id,title from ** 与select * from **的速度测试。 这是后续版. 测试的结果是: [st@localhost test]$ php select.php cost1:2.135..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">为什么SELECT col1,col2,col3,col4 会比SELECT * 慢?</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-10-07</span>
-            
-          </div>
-          <div class="post-content">
-            <p>之前做过一个测试: <a href="http://www.162cm.com/archives/283.html">select id,title from ** 与select * from **的速度测试。</a> 这是后续版. 测试的结果是: [st@localhost test]$ php select.php cost1:2.1355810165405 cost2:2.5820469856262 [st@localhost test]$ php select.php cost1:1.9796178340912 cost2:2.5190000534058 [st@localhost test]$ php select.php cost1:1.9672379493713 cost2:2.9030020236969 [st@localhost test]$ php select.php cost1:1.9810240268707 cost2:2.5505940914154 好了，现在将SQL1和SQL2次序交换: calhost test]$ php select.php cost1:2.5933158397675 cost2:2.0362050533295 [st@localhost test]$ php select.php cost1:2.6104090213776 cost2:2.056037902832 [st@localhost test]$ php select.php cost1:4.2802629470825 cost2:3.3958988189697 [st@localhost test]$ php select.php cost1:2.6283531188965 cost2:2.0102050304413 大体上，SELECT COL1,COL2,COL3..... 与SELECT * 相比，两者花费的时间之比是4:5.不知道非空表的结果会不会是这样?</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/491/">
-              <h3 class="post-title">
-                下一篇：Mysql 随机读取记录的一种实现
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">为什么SELECT col1,col2,col3,col4 会比SELECT * 慢?</h2>
+            <div class="post-date">2007-10-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>之前做过一个测试: <a href="http://www.162cm.com/archives/283.html">select id,title from ** 与select * from **的速度测试。</a> 这是后续版. 测试的结果是: [st@localhost test]$ php select.php cost1:2.1355810165405 cost2:2.5820469856262 [st@localhost test]$ php select.php cost1:1.9796178340912 cost2:2.5190000534058 [st@localhost test]$ php select.php cost1:1.9672379493713 cost2:2.9030020236969 [st@localhost test]$ php select.php cost1:1.9810240268707 cost2:2.5505940914154 好了，现在将SQL1和SQL2次序交换: calhost test]$ php select.php cost1:2.5933158397675 cost2:2.0362050533295 [st@localhost test]$ php select.php cost1:2.6104090213776 cost2:2.056037902832 [st@localhost test]$ php select.php cost1:4.2802629470825 cost2:3.3958988189697 [st@localhost test]$ php select.php cost1:2.6283531188965 cost2:2.0102050304413 大体上，SELECT COL1,COL2,COL3..... 与SELECT * 相比，两者花费的时间之比是4:5.不知道非空表的结果会不会是这样?</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/491/">
+                  <h3 class="post-title">
+                    Mysql 随机读取记录的一种实现
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,92 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>让你的网站轻松加入Alexa五星级行列 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="让你的网站轻松加入Alexa五星级行列
+一段日子以来，Alexa.com做为第三方统计网站的权威认证，被国内一些网站（包括个人网站和众多门户媒体网站）拿来说明自己网站的实力。常常在某些网站上会看到这样的说明：“国际消息：据亚马逊网站（www..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">让你的网站轻松加入Alexa五星级行列</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-24</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">让你的网站轻松加入Alexa五星级行列</h2>
+            <div class="post-date">2005-03-24</div>
             
-          </div>
-          <div class="post-content">
-            <p>让你的网站轻松加入Alexa五星级行列</p>
+            <div class="post-content" v-pre>
+              <p>让你的网站轻松加入Alexa五星级行列</p>
 <p>一段日子以来，Alexa.com做为第三方统计网站的权威认证，被国内一些网站（包括个人网站和众多门户媒体网站）拿来说明自己网站的实力。常常在某些网站上会看到这样的说明：“国际消息：据亚马逊网站（www.amazon.com）麾下的Alexa.com的最新资料显示，XX网站在Alexa全球用户中的被评为☆☆☆☆☆级。”</p>
 <p>难道这真是Alexa.com认证的五星级？下面我们也来创造一个所谓Alexa的五星级认证，Let’s Go！</p>
 <p>用我的网站来举例吧！首先登录Alexa.com网站（http://www.alexa.com），在搜索栏中键入自己的网站地址，然后点击按钮“GO”。如果您的网站已经被Alexa.com网站收录并统计，就会转到http://www.alexa.com/data/details?url=您的网站URL页面。</p>
@@ -98,45 +107,31 @@
 <p>相关资料：</p>
 <p>Alexa.com的这一统计数据是基于全球用户在过去三个月的历史流量数据，综合各个网址的被“触及量”和“页面浏览量”而计算得出的。“触及量”是指某一天内使用Alexa工具条访问某一网址的用户数（IP地址）。“页面浏览量”是指Alexa.com用户对某一网址的URL需求的总次数（同一天内同一用户多次访问同一URL被计为1个页面浏览）。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/199/">
+                  <h3 class="post-title">
+                    关于 Alexa Toolbar 的破解方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/199/">
-              <h3 class="post-title">
-                下一篇：关于 Alexa Toolbar 的破解方法
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -146,6 +141,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

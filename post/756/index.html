@@ -1,92 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>小钱包网站虚拟团队招募中 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="小钱包网站是我业余时间整着玩的一个好玩的、简单的不能再简单了的在线记账应用。我用她(我们的小钱包网站可是有性别有脾气的)来记录我的柴米油盐，已经有三个月了。
+我一直梦想着做一个NB的不行帅到让人拉一裤子的小东西，现在看来光靠我一个人的力量是..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">小钱包网站虚拟团队招募中</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-12-07</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">小钱包网站虚拟团队招募中</h2>
+            <div class="post-date">2008-12-07</div>
             
-          </div>
-          <div class="post-content">
-            <p><strong><a href="http://xiaoqianbao.com/">小钱包</a><strong>网站是我业余时间整着玩的一个好玩的、简单的不能再简单了的在线记账应用。我用</strong>她</strong>(我们的小钱包网站可是有性别有脾气的)来记录我的柴米油盐，已经有三个月了。</p>
+            <div class="post-content" v-pre>
+              <p><strong><a href="http://xiaoqianbao.com/">小钱包</a><strong>网站是我业余时间整着玩的一个好玩的、简单的不能再简单了的在线记账应用。我用</strong>她</strong>(我们的小钱包网站可是有性别有脾气的)来记录我的柴米油盐，已经有三个月了。</p>
 <p>我一直梦想着做一个NB的不行帅到让人拉一裤子的小东西，现在看来光靠我一个人的力量是无法完成了，所以广发英雄帖，邀有志之士共同launch这个小应用。</p>
 <p>小钱包的目标是成为一个帅呆了酷毙了的在线记账应用，简洁易用而又让人觉得信赖。小钱包不会提供博客，也不回提供SNS，不能玩游戏也不能泡MM,我们的理想就是大侠们在商场，KTV腐败之后回来就打开浏览器，在地址栏敲入&quot;xiaoqianbao.com&quot;这个简单好记的域名，然后展开兰花神聊手啪啪写上10来个字，记录一下钱数，前后不到10秒，然后关站走人。。。如果用户每个月到月底花光手头的银子，很奇怪自己的钱花到哪儿去了的时候，能想的起来上小钱包来查看一下报表，总结一下，那就是我们莫大的荣幸了。</p>
 <p>好了，我们说一下我们需要什么样的人加入,怎么加入....</p>
@@ -101,45 +110,31 @@
 <p>用户支持是最重要的工作部分了，接受用户咨询和反馈，解决用户困难，是用户和开发团队的桥梁。</p>
 <p>5&gt;联系人:一米六二，请发邮件到:xiaoqianbao#gmail.com #号请换成&quot;@&quot;符号。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/748/">
+                  <h3 class="post-title">
+                    Linux/Windows双系统并存方案:andLinux (不是虚拟机也不是双系统哦）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/748/">
-              <h3 class="post-title">
-                下一篇：Linux/Windows双系统并存方案:andLinux (不是虚拟机也不是双系统哦）
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -149,6 +144,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

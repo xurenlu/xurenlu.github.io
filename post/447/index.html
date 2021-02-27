@@ -1,137 +1,132 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>某国警告中国: | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="这是从这里看的:
+日前，在美国访问的冈比亚总统叶海亚-贾梅与布什会谈中表示，一旦台海局势发生变化，冈比亚将出兵中国攻击中国沿海经济区，以防止台海局势扩大化。叶海亚-贾梅声称，冈比亚只需派遣1000人左右的海军陆战队就可以完全遏制中国的军事行..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">某国警告中国:</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-08-14</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">某国警告中国:</h2>
+            <div class="post-date">2007-08-14</div>
             
-          </div>
-          <div class="post-content">
-            <p>这是从<a href="http://bbs.cctv.com/cache/forumbook.jsp?id=10885902&amp;pg=1&amp;agMode=1">这里</a>看的:</p>
+            <div class="post-content" v-pre>
+              <p>这是从<a href="http://bbs.cctv.com/cache/forumbook.jsp?id=10885902&amp;pg=1&amp;agMode=1">这里</a>看的:</p>
 <p>日前，在美国访问的冈比亚总统叶海亚-贾梅与布什会谈中表示，一旦台海局势发生变化，冈比亚将出兵中国攻击中国沿海经济区，以防止台海局势扩大化。叶海亚-贾梅声称，冈比亚只需派遣1000人左右的海军陆战队就可以完全遏制中国的军事行动。冈比亚总统叶海亚-贾梅不久前还宣布他在梦中学会了治疗艾滋病的方法。冈比亚是目前与中华民国24个建交国之一。</p>
 <p>另一段资料：</p>
 <p>冈比亚：位于非洲西部面积10380平方公里。人口150万。冈国民军创建于1984年2月，2001年总兵力约800人。其中海军成立于1996年7月，原名国民卫队，1997年7月更为现名，共70人，2艘炮艇。警察部队成立于1992年2月，包括警察和国家宪兵，现有1000余人。冈比亚国家卫队成立于1997年8月，负责反贩毒、走私等，现有110人。</p>
 <p>我哥们儿说：Y还蛮讲哥们儿义气.果然思路不一样 ，总能发现优点。</p>
 <p><a href="http://www.162cm.com/wp-content/uploads/2007/08/zfz7151186907801268.jpg" title="zfz7151186907801268.jpg"><img src="http://www.162cm.com/wp-content/uploads/2007/08/zfz7151186907801268.jpg" alt="zfz7151186907801268.jpg" loading="lazy"></a> <a href="http://www.162cm.com/wp-content/uploads/2007/08/zfz7151186907801283.jpg" title="zfz7151186907801283.jpg"><img src="http://www.162cm.com/wp-content/uploads/2007/08/zfz7151186907801283.jpg" alt="zfz7151186907801283.jpg" loading="lazy"></a></p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/446/">
+                  <h3 class="post-title">
+                    phpfox全攻略
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/446/">
-              <h3 class="post-title">
-                下一篇：phpfox全攻略
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -141,6 +136,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

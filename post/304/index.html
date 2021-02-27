@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>xoops:article模块加入所见即所得功能支持(用TinyMCE) | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="article模块加入所见即所得功能支持: Xoops的内核加入了对Form表单各个种类的封装，这个设计是简化了一些程序设计工作，但是其众多的Form class往往让人头晕。 xoops自带的Koivi，Dhtml编辑器都不怎么出色，很难..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">xoops:article模块加入所见即所得功能支持(用TinyMCE)</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-11-03</span>
-            
-          </div>
-          <div class="post-content">
-            <p>article模块加入所见即所得功能支持: Xoops的内核加入了对Form表单各个种类的封装，这个设计是简化了一些程序设计工作，但是其众多的Form class往往让人头晕。 xoops自带的Koivi，Dhtml编辑器都不怎么出色，很难直接投入商业运用，因此许多人尝试进行Hack. 今天跟霍炬聊的时候，他的话给了我信心，仔细看了代码，发现其实还是不太难的。 下面和我一起做。 我用的Xoops为XOOPS 2.015,artcile模块为0.96.这里系统自带的有三个编辑器，Textarea,koivi,dhtml.在 xoopsFrameworksxoops22classxoopseditor 中可以看到。 我在xoopsFrameworksxoops22classxoopseditortextareatextarea.php中加入这样一个类: n tinyMCE.init({n mode : &quot;exact&quot;,n theme : &quot;advanced&quot;,n elements : &quot;text,elm2&quot;,n plugins : &quot;table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime, preview,zoom,media,searchreplace,print,contextmenu,paste, directionality,fullscreen&quot;,n theme_advanced_buttons1_add_before : &quot;save,newdocument,separator&quot;,n theme_advanced_buttons1_add : &quot;fontselect,fontsizeselect&quot;,n theme_advanced_buttons2_add : &quot;separator,insertdate,inserttime,preview,zoom, separator,forecolor,backcolor&quot;,n theme_advanced_buttons2_add_before: &quot;cut,copy,paste,pastetext,pasteword,separator, search,replace,separator&quot;,n theme_advanced_buttons3_add_before : &quot;tablecontrols,separator&quot;,n theme_advanced_buttons3_add : &quot;emotions,iespell,media,advhr,separator,print, separator,ltr,rtl,separator,fullscreen&quot;,n theme_advanced_toolbar_location : &quot;top&quot;,n theme_advanced_toolbar_align : &quot;left&quot;,n theme_advanced_statusbar_location : &quot;bottom&quot;,n content_css : &quot;example_word.css&quot;,n plugi2n_insertdate_dateFormat : &quot;%Y-%m-%d&quot;,n plugi2n_insertdate_timeFormat : &quot;%H:%M:%S&quot;,n external_link_list_url : &quot;example_link_list.js&quot;,n external_image_list_url : &quot;example_image_list.js&quot;,n media_external_list_url : &quot;example_media_list.js&quot;,n file_browser_callback : &quot;fileBrowserCallBack&quot;,n paste_use_dialog : false,n theme_advanced_resizing : true,n theme_advanced_resize_horizontal : false,n theme_advanced_link_targets : &quot;_something=My somthing;_something2=My somthing2;_something3=My somthing3;&quot;,n paste_auto_cleanup_on_paste : true,n paste_convert_headers_to_strong : false,n paste_strip_class_attributes : &quot;all&quot;,n paste_remove_spans : false,n paste_remove_styles : false n });nn function fileBrowserCallBack(field_name, url, type, win) {n // This is where you insert your custom filebrowser logicn alert(&quot;Filebrowser callback: field_name: &quot; + field_name + &quot;, url: &quot; + url + &quot;, type: &quot; + type);nn // Insert new URL, this would normaly be done in a popupn win.document.forms[0].elements[field_name].value = &quot;someurl.htm&quot;;n }n&quot;; function render() { return &quot;  &quot;.<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mo>−</mo><mo>&gt;</mo><mi>s</mi><mi>c</mi><mi>r</mi><mi>i</mi><mi>p</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">&quot;</mi><mi>g</mi><mi>e</mi><mi>t</mi><mi>E</mi><mi>x</mi><mi>t</mi><mi>r</mi><mi>a</mi><mo>(</mo><mo>)</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">this-&gt;script.&quot;getExtra().&quot;&gt;&quot;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mclose">)</span><span class="mord">.</span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span><span class="mord">.</span></span></span></span>this-&gt;getValue().&quot; &quot;; } } ?&gt; 然后我们把class FormTextArea extends XoopsFormTextArea 改成 class FormTextArea extends XoopsFormTextAreaJsWithTinyMCE。哈哈，现在成功了。 不过这样也只有当编辑在发布文章选择textarea这个编辑器时才有用，选了koivi和DHTML时还是不行。这也容易，我们把 xoopsmodulesarticleincludeform.article.php中的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>a</mi><mi>r</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mi>a</mi><mi>d</mi><mi>d</mi><mi>E</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>(</mo><mi>n</mi><mi>e</mi><mi>w</mi><mi>X</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi>s</mi><mi>F</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>S</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>E</mi><mi>d</mi><mi>i</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">form\_art-&gt;addElement(new XoopsFormSelectEditor(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span></span></span></span>form_art,&quot;editor&quot;,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>d</mi><mi>i</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">editor,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span></span></span></span>nohtml));这一行去掉。这样用户就没得选择了。然后我们把默认编辑器设成textarea: 找到 $form_art-&gt;addElement(new XoopsFormEditor(art_constant(&quot;MD_TEXT&quot;), $editor, $editor_configs, $nohtml, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>n</mi><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi><mi>u</mi><mi>r</mi><mi>e</mi><mo>=</mo><mi>n</mi><mi>u</mi><mi>l</mi><mi>l</mi><mo>)</mo><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">这</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">把</mi></mrow><annotation encoding="application/x-tex">onfailure=null)); 这一行，把</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mclose">)</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">把</span></span></span></span>editor改为&quot;textarea&quot;,ok了，系统不管什么时候都会使用TinyMCE. 当然，您看到了，在Xoops/js目录下加上TinyMCE这个目录。这个您自个儿Google一下 然后去tinyMCE官方网站去下吧。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/303/">
-              <h3 class="post-title">
-                下一篇：cake的安装
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">xoops:article模块加入所见即所得功能支持(用TinyMCE)</h2>
+            <div class="post-date">2006-11-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>article模块加入所见即所得功能支持: Xoops的内核加入了对Form表单各个种类的封装，这个设计是简化了一些程序设计工作，但是其众多的Form class往往让人头晕。 xoops自带的Koivi，Dhtml编辑器都不怎么出色，很难直接投入商业运用，因此许多人尝试进行Hack. 今天跟霍炬聊的时候，他的话给了我信心，仔细看了代码，发现其实还是不太难的。 下面和我一起做。 我用的Xoops为XOOPS 2.015,artcile模块为0.96.这里系统自带的有三个编辑器，Textarea,koivi,dhtml.在 xoopsFrameworksxoops22classxoopseditor 中可以看到。 我在xoopsFrameworksxoops22classxoopseditortextareatextarea.php中加入这样一个类: n tinyMCE.init({n mode : &quot;exact&quot;,n theme : &quot;advanced&quot;,n elements : &quot;text,elm2&quot;,n plugins : &quot;table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime, preview,zoom,media,searchreplace,print,contextmenu,paste, directionality,fullscreen&quot;,n theme_advanced_buttons1_add_before : &quot;save,newdocument,separator&quot;,n theme_advanced_buttons1_add : &quot;fontselect,fontsizeselect&quot;,n theme_advanced_buttons2_add : &quot;separator,insertdate,inserttime,preview,zoom, separator,forecolor,backcolor&quot;,n theme_advanced_buttons2_add_before: &quot;cut,copy,paste,pastetext,pasteword,separator, search,replace,separator&quot;,n theme_advanced_buttons3_add_before : &quot;tablecontrols,separator&quot;,n theme_advanced_buttons3_add : &quot;emotions,iespell,media,advhr,separator,print, separator,ltr,rtl,separator,fullscreen&quot;,n theme_advanced_toolbar_location : &quot;top&quot;,n theme_advanced_toolbar_align : &quot;left&quot;,n theme_advanced_statusbar_location : &quot;bottom&quot;,n content_css : &quot;example_word.css&quot;,n plugi2n_insertdate_dateFormat : &quot;%Y-%m-%d&quot;,n plugi2n_insertdate_timeFormat : &quot;%H:%M:%S&quot;,n external_link_list_url : &quot;example_link_list.js&quot;,n external_image_list_url : &quot;example_image_list.js&quot;,n media_external_list_url : &quot;example_media_list.js&quot;,n file_browser_callback : &quot;fileBrowserCallBack&quot;,n paste_use_dialog : false,n theme_advanced_resizing : true,n theme_advanced_resize_horizontal : false,n theme_advanced_link_targets : &quot;_something=My somthing;_something2=My somthing2;_something3=My somthing3;&quot;,n paste_auto_cleanup_on_paste : true,n paste_convert_headers_to_strong : false,n paste_strip_class_attributes : &quot;all&quot;,n paste_remove_spans : false,n paste_remove_styles : false n });nn function fileBrowserCallBack(field_name, url, type, win) {n // This is where you insert your custom filebrowser logicn alert(&quot;Filebrowser callback: field_name: &quot; + field_name + &quot;, url: &quot; + url + &quot;, type: &quot; + type);nn // Insert new URL, this would normaly be done in a popupn win.document.forms[0].elements[field_name].value = &quot;someurl.htm&quot;;n }n&quot;; function render() { return &quot;  &quot;.<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mo>−</mo><mo>&gt;</mo><mi>s</mi><mi>c</mi><mi>r</mi><mi>i</mi><mi>p</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">&quot;</mi><mi>g</mi><mi>e</mi><mi>t</mi><mi>E</mi><mi>x</mi><mi>t</mi><mi>r</mi><mi>a</mi><mo>(</mo><mo>)</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">&quot;</mi><mo>&gt;</mo><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">this-&gt;script.&quot;getExtra().&quot;&gt;&quot;.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mord">&quot;</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mclose">)</span><span class="mord">.</span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span><span class="mord">.</span></span></span></span>this-&gt;getValue().&quot; &quot;; } } ?&gt; 然后我们把class FormTextArea extends XoopsFormTextArea 改成 class FormTextArea extends XoopsFormTextAreaJsWithTinyMCE。哈哈，现在成功了。 不过这样也只有当编辑在发布文章选择textarea这个编辑器时才有用，选了koivi和DHTML时还是不行。这也容易，我们把 xoopsmodulesarticleincludeform.article.php中的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>a</mi><mi>r</mi><mi>t</mi><mo>−</mo><mo>&gt;</mo><mi>a</mi><mi>d</mi><mi>d</mi><mi>E</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>(</mo><mi>n</mi><mi>e</mi><mi>w</mi><mi>X</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi>s</mi><mi>F</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>S</mi><mi>e</mi><mi>l</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>E</mi><mi>d</mi><mi>i</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">form\_art-&gt;addElement(new XoopsFormSelectEditor(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span></span></span></span>form_art,&quot;editor&quot;,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>d</mi><mi>i</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">editor,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span></span></span></span>nohtml));这一行去掉。这样用户就没得选择了。然后我们把默认编辑器设成textarea: 找到 $form_art-&gt;addElement(new XoopsFormEditor(art_constant(&quot;MD_TEXT&quot;), $editor, $editor_configs, $nohtml, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>n</mi><mi>f</mi><mi>a</mi><mi>i</mi><mi>l</mi><mi>u</mi><mi>r</mi><mi>e</mi><mo>=</mo><mi>n</mi><mi>u</mi><mi>l</mi><mi>l</mi><mo>)</mo><mo>)</mo><mo separator="true">;</mo><mi mathvariant="normal">这</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">把</mi></mrow><annotation encoding="application/x-tex">onfailure=null)); 这一行，把</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">a</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mclose">)</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">把</span></span></span></span>editor改为&quot;textarea&quot;,ok了，系统不管什么时候都会使用TinyMCE. 当然，您看到了，在Xoops/js目录下加上TinyMCE这个目录。这个您自个儿Google一下 然后去tinyMCE官方网站去下吧。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/303/">
+                  <h3 class="post-title">
+                    cake的安装
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

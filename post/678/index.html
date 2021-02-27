@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>珍爱生命，远离IT之-艾滋病 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1.艾滋病不会直接使人死亡。艾滋病致使人体的免疫系统功能缺失，从此小病大病不断。人不会死于艾滋病，而是会死于与艾滋病相关的疾病。 2.艾滋病毒携带者不会有任何症状。他们可跟常人无异地生活，工作很多年（常常十几年) 3.艾滋病是不可治的，但是..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">珍爱生命，远离IT之-艾滋病</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-08-17</span>
-            
-          </div>
-          <div class="post-content">
-            <p>1.艾滋病不会直接使人死亡。艾滋病致使人体的免疫系统功能缺失，从此小病大病不断。人不会死于艾滋病，而是会死于与艾滋病相关的疾病。 2.艾滋病毒携带者不会有任何症状。他们可跟常人无异地生活，工作很多年（常常十几年) 3.艾滋病是不可治的，但是是药物可控制的。并且，在我国有足够的免费的药物提供。经过控制，一般还可以再存活十年到二十年。 4.艾滋病在我国最主要的传染途径是：血液。最初是那些地下血站。这个引起重视以后，非法卖血受到政府打击，此时，另一个重要途径是，吸毒者共用针头。再有其他途径如，母婴传染，性途径等。艾滋病母亲怀孕时，可以注射阻药物，可以有三到七成的阻断率。性途径中，几率最大的是男男同性恋，另外女性被传染的几率远大于男性。 5.由于人具有免疫系统，可以灭掉很多入侵的细菌，病毒，因此，一次无防护的正常性交中，艾滋病毒从一方传给另一方的机率大约在百分之一这个数量级。 6.如果没有染上，可能性就是0.如果染上了，对你来说这个可能性就是100%.所以并不是媒体特意渲染，虽然你随便跟一个什么人上床感染艾滋病的几率跟你彩票中个万元大奖的几率差不多（或者更低），但是由于艾滋病无法完全治愈，所以不要冒这个险。这个概率是在艾滋病总人口占全国人口总数的比率的基础上算出来的，但是跟你上床的那个人有艾滋病毒的可能性要么是有，要么是没有。如果她没有病毒，那你肯定不会染上，如果她有病毒....那你的中标几率也许只有百分之一，但是百分之一的几率对你的生命也是很可怕的！</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/677/">
-              <h3 class="post-title">
-                下一篇：珍爱生命，远离IT之-白血病
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">珍爱生命，远离IT之-艾滋病</h2>
+            <div class="post-date">2008-08-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>1.艾滋病不会直接使人死亡。艾滋病致使人体的免疫系统功能缺失，从此小病大病不断。人不会死于艾滋病，而是会死于与艾滋病相关的疾病。 2.艾滋病毒携带者不会有任何症状。他们可跟常人无异地生活，工作很多年（常常十几年) 3.艾滋病是不可治的，但是是药物可控制的。并且，在我国有足够的免费的药物提供。经过控制，一般还可以再存活十年到二十年。 4.艾滋病在我国最主要的传染途径是：血液。最初是那些地下血站。这个引起重视以后，非法卖血受到政府打击，此时，另一个重要途径是，吸毒者共用针头。再有其他途径如，母婴传染，性途径等。艾滋病母亲怀孕时，可以注射阻药物，可以有三到七成的阻断率。性途径中，几率最大的是男男同性恋，另外女性被传染的几率远大于男性。 5.由于人具有免疫系统，可以灭掉很多入侵的细菌，病毒，因此，一次无防护的正常性交中，艾滋病毒从一方传给另一方的机率大约在百分之一这个数量级。 6.如果没有染上，可能性就是0.如果染上了，对你来说这个可能性就是100%.所以并不是媒体特意渲染，虽然你随便跟一个什么人上床感染艾滋病的几率跟你彩票中个万元大奖的几率差不多（或者更低），但是由于艾滋病无法完全治愈，所以不要冒这个险。这个概率是在艾滋病总人口占全国人口总数的比率的基础上算出来的，但是跟你上床的那个人有艾滋病毒的可能性要么是有，要么是没有。如果她没有病毒，那你肯定不会染上，如果她有病毒....那你的中标几率也许只有百分之一，但是百分之一的几率对你的生命也是很可怕的！</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/677/">
+                  <h3 class="post-title">
+                    珍爱生命，远离IT之-白血病
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

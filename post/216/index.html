@@ -1,92 +1,102 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>马家爵赋::::: | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="今天发现《马家爵赋》写得不错，留下来。
+　　马家爵者，桂之宾阳人也，家贫，常困之。其人也，幼而聪敏，少而敦厚，不善言。
+爵少时，常见父母及乡人之苦，因叹之，乃作悬梁刺骨之举，思报教养之恩也。及其长，负笈求学于滇。方见大千世界，又有数同门讥其..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">马家爵赋:::::</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2004-12-02</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">马家爵赋:::::</h2>
+            <div class="post-date">2004-12-02</div>
             
-          </div>
-          <div class="post-content">
-            <p>今天发现《马家爵赋》写得不错，留下来。<br>
+            <div class="post-content" v-pre>
+              <p>今天发现《马家爵赋》写得不错，留下来。<br>
 　　马家爵者，桂之宾阳人也，家贫，常困之。其人也，幼而聪敏，少而敦厚，不善言。</p>
 <p>爵少时，常见父母及乡人之苦，因叹之，乃作悬梁刺骨之举，思报教养之恩也。及其长，负笈求学于滇。方见大千世界，又有数同门讥其贫而辱之。尝有一人，欲与之钱二而令洗（不好）其（袜）。 又数人溺其榻上，爵悉受之，然心怀怨，由是益少言。</p>
 <p>爵未入滇时，尝离校，远至贵港，数日乃归，其师问之，曰：“欲见海也”。</p>
@@ -100,45 +110,31 @@
 <p>异史氏曰：夺人命者偿之己命，盖天理也。爵杀四人，其罪当诛。然吾度之，岂有以睚眦之怨而杀人者耶？其乡里之贫，求学之困顿，学费之昂巨，众人之白眼，莫非助其行凶之利器乎？某常思之，盖学费之巨，已愈若等乡民之力甚矣。或勉力为之，莫不困顿无极。又乡里之贫已非一日，其入城谋生者，多遭羞辱。若无视之若仇雠者，岂不怪哉！如此，其不为恶人者几希！马加爵必死，然其为王加爵李加爵者，正不知有几人也。</p>
 <p>吾观爵幼之聪慧，长之困厄，及其学于滇而害同门之事，感其与四同门之不幸，莫不掩面太息，无他，为天下发一浩叹耳。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/217/">
+                  <h3 class="post-title">
+                    不知道如何办阿::::::::
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/217/">
-              <h3 class="post-title">
-                下一篇：不知道如何办阿::::::::
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -148,6 +144,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

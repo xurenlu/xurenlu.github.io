@@ -1,135 +1,129 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Mysql 随机读取记录的一种实现 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="这两天觉得自己的基本功不够扎实,于是躲在家里看PHP,mysql手册。 发现这个句子在大部分情况下能实现随机读取mysql记录: 表的结构如下: | id | bigint(11) unsigned | NO | PRI | NULL | ..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Mysql 随机读取记录的一种实现</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-10-07</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Mysql 随机读取记录的一种实现</h2>
+            <div class="post-date">2007-10-07</div>
             
-          </div>
-          <div class="post-content">
-            <p>这两天觉得自己的基本功不够扎实,于是躲在家里看PHP,mysql手册。 发现这个句子在大部分情况下能实现随机读取mysql记录: 表的结构如下: | id | bigint(11) unsigned | NO | PRI | NULL | auto_increment | | tag | varchar(32) | NO | | | | | hash | varchar(32) | NO | | | | | created | bigint(11) | NO | | | | | article_id | bigint(11) | NO | | | | select * from tag order by RAND() desc limit 10G 秘决在于: 1.Rand函数. 2.不仅用order by id可以依id排序,用order by 1也可以依id排序.因此用rand函数来生成order by 子句。 犯错误了,order by 1 确实可以生效，但是rand函数不能用在order by 子句中。 而且,当表中有column(1),column(2).....共10列时,用order by 1,order by 2,....分别是按column(1),column(2)...排序的，但是我用order by 11时，就报错了。再用SELECT　*　FROM table order by RAND()*1000,却不报错。 看下面的例子: select *,(rand()*1000) as a from x_feeds order by a; 每次输出，都不同。 再稍变一次: mysql&gt;select *,(rand()*1000) as a from x_feeds order by 514; 每次都出错。 再变之: mysql&gt;select *,(rand()*1000) as a from x_feeds order by 514.37134 将order by 后跟上小数(学计算机的不能这么说啊),就能正常输出，但是是按表的原来顺序输出的，每次结果都一样。 暂时未找到真正原因，mysql文档中文版如此说:</p>
+            <div class="post-content" v-pre>
+              <p>这两天觉得自己的基本功不够扎实,于是躲在家里看PHP,mysql手册。 发现这个句子在大部分情况下能实现随机读取mysql记录: 表的结构如下: | id | bigint(11) unsigned | NO | PRI | NULL | auto_increment | | tag | varchar(32) | NO | | | | | hash | varchar(32) | NO | | | | | created | bigint(11) | NO | | | | | article_id | bigint(11) | NO | | | | select * from tag order by RAND() desc limit 10G 秘决在于: 1.Rand函数. 2.不仅用order by id可以依id排序,用order by 1也可以依id排序.因此用rand函数来生成order by 子句。 犯错误了,order by 1 确实可以生效，但是rand函数不能用在order by 子句中。 而且,当表中有column(1),column(2).....共10列时,用order by 1,order by 2,....分别是按column(1),column(2)...排序的，但是我用order by 11时，就报错了。再用SELECT　*　FROM table order by RAND()*1000,却不报错。 看下面的例子: select *,(rand()*1000) as a from x_feeds order by a; 每次输出，都不同。 再稍变一次: mysql&gt;select *,(rand()*1000) as a from x_feeds order by 514; 每次都出错。 再变之: mysql&gt;select *,(rand()*1000) as a from x_feeds order by 514.37134 将order by 后跟上小数(学计算机的不能这么说啊),就能正常输出，但是是按表的原来顺序输出的，每次结果都一样。 暂时未找到真正原因，mysql文档中文版如此说:</p>
 <blockquote>
 <p>你不能在一个ORDER BY子句用RAND()值使用列，因为ORDER BY将重复计算列多次。然而在MySQL3.23中，你可以做： SELECT * FROM table_name ORDER BY RAND()，这是有利于得到一个来自SELECT * FROM table1,table2 WHERE a=b AND c&lt;d ORDER BY RAND() LIMIT 1000的集合的随机样本。注意在一个WHERE子句里的一个RAND()将在每次WHERE被执行时重新评估。</p>
 </blockquote>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/490/">
+                  <h3 class="post-title">
+                    糟糕的ruby库
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/490/">
-              <h3 class="post-title">
-                下一篇：糟糕的ruby库
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -139,6 +133,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,92 +1,101 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>杨致远和雅虎的故事 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="在因特网（Internet）这个信息汪洋大海上航行，没有合适的导航工具肯定不行。最早开发这些工具的精明人士如今都得到了丰厚的回报。
+网景公司的克拉克（Jim Clark）和安迪森（Mare Andressen）1995年开发了网景导航器（N..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">杨致远和雅虎的故事</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-24</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">杨致远和雅虎的故事</h2>
+            <div class="post-date">2005-03-24</div>
             
-          </div>
-          <div class="post-content">
-            <p>在因特网（Internet）这个信息汪洋大海上航行，没有合适的导航工具肯定不行。最早开发这些工具的精明人士如今都得到了丰厚的回报。</p>
+            <div class="post-content" v-pre>
+              <p>在因特网（Internet）这个信息汪洋大海上航行，没有合适的导航工具肯定不行。最早开发这些工具的精明人士如今都得到了丰厚的回报。</p>
 <p>网景公司的克拉克（Jim Clark）和安迪森（Mare Andressen）1995年开发了网景导航器（Navigator），该公司股票上市使克拉克的财产达到5.65亿美元，安迪森则达到5800万美元。本文要说的“雅虎”（Yahoo！）公司也有同样辉煌的经历。1996年4月12日雅虎公司股票上市，开盘每股价位定在13美元，由于需求惊人，价格迅速被推到24.50美元，最高时达到每股43美元，最后以每股33美元收盘。上市当天雅虎公司的市场价值即达到8.50亿美元，比一年前行家估计的价值高出200倍。</p>
 <p>“网景”与“雅虎”都与网络打交道，但有重大区别。网景公司开发了一个界面友好的实用万维网软件，通过它用户可以浏览世界各地的WWW网页等等，它的成功多少在预料之中。而雅虎公司在严格意义上从未独立开发出任何新的软件和硬件产品，“雅虎”只是一个普通的网络搜索引擎，开始时提供的仅仅是信息“目录”，在因特网上它以http://www.yahoo.com形式存在。然而这正是值得注意的地方，这种区别充分说明了“知识经济”时代的一个特征：知识与信息的重 组将产生巨大的经济效益。</p>
 <p>1. 雅虎：一个响亮的名字</p>
@@ -107,45 +116,31 @@
 <p>他们一边维护日益膨胀的网络资源，一边寻找商机，每天只睡4个小时。</p>
 <p>杨回忆说：“这项工作很艰苦，但充满了乐趣。有时我有一种从 悬崖上跳下的感觉，有时像置身于电影《塞尔玛与路易斯》，不知结局怎样。我们想用网络做一切，也许什么也做不成。但我们不在乎， 我们不会失去任何东西。”杨致远找到了红杉（Sequoia）资本公司，它是硅谷最负盛名的风险投资公司，曾向苹果（曾引导过个人计算机 革命）、Atari（视频游戏工业的领</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/196/">
+                  <h3 class="post-title">
+                    最具广告价值的搜索引擎
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/196/">
-              <h3 class="post-title">
-                下一篇：最具广告价值的搜索引擎
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -155,6 +150,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

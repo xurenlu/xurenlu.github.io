@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>2008阿里巴巴年会小事记 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1.我和几个同事下了火车，万事通覃同学一早已经打听到下火车后5分钟就能到酒店，于是从机场坐到城站火车站时，我们就在四处瞅瞅，看是否能看到红楼酒店。结果瞅来瞅去，没发现，红楼酒店就在我们背后，老大的字，我们都看不见。 2.徐鹏同学和几个同事去..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">2008阿里巴巴年会小事记</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-02-17</span>
-            
-          </div>
-          <div class="post-content">
-            <p>1.我和几个同事下了火车，万事通覃同学一早已经打听到下火车后5分钟就能到酒店，于是从机场坐到城站火车站时，我们就在四处瞅瞅，看是否能看到红楼酒店。结果瞅来瞅去，没发现，红楼酒店就在我们背后，老大的字，我们都看不见。 2.徐鹏同学和几个同事去西湖玩了回来，打车。车行至红星大酒店，徐鹏以为到了，下了车，发现是红星酒店，于是又招一的士，前行200米，才看到红楼。于是，买单下车。 3.黑夜路人同学更生猛:走出火车站，便拦了一出租车，说要去红楼大酒店。师傅说，就在旁边，你走过去就行了。黑夜路人果然是极为生猛极为黑夜，大怒：你还拒载啊，我要投诉你！于是师傅让他上车，把计价器按下来，掉个头，指着红楼大酒店几个字说，这就是红楼大酒店了。车费10元，谢谢。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/591/">
-              <h3 class="post-title">
-                下一篇：没文化真可怜啊，一定要把英语学好！
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">2008阿里巴巴年会小事记</h2>
+            <div class="post-date">2008-02-17</div>
+            
+            <div class="post-content" v-pre>
+              <p>1.我和几个同事下了火车，万事通覃同学一早已经打听到下火车后5分钟就能到酒店，于是从机场坐到城站火车站时，我们就在四处瞅瞅，看是否能看到红楼酒店。结果瞅来瞅去，没发现，红楼酒店就在我们背后，老大的字，我们都看不见。 2.徐鹏同学和几个同事去西湖玩了回来，打车。车行至红星大酒店，徐鹏以为到了，下了车，发现是红星酒店，于是又招一的士，前行200米，才看到红楼。于是，买单下车。 3.黑夜路人同学更生猛:走出火车站，便拦了一出租车，说要去红楼大酒店。师傅说，就在旁边，你走过去就行了。黑夜路人果然是极为生猛极为黑夜，大怒：你还拒载啊，我要投诉你！于是师傅让他上车，把计价器按下来，掉个头，指着红楼大酒店几个字说，这就是红楼大酒店了。车费10元，谢谢。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/591/">
+                  <h3 class="post-title">
+                    没文化真可怜啊，一定要把英语学好！
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

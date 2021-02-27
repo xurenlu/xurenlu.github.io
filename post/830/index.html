@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>继续扯蛋之六 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1。公司年会。我们team需要推一个人出去参加合唱。我推王超。理由是：形象好，气质佳，五官端正。于是王超就这么不幸地被拉出去了。 2。某个合唱进行到最后时，王超同学突然说：啊，这是我要参加的合唱。。。。 3。M老大说：去年我们网站获得到最佳..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">继续扯蛋之六</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2009-02-13</span>
-            
-          </div>
-          <div class="post-content">
-            <p>1。公司年会。我们team需要推一个人出去参加合唱。我推王超。理由是：形象好，气质佳，五官端正。于是王超就这么不幸地被拉出去了。 2。某个合唱进行到最后时，王超同学突然说：啊，这是我要参加的合唱。。。。 3。M老大说：去年我们网站获得到最佳易用性大奖。原因是，去年奥运会时，流量爆涨，但是销售部门打了个盹儿，没卖广告。所以整个页面没广告，用户体验跟新浪sohu立马拉开了档次。 4。我跟产品经理说，我已经是负责这个项目开发的第五个人了，换来换去，代码中看不懂的地方现在都不知道找谁问。好吧，没过两天，产品经理也负责别的项目去了。嗯，这个项目前后换5个开发工程师，三个前端工程师，3个测试，3个产品经理。我觉得它真是融入了众人的智慧，绝对是大家通力合作的结果。 5。再一件大家都知道的扯蛋的事儿：就是：多行不义终自毙，玩火者必自焚。吸吸体味为了庆元霄，把自己的小JJ给点了。点完火的时候还幸灾乐祸地滚动播报澳大利亚的火灾呢。结果老百姓们也很自觉地保持队形，<a href="http://www.20ju.com/content/V70217.htm">奔走相告</a>，还大老远地跑回家拿相机去拍照片，连出租车司机都问客人：你急吗？不急的话咱再去看会儿？历次天灾人祸，没见过这样多人高兴的。 ...同时为火灾中英勇的消防队员致敬。您太冤了。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/827/">
-              <h3 class="post-title">
-                下一篇：产品经理的层次
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">继续扯蛋之六</h2>
+            <div class="post-date">2009-02-13</div>
+            
+            <div class="post-content" v-pre>
+              <p>1。公司年会。我们team需要推一个人出去参加合唱。我推王超。理由是：形象好，气质佳，五官端正。于是王超就这么不幸地被拉出去了。 2。某个合唱进行到最后时，王超同学突然说：啊，这是我要参加的合唱。。。。 3。M老大说：去年我们网站获得到最佳易用性大奖。原因是，去年奥运会时，流量爆涨，但是销售部门打了个盹儿，没卖广告。所以整个页面没广告，用户体验跟新浪sohu立马拉开了档次。 4。我跟产品经理说，我已经是负责这个项目开发的第五个人了，换来换去，代码中看不懂的地方现在都不知道找谁问。好吧，没过两天，产品经理也负责别的项目去了。嗯，这个项目前后换5个开发工程师，三个前端工程师，3个测试，3个产品经理。我觉得它真是融入了众人的智慧，绝对是大家通力合作的结果。 5。再一件大家都知道的扯蛋的事儿：就是：多行不义终自毙，玩火者必自焚。吸吸体味为了庆元霄，把自己的小JJ给点了。点完火的时候还幸灾乐祸地滚动播报澳大利亚的火灾呢。结果老百姓们也很自觉地保持队形，<a href="http://www.20ju.com/content/V70217.htm">奔走相告</a>，还大老远地跑回家拿相机去拍照片，连出租车司机都问客人：你急吗？不急的话咱再去看会儿？历次天灾人祸，没见过这样多人高兴的。 ...同时为火灾中英勇的消防队员致敬。您太冤了。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/827/">
+                  <h3 class="post-title">
+                    产品经理的层次
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

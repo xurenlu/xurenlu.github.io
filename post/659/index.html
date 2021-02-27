@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>团购蜂蜜 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="提起大熊猫的故乡，很多人首先想到的是卧龙，那里是人工养殖大熊猫的基地。可是你们知道吗？在四川省西北部岷山深处，有一块四万公顷的原始森林，其间坐落着唐家河大熊猫自然保护区，那里生活着60多只野生的大熊猫和众多的国家一级、二级保护动物。阿里巴巴..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">团购蜂蜜</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-06-23</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">团购蜂蜜</h2>
+            <div class="post-date">2008-06-23</div>
             
-          </div>
-          <div class="post-content">
-            <p>提起大熊猫的故乡，很多人首先想到的是卧龙，那里是人工养殖大熊猫的基地。可是你们知道吗？在四川省西北部岷山深处，有一块四万公顷的原始森林，其间坐落着唐家河大熊猫自然保护区，那里生活着60多只野生的大熊猫和众多的国家一级、二级保护动物。阿里巴巴赈灾重建小组考察发现，由于5.12地震, 唐家河道路损毁、山体严重坍塌、众多珍贵野生动植物遭到毁灭性破坏.这对当地民众的生产生活造成了严重的影响.其中,原本不愁销路的天然蜂蜜积压了4吨无法销售出去,这些可都是养蜂人辛苦劳作的结晶啊! 为帮助唐家河大熊猫自然保护区解决这一问题.我们决定团购这4吨的蜂蜜.我们团购蜂蜜的价格也很优惠哦，单价是15元/斤，和超市的蜂蜜比起来，便宜很多呢，而且是纯天然的没有经过掺杂的蜂蜜哦！</p>
+            <div class="post-content" v-pre>
+              <p>提起大熊猫的故乡，很多人首先想到的是卧龙，那里是人工养殖大熊猫的基地。可是你们知道吗？在四川省西北部岷山深处，有一块四万公顷的原始森林，其间坐落着唐家河大熊猫自然保护区，那里生活着60多只野生的大熊猫和众多的国家一级、二级保护动物。阿里巴巴赈灾重建小组考察发现，由于5.12地震, 唐家河道路损毁、山体严重坍塌、众多珍贵野生动植物遭到毁灭性破坏.这对当地民众的生产生活造成了严重的影响.其中,原本不愁销路的天然蜂蜜积压了4吨无法销售出去,这些可都是养蜂人辛苦劳作的结晶啊! 为帮助唐家河大熊猫自然保护区解决这一问题.我们决定团购这4吨的蜂蜜.我们团购蜂蜜的价格也很优惠哦，单价是15元/斤，和超市的蜂蜜比起来，便宜很多呢，而且是纯天然的没有经过掺杂的蜂蜜哦！</p>
 <p>ID</p>
 <p>规格</p>
 <p>单价</p>
@@ -124,45 +132,31 @@
 <p>41</p>
 <p>这是我们集团打算做的一点小事，有需要的可以联系我一起买!到货后我再转发给大家 顺便提示一下大家，大家在超市里看到的蜂蜜，大多像水一样，而有些天然的蜂蜜，浓得呈固体状态，我还不知道这次团购的蜂蜜会是什么样的，但是既然是纯天然的，应该不会差。 我的联系方式:msn:helloasp@hotmail.com 我的邮箱:xurenlu@126.com</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/658/">
+                  <h3 class="post-title">
+                    社区全文检索引擎Hyper Estraier 学习笔记[3]
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/658/">
-              <h3 class="post-title">
-                下一篇：社区全文检索引擎Hyper Estraier 学习笔记[3]
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -172,6 +166,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

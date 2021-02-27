@@ -1,136 +1,130 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>select id,title from ** 与select * from **的速度测试。 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="老是喜欢用select *,后来自己觉着不行，会影响速度，今天俺 做一个测试看看倒底有多大影响? 数据表结构: CREATE TABLE `xoops__art_text` ( `text_id` int(11) NOT NULL auto..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">select id,title from ** 与select * from **的速度测试。</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-10-16</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">select id,title from ** 与select * from **的速度测试。</h2>
+            <div class="post-date">2006-10-16</div>
             
-          </div>
-          <div class="post-content">
-            <p>老是喜欢用select *,后来自己觉着不行，会影响速度，今天俺 做一个测试看看倒底有多大影响? 数据表结构: CREATE TABLE `xoops__art_text` ( `text_id` int(11) NOT NULL auto_increment, `art_id` int(11) NOT NULL default '0', `text_title` varchar(255) NOT NULL default '', `text_body` longblob, PRIMARY KEY (`text_id`), KEY `art_id` (`art_id`) ) 测试文件代码: div{ border:1px solid black; background-color:#888; height:20px; margin-left:30px; display:inline; align:left; text-align:right; } reset(); for(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">j=0;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">;</span></span></span></span>j&lt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">max;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mpunct">;</span></span></span></span>j++) <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>s</mi><mo>=</mo><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">rs=mysql\_query(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span></span></span></span>sql); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: times\̲[̲'>times\[</span>i]=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mn>1</mn><mo>−</mo><mo>&gt;</mo><mi>t</mi><mi>i</mi><mi>c</mi><mi>k</mi><mo>(</mo><mo>)</mo><mo separator="true">;</mo><mi>i</mi><mi>f</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">time1-&gt;tick(); if(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">1</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span></span></span></span>times[<span class='katex-error' title='ParseError: KaTeX parse error: Can&#039;t use function &#039;\]&#039; in math mode at position 2: i\̲]̲&gt;'>i\]&gt;</span>max) <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">max=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>times[$i]; <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 6: i++; }̲ print\_r('>i++; } print\_r(</span>times); $texts=array(); $texts[]=&quot;method a:&quot;; $texts[]=&quot;method b:&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: texts\̲[̲\]=&quot;method c:&quot;;…'>texts\[\]=&quot;method c:&quot;; echo &quot;  
+            <div class="post-content" v-pre>
+              <p>老是喜欢用select *,后来自己觉着不行，会影响速度，今天俺 做一个测试看看倒底有多大影响? 数据表结构: CREATE TABLE `xoops__art_text` ( `text_id` int(11) NOT NULL auto_increment, `art_id` int(11) NOT NULL default '0', `text_title` varchar(255) NOT NULL default '', `text_body` longblob, PRIMARY KEY (`text_id`), KEY `art_id` (`art_id`) ) 测试文件代码: div{ border:1px solid black; background-color:#888; height:20px; margin-left:30px; display:inline; align:left; text-align:right; } reset(); for(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>=</mo><mn>0</mn><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">j=0;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">;</span></span></span></span>j&lt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">max;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mpunct">;</span></span></span></span>j++) <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>s</mi><mo>=</mo><mi>m</mi><mi>y</mi><mi>s</mi><mi>q</mi><mi>l</mi><mi mathvariant="normal">_</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">rs=mysql\_query(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span></span></span></span>sql); <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: times\̲[̲'>times\[</span>i]=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mn>1</mn><mo>−</mo><mo>&gt;</mo><mi>t</mi><mi>i</mi><mi>c</mi><mi>k</mi><mo>(</mo><mo>)</mo><mo separator="true">;</mo><mi>i</mi><mi>f</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">time1-&gt;tick(); if(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">1</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mopen">(</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span></span></span></span>times[<span class='katex-error' title='ParseError: KaTeX parse error: Can&#039;t use function &#039;\]&#039; in math mode at position 2: i\̲]̲&gt;'>i\]&gt;</span>max) <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">max=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>times[$i]; <span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 6: i++; }̲ print\_r('>i++; } print\_r(</span>times); $texts=array(); $texts[]=&quot;method a:&quot;; $texts[]=&quot;method b:&quot;; <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: texts\̲[̲\]=&quot;method c:&quot;;…'>texts\[\]=&quot;method c:&quot;; echo &quot;  
 &quot;; echo &quot;max:</span>max;&quot;; echo &quot;<br>
 &quot;; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo separator="true">;</mo><mi>f</mi><mi>o</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>c</mi><mi>h</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">i=0; foreach(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mopen">(</span></span></span></span>times as $time) { echo <span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 6: texts\̲[̲'>texts\[</span>i++]; echo &quot;</p>
 <p>&quot;; echo $time.&quot;ms &quot;; echo &quot;</p>
 <p>&quot;; } } test(); test(); test(); test(); test(); test(); test(); test(); class timer { var $_start; var $_current; function timer() { /** 这是记录下开始操作时的时间。 */ $this-&gt;_start = array_sum(explode(' ', microtime())); } function tick() { <span class='katex-error' title='ParseError: KaTeX parse error: Double superscript at position 47: …_sum(explode(&#039; &#039;̲, microtime()))…'>this-&gt;\_current = round((array\_sum(explode(&#039; &#039;, microtime()))-</span>this-&gt;_start)*1000, 0); return $this-&gt;_current; } function reset() { $this-&gt;timer(); } } ?&gt; 测出来的一组结果: method a: 79ms method b: 79ms method c: 1010ms 相比之下，当用了select * 之后，只多取了一个text/longblob类型的字段,整个时间相差了十几倍! 所以，以后写代码，俺 还是要勤快一点，用select id,name,title 而不能用select *.那样太浪费资源了.</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/282/">
+                  <h3 class="post-title">
+                    如何打造一个您自己的输入法..........
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/282/">
-              <h3 class="post-title">
-                下一篇：如何打造一个您自己的输入法..........
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -140,6 +134,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

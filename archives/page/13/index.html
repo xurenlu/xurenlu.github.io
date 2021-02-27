@@ -1,557 +1,520 @@
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
-<title>黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
+<title>文章归档 | 黄滚的Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="相逢的人会再相逢">
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-        <div class="content-container">
-          
-          
-
-<div class="archives-container">
-  
-    <h2 class="year">2006</h2>
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-        <article class="post">
-          <a href="http://localhost:4000/post/6/">
-            <h2 class="post-title">
-              原动力实验室[策划中….]
-              <small>2006-06-18</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="http://localhost:4000/post/7/">
-            <h2 class="post-title">
-              热烈庆祝原创中国网站上线运行–原创中国，凝聚中国原创力
-              <small>2006-06-18</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="http://localhost:4000/post/8/">
-            <h2 class="post-title">
-              歌颂一下流氓
-              <small>2006-06-17</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/9/">
-            <h2 class="post-title">
-              有中国特色的图片…..
-              <small>2006-06-15</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/10/">
-            <h2 class="post-title">
-              blog已经恢复正常了
-              <small>2006-06-15</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/11/">
-            <h2 class="post-title">
-              IT,互联网相关杂谈。
-              <small>2006-06-09</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/12/">
-            <h2 class="post-title">
-              差一点被人背后骂
-              <small>2006-06-05</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/13/">
-            <h2 class="post-title">
-              用新聚做SEO
-              <small>2006-05-30</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/14/">
-            <h2 class="post-title">
-              建设银行在线支付时的故障
-              <small>2006-05-30</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/15/">
-            <h2 class="post-title">
-              卖极品域名啦
-              <small>2006-05-28</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/16/">
-            <h2 class="post-title">
-              一点儿也不顺心。。。。。
-              <small>2006-05-26</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/17/">
-            <h2 class="post-title">
-              很想说….
-              <small>2006-05-25</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/18/">
-            <h2 class="post-title">
-              新聚果然动作快
-              <small>2006-05-25</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/19/">
-            <h2 class="post-title">
-              越来越发现新聚好玩
-              <small>2006-05-25</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/20/">
-            <h2 class="post-title">
-              新聚的一些问题或建议等
-              <small>2006-05-24</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/21/">
-            <h2 class="post-title">
-              这个世界真疯狂，狐狸说被兔子咬
-              <small>2006-05-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/22/">
-            <h2 class="post-title">
-              google现在就是一SB
-              <small>2006-05-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/23/">
-            <h2 class="post-title">
-              向师兄们学习
-              <small>2006-05-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/24/">
-            <h2 class="post-title">
-              什么鸟人在骂
-              <small>2006-05-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/25/">
-            <h2 class="post-title">
-              想起了站长站
-              <small>2006-05-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/26/">
-            <h2 class="post-title">
-              问候一下这些人家里的女性
-              <small>2006-05-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/27/">
-            <h2 class="post-title">
-              致母亲(去年母亲节发过…)
-              <small>2006-05-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/28/">
-            <h2 class="post-title">
-              公告
-              <small>2006-05-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/29/">
-            <h2 class="post-title">
-              我可怜的电脑
-              <small>2006-05-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/30/">
-            <h2 class="post-title">
-              童言
-              <small>2006-05-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/31/">
-            <h2 class="post-title">
-              why there are problems?
-              <small>2006-05-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/32/">
-            <h2 class="post-title">
-              网通天天在线也作弊
-              <small>2006-04-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/33/">
-            <h2 class="post-title">
-              Congratulations!
-              <small>2006-04-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/34/">
-            <h2 class="post-title">
-              师德….
-              <small>2006-04-20</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/35/">
-            <h2 class="post-title">
-              It’s windy today.
-              <small>2006-04-19</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/36/">
-            <h2 class="post-title">
-              Weblog in English
-              <small>2006-04-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/37/">
-            <h2 class="post-title">
-              我把手烫了
-              <small>2006-04-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/38/">
-            <h2 class="post-title">
-              要过周末啦
-              <small>2006-04-15</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/39/">
-            <h2 class="post-title">
-              日子
-              <small>2006-04-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/40/">
-            <h2 class="post-title">
-              看看这个用xml解析器生成的文件怎么样?
-              <small>2006-04-12</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/41/">
-            <h2 class="post-title">
-              累，真累，非常累!
-              <small>2006-04-12</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/42/">
-            <h2 class="post-title">
-              我做了一个超夸张的页面
-              <small>2006-04-08</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/43/">
-            <h2 class="post-title">
-              我处于职场最底层?
-              <small>2006-04-05</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/44/">
-            <h2 class="post-title">
-              杂记,流水账，就不要看了
-              <small>2006-04-04</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="http://localhost:4000/post/45/">
-            <h2 class="post-title">
-              项目进度
-              <small>2006-03-31</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-  
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
 </div>
 
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+
+          <h2 class="archives-title">文章归档</h2>
+          <div class="archives-container">
+            
+              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2006</h2>
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/6/">
+                      <h2 class="post-title">
+                        原动力实验室[策划中….]
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/7/">
+                      <h2 class="post-title">
+                        热烈庆祝原创中国网站上线运行–原创中国，凝聚中国原创力
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/8/">
+                      <h2 class="post-title">
+                        歌颂一下流氓
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/9/">
+                      <h2 class="post-title">
+                        有中国特色的图片…..
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/10/">
+                      <h2 class="post-title">
+                        blog已经恢复正常了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/11/">
+                      <h2 class="post-title">
+                        IT,互联网相关杂谈。
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/12/">
+                      <h2 class="post-title">
+                        差一点被人背后骂
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/13/">
+                      <h2 class="post-title">
+                        用新聚做SEO
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/14/">
+                      <h2 class="post-title">
+                        建设银行在线支付时的故障
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/15/">
+                      <h2 class="post-title">
+                        卖极品域名啦
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/16/">
+                      <h2 class="post-title">
+                        一点儿也不顺心。。。。。
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/17/">
+                      <h2 class="post-title">
+                        很想说….
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/18/">
+                      <h2 class="post-title">
+                        新聚果然动作快
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/19/">
+                      <h2 class="post-title">
+                        越来越发现新聚好玩
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/20/">
+                      <h2 class="post-title">
+                        新聚的一些问题或建议等
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/21/">
+                      <h2 class="post-title">
+                        这个世界真疯狂，狐狸说被兔子咬
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/22/">
+                      <h2 class="post-title">
+                        google现在就是一SB
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/23/">
+                      <h2 class="post-title">
+                        向师兄们学习
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/24/">
+                      <h2 class="post-title">
+                        什么鸟人在骂
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/25/">
+                      <h2 class="post-title">
+                        想起了站长站
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/26/">
+                      <h2 class="post-title">
+                        问候一下这些人家里的女性
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/27/">
+                      <h2 class="post-title">
+                        致母亲(去年母亲节发过…)
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/28/">
+                      <h2 class="post-title">
+                        公告
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/29/">
+                      <h2 class="post-title">
+                        我可怜的电脑
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/30/">
+                      <h2 class="post-title">
+                        童言
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/31/">
+                      <h2 class="post-title">
+                        why there are problems?
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/32/">
+                      <h2 class="post-title">
+                        网通天天在线也作弊
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/33/">
+                      <h2 class="post-title">
+                        Congratulations!
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/34/">
+                      <h2 class="post-title">
+                        师德….
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/35/">
+                      <h2 class="post-title">
+                        It’s windy today.
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/36/">
+                      <h2 class="post-title">
+                        Weblog in English
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/37/">
+                      <h2 class="post-title">
+                        我把手烫了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/38/">
+                      <h2 class="post-title">
+                        要过周末啦
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/39/">
+                      <h2 class="post-title">
+                        日子
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/40/">
+                      <h2 class="post-title">
+                        看看这个用xml解析器生成的文件怎么样?
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/41/">
+                      <h2 class="post-title">
+                        累，真累，非常累!
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/42/">
+                      <h2 class="post-title">
+                        我做了一个超夸张的页面
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/43/">
+                      <h2 class="post-title">
+                        我处于职场最底层?
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/44/">
+                      <h2 class="post-title">
+                        杂记,流水账，就不要看了
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="http://localhost:4000/post/45/">
+                      <h2 class="post-title">
+                        项目进度
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+            
+          </div>
+
+          <div class="pagination-container">
+  
+    <a href="http://localhost:4000/archives/page/12/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
+  
+  
+    <a href="http://localhost:4000/archives/page/14/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+  
+</div>
 
         </div>
-
-        <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
       </div>
-      <script type="application/javascript">
+    </div>
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -565,6 +528,7 @@ var app = new Vue({
 
 
 
-    </div>
+
+
   </body>
 </html>

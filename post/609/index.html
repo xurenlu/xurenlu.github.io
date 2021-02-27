@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>搞定一个管理hosts文件的程序 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="搞这个脚本的目的:因为yahoo目录严格地遵守开发、测试、生产环境三条线的方针，所以我经常需要设置hosts文件，在各种环境中倒来倒去，手动修改hosts文件，非常麻烦。所以，决定搞一个脚本来管理一下. 用法： a：我要测试了，所以切换到t..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">搞定一个管理hosts文件的程序</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-03-11</span>
-            
-          </div>
-          <div class="post-content">
-            <p>搞这个脚本的目的:因为yahoo目录严格地遵守开发、测试、生产环境三条线的方针，所以我经常需要设置hosts文件，在各种环境中倒来倒去，手动修改hosts文件，非常麻烦。所以，决定搞一个脚本来管理一下. 用法： a：我要测试了，所以切换到testing环境。运行hosts test.马上就好了。 b:我要添加几个testing 环境的hosts ,运行hosts edit test 具体步骤： 1.建这样一个文件: #! /usr/bin/ruby subcmd=ARGV.shift DATADIR=&quot;/home/renlu/bin/hostsdata/&quot; HOSTFILE=&quot;/etc/hosts&quot; # load the yaml file to a variable require &quot;yaml&quot; def init(env) data=Hash.new open(DATADIR+env+&quot;.yaml&quot;,&quot;w&quot;) do |f| f.write(YAML.dump(data)) end end def firstboot init(&quot;dev&quot;) init(&quot;test&quot;) init(&quot;online&quot;) end def quit(cmd) if cmd =~ /exit|eixt|quit|qt/ then exit(0) end end def switch(env) data=load(env) string=&quot;&quot; data.each{ |domain,ip| string = string + &quot;#{ip} #{domain}n&quot; } open(DATADIR + &quot;pre&quot;) do |f| string = f.read + string end open(HOSTFILE ,&quot;w&quot;) do |f| f.write(string) end print string+&quot;n&quot; end def load(env) data=Hash.new open(DATADIR + env+&quot;.yaml&quot;) do |f| data=YAML.load(f) end data end #write the hash as yaml to a file def save(env,data) open(DATADIR+env+&quot;.yaml&quot;,&quot;w&quot;) do |f| f.write(YAML.dump(data)) end end def cat() cmd2=ARGV.shift if cmd2 =~ /dev/ then env=&quot;dev&quot; elsif cmd2 =~ /online|ol/ then env=&quot;online&quot; elsif cmd2 =~ /test/ then env=&quot;test&quot; end data=load(env) puts data end def usage print &quot; Yet a simple hosts manager version 0.1 Author :renlu.xu URL :http://www.162cm.com/ usage : hosts dev ---- switch to dev environment hosts test ---- switch to testing environment hosts online ---- switch to online environment hosts add dev ---- edit a domain for dev|online|test environment hosts add dev ---- the same with 'hosts add dev' Notice: dev means Development test means Testing online|ol means testing if you input Quit|exit, We asumed that you want to exit. When you use this program first time,Run 'hosts first ' and then initialze the data files' &quot; end def edit() cmd2=ARGV.shift if cmd2 =~ /dev/ then env=&quot;dev&quot; elsif cmd2 =~ /online|ol/ then env=&quot;online&quot; elsif cmd2 =~ /test/ then env=&quot;test&quot; end print &quot;input the domain:(such as www.sina.com)n&quot; domain=gets.chomp quit(domain) print &quot;input the ip:(127.0.0.1 and so on...n&quot; ip=gets.chomp quit(ip) data=load(env) data[domain]=ip save(env,data) switch(env) end quit(subcmd) if subcmd =~ /first/ then firstboot elsif subcmd =~ /ls|view|cat/ then cat elsif subcmd =~ /edit|add/ then edit elsif subcmd =~ /dev/ then switch &quot;dev&quot; elsif subcmd =~ /test/ then switch &quot;test&quot; elsif subcmd =~ /online|ol/ then switch &quot;online&quot; else usage end 呵呵。头几行有个设置，一个是hosts文件的地址，一个是存储数据文件的目录。根据你的需要来设置。 3: 建立那个存储你的各位环境hosts信息的目录。 4 Enjoy the script. 5：如果在是linux环境下，你需要给这个脚本设置访问/etc/hosts的权限: #sudo chown root:root hosts #sudo chmod +s hosts 这样，这个脚本就自然而然地拥有了root用户的权限。也就是说，一个普通用户也能通过这个脚本去修改hosts文件。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/608/">
-              <h3 class="post-title">
-                下一篇：Fedora 安装心得若干
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">搞定一个管理hosts文件的程序</h2>
+            <div class="post-date">2008-03-11</div>
+            
+            <div class="post-content" v-pre>
+              <p>搞这个脚本的目的:因为yahoo目录严格地遵守开发、测试、生产环境三条线的方针，所以我经常需要设置hosts文件，在各种环境中倒来倒去，手动修改hosts文件，非常麻烦。所以，决定搞一个脚本来管理一下. 用法： a：我要测试了，所以切换到testing环境。运行hosts test.马上就好了。 b:我要添加几个testing 环境的hosts ,运行hosts edit test 具体步骤： 1.建这样一个文件: #! /usr/bin/ruby subcmd=ARGV.shift DATADIR=&quot;/home/renlu/bin/hostsdata/&quot; HOSTFILE=&quot;/etc/hosts&quot; # load the yaml file to a variable require &quot;yaml&quot; def init(env) data=Hash.new open(DATADIR+env+&quot;.yaml&quot;,&quot;w&quot;) do |f| f.write(YAML.dump(data)) end end def firstboot init(&quot;dev&quot;) init(&quot;test&quot;) init(&quot;online&quot;) end def quit(cmd) if cmd =~ /exit|eixt|quit|qt/ then exit(0) end end def switch(env) data=load(env) string=&quot;&quot; data.each{ |domain,ip| string = string + &quot;#{ip} #{domain}n&quot; } open(DATADIR + &quot;pre&quot;) do |f| string = f.read + string end open(HOSTFILE ,&quot;w&quot;) do |f| f.write(string) end print string+&quot;n&quot; end def load(env) data=Hash.new open(DATADIR + env+&quot;.yaml&quot;) do |f| data=YAML.load(f) end data end #write the hash as yaml to a file def save(env,data) open(DATADIR+env+&quot;.yaml&quot;,&quot;w&quot;) do |f| f.write(YAML.dump(data)) end end def cat() cmd2=ARGV.shift if cmd2 =~ /dev/ then env=&quot;dev&quot; elsif cmd2 =~ /online|ol/ then env=&quot;online&quot; elsif cmd2 =~ /test/ then env=&quot;test&quot; end data=load(env) puts data end def usage print &quot; Yet a simple hosts manager version 0.1 Author :renlu.xu URL :http://www.162cm.com/ usage : hosts dev ---- switch to dev environment hosts test ---- switch to testing environment hosts online ---- switch to online environment hosts add dev ---- edit a domain for dev|online|test environment hosts add dev ---- the same with 'hosts add dev' Notice: dev means Development test means Testing online|ol means testing if you input Quit|exit, We asumed that you want to exit. When you use this program first time,Run 'hosts first ' and then initialze the data files' &quot; end def edit() cmd2=ARGV.shift if cmd2 =~ /dev/ then env=&quot;dev&quot; elsif cmd2 =~ /online|ol/ then env=&quot;online&quot; elsif cmd2 =~ /test/ then env=&quot;test&quot; end print &quot;input the domain:(such as www.sina.com)n&quot; domain=gets.chomp quit(domain) print &quot;input the ip:(127.0.0.1 and so on...n&quot; ip=gets.chomp quit(ip) data=load(env) data[domain]=ip save(env,data) switch(env) end quit(subcmd) if subcmd =~ /first/ then firstboot elsif subcmd =~ /ls|view|cat/ then cat elsif subcmd =~ /edit|add/ then edit elsif subcmd =~ /dev/ then switch &quot;dev&quot; elsif subcmd =~ /test/ then switch &quot;test&quot; elsif subcmd =~ /online|ol/ then switch &quot;online&quot; else usage end 呵呵。头几行有个设置，一个是hosts文件的地址，一个是存储数据文件的目录。根据你的需要来设置。 3: 建立那个存储你的各位环境hosts信息的目录。 4 Enjoy the script. 5：如果在是linux环境下，你需要给这个脚本设置访问/etc/hosts的权限: #sudo chown root:root hosts #sudo chmod +s hosts 这样，这个脚本就自然而然地拥有了root用户的权限。也就是说，一个普通用户也能通过这个脚本去修改hosts文件。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/608/">
+                  <h3 class="post-title">
+                    Fedora 安装心得若干
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,134 +1,128 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Xapian搜索体系结构 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="这是对http://www.flax.co.uk/blog/2009/04/02/xapian-search-architecture/ 的简单翻译. 严格意义上,这篇投递跟flax无关,只是为向直接使用Xapian的人们介绍一下Xapia..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Xapian搜索体系结构</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2010-06-01</span>
-            
-          </div>
-          <div class="post-content">
-            <p>这是对<a href="http://www.flax.co.uk/blog/2009/04/02/xapian-search-architecture/">http://www.flax.co.uk/blog/2009/04/02/xapian-search-architecture/</a> 的简单翻译. 严格意义上,这篇投递跟flax无关,只是为向直接使用Xapian的人们介绍一下Xapian搜索的体系结构。这不是给有经验的Xapian hacker提供的，也不是介绍如何使用Xapian的入门文章（入门文章请访问<a href="http://xapian.org/docs/quickstart.html">这里</a>）。 Xapian API是相当复杂的，而且在索引和搜索时,QueryParser,Term,document values 经常困惑着人们.要特别指出的是,Xapian本身并无一个&quot;field&quot;的概念,field这东西是flax的组件做的更高层次的抽象和封装.Xapian只是有Document ，包含一个整数标识ID，document包含： Terms （通常是词或短语，可以带位置信息,带位置信息的叫POST）， VAlue （通常是一个简短的字符串，也可能是包含的二进制数据），以及 data （可以是任何数据，但往往是一些适合显示的文本）。 这三种类型的对象是完全独立的，虽然在一个应用程序级相关（terms经常是从document data中切分得到的）。在索引时,Term会由一个文本处理器生成,当然也可能是单独地直接给出.term一般是专为字串搜索设计的 --比如一个特定的词是否在某个文档中出现？Value被用于其他多种用途，例如如范围搜索（如日期），排序，以及其他一些跟应用程序相关的方面。document data不能被用于搜索，它主要被搜索程序在得到搜索结果后使用,像是在搜索结果列表中显示文件的信息等. 当document被添加到一个Xapian数据库时，term，value和document data会单独存储在专门为了查询而优化的不同的数据结构里.如下图显示：</p>
-<figure data-type="image" tabindex="1"><a href="http://www.162cm.com/wp-content/uploads/2010/06/xapian-matcher.png"><img src="http://www.162cm.com/wp-content/uploads/2010/06/xapian-matcher.png" alt="" title="xapian-matcher" loading="lazy"></a></figure>
-<p>这是搜索过程的一个相当简化的说明.但从根本上来说，查询就是对term和value的匹配.一个典型的查询可以是如下示例: llamas和yaks Xapian匹配器查找数据库中的词条，并收集一个含有这个词条的document的列表。如果查询只包括terms，那么这个列表就构成了一个搜索结果并作为一个MSet返回给客户端代码。 但是，如果查询包含range组件（如范围2009年1月1日- 2009年4月2日 ），那将会需要一个寻第二查询阶段。匹配器会检查候选MSet中每个document中相应的value，并与查询范围比较。如果它不属于查询范围，该document就被弹出结果集，否则该document就被返回到客户端。 最后，通过自定义一个MatchDecider类的子类,还可以定制Xapian的搜索过程.这些子类可以访问document的任何属性，但因为性能方面的原因，通常只使用value。比如说,一个典型的应用是,根据用户的权限来过滤搜索结果:匹配器会比较用户的权限等级和候选文档的ACL设置,并决定是否在查询结果中返回该文档. 搜索优化 虽然这个模型过于简单，它仍然可以帮助我们改进数据库设计和搜索规划。在一般情况下，在磁盘上,term和postion list比value要远大得多,因此基于term的搜索一般受限于IO.这就是为什么有足够的RAM来提供磁盘缓存（数据库大小的10％或以上）时，搜索性能可以大大提高的原因。 相比之下，value range的搜索和匹配器的计算更密集，往往是受CPU限制。在查询没有指定任何term以限制候选MSet的大小时，单儿的value搜索会一个个地碾过所有的文档集(documents),在大型数据库上这个会灰常灰常地慢. 如果需要range查询搜索，添加一个term条件以给数据库分区,可以大大减轻性能压力.例如，日期可能由一个合适的索引前缀+YYYYMM构成的term来描述。然后，一个对日期范围的搜索就可以由一个term搜索来完成,这能大大减少要处理的document数量.例如,，2009年1月16日- 2009年4月2日的日期范围搜索可以由： （XD200901或XD200902或XD200903或XD200904）的term搜索来限定. 这包括1月到4月的数据,超过必要的数据了，但是随后的范围子搜索中我们会去掉多余的数据。这时这个term搜索会大大减少需要处理的文件的数量，进而提高搜索速度。 不过，必须选择适当级别的粒度.如果我们按单天产生term而不是按月,日期term将产生76个，在IO方面可能就会有性能风险。 所有这一切都是相当复杂的，这就是为什么我们添加到flax中来处理的原因。我们搞flax的目标是针对数据源输入的各式的数据文档,能自动地产生优化的规划.而用户不太需要去关注这个过程请继续关注这里的消息以获得更新的消息:http://www.flax.co.uk/</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/1193/">
-              <h3 class="post-title">
-                下一篇：胡言乱语
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Xapian搜索体系结构</h2>
+            <div class="post-date">2010-06-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>这是对<a href="http://www.flax.co.uk/blog/2009/04/02/xapian-search-architecture/">http://www.flax.co.uk/blog/2009/04/02/xapian-search-architecture/</a> 的简单翻译. 严格意义上,这篇投递跟flax无关,只是为向直接使用Xapian的人们介绍一下Xapian搜索的体系结构。这不是给有经验的Xapian hacker提供的，也不是介绍如何使用Xapian的入门文章（入门文章请访问<a href="http://xapian.org/docs/quickstart.html">这里</a>）。 Xapian API是相当复杂的，而且在索引和搜索时,QueryParser,Term,document values 经常困惑着人们.要特别指出的是,Xapian本身并无一个&quot;field&quot;的概念,field这东西是flax的组件做的更高层次的抽象和封装.Xapian只是有Document ，包含一个整数标识ID，document包含： Terms （通常是词或短语，可以带位置信息,带位置信息的叫POST）， VAlue （通常是一个简短的字符串，也可能是包含的二进制数据），以及 data （可以是任何数据，但往往是一些适合显示的文本）。 这三种类型的对象是完全独立的，虽然在一个应用程序级相关（terms经常是从document data中切分得到的）。在索引时,Term会由一个文本处理器生成,当然也可能是单独地直接给出.term一般是专为字串搜索设计的 --比如一个特定的词是否在某个文档中出现？Value被用于其他多种用途，例如如范围搜索（如日期），排序，以及其他一些跟应用程序相关的方面。document data不能被用于搜索，它主要被搜索程序在得到搜索结果后使用,像是在搜索结果列表中显示文件的信息等. 当document被添加到一个Xapian数据库时，term，value和document data会单独存储在专门为了查询而优化的不同的数据结构里.如下图显示：</p>
+<figure data-type="image" tabindex="1"><a href="http://www.162cm.com/wp-content/uploads/2010/06/xapian-matcher.png"><img src="http://www.162cm.com/wp-content/uploads/2010/06/xapian-matcher.png" alt="" title="xapian-matcher" loading="lazy"></a></figure>
+<p>这是搜索过程的一个相当简化的说明.但从根本上来说，查询就是对term和value的匹配.一个典型的查询可以是如下示例: llamas和yaks Xapian匹配器查找数据库中的词条，并收集一个含有这个词条的document的列表。如果查询只包括terms，那么这个列表就构成了一个搜索结果并作为一个MSet返回给客户端代码。 但是，如果查询包含range组件（如范围2009年1月1日- 2009年4月2日 ），那将会需要一个寻第二查询阶段。匹配器会检查候选MSet中每个document中相应的value，并与查询范围比较。如果它不属于查询范围，该document就被弹出结果集，否则该document就被返回到客户端。 最后，通过自定义一个MatchDecider类的子类,还可以定制Xapian的搜索过程.这些子类可以访问document的任何属性，但因为性能方面的原因，通常只使用value。比如说,一个典型的应用是,根据用户的权限来过滤搜索结果:匹配器会比较用户的权限等级和候选文档的ACL设置,并决定是否在查询结果中返回该文档. 搜索优化 虽然这个模型过于简单，它仍然可以帮助我们改进数据库设计和搜索规划。在一般情况下，在磁盘上,term和postion list比value要远大得多,因此基于term的搜索一般受限于IO.这就是为什么有足够的RAM来提供磁盘缓存（数据库大小的10％或以上）时，搜索性能可以大大提高的原因。 相比之下，value range的搜索和匹配器的计算更密集，往往是受CPU限制。在查询没有指定任何term以限制候选MSet的大小时，单儿的value搜索会一个个地碾过所有的文档集(documents),在大型数据库上这个会灰常灰常地慢. 如果需要range查询搜索，添加一个term条件以给数据库分区,可以大大减轻性能压力.例如，日期可能由一个合适的索引前缀+YYYYMM构成的term来描述。然后，一个对日期范围的搜索就可以由一个term搜索来完成,这能大大减少要处理的document数量.例如,，2009年1月16日- 2009年4月2日的日期范围搜索可以由： （XD200901或XD200902或XD200903或XD200904）的term搜索来限定. 这包括1月到4月的数据,超过必要的数据了，但是随后的范围子搜索中我们会去掉多余的数据。这时这个term搜索会大大减少需要处理的文件的数量，进而提高搜索速度。 不过，必须选择适当级别的粒度.如果我们按单天产生term而不是按月,日期term将产生76个，在IO方面可能就会有性能风险。 所有这一切都是相当复杂的，这就是为什么我们添加到flax中来处理的原因。我们搞flax的目标是针对数据源输入的各式的数据文档,能自动地产生优化的规划.而用户不太需要去关注这个过程请继续关注这里的消息以获得更新的消息:http://www.flax.co.uk/</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/1193/">
+                  <h3 class="post-title">
+                    胡言乱语
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -138,6 +132,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

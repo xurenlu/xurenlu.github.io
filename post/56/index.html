@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>博客的传播能力测试:从搜狐久我100块钱说起 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="1.sohu的钱:实话说，我也不知道到底是怎么回事。在大概两年前我看到搜索在它的dir.sohu.com上给出了一个链接，说是招兼职的编辑，于是去做了，大概坚持了一个星期吧。后来账上有120多块钱。就在我发了传真，把身份证给sohu发过去时..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">博客的传播能力测试:从搜狐久我100块钱说起</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-01-10</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">博客的传播能力测试:从搜狐久我100块钱说起</h2>
+            <div class="post-date">2006-01-10</div>
             
-          </div>
-          <div class="post-content">
-            <p>1.sohu的钱:实话说，我也不知道到底是怎么回事。在大概两年前我看到搜索在它的dir.sohu.com上给出了一个链接，说是招兼职的编辑，于是去做了，大概坚持了一个星期吧。后来账上有120多块钱。就在我发了传真，把身份证给sohu发过去时，学校突然通知我们全体换寝室，接着我们就出去实习了。<br>
+            <div class="post-content" v-pre>
+              <p>1.sohu的钱:实话说，我也不知道到底是怎么回事。在大概两年前我看到搜索在它的dir.sohu.com上给出了一个链接，说是招兼职的编辑，于是去做了，大概坚持了一个星期吧。后来账上有120多块钱。就在我发了传真，把身份证给sohu发过去时，学校突然通知我们全体换寝室，接着我们就出去实习了。<br>
 回来后发现sohu.com的账上显示款已经汇出，可是我没有收到，应是在汇款无人接收的情况又退回去了，然后我就给sohu发了封mail过去，但过了一段时间我就突然无法登陆我在dir.sohu.com/parttime的账户了。因为也就100来块钱，我也没想去争取。这件事也就不了了之。如果有搜狐的员工看到，并留言在后面，我给博客的传播能力加20分.(放心，我不会去要这100来块钱的,哈哈)<br>
 2.前几天看到马夫子的文章，评论ideacool.net的创业，大概意思就是这这样的网站基本无法成功。我去看了一下，虽然他的思路实在不怎么样，并且系统也好像是用的asp的，不过也不是没有亮点，就是 a.使用div来排版，看起来还不错，没有凌乱的感觉。b 使用了生成静态页的技术。c 使用了ajax 。d.好像站长刻意不让大家知道到他是asp系统，页面中很少见到”asp”文件。能够做出来这样一个系统，说明还是有两下子工夫。个人觉得:1.思路太老了，到alibaba可以见到很多类似这样的点子库的东东。2.虽然站长精力不错，可是网站的内容都自己加也太累了，最好先把人气做起来，集众人的智慧来解决用户的提问，否则除非你什么都懂，不然用户提问了没有人解答，还是没有人会来访问的。 我还是建议站长不如先去找份工作，等真正有了创业的资本和经验、好的点子再创业。如果ideacool.net的站长或者马夫子看到了这个blog,也请留言，我再给博客的传播能力加20分.<br>
 3.我正在blog上找工作，(现在已经有不少公司联系了,年前暂不接触新的公司了,如果现在的几家中确定下来的话)如果最终通过blog确定工作，加15分。<br>
@@ -97,45 +105,31 @@
 如果你看了这个贴子也想做一个类似的测试，可以在blog后留言，我也顺便看看多少人有和我一样的兴趣。</p>
 <p>ps:昨天把系统全部搞好了，呵呵，可以在RedHat linux上跑Apache+php+Mysql 的组合了,等工作确定下来我也搞一个人门户,就用现在的机器,用lAPM的架构把我的收藏全部放上去，看看效果会怎么样….</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/57/">
+                  <h3 class="post-title">
+                    昨天想到一个制造垃圾信息推广自己网站的方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/57/">
-              <h3 class="post-title">
-                下一篇：昨天想到一个制造垃圾信息推广自己网站的方法
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -145,6 +139,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

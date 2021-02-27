@@ -1,92 +1,100 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>2005 淘宝和易趣谁会挂掉？ | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="对于同时都在烧钱的两个C2C大腕来说，用户和信用成为竞争的焦点。任何旁观者都可以看得出来，易趣一直是摆出长期坚持的架势，用铺天盖地的广告去压制竞争对手的咄咄逼人。而淘宝选择了免费和诚信建设两面大旗，苦练内功的同时不忘记四处制造声势。2005..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">2005 淘宝和易趣谁会挂掉？</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2005-03-27</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">2005 淘宝和易趣谁会挂掉？</h2>
+            <div class="post-date">2005-03-27</div>
             
-          </div>
-          <div class="post-content">
-            <p>对于同时都在烧钱的两个C2C大腕来说，用户和信用成为竞争的焦点。任何旁观者都可以看得出来，易趣一直是摆出长期坚持的架势，用铺天盖地的广告去压制竞争对手的咄咄逼人。而淘宝选择了免费和诚信建设两面大旗，苦练内功的同时不忘记四处制造声势。2005年命中注定在刀光剑影中谁都想尽快把对方”挂掉”和避免自己”被挂掉”的命运。</p>
+            <div class="post-content" v-pre>
+              <p>对于同时都在烧钱的两个C2C大腕来说，用户和信用成为竞争的焦点。任何旁观者都可以看得出来，易趣一直是摆出长期坚持的架势，用铺天盖地的广告去压制竞争对手的咄咄逼人。而淘宝选择了免费和诚信建设两面大旗，苦练内功的同时不忘记四处制造声势。2005年命中注定在刀光剑影中谁都想尽快把对方”挂掉”和避免自己”被挂掉”的命运。</p>
 <p>实力分析</p>
 <p>无论是淘宝还是易趣，在强力后台的全力支援下，2004年正式开始接火了数次。淘宝取得了稳定增长的用户群体，而易趣则获得网络宣传和知名度的优势。不过有消息说，ebay的资金投入是有条件的，在一段过渡时间之后如果看不到盈利的前景，资金撤出的速度不会比投入时的慢。相比之下淘宝的孙掌柜则显得从容和自由得多，保持一定频率的市场宣传攻势之下，淘宝的投入更多的是花费在建设信用度、解决交易支付问题，特别是客服人才的培养方面。</p>
 <p>资金目前无论对于易趣还是淘宝都不是急迫的问题，所以市场宣传就成为双方非常重视的战场。易趣在经历了换人和网站技术整合以后，突然在网络媒体上发力，特别是得到了如日中天的腾讯的大力支持和传统媒体的广告投入，使得自己的市场知名度明显高过对手一个档次。淘宝则显得有点心不在焉，除了个人网站联盟的小广告和传统媒体的公关稿以外，淘宝的整体市场宣传似乎还没有形成自己的风格和波次，这也是马云的一贯作为，在没有形成绝对优势之前，低声下气并不是一件坏事。</p>
@@ -108,45 +116,31 @@
 <p>作为”记录中国最真实的C2C系列”第一篇的结束，笔者透露一个很不为人知的事实，在我做记者和做PR工作的时候，都接待过易趣和淘宝网的工作人员，易趣的是做飞机来的，安排在四星级酒店还颇有微词。淘宝网的人很年轻，是坐火车来的，亲口告诉我马云在外边喋喋不休地说阿里巴巴有多少现金待用，对内却是一分一厘算得清清楚楚。</p>
 <p>不管这两个国内的C2C大亨在2005年如何绞尽脑汁要让对方”挂掉”和自己”不挂”，活下去的几个生存指数里面，运营成本的排名应该不会在前三名之外吧？</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/184/">
+                  <h3 class="post-title">
+                    [创业]李彦宏教你的这几招
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/184/">
-              <h3 class="post-title">
-                下一篇：[创业]李彦宏教你的这几招
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -156,6 +150,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

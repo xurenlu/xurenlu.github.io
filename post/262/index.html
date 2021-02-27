@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>SiteLite畅想 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="sitelite畅想 siteLite是一个用于小型网站建设的这样一个模型或是规范. 适用场合:  轻量级开发。  虚拟主机用户级别。  Webserver 并发连接人数在100人以下。  Database 文件在100M以下。  开发人员..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">SiteLite畅想</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-10-04</span>
-            
-          </div>
-          <div class="post-content">
-            <p>sitelite畅想 siteLite是一个用于小型网站建设的这样一个模型或是规范. 适用场合:  轻量级开发。  虚拟主机用户级别。  Webserver 并发连接人数在100人以下。  Database 文件在100M以下。  开发人员在3~5人以下。   主旨:  提供一个能够快速开发的module.  适合懒人。如果您不够懒，那么别用。  尽量少用第三方模块(或是其他可能有bug的模块)  安全性能，承载能力不做太大要求。  代码自举(批量生产特性。)  可自定义事件,以便在某一特定事件中插入特定事件。(对Hook的良好支持)  可随时进行输出管道重定向功能。 现在的懒人思想已经有了很好的体验。比如，p()返回的是当前页数(实际是GET参数中page的值),d()返回一个数据库连接对象(实际是看是否已经存在数据库连接，如果有就直接返回，没有就创建一个,并给一个特定的全局变量赋值).甚至为了少写几个字母，把print()改成了o(). 有一些数据没有必要存到数据库中去，我就设计了一个简单数据存储的模块。直接用Loaddata(&quot;版权信息&quot;)就可以返回版权信息，直接用setdata(&quot;版权信息&quot;,&quot;新聚网版权所有...2006-2008&quot;)这样的句子就可以设置&quot;版权信息&quot;这个变量。这样，针对很多小的企业建站型业务，可以没有必要去用SQL指令和数据库打交道，加快开发进度。 设计中还加入了简单的Cache功能。这个功能的实现也是超级之懒，我是用了这样的句子: if(<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: autoCache) {  '>autoCache) {  </span>content=ob_get_content();//得到当前已经放到缓存中需要输出的内容。  saveToFile(md5(<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 9: \_SERVER\̲[̲&quot;Request\_URI&quot;\…'>\_SERVER\[&quot;Request\_URI&quot;\]).&quot;.php&quot;,</span>content);//将把这个输出内容保存到以当前URL的hash值命名的文件中。下次直接从这里输出。 }   我懒的可以吧。 不过，实用性还值得商榷。目前用它做开发还是很爽。非常快(我已经写入了常见的一些代码模板,且实现了MVC模式)。 暂取名为SiteLite,完善了之后放出来。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/261/">
-              <h3 class="post-title">
-                下一篇：一件事会变糟糕，那就一定会变糟糕!
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">SiteLite畅想</h2>
+            <div class="post-date">2006-10-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>sitelite畅想 siteLite是一个用于小型网站建设的这样一个模型或是规范. 适用场合:  轻量级开发。  虚拟主机用户级别。  Webserver 并发连接人数在100人以下。  Database 文件在100M以下。  开发人员在3~5人以下。   主旨:  提供一个能够快速开发的module.  适合懒人。如果您不够懒，那么别用。  尽量少用第三方模块(或是其他可能有bug的模块)  安全性能，承载能力不做太大要求。  代码自举(批量生产特性。)  可自定义事件,以便在某一特定事件中插入特定事件。(对Hook的良好支持)  可随时进行输出管道重定向功能。 现在的懒人思想已经有了很好的体验。比如，p()返回的是当前页数(实际是GET参数中page的值),d()返回一个数据库连接对象(实际是看是否已经存在数据库连接，如果有就直接返回，没有就创建一个,并给一个特定的全局变量赋值).甚至为了少写几个字母，把print()改成了o(). 有一些数据没有必要存到数据库中去，我就设计了一个简单数据存储的模块。直接用Loaddata(&quot;版权信息&quot;)就可以返回版权信息，直接用setdata(&quot;版权信息&quot;,&quot;新聚网版权所有...2006-2008&quot;)这样的句子就可以设置&quot;版权信息&quot;这个变量。这样，针对很多小的企业建站型业务，可以没有必要去用SQL指令和数据库打交道，加快开发进度。 设计中还加入了简单的Cache功能。这个功能的实现也是超级之懒，我是用了这样的句子: if(<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: autoCache) {  '>autoCache) {  </span>content=ob_get_content();//得到当前已经放到缓存中需要输出的内容。  saveToFile(md5(<span class='katex-error' title='ParseError: KaTeX parse error: Undefined control sequence: \[ at position 9: \_SERVER\̲[̲&quot;Request\_URI&quot;\…'>\_SERVER\[&quot;Request\_URI&quot;\]).&quot;.php&quot;,</span>content);//将把这个输出内容保存到以当前URL的hash值命名的文件中。下次直接从这里输出。 }   我懒的可以吧。 不过，实用性还值得商榷。目前用它做开发还是很爽。非常快(我已经写入了常见的一些代码模板,且实现了MVC模式)。 暂取名为SiteLite,完善了之后放出来。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/261/">
+                  <h3 class="post-title">
+                    一件事会变糟糕，那就一定会变糟糕!
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

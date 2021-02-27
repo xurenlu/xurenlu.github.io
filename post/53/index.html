@@ -1,137 +1,134 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>东拉西扯:亿唐的落魄与赵总的一句话: | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="东拉西扯:亿唐的落魄与赵总的一句话:
+ 
+    (顺便说下，最近blog上好像我也没话说了，有也是东一句，西一句，没有完整的.很想换个标题，可惜东拉西扯已经被老大哥用了)
+    曾经风光无限的亿唐爆出一个消息，将旗下最优质的资产出售给奇..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">东拉西扯:亿唐的落魄与赵总的一句话:</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2006-02-21</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">东拉西扯:亿唐的落魄与赵总的一句话:</h2>
+            <div class="post-date">2006-02-21</div>
             
-          </div>
-          <div class="post-content">
-            <p>东拉西扯:亿唐的落魄与赵总的一句话:<br>
+            <div class="post-content" v-pre>
+              <p>东拉西扯:亿唐的落魄与赵总的一句话:<br>
  <br>
     (顺便说下，最近blog上好像我也没话说了，有也是东一句，西一句，没有完整的.很想换个标题，可惜东拉西扯已经被老大哥用了)<br>
     曾经风光无限的亿唐爆出一个消息，将旗下最优质的资产出售给奇虎，将换回的100万美金作为救命稻草，全力模仿韩国赛我网模式打造hompy.cn,我输入etang.com访问了一下，发现已经转向到了hompy.cn,原来etang.com的功能基本没有了，只在右边保留了一个链接，也就是cet,邮箱等几个功能。而且他的首页也在经常换。这说明etang的决策者们自己也开始没有什么信心了，阵脚开始乱起来。<br>
    而当年亿唐的一个又一个的光环，让他融到巨额资金，并让他风光了很久，到全国各地招聘，发布广告，其CET查分做得有声有色，可是没有想到仅仅几年，迅速落到如此地步，看了让人心寒。<br>
    前几天赵总说:”我们要迅速做大，争取融资，实现上市”。我想有了亿唐这个例子，风投们现在做决策时一定会再三斟酌，谨之慎之。而希望融资的公司，也该着实想好，先想法子挣钱，让自己活下去。就像某位blogger说的，管他流氓不流氓软件，公司活下去要紧。做商业，赚钱才是硬道理。</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/54/">
+                  <h3 class="post-title">
+                    专业的与非专业的对比:金山的下载器
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/54/">
-              <h3 class="post-title">
-                下一篇：专业的与非专业的对比:金山的下载器
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -141,6 +138,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

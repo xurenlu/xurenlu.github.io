@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>我的外祖父 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="我的父辈母辈祖父辈甩至再往前多少辈,都是老实巴交的农民. 我的外祖父,本姓霍(霍炬,咱俩说不定还是亲戚:-_-),6岁时湖北正好军阀混战,一家好几个孩子都没饭吃,外祖父便下山逃荒.走出一百多里,到达南漳县巡检镇被一个穷苦人家.这一家有一个小..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">我的外祖父</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-08-01</span>
-            
-          </div>
-          <div class="post-content">
-            <p>我的父辈母辈祖父辈甩至再往前多少辈,都是老实巴交的农民. 我的外祖父,本姓霍(霍炬,咱俩说不定还是亲戚:-_-),6岁时湖北正好军阀混战,一家好几个孩子都没饭吃,外祖父便下山逃荒.走出一百多里,到达南漳县巡检镇被一个穷苦人家.这一家有一个小女孩,后来便是我的外祖母. 外祖父从那时起便跟随这家人一起在地主家做长工.到十五吧(我不太确认),成家立业.从这以后,外公再没有见过他的家人，只到几十年后,当时的生产大队(这是一个什么样的组织呢?我也没经历过,大概是一个跟村类似的区划吧!)接到一个电话。电话里的人很急地要找他。外公终于在失散了几十年后见到了自己的母亲。此时她是一个走街串巷的巫医,走遍鄂豫边界,终于查得当年自己无奈出走的小儿子。我不知道当时是怎样一种情景。后来她得以在90岁高龄安详地去逝,那时已经子孙满堂. 外祖父有五个孩子,然而,小女儿十四岁时不幸溺水,我没机会见到这位小姨。而两位舅舅皆天生残疾,生活难以自理,也都在四十岁左右先后先他而去。 最后外祖母意外从高处跌下,至此外祖父的精神已趋崩溃。一年后,外祖父离开了我们. 以此文念之.</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/437/">
-              <h3 class="post-title">
-                下一篇：算命啦 算命啦！
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">我的外祖父</h2>
+            <div class="post-date">2007-08-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>我的父辈母辈祖父辈甩至再往前多少辈,都是老实巴交的农民. 我的外祖父,本姓霍(霍炬,咱俩说不定还是亲戚:-_-),6岁时湖北正好军阀混战,一家好几个孩子都没饭吃,外祖父便下山逃荒.走出一百多里,到达南漳县巡检镇被一个穷苦人家.这一家有一个小女孩,后来便是我的外祖母. 外祖父从那时起便跟随这家人一起在地主家做长工.到十五吧(我不太确认),成家立业.从这以后,外公再没有见过他的家人，只到几十年后,当时的生产大队(这是一个什么样的组织呢?我也没经历过,大概是一个跟村类似的区划吧!)接到一个电话。电话里的人很急地要找他。外公终于在失散了几十年后见到了自己的母亲。此时她是一个走街串巷的巫医,走遍鄂豫边界,终于查得当年自己无奈出走的小儿子。我不知道当时是怎样一种情景。后来她得以在90岁高龄安详地去逝,那时已经子孙满堂. 外祖父有五个孩子,然而,小女儿十四岁时不幸溺水,我没机会见到这位小姨。而两位舅舅皆天生残疾,生活难以自理,也都在四十岁左右先后先他而去。 最后外祖母意外从高处跌下,至此外祖父的精神已趋崩溃。一年后,外祖父离开了我们. 以此文念之.</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/437/">
+                  <h3 class="post-title">
+                    算命啦 算命啦！
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

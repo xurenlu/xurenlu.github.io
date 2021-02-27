@@ -1,135 +1,129 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Rails中如何构建rss feed输出 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="在网上Google了很多次,能找到用rails制作rss,但是总是找不到完整的。今天把完整的过程抄录在这里:*   方法A: 就是你自己把RSS XML的格式拼凑好,输出.并设置HTTP Header ，标记content-type为app..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Rails中如何构建rss feed输出</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-04-18</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Rails中如何构建rss feed输出</h2>
+            <div class="post-date">2008-04-18</div>
             
-          </div>
-          <div class="post-content">
-            <p>在网上Google了很多次,能找到用rails制作rss,但是总是找不到完整的。今天把完整的过程抄录在这里:*   方法A: 就是你自己把RSS XML的格式拼凑好,输出.并设置HTTP Header ，标记content-type为application/XML,常见的代码: #Post_controller::feed() def feed require &quot;rss&quot; articles = Article.find :all, :order =&gt; 'post_date DESC', :limit =&gt; 10 feed = RSS::Maker.make(&quot;2.0&quot;) do |maker| maker.channel.title = &quot;Gang of Technology&quot; maker.channel.description = &quot;Gang of Technology site&quot; maker.channel.link = &quot;http://up-u.com&quot; maker.items.do_sort = true articles.each do |article| item = maker.items.new_item item.link = &quot;http://www.162cm.com/archives/#{article.id}&quot; item.title = article.title item.date = article.post_date item.description = &quot;&quot; end end send_data feed.to_s, :type =&gt; &quot;application/rss+xml&quot;, :disposition =&gt; 'inline' end</p>
+            <div class="post-content" v-pre>
+              <p>在网上Google了很多次,能找到用rails制作rss,但是总是找不到完整的。今天把完整的过程抄录在这里:*   方法A: 就是你自己把RSS XML的格式拼凑好,输出.并设置HTTP Header ，标记content-type为application/XML,常见的代码: #Post_controller::feed() def feed require &quot;rss&quot; articles = Article.find :all, :order =&gt; 'post_date DESC', :limit =&gt; 10 feed = RSS::Maker.make(&quot;2.0&quot;) do |maker| maker.channel.title = &quot;Gang of Technology&quot; maker.channel.description = &quot;Gang of Technology site&quot; maker.channel.link = &quot;http://up-u.com&quot; maker.items.do_sort = true articles.each do |article| item = maker.items.new_item item.link = &quot;http://www.162cm.com/archives/#{article.id}&quot; item.title = article.title item.date = article.post_date item.description = &quot;&quot; end end send_data feed.to_s, :type =&gt; &quot;application/rss+xml&quot;, :disposition =&gt; 'inline' end</p>
 <ul>
 <li>方法B: Rails Controller-&gt;Action 代码: #Post_controller::feed def feed @posts=Post.find :all,:limit=&gt;&quot;id desc&quot; end erb模板: xml.instruct! xml.rss(&quot;version&quot;=&gt;&quot;2.0&quot;, &quot;xmlns:dc&quot;=&gt;&quot;http://purl.org/dc/elements/1.1/&quot;) do xml.channel do xml.title &quot;renlu.xu 's blog&quot; xml.link(url_for(:action=&gt;&quot;start&quot;,:only_path=&gt;false)) xml.description &quot;My life My love&quot; xml.language &quot;zh_CN&quot; xml.ttl 60 for event in @posts do xml.item do xml.title(event.title) xml.description(event.body) xml.pubDate(event.created_at.to_s(:rfc822)) xml.guid(event.id) xml.link(&quot;http://.....#{event.id}&quot;) end end end end 这种方法 网上很多文章到这一步就算完了，没有下文了，其实不对。到这一步，访问http://localhost:3000/post/feed仍然是出来的html的界面。g之，找到介绍:rails 2.0会根据不同的格式对模板进行渲染。这段代码放在/views/post/feed.rhtml中是没有用的，需要放在/views/post/feed.atom.builder中，并且需要通过http://localhost:3000/post/feed/123.atom(这里123没有什么实际意义 随便抓的一个),或是http://localhost:3000/post/feed?format=atom才能正确地按rss+xml输出。</li>
 </ul>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/619/">
+                  <h3 class="post-title">
+                    Ror 版博客即将到来
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/619/">
-              <h3 class="post-title">
-                下一篇：Ror 版博客即将到来
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -139,6 +133,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

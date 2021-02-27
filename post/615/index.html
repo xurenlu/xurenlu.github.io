@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>Firefox3 和IE8 beta版可用了 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="firefox 3 已经推出了好几版alpha和beta版,资源占用少，浏览速度特别快。推荐 使用。 下载地址： http://www.mozilla.com/en-US/firefox/all-beta.html firefox3可以兼容..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Firefox3 和IE8 beta版可用了</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2008-03-27</span>
-            
-          </div>
-          <div class="post-content">
-            <p>firefox 3 已经推出了好几版alpha和beta版,资源占用少，浏览速度特别快。推荐 使用。 下载地址： http://www.mozilla.com/en-US/firefox/all-beta.html firefox3可以兼容不少常见插件，需要用插件时，需要在about:config中新建两个 boolean值 ，均置 为false: extensions.checkCompatibility extensions.checkUpdateSecurity 这时可以强制使用firefox2的插件 另外，firefox可以不用访问mozilla的网站，在firefox3的工具栏中就可以搜 索，安装 插件了。 我刚刚发现mozilla网站上改版了. IE8 的特性是加上了Javascript和CSS 的debug工具。这个非常棒。模仿firebug但 是比firebug还好用。 其他特性目前只需关注即可。 IE8是第一个Beta版， 虽不像firefox3一样已经推了10个Pre-release版了，但是 做的还算可以。IE8 有一个很大的Emulate IE7按钮， 可以随时调ie7的内核来浏览了 提示 :ie8还不是很可靠，有时会把你的系统整垮。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/614/">
-              <h3 class="post-title">
-                下一篇：加班，加班
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Firefox3 和IE8 beta版可用了</h2>
+            <div class="post-date">2008-03-27</div>
+            
+            <div class="post-content" v-pre>
+              <p>firefox 3 已经推出了好几版alpha和beta版,资源占用少，浏览速度特别快。推荐 使用。 下载地址： http://www.mozilla.com/en-US/firefox/all-beta.html firefox3可以兼容不少常见插件，需要用插件时，需要在about:config中新建两个 boolean值 ，均置 为false: extensions.checkCompatibility extensions.checkUpdateSecurity 这时可以强制使用firefox2的插件 另外，firefox可以不用访问mozilla的网站，在firefox3的工具栏中就可以搜 索，安装 插件了。 我刚刚发现mozilla网站上改版了. IE8 的特性是加上了Javascript和CSS 的debug工具。这个非常棒。模仿firebug但 是比firebug还好用。 其他特性目前只需关注即可。 IE8是第一个Beta版， 虽不像firefox3一样已经推了10个Pre-release版了，但是 做的还算可以。IE8 有一个很大的Emulate IE7按钮， 可以随时调ie7的内核来浏览了 提示 :ie8还不是很可靠，有时会把你的系统整垮。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/614/">
+                  <h3 class="post-title">
+                    加班，加班
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

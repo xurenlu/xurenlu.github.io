@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>150行代码,搞定中文分词 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="中文分词一直是一个看起来似乎比较神秘的东西。记得java中的lucene好像自带了两个分词器。一个是按汉字分，就是一个字分成一个词。比如&quot;我要到饭馆吃饭“，就被分成”我/要/到/饭/馆/吃/饭&quot;.别一个是相邻的两个字分成..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">150行代码,搞定中文分词</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-06-16</span>
-            
-          </div>
-          <div class="post-content">
-            <p>中文分词一直是一个看起来似乎比较神秘的东西。记得java中的lucene好像自带了两个分词器。一个是按汉字分，就是一个字分成一个词。比如&quot;我要到饭馆吃饭“，就被分成”我/要/到/饭/馆/吃/饭&quot;.别一个是相邻的两个字分成一个词，分出来的结果是&quot;我要/要到/到饭/饭馆/馆吃/吃饭&quot;.然而这两种虽说在做搜索时建索引什么的操作时也是相当有用的，但是毕竟是一种权宜之计，咱不能一直停留在这个水平上。 下面是来自<a href="http://rubyforge.org/projects/rlucene/">Rlucene</a>的一段示例代码，154行，利用sogou的词库搞定了中文分词。代码如下: #! /usr/bin/ruby require &quot;socket&quot; #通过网络得到分词结果 def segChinese_net(line) @conn=TCPSocket.open(&quot;localhost&quot;,1099) @conn.write(line) line=@conn.read return line.split(&quot; &quot;) end @f= open(&quot;dict/sogou.txt&quot;) @datas=@f.read.split(&quot;n&quot;) @f.close @f2=open(&quot;dict/firstword.txt&quot;) @firstwords=@f2.read.split(&quot;n&quot;) @f2.close @maintable=Hash.new() @firstwords.each{|x| @maintable[x]=[x] } @datas.each{|x| @maintable[x[0].chr+x[1].chr+x[2].chr].push(x) } def segChinese(line) temp=0 max=(line.length/3) words=[] while(temp pos=temp*3 str1=line[pos].chr+line[pos+1].chr+line[pos+2].chr str12=str1 str1234=str1 if(temp&lt;(max-1)) str2=line[pos+3].chr+line[pos+4].chr+line[pos+5].chr str12=line[pos].chr+line[pos+1].chr+line[pos+2].chr+line[pos+3].chr+line[pos+4].chr+line[pos+5].chr end if(temp&lt;(max-3)) str1234=line[pos].chr+line[pos+1].chr+line[pos+2].chr+line[pos+3].chr+line[pos+4].chr+line[pos+5].chr+line[pos+6].chr+line[pos+7].chr+line[pos+8].chr+line[pos+9].chr+line[pos+10].chr+line[pos+11].chr end if(!@maintable[str1].nil?) if(!@maintable[str1].index(str1234).nil?) temp+=4 words.push(str1234) else if(!@maintable[str1].index(str12).nil?) temp+=2 words.push(str12) else words.push(str1) temp+=1 end end else words.push(str1) temp+=1 end end return words end #return an array of the segemention. #得到当前句子的分词结果. def segment(str) chars=Hash.new(0) chars[&quot;char&quot;]=&quot;~!@#$%^&amp;*()_+}{[]\|&quot;':;/?&gt;&lt;,. tnba&quot; chars[&quot;num&quot;]=&quot;0123456789&quot; chars[&quot;alpha&quot;]=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot; bytes=Hash.new(0) i=0 buffer=&quot;&quot; #oldtype 表示上一个字符的种类:字符还是字母还是数字 #newtype表示本字符的种类 #type:1,表示字符,2表示数字,3表示字母,4表示属于汉字(多字节字符) #Buffer用来存储当未完成的一个词. #只有当当前字符类型与前一个字符类型不一致时才输出buffer,并清空buffer,改为当前字符值. #当与前一字符类型相同时，仅是把当前字符推入buffer(加到buffer的后面) #oldtype为4时，当输出一个buffer时,还需要对当前buffer进行中文分词 oldtype=0 newtype=0 flag=0 words=[] 0.upto(str.length-1){|a| if(flag&gt;0) flag=flag-1 else x=str[a] if(!chars[&quot;char&quot;].index(x.chr).nil?) newtype=1 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push( buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=1 end if(!chars[&quot;num&quot;].index(x.chr).nil?) newtype=2 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push(buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=2 end if(!chars[&quot;alpha&quot;].index(x.chr).nil?) newtype=3 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push(buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=3 end if(x&gt;127) flag=+2 newtype=4 if(newtype<mark>oldtype) buffer=buffer+str[a].chr+str[a+1].chr+str[a+2].chr else words.push(buffer) if(buffer.strip!=&quot;&quot;) buffer=str[a].chr+str[a+1].chr+str[a+2].chr end oldtype=4 end end } if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) else words.push(buffer) if(buffer.strip!=&quot;&quot;) end total=&quot;&quot; words.each{|x| total=total+x+&quot; &quot;} return total #puts total end ruby果然就是牛B极了。在学着用BCB折腾nsapi的时候 ，发现了asp,于是我觉得asp真是一个比较牛B的东西。接着发现了php,于是我扔掉了asp, 接着发现python比php有前途，现在，python还没摸透，又瞅 上ruby了。世界变化真是太快了，我快跟不上啦。 不过要实用，可能还得做些调整。 一般来说，分词的词库得自己整，sogou这个示例可以，真起来肯定有问题。而且要实用，在结果准确度上还要下功能。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/410/">
-              <h3 class="post-title">
-                下一篇：lighttpd上搞定wordpress,给出详细步聚.
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">150行代码,搞定中文分词</h2>
+            <div class="post-date">2007-06-16</div>
+            
+            <div class="post-content" v-pre>
+              <p>中文分词一直是一个看起来似乎比较神秘的东西。记得java中的lucene好像自带了两个分词器。一个是按汉字分，就是一个字分成一个词。比如&quot;我要到饭馆吃饭“，就被分成”我/要/到/饭/馆/吃/饭&quot;.别一个是相邻的两个字分成一个词，分出来的结果是&quot;我要/要到/到饭/饭馆/馆吃/吃饭&quot;.然而这两种虽说在做搜索时建索引什么的操作时也是相当有用的，但是毕竟是一种权宜之计，咱不能一直停留在这个水平上。 下面是来自<a href="http://rubyforge.org/projects/rlucene/">Rlucene</a>的一段示例代码，154行，利用sogou的词库搞定了中文分词。代码如下: #! /usr/bin/ruby require &quot;socket&quot; #通过网络得到分词结果 def segChinese_net(line) @conn=TCPSocket.open(&quot;localhost&quot;,1099) @conn.write(line) line=@conn.read return line.split(&quot; &quot;) end @f= open(&quot;dict/sogou.txt&quot;) @datas=@f.read.split(&quot;n&quot;) @f.close @f2=open(&quot;dict/firstword.txt&quot;) @firstwords=@f2.read.split(&quot;n&quot;) @f2.close @maintable=Hash.new() @firstwords.each{|x| @maintable[x]=[x] } @datas.each{|x| @maintable[x[0].chr+x[1].chr+x[2].chr].push(x) } def segChinese(line) temp=0 max=(line.length/3) words=[] while(temp pos=temp*3 str1=line[pos].chr+line[pos+1].chr+line[pos+2].chr str12=str1 str1234=str1 if(temp&lt;(max-1)) str2=line[pos+3].chr+line[pos+4].chr+line[pos+5].chr str12=line[pos].chr+line[pos+1].chr+line[pos+2].chr+line[pos+3].chr+line[pos+4].chr+line[pos+5].chr end if(temp&lt;(max-3)) str1234=line[pos].chr+line[pos+1].chr+line[pos+2].chr+line[pos+3].chr+line[pos+4].chr+line[pos+5].chr+line[pos+6].chr+line[pos+7].chr+line[pos+8].chr+line[pos+9].chr+line[pos+10].chr+line[pos+11].chr end if(!@maintable[str1].nil?) if(!@maintable[str1].index(str1234).nil?) temp+=4 words.push(str1234) else if(!@maintable[str1].index(str12).nil?) temp+=2 words.push(str12) else words.push(str1) temp+=1 end end else words.push(str1) temp+=1 end end return words end #return an array of the segemention. #得到当前句子的分词结果. def segment(str) chars=Hash.new(0) chars[&quot;char&quot;]=&quot;~!@#$%^&amp;*()_+}{[]\|&quot;':;/?&gt;&lt;,. tnba&quot; chars[&quot;num&quot;]=&quot;0123456789&quot; chars[&quot;alpha&quot;]=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot; bytes=Hash.new(0) i=0 buffer=&quot;&quot; #oldtype 表示上一个字符的种类:字符还是字母还是数字 #newtype表示本字符的种类 #type:1,表示字符,2表示数字,3表示字母,4表示属于汉字(多字节字符) #Buffer用来存储当未完成的一个词. #只有当当前字符类型与前一个字符类型不一致时才输出buffer,并清空buffer,改为当前字符值. #当与前一字符类型相同时，仅是把当前字符推入buffer(加到buffer的后面) #oldtype为4时，当输出一个buffer时,还需要对当前buffer进行中文分词 oldtype=0 newtype=0 flag=0 words=[] 0.upto(str.length-1){|a| if(flag&gt;0) flag=flag-1 else x=str[a] if(!chars[&quot;char&quot;].index(x.chr).nil?) newtype=1 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push( buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=1 end if(!chars[&quot;num&quot;].index(x.chr).nil?) newtype=2 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push(buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=2 end if(!chars[&quot;alpha&quot;].index(x.chr).nil?) newtype=3 if(newtype<mark>oldtype) buffer=buffer+x.chr else if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) buffer=x.chr else words.push(buffer) if (buffer.strip!=&quot;&quot;) buffer=x.chr end end oldtype=3 end if(x&gt;127) flag=+2 newtype=4 if(newtype<mark>oldtype) buffer=buffer+str[a].chr+str[a+1].chr+str[a+2].chr else words.push(buffer) if(buffer.strip!=&quot;&quot;) buffer=str[a].chr+str[a+1].chr+str[a+2].chr end oldtype=4 end end } if(oldtype</mark>4) words.concat(segChinese(buffer.strip)) else words.push(buffer) if(buffer.strip!=&quot;&quot;) end total=&quot;&quot; words.each{|x| total=total+x+&quot; &quot;} return total #puts total end ruby果然就是牛B极了。在学着用BCB折腾nsapi的时候 ，发现了asp,于是我觉得asp真是一个比较牛B的东西。接着发现了php,于是我扔掉了asp, 接着发现python比php有前途，现在，python还没摸透，又瞅 上ruby了。世界变化真是太快了，我快跟不上啦。 不过要实用，可能还得做些调整。 一般来说，分词的词库得自己整，sogou这个示例可以，真起来肯定有问题。而且要实用，在结果准确度上还要下功能。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/410/">
+                  <h3 class="post-title">
+                    lighttpd上搞定wordpress,给出详细步聚.
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

@@ -1,132 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>男人该怎么剃胡子 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="嘿嘿，写点技术之外的，八卦一把。 我的胡子，不知道为什么特别浓密，特别硬，而且，有的是黝黑，有的金黄。最奇的时，在右脸颊还打了个漩儿。 于是，在很长时间，剃胡子是我的一大难题。首先是太硬了，最开始是用老式的剃须刀，经常把下巴弄伤，还剃不干净..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">男人该怎么剃胡子</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-12-16</span>
-            
-          </div>
-          <div class="post-content">
-            <p>嘿嘿，写点技术之外的，八卦一把。 我的胡子，不知道为什么特别浓密，特别硬，而且，有的是黝黑，有的金黄。最奇的时，在右脸颊还打了个漩儿。 于是，在很长时间，剃胡子是我的一大难题。首先是太硬了，最开始是用老式的剃须刀，经常把下巴弄伤，还剃不干净。 后来，一横心，买个一个很贵的飞利浦电动剃须刀，最初觉得还行，但是时间长了，问题出来了：一是电动的剃须刀是靠转动的刀片来切断的，这刀片似乎不够锋利，一点点地啃，太慢。二是，胡子是一点点地磨掉的，完全被粉身碎骨了，弄得细细的像面粉，粘到衣服上就怎么也弄不掉了。 后来经过个人总结，方法改良，总结出经验了： 首先，热水缚下巴不是必须的。烫下巴难受不说，效果也并不怎么好。热水也就几十度的温度，根本不能把胡子烫软化，倒是下巴快被烫掉了。 在剃须之前，首先要有一把锋利的剃刀，一定要锋利。我现在用的是吉列的双层刀片的那种，很不错。这种其实主要靠经常换刀片。胡子硬点的，刀片用几次就不行了，得勤换新的。 在开剃之间，一定要把胡子湿润。我在屈臣氏买的一瓶剃须膏，挤出来是粘乎乎的，像牙膏一样，涂在下巴上搓一搓能有一点泡沫。这种效果不错。另外之前用过一种按一下能喷一大砣泡沫出来的，润湿效果很不好，可惜这种还经常和剃刀一起配着卖。 涂匀之后不用等，就可以开始刮了。这种刀片很锋利，要顺着胡子的长向刮。一般刀子走过之处，就能剃个十之八九。 剃完之后，另有一种水剂可以涂，涂上时稍有灼痛，之后随着挥发过程会有一种清凉感，很舒服。 如果过程正确的话，剃光你的下巴，不会超过二分钟。如果过了二分钟，那多半因为你的刀片不对劲，或是润须膏不对。当然，你是恩格斯或斯大林的话，这个剃须时间会长一些。</p>
-
-          </div>
-        </div>
-
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
         
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/577/">
-              <h3 class="post-title">
-                下一篇：转型中...
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
       
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
-      
-    
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-    </div>
-    <script type="application/javascript">
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">男人该怎么剃胡子</h2>
+            <div class="post-date">2007-12-16</div>
+            
+            <div class="post-content" v-pre>
+              <p>嘿嘿，写点技术之外的，八卦一把。 我的胡子，不知道为什么特别浓密，特别硬，而且，有的是黝黑，有的金黄。最奇的时，在右脸颊还打了个漩儿。 于是，在很长时间，剃胡子是我的一大难题。首先是太硬了，最开始是用老式的剃须刀，经常把下巴弄伤，还剃不干净。 后来，一横心，买个一个很贵的飞利浦电动剃须刀，最初觉得还行，但是时间长了，问题出来了：一是电动的剃须刀是靠转动的刀片来切断的，这刀片似乎不够锋利，一点点地啃，太慢。二是，胡子是一点点地磨掉的，完全被粉身碎骨了，弄得细细的像面粉，粘到衣服上就怎么也弄不掉了。 后来经过个人总结，方法改良，总结出经验了： 首先，热水缚下巴不是必须的。烫下巴难受不说，效果也并不怎么好。热水也就几十度的温度，根本不能把胡子烫软化，倒是下巴快被烫掉了。 在剃须之前，首先要有一把锋利的剃刀，一定要锋利。我现在用的是吉列的双层刀片的那种，很不错。这种其实主要靠经常换刀片。胡子硬点的，刀片用几次就不行了，得勤换新的。 在开剃之间，一定要把胡子湿润。我在屈臣氏买的一瓶剃须膏，挤出来是粘乎乎的，像牙膏一样，涂在下巴上搓一搓能有一点泡沫。这种效果不错。另外之前用过一种按一下能喷一大砣泡沫出来的，润湿效果很不好，可惜这种还经常和剃刀一起配着卖。 涂匀之后不用等，就可以开始刮了。这种刀片很锋利，要顺着胡子的长向刮。一般刀子走过之处，就能剃个十之八九。 剃完之后，另有一种水剂可以涂，涂上时稍有灼痛，之后随着挥发过程会有一种清凉感，很舒服。 如果过程正确的话，剃光你的下巴，不会超过二分钟。如果过了二分钟，那多半因为你的刀片不对劲，或是润须膏不对。当然，你是恩格斯或斯大林的话，这个剃须时间会长一些。</p>
 
-hljs.initHighlightingOnLoad()
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/577/">
+                  <h3 class="post-title">
+                    转型中...
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -136,6 +130,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 

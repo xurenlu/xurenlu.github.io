@@ -1,92 +1,102 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
 <title>史记-华南虎列传 | 黄滚的Blog</title>
-<meta name="description" content="相逢的人会再相逢">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614434738529">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1614435641325">
 <link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="本来我的博客是不转载的,呵呵.但是这个实在是太强了. 另外把原来收集的&quot;马家爵赋也贴到这里.嘿嘿,世上高人真多啊.
+
+翌日，正龙诣秦岭当事者关克，献其图，说如是。克大喜，传图以示左右，左右皆奇，曰”可以此拜上卿矣”。乃悦，赐金万贯..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://localhost:4000">
-        <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1614434738529" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://localhost:4000">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1614435641325" class="site-logo">
         <h1 class="site-title">黄滚的Blog</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      相逢的人会再相逢
+    </div>
+    <div class="site-footer">
+      by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">史记-华南虎列传</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2007-11-23</span>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">史记-华南虎列传</h2>
+            <div class="post-date">2007-11-23</div>
             
-          </div>
-          <div class="post-content">
-            <p>本来我的博客是不转载的,呵呵.但是这个实在是太强了. 另外把原来收集的&quot;<a href="http://www.162cm.com/archives/216.html">马家爵赋</a>也贴到这里.嘿嘿,世上高人真多啊.</p>
+            <div class="post-content" v-pre>
+              <p>本来我的博客是不转载的,呵呵.但是这个实在是太强了. 另外把原来收集的&quot;<a href="http://www.162cm.com/archives/216.html">马家爵赋</a>也贴到这里.嘿嘿,世上高人真多啊.</p>
 <blockquote>
 <p>翌日，正龙诣秦岭当事者关克，献其图，说如是。克大喜，传图以示左右，左右皆奇，曰”可以此拜上卿矣”。乃悦，赐金万贯，即日著书上表：盛世出猛虎，虎啸振国威！ 然疑者众。问，虎视人良久而弗动？克辩：二者皆入定。闻者皆笑其诳。后有好事者欲往探之，克惧，乃令封山，皆不得近。 期日，有贤者傅氏，著文叱之：”叶大如斗，虎必绘之。”正龙辩曰：”此叶之与秦岭，比比皆是。”克亦嗤：”足不出户，焉知秦岭之大；一叶障目，焉知国虎之真。”傅乃引数理，成像以为旁证，叱其纸虎。然周傅二者皆难服众，遂以项上之颅为据，立生死状。 时有烈女子两月丫头，见图掩面而泣，曰：”理尚存乎？”遂立字于天涯：”倘此虎为真，小女愿与之共赴巫山，行破瓜之礼。”世人闻之，皆扼腕，叹己非虎也。 后虎绘之疑传入异邦，亦皆称奇，乃著《科学》以记之。 适川西攀市有耕民，壁挂山涧溪水图一帧，为祖上所传。一日，梦其在涧间嬉水，忽虎猝现，跃入涧间，衔其颈，乃醒。周身大汗淋淋，逐起身视之，见虎卧露草间，化为虎卧山涧图。复定睛视之，此虎其纹其姿与正龙所绘之虎大同。始知虎，画妖也。 克闻此事，癫，曰：虎与画不可同论。遂自上山寻虎，与世绝。后尝有拾柴者，于深岭见其尸，衣褴褛，血肉不可辨。传克一日遇虎，欲擒以为证，与之搏，不敌，噬。然未得证。正龙亦病，夜不安寝，头几欲裂，常梦遇寅天师，负千金玄铁虎头铡，胯吊睛白额烂草黄，欲取其颅。后恍恍终日，卒于申年午月。 太史公曰：吾尝闻秦赵高者指鹿为马，左右或默。疑是之，今以周关二人观，犹信。呜呼！诳者之猛，犹胜于虎。</p>
 </blockquote>
@@ -111,45 +121,31 @@
 </blockquote>
 <p>我做了一个有趣的计算,如果照这样计算的话,雄性孟加拉虎的活动范围理论上最大可以达到1000*15,共15000平方公里.我们把全中国960万平方公里的面积,哪怕沙漠沙滩什么的都算上,可以供64只以上的野生孟加拉虎活动.呵呵,做为中国人太没面子了吧.地大物博的中国,自然资源只能养活60多只老虎.有魄力啊. 野生华南虎是不是存在,我不知道,不过看了这样,我知道,这些狗屁专家是一大堆了. <a href="http://tech.sina.com.cn/d/2007-11-10/04361844397.shtml">方老夫子的文章在这里.</a> 华南虎列传我最初是在<a href="http://zishuo.com/2007/11/22/169.html">这里</a>看到的.</p>
 
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://localhost:4000/post/554/">
+                  <h3 class="post-title">
+                    进入仲裁流程了,感谢鼓励我的朋友
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
           </div>
+
         </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://localhost:4000/post/554/">
-              <h3 class="post-title">
-                下一篇：进入仲裁流程了,感谢鼓励我的朋友
-              </h3>
-            </a>
-          </div>
-          
       </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">相逢的人会再相逢</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  by 黄滚 | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
-</div>
-
-
     </div>
-    <script type="application/javascript">
 
-hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -159,6 +155,8 @@ var app = new Vue({
 })
 
 </script>
+
+
 
 
 
